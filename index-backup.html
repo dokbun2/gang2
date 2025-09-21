@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIFI FRAME WORK GUIDE</title>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <i data-lucide="camera" class="logo-icon"></i>
+                <h1>AIFI FRAME WORK</h1>
+            </div>
+            <div class="header-info">
+                <span class="badge">v2.0</span>
+                <span class="author">by 향기펀치</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-content">
+                <!-- Shot Size Section -->
+                <div class="menu-section">
+                    <button class="menu-header" onclick="toggleSection('shot-size')">
+                        <i data-lucide="maximize-2" class="menu-icon"></i>
+                        <span>샷 크기(Shot Size)</span>
+                        <i data-lucide="chevron-down" class="chevron-icon" id="shot-size-chevron"></i>
+                    </button>
+                    <div class="menu-items" id="shot-size-items">
+                        <a href="#" class="menu-item" onclick="showContent('extreme-closeup')">익스트림 클로즈업(Extreme Close-up)</a>
+                        <a href="#" class="menu-item" onclick="showContent('closeup')">클로즈업(Close-up)</a>
+                        <a href="#" class="menu-item" onclick="showContent('medium-shot')">미디엄 샷(Medium Shot)</a>
+                        <a href="#" class="menu-item" onclick="showContent('cowboy-shot')">카우보이 샷(Cowboy Shot)</a>
+                        <a href="#" class="menu-item" onclick="showContent('full-shot')">풀 샷(Full Shot)</a>
+                        <a href="#" class="menu-item" onclick="showContent('wide-shot')">와이드 샷(Wide Shot)</a>
+                        <a href="#" class="menu-item" onclick="showContent('extreme-wide')">익스트림 와이드(Extreme Wide)</a>
+                    </div>
+                </div>
+
+                <!-- Camera Angle Section -->
+                <div class="menu-section">
+                    <button class="menu-header" onclick="toggleSection('camera-angle')">
+                        <i data-lucide="compass" class="menu-icon"></i>
+                        <span>카메라 앵글(Camera Angle)</span>
+                        <i data-lucide="chevron-down" class="chevron-icon" id="camera-angle-chevron"></i>
+                    </button>
+                    <div class="menu-items" id="camera-angle-items">
+                        <a href="#" class="menu-item" onclick="showContent('eye-level')">아이 레벨(Eye Level)</a>
+                        <a href="#" class="menu-item" onclick="showContent('low-angle')">로우 앵글(Low Angle)</a>
+                        <a href="#" class="menu-item" onclick="showContent('high-angle')">하이 앵글(High Angle)</a>
+                        <a href="#" class="menu-item" onclick="showContent('birds-eye')">버즈 아이 뷰(Bird's Eye View)</a>
+                        <a href="#" class="menu-item" onclick="showContent('overhead')">오버헤드 샷(Overhead Shot)</a>
+                        <a href="#" class="menu-item" onclick="showContent('dutch-angle')">더치 앵글(Dutch Angle)</a>
+                        <a href="#" class="menu-item" onclick="showContent('worms-eye')">웜즈 아이 뷰(Worm's Eye)</a>
+                        <a href="#" class="menu-item" onclick="showContent('ground-level')">그라운드 레벨(Ground Level)</a>
+                    </div>
+                </div>
+
+                <!-- Camera Viewpoint Section -->
+                <div class="menu-section">
+                    <button class="menu-header" onclick="toggleSection('viewpoint')">
+                        <i data-lucide="eye" class="menu-icon"></i>
+                        <span>시점(Viewpoint)</span>
+                        <i data-lucide="chevron-down" class="chevron-icon" id="viewpoint-chevron"></i>
+                    </button>
+                    <div class="menu-items" id="viewpoint-items">
+                        <a href="#" class="menu-item" onclick="showContent('side-view')">사이드/프로필 뷰(Side/Profile View)</a>
+                        <a href="#" class="menu-item" onclick="showContent('back-view')">백 뷰(Back View)</a>
+                        <a href="#" class="menu-item" onclick="showContent('three-quarter')">3/4 뷰(3/4 View)</a>
+                        <a href="#" class="menu-item" onclick="showContent('rear-three-quarter')">리어 3/4 뷰(Rear 3/4 View)</a>
+                    </div>
+                </div>
+
+                <!-- Special Shots Section -->
+                <div class="menu-section">
+                    <button class="menu-header" onclick="toggleSection('special-shots')">
+                        <i data-lucide="film" class="menu-icon"></i>
+                        <span>특수 샷(Special Shots)</span>
+                        <i data-lucide="chevron-down" class="chevron-icon" id="special-shots-chevron"></i>
+                    </button>
+                    <div class="menu-items" id="special-shots-items">
+                        <a href="#" class="menu-item" onclick="showContent('pov-shot')">POV 샷(POV Shot)</a>
+                        <a href="#" class="menu-item" onclick="showContent('over-shoulder')">오버더숄더(Over-the-Shoulder)</a>
+                        <a href="#" class="menu-item" onclick="showContent('two-shot')">투/쓰리/그룹(Two/Three/Group)</a>
+                        <a href="#" class="menu-item" onclick="showContent('establishing')">에스타블리싱(Establishing)</a>
+                        <a href="#" class="menu-item" onclick="showContent('master-shot')">마스터 샷(Master Shot)</a>
+                        <a href="#" class="menu-item" onclick="showContent('insert-shot')">인서트 샷(Insert Shot)</a>
+                    </div>
+                </div>
+
+                <!-- Composition Section -->
+                <div class="menu-section">
+                    <button class="menu-header" onclick="toggleSection('composition')">
+                        <i data-lucide="grid-3x3" class="menu-icon"></i>
+                        <span>구도(Composition)</span>
+                        <i data-lucide="chevron-down" class="chevron-icon" id="composition-chevron"></i>
+                    </button>
+                    <div class="menu-items" id="composition-items">
+                        <a href="#" class="menu-item" onclick="showContent('rule-of-thirds')">삼등분 법칙(Rule of Thirds)</a>
+                        <a href="#" class="menu-item" onclick="showContent('center-comp')">중앙 구도(Center Composition)</a>
+                        <a href="#" class="menu-item" onclick="showContent('symmetrical')">대칭 구도(Symmetrical Shot)</a>
+                        <a href="#" class="menu-item" onclick="showContent('frame-in-frame')">프레임 속 프레임(Frame in Frame)</a>
+                        <a href="#" class="menu-item" onclick="showContent('diagonal')">대각선 구도(Diagonal)</a>
+                        <a href="#" class="menu-item" onclick="showContent('layered')">레이어드 샷(Layered Shot)</a>
+                        <a href="#" class="menu-item" onclick="showContent('negative-space')">네거티브 스페이스(Negative Space)</a>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="content">
+            <div id="content-area">
+                <!-- Content will be dynamically loaded here -->
+                <div class="welcome-message">
+                    <i data-lucide="aperture" class="welcome-icon"></i>
+                    <h2>AIFI FRAME WORK GUIDE</h2>
+                    <p>AIFI 프레임워크의 블록화 프롬프트를 명확하게 알기위한 지침 가이드</p>
+                </div>
+            </div>
+
+            <!-- Pagination Controls -->
+            <div class="pagination" id="pagination">
+                <button class="pagination-btn" onclick="previousPage()" id="prev-btn">
+                    <i data-lucide="chevron-left"></i>
+                    <span>이전</span>
+                </button>
+                <div class="page-indicator">
+                    <span id="current-page">1</span> / <span id="total-pages">1</span>
+                </div>
+                <button class="pagination-btn" onclick="nextPage()" id="next-btn">
+                    <span>다음</span>
+                    <i data-lucide="chevron-right"></i>
+                </button>
+            </div>
+        </main>
+    </div>
+
+    <!-- Image Modal -->
+    <div id="image-modal" class="image-modal">
+        <span class="modal-close" onclick="closeImageModal()">&times;</span>
+        <img class="modal-content" id="modal-image">
+        <div class="modal-caption" id="modal-caption"></div>
+    </div>
+
+    <!-- Custom Scripts -->
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
