@@ -1184,10 +1184,8 @@ const cameraData = {
             '드라마틱한 명암'
         ],
         images: [
-            { src: 'https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?w=600&h=400&fit=crop', caption: 'Charcoal portrait' },
-            { src: 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=600&h=400&fit=crop', caption: 'Expressive marks' },
-            { src: 'https://images.unsplash.com/photo-1569172122301-bc5008bc09c5?w=600&h=400&fit=crop', caption: 'Deep blacks' },
-            { src: 'https://images.unsplash.com/photo-1602491453631-e2a5ad90a131?w=600&h=400&fit=crop', caption: 'Tonal range' }
+            { src: 'https://cdn.midjourney.com/0ee9ebfd-e0a0-4d23-bd29-7ea16f1d38f7/0_2.png', caption: 'Charcoal portrait' },
+            { src: 'https://cdn.midjourney.com/4e3234e1-a0ea-4215-8f01-d23a16ce03bd/0_1.png', caption: 'Expressive marks' }
         ]
     },
 
@@ -1204,10 +1202,8 @@ const cameraData = {
             '일상 기록'
         ],
         images: [
-            { src: 'https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=600&h=400&fit=crop', caption: 'Digital capture' },
-            { src: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=600&h=400&fit=crop', caption: 'Modern photography' },
-            { src: 'https://images.unsplash.com/photo-1471341971476-ae15ff5dd4ea?w=600&h=400&fit=crop', caption: 'High resolution' },
-            { src: 'https://images.unsplash.com/photo-1493863641943-9b68992a8d07?w=600&h=400&fit=crop', caption: 'Digital medium' }
+            { src: 'https://cdn.midjourney.com/c4d88a1c-83cf-4e4f-87e3-6b1ef8d77b6a/0_2.png', caption: 'Digital capture' },
+            { src: 'https://cdn.midjourney.com/0ece9d6f-ac8d-4568-a6b0-3020d6ea9da1/0_2.png', caption: 'Modern photography' }
         ]
     },
 
@@ -1223,10 +1219,8 @@ const cameraData = {
             '다큐멘터리'
         ],
         images: [
-            { src: 'https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=600&h=400&fit=crop', caption: 'Film grain' },
-            { src: 'https://images.unsplash.com/photo-1518998053901-5348d3961a04?w=600&h=400&fit=crop', caption: 'Analog feel' },
-            { src: 'https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=600&h=400&fit=crop', caption: 'Vintage look' },
-            { src: 'https://images.unsplash.com/photo-1495121605193-b116b5b9c5fe?w=600&h=400&fit=crop', caption: 'Film aesthetic' }
+            { src: 'https://cdn.midjourney.com/d7c40f92-a23e-4027-86f1-c380ab65b6c6/0_2.png', caption: 'Film grain' },
+            { src: 'https://cdn.midjourney.com/3e92b39a-bb6c-4cbd-9098-f0d5898cb3bf/0_1.png', caption: 'Analog feel' }
         ]
     },
 
