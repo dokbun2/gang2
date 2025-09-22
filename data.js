@@ -1349,9 +1349,11 @@ const cameraData = {
         ],
         images: [
             { src: 'https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=600&h=400&fit=crop', caption: 'Horizontal movement' },
-            { src: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=600&h=400&fit=crop', caption: 'Pan shot' },
-            { src: 'https://images.unsplash.com/photo-1493863641943-9b68992a8d07?w=600&h=400&fit=crop', caption: 'Following action' },
-            { src: 'https://images.unsplash.com/photo-1471341971476-ae15ff5dd4ea?w=600&h=400&fit=crop', caption: 'Landscape pan' }
+            { src: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=600&h=400&fit=crop', caption: 'Pan shot' }
+        ],
+        videos: [
+            { src: 'https://cdn.midjourney.com/video/4bbde702-836e-4fc5-b8ee-da134738be50/0.mp4', caption: 'Camera pan example 1' },
+            { src: 'https://cdn.midjourney.com/video/02398193-3843-4f96-ab81-3cb2cad3ce69/0.mp4', caption: 'Camera pan example 2' }
         ]
     },
 

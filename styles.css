@@ -301,6 +301,8 @@ body {
 #content-area {
     width: 100%;
     height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Welcome Message */
@@ -335,8 +337,11 @@ body {
     border-radius: 12px;
     padding: 30px;
     border: 1px solid #333;
-    min-height: calc(100vh - 200px);
+    min-height: calc(100vh - 130px);
     width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Content Sections Wrapper */
@@ -598,6 +603,45 @@ body {
 }
 
 .image-caption {
+    padding: 10px;
+    font-size: 13px;
+    color: #999;
+    background: #1a1a1a;
+}
+
+/* Video Grid */
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-top: 30px;
+    width: 100%;
+    max-width: 100%;
+}
+
+.video-item {
+    background: #252525;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.3s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 100%;
+}
+
+.video-item:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
+}
+
+.video-item video {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    background: #000;
+}
+
+.video-caption {
     padding: 10px;
     font-size: 13px;
     color: #999;

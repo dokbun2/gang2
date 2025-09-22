@@ -235,8 +235,33 @@ function displayContent() {
             </div>
     `;
 
-    // Add only first 2 images
-    if (currentData.images && currentData.images.length > 0) {
+    // Show videos if available, otherwise show images
+    if (currentData.videos && currentData.videos.length > 0) {
+        // For video-related items, show only videos
+        html += `
+            <div class="content-section" style="margin-top: 50px;">
+                <h3 class="section-title">예시 영상</h3>
+                <div class="video-grid">
+        `;
+
+        currentData.videos.forEach(video => {
+            html += `
+                <div class="video-item">
+                    <video controls autoplay loop muted playsinline>
+                        <source src="${video.src}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    ${video.caption ? `<p class="video-caption">${video.caption}</p>` : ''}
+                </div>
+            `;
+        });
+
+        html += `
+                </div>
+            </div>
+        `;
+    } else if (currentData.images && currentData.images.length > 0) {
+        // For image-related items, show only images
         const imagesToShow = currentData.images.slice(0, 2); // Only show first 2 images
         html += `
             <div class="content-section" style="margin-top: 50px;">
