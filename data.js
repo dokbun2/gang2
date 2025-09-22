@@ -1114,10 +1114,8 @@ const cameraData = {
             '패션 일러스트'
         ],
         images: [
-            { src: 'https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=600&h=400&fit=crop', caption: 'Watercolor painting' },
-            { src: 'https://images.unsplash.com/photo-1519638399535-1b036603ac77?w=600&h=400&fit=crop', caption: 'Fluid colors' },
-            { src: 'https://images.unsplash.com/photo-1505506874110-6a7a69069a08?w=600&h=400&fit=crop', caption: 'Soft washes' },
-            { src: 'https://images.unsplash.com/photo-1490730141103-6cac27aaab94?w=600&h=400&fit=crop', caption: 'Transparent layers' }
+            { src: 'https://cdn.midjourney.com/8ac3b686-5e51-4350-8feb-54e666f21f52/0_0.png', caption: 'Watercolor style 1' },
+            { src: 'https://cdn.midjourney.com/2be6fbcb-4932-4902-9783-e4613b1f65f7/0_2.png', caption: 'Watercolor style 2' }
         ]
     },
 
