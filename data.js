@@ -1773,5 +1773,82 @@ const cameraData = {
             { src: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=600&h=400&fit=crop', caption: '영상 제작' },
             { src: 'https://images.unsplash.com/photo-1626544901077-f6dac3ee9aa6?w=600&h=400&fit=crop', caption: 'AI 영상 생성' }
         ]
+    },
+
+    // ============= HAIRSTYLES =============
+    'hairstyles': {
+        title: '헤어스타일(Hairstyles)',
+        koreanTitle: '헤어스타일 키워드',
+        prompt: 'hairstyle keywords',
+        description: 'AI 이미지 생성을 위한 다양한 헤어스타일 키워드를 제공합니다. 각 스타일을 클릭하면 프롬프트가 생성됩니다.',
+        usage: [
+            '포트레이트 이미지 생성',
+            '캐릭터 디자인',
+            '패션 일러스트레이션',
+            '뷰티 콘텐츠 제작'
+        ],
+        hairstyles: [
+            {
+                name: 'bun',
+                koreanName: '번 헤어',
+                description: 'messy bun hairstyle',
+                image: 'https://cdn.midjourney.com/345a49a0-e15b-44f2-abc6-fc130c76015d/0_3.png'
+            },
+            {
+                name: 'double bun',
+                koreanName: '더블 번',
+                description: 'space buns hairstyle',
+                image: 'https://cdn.midjourney.com/a75c68ef-a730-40f1-b69c-35815a3293da/0_1.png'
+            },
+            {
+                name: 'wavy',
+                koreanName: '웨이브',
+                description: 'shoulder-length wavy hair',
+                image: 'https://cdn.midjourney.com/73c5cf81-a0cc-4a88-9ed4-3e0c2fa37a01/0_2.png'
+            },
+            {
+                name: 'crown braid',
+                koreanName: '크라운 브레이드',
+                description: 'crown braid hairstyle',
+                image: 'https://cdn.midjourney.com/e99b9769-7cc9-4924-9c59-3895bceb342d/0_1.png'
+            },
+            {
+                name: 'double braid',
+                koreanName: '더블 브레이드',
+                description: 'twin braids hairstyle',
+                image: 'https://cdn.midjourney.com/0d5d280e-b7a6-49c2-85dd-a726e13bdd46/0_1.png'
+            },
+            {
+                name: 'short bob',
+                koreanName: '숏 보브',
+                description: 'short bob haircut',
+                image: 'https://cdn.midjourney.com/367e90e7-3d07-45ed-b0ec-8aed5da19dbc/0_3.png'
+            },
+            {
+                name: 'short with bangs',
+                koreanName: '숏 뱅 헤어',
+                description: 'short hair with bangs',
+                image: 'https://cdn.midjourney.com/88f20f30-adb5-42c6-a2df-af340f5cf36c/0_0.png'
+            },
+            {
+                name: 'ponytail',
+                koreanName: '포니테일',
+                description: 'sleek ponytail hairstyle',
+                image: 'https://cdn.midjourney.com/45c47806-87f5-4bbd-b676-dc0a324380ec/0_0.png'
+            },
+            {
+                name: 'straight',
+                koreanName: '스트레이트',
+                description: 'straight shoulder-length hair',
+                image: 'https://cdn.midjourney.com/9ca3532d-a75f-44d7-9cc0-2016187ee79a/0_3.png'
+            },
+            {
+                name: 'finger curls',
+                koreanName: '핑거 컬',
+                description: 'tight finger curls hairstyle',
+                image: 'https://cdn.midjourney.com/364f299c-41ec-4e83-b28b-8930fd6d8c25/0_2.png'
+            }
+        ],
+        images: []
     }
 };

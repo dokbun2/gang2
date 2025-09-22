@@ -2,6 +2,7 @@
 
 // Global variables
 let currentData = null;
+let contentKey = null;
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', function() {
@@ -164,6 +165,9 @@ function showContent(contentId) {
     const contentArea = document.getElementById('content-area');
     const pagination = document.getElementById('pagination');
 
+    // Store the content key globally for use in displayContent
+    contentKey = contentId;
+
     // Check if content exists in cameraData
     if (typeof cameraData !== 'undefined' && cameraData[contentId]) {
         currentData = cameraData[contentId];
@@ -202,6 +206,70 @@ function displayContent() {
     // Check if it's a tool type (AIFI tool)
     if (currentData.type === 'tool') {
         displayAIFITool();
+        return;
+    }
+
+    // Special layout for hairstyles
+    if (contentKey === 'hairstyles' && currentData.hairstyles) {
+        let html = `
+            <div class="content-container hairstyle-container">
+                <div class="content-header">
+                    <h2 class="content-title">${currentData.title || ''}</h2>
+                    ${currentData.koreanTitle ? `<span class="content-subtitle">${currentData.koreanTitle}</span>` : ''}
+                </div>
+
+                <!-- Prompt Preview Section -->
+                <div class="hairstyle-prompt-preview">
+                    <div class="prompt-preview-text" id="hairstyle-prompt">
+                        A beautiful actress with <span class="highlight-style">shoulder-length</span> { <span class="highlight-keyword">STYLE</span> } <span class="highlight-hair">hair style</span> with blonde color
+                    </div>
+                    <button class="copy-prompt-btn" onclick="copyHairstylePrompt()">
+                        <i data-lucide="copy" style="width: 16px; height: 16px; margin-right: 5px;"></i>
+                        복사하기
+                    </button>
+                </div>
+
+                <!-- Description -->
+                <div class="content-section-box">
+                    <p class="section-text">${currentData.description}</p>
+                </div>
+
+                <!-- Hairstyles Grid -->
+                <div class="hairstyles-grid">
+                    ${currentData.hairstyles.map((style, index) => `
+                        <div class="hairstyle-item" onclick="selectHairstyle('${style.name}', '${style.description}')">
+                            <div class="hairstyle-image">
+                                <img src="${style.image}" alt="${style.name}">
+                            </div>
+                            <div class="hairstyle-label">
+                                <span class="style-name">${style.name}</span>
+                                <span class="style-korean">${style.koreanName}</span>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+
+                <!-- Usage Cases -->
+                ${currentData.usage && currentData.usage.length > 0 ? `
+                    <div class="content-section-box" style="margin-top: 30px;">
+                        <h3 class="section-title">사용 케이스</h3>
+                        <ul class="usage-list">
+                            ${currentData.usage.map(use => `<li>${use}</li>`).join('')}
+                        </ul>
+                    </div>
+                ` : ''}
+            </div>
+        `;
+
+        contentArea.innerHTML = html;
+        if (pagination) {
+            pagination.style.display = 'none';
+        }
+
+        // Re-initialize icons
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
         return;
     }
 
@@ -1282,6 +1350,54 @@ async function generateAifiVideoPrompt() {
     } finally {
         showAifiLoading('video', false);
     }
+}
+
+// Hairstyle Functions
+let selectedHairstyle = 'STYLE';
+
+function selectHairstyle(styleName, styleDescription) {
+    selectedHairstyle = styleDescription;
+    const promptElement = document.getElementById('hairstyle-prompt');
+    if (promptElement) {
+        promptElement.innerHTML = `A beautiful actress with <span class="highlight-style">shoulder-length</span> { <span class="highlight-keyword selected">${styleDescription}</span> } with blonde color`;
+
+        // Highlight selected hairstyle item
+        document.querySelectorAll('.hairstyle-item').forEach(item => {
+            item.classList.remove('selected');
+        });
+        event.currentTarget.classList.add('selected');
+    }
+}
+
+function copyHairstylePrompt() {
+    const promptText = `A beautiful actress with shoulder-length { ${selectedHairstyle} } with blonde color`;
+
+    const textarea = document.createElement('textarea');
+    textarea.value = promptText;
+    textarea.style.position = 'fixed';
+    textarea.style.left = '-999999px';
+    document.body.appendChild(textarea);
+    textarea.select();
+
+    try {
+        document.execCommand('copy');
+        const btn = event.currentTarget;
+        const originalHTML = btn.innerHTML;
+        btn.innerHTML = '<i data-lucide="check" style="width: 16px; height: 16px; margin-right: 5px;"></i>복사됨!';
+        btn.classList.add('copied');
+
+        setTimeout(() => {
+            btn.innerHTML = originalHTML;
+            btn.classList.remove('copied');
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        }, 2000);
+    } catch (err) {
+        console.error('복사 실패:', err);
+    }
+
+    document.body.removeChild(textarea);
 }
 
 // Display results
