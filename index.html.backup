@@ -59,81 +59,11 @@
                     </button>
                     <div class="major-category-content" id="image-category">
 
-
                     <!-- STYLE 중분류 -->
                     <div class="menu-section">
                         <button class="menu-header" onclick="toggleSection('style')">
                             <i data-lucide="palette" class="menu-icon"></i>
                             <span>스타일(STYLE)</span>
-                            <i data-lucide="chevron-down" class="chevron-icon" id="style-chevron"></i>
-                        </button>
-                        <div class="menu-items" id="style-items">
-                            <div class="submenu-group">
-                                <div class="submenu-title">아트 스타일(Art Style)</div>
-                                <a href="#" class="menu-item" onclick="showContent('photorealistic')">포토리얼리스틱(Photorealistic)</a>
-                                <a href="#" class="menu-item" onclick="showContent('hyperrealistic')">하이퍼리얼리스틱(Hyperrealistic)</a>
-                                <a href="#" class="menu-item" onclick="showContent('surrealism')">초현실주의(Surrealism)</a>
-                                <a href="#" class="menu-item" onclick="showContent('impressionism')">인상주의(Impressionism)</a>
-                                <a href="#" class="menu-item" onclick="showContent('minimalism')">미니멀리즘(Minimalism)</a>
-                            </div>
-
-                            <div class="submenu-group">
-                                <div class="submenu-title">디지털 아트(Digital Art)</div>
-                                <a href="#" class="menu-item" onclick="showContent('digital-painting')">디지털 페인팅(Digital Painting)</a>
-                                <a href="#" class="menu-item" onclick="showContent('concept-art')">컨셉 아트(Concept Art)</a>
-                                <a href="#" class="menu-item" onclick="showContent('matte-painting')">매트 페인팅(Matte Painting)</a>
-                                <a href="#" class="menu-item" onclick="showContent('3d-render')">3D 렌더(3D Render)</a>
-                            </div>
-
-                            <div class="submenu-group">
-                                <div class="submenu-title">일러스트레이션(Illustration)</div>
-                                <a href="#" class="menu-item" onclick="showContent('anime-style')">애니메 스타일(Anime Style)</a>
-                                <a href="#" class="menu-item" onclick="showContent('cartoon-style')">카툰 스타일(Cartoon Style)</a>
-                                <a href="#" class="menu-item" onclick="showContent('comic-book')">코믹북 스타일(Comic Book)</a>
-                                <a href="#" class="menu-item" onclick="showContent('watercolor')">수채화(Watercolor)</a>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <!-- MEDIUM 중분류 -->
-                    <div class="menu-section">
-                        <button class="menu-header" onclick="toggleSection('medium')">
-                            <i data-lucide="brush" class="menu-icon"></i>
-                            <span>매체(MEDIUM)</span>
-                            <i data-lucide="chevron-down" class="chevron-icon" id="medium-chevron"></i>
-                        </button>
-                        <div class="menu-items" id="medium-items">
-                            <div class="submenu-group">
-                                <div class="submenu-title">전통 매체(Traditional)</div>
-                                <a href="#" class="menu-item" onclick="showContent('oil-painting')">유화(Oil Painting)</a>
-                                <a href="#" class="menu-item" onclick="showContent('acrylic-painting')">아크릴화(Acrylic Painting)</a>
-                                <a href="#" class="menu-item" onclick="showContent('pencil-drawing')">연필화(Pencil Drawing)</a>
-                                <a href="#" class="menu-item" onclick="showContent('charcoal')">목탄화(Charcoal)</a>
-                            </div>
-
-                            <div class="submenu-group">
-                                <div class="submenu-title">사진 매체(Photography)</div>
-                                <a href="#" class="menu-item" onclick="showContent('digital-photography')">디지털 사진(Digital Photography)</a>
-                                <a href="#" class="menu-item" onclick="showContent('film-photography')">필름 사진(Film Photography)</a>
-                                <a href="#" class="menu-item" onclick="showContent('polaroid')">폴라로이드(Polaroid)</a>
-                                <a href="#" class="menu-item" onclick="showContent('long-exposure')">장노출(Long Exposure)</a>
-                            </div>
-
-                            <div class="submenu-group">
-                                <div class="submenu-title">혼합 매체(Mixed Media)</div>
-                                <a href="#" class="menu-item" onclick="showContent('collage')">콜라주(Collage)</a>
-                                <a href="#" class="menu-item" onclick="showContent('digital-collage')">디지털 콜라주(Digital Collage)</a>
-                                <a href="#" class="menu-item" onclick="showContent('mixed-technique')">혼합 기법(Mixed Technique)</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- CAMERA 중분류 -->
-                    <div class="menu-section">
-                        <button class="menu-header" onclick="toggleSection('camera')">
-                            <i data-lucide="aperture" class="menu-icon"></i>
-                            <span>카메라(CAMERA)</span>
                             <i data-lucide="chevron-down" class="chevron-icon" id="camera-chevron"></i>
                         </button>
                         <div class="menu-items" id="camera-items">
@@ -221,7 +151,6 @@
                         </div>
                     </div>
 
-
                     <!-- LIGHTING 중분류 -->
                     <div class="menu-section">
                         <button class="menu-header" onclick="toggleSection('lighting')">
@@ -267,6 +196,74 @@
                                 <a href="#" class="menu-item" onclick="showContent('moonlight')">달빛(Moonlight)</a>
                                 <a href="#" class="menu-item" onclick="showContent('firelight')">화염 조명(Firelight)</a>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STYLE 중분류 -->
+                    <div class="menu-section">
+                        <button class="menu-header" onclick="toggleSection('style')">
+                            <i data-lucide="palette" class="menu-icon"></i>
+                            <span>스타일(STYLE)</span>
+                            <i data-lucide="chevron-down" class="chevron-icon" id="style-chevron"></i>
+                        </button>
+                        <div class="menu-items" id="style-items">
+                            <div class="submenu-group">
+                                <div class="submenu-title">아트 스타일(Art Style)</div>
+                                <a href="#" class="menu-item" onclick="showContent('photorealistic')">포토리얼리스틱(Photorealistic)</a>
+                                <a href="#" class="menu-item" onclick="showContent('hyperrealistic')">하이퍼리얼리스틱(Hyperrealistic)</a>
+                                <a href="#" class="menu-item" onclick="showContent('surrealism')">초현실주의(Surrealism)</a>
+                                <a href="#" class="menu-item" onclick="showContent('impressionism')">인상주의(Impressionism)</a>
+                                <a href="#" class="menu-item" onclick="showContent('minimalism')">미니멀리즘(Minimalism)</a>
+                            </div>
+
+                            <div class="submenu-group">
+                                <div class="submenu-title">디지털 아트(Digital Art)</div>
+                                <a href="#" class="menu-item" onclick="showContent('digital-painting')">디지털 페인팅(Digital Painting)</a>
+                                <a href="#" class="menu-item" onclick="showContent('concept-art')">컨셉 아트(Concept Art)</a>
+                                <a href="#" class="menu-item" onclick="showContent('matte-painting')">매트 페인팅(Matte Painting)</a>
+                                <a href="#" class="menu-item" onclick="showContent('3d-render')">3D 렌더(3D Render)</a>
+                            </div>
+
+                            <div class="submenu-group">
+                                <div class="submenu-title">일러스트레이션(Illustration)</div>
+                                <a href="#" class="menu-item" onclick="showContent('anime-style')">애니메 스타일(Anime Style)</a>
+                                <a href="#" class="menu-item" onclick="showContent('cartoon-style')">카툰 스타일(Cartoon Style)</a>
+                                <a href="#" class="menu-item" onclick="showContent('comic-book')">코믹북 스타일(Comic Book)</a>
+                                <a href="#" class="menu-item" onclick="showContent('watercolor')">수채화(Watercolor)</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- MEDIUM 중분류 -->
+                    <div class="menu-section">
+                        <button class="menu-header" onclick="toggleSection('medium')">
+                            <i data-lucide="brush" class="menu-icon"></i>
+                            <span>매체(MEDIUM)</span>
+                            <i data-lucide="chevron-down" class="chevron-icon" id="medium-chevron"></i>
+                        </button>
+                        <div class="menu-items" id="medium-items">
+                            <div class="submenu-group">
+                                <div class="submenu-title">전통 매체(Traditional)</div>
+                                <a href="#" class="menu-item" onclick="showContent('oil-painting')">유화(Oil Painting)</a>
+                                <a href="#" class="menu-item" onclick="showContent('acrylic-painting')">아크릴화(Acrylic Painting)</a>
+                                <a href="#" class="menu-item" onclick="showContent('pencil-drawing')">연필화(Pencil Drawing)</a>
+                                <a href="#" class="menu-item" onclick="showContent('charcoal')">목탄화(Charcoal)</a>
+                            </div>
+
+                            <div class="submenu-group">
+                                <div class="submenu-title">사진 매체(Photography)</div>
+                                <a href="#" class="menu-item" onclick="showContent('digital-photography')">디지털 사진(Digital Photography)</a>
+                                <a href="#" class="menu-item" onclick="showContent('film-photography')">필름 사진(Film Photography)</a>
+                                <a href="#" class="menu-item" onclick="showContent('polaroid')">폴라로이드(Polaroid)</a>
+                                <a href="#" class="menu-item" onclick="showContent('long-exposure')">장노출(Long Exposure)</a>
+                            </div>
+
+                            <div class="submenu-group">
+                                <div class="submenu-title">혼합 매체(Mixed Media)</div>
+                                <a href="#" class="menu-item" onclick="showContent('collage')">콜라주(Collage)</a>
+                                <a href="#" class="menu-item" onclick="showContent('digital-collage')">디지털 콜라주(Digital Collage)</a>
+                                <a href="#" class="menu-item" onclick="showContent('mixed-technique')">혼합 기법(Mixed Technique)</a>
                             </div>
                         </div>
                     </div>

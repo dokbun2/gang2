@@ -286,7 +286,7 @@ const cameraData = {
             '관객에게 작고 무력한 느낌을 줄 때'
         ],
         images: [
-            { src: 'https://cdn.midjourney.com/7b03ce40-99f9-4eca-a268-7c948c708571/0_1.png', caption: 'Ground perspective' },
+            { src: 'https://cdn.midjourney.com/653f8a92-a2f9-4316-bd05-0594cb3348e0/0_0.png', caption: 'Ground perspective' },
             { src: 'https://cdn.midjourney.com/7b03ce40-99f9-4eca-a268-7c948c708571/0_1.png', caption: 'Looking up' },
             { src: 'https://images.unsplash.com/photo-1486718448742-163732cd1544?w=600&h=400&fit=crop', caption: 'Extreme low angle' },
             { src: 'https://images.unsplash.com/photo-1508138221679-760a23a2285b?w=600&h=400&fit=crop', caption: 'Heroic angle' }
@@ -1373,6 +1373,10 @@ const cameraData = {
             { src: 'https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=600&h=400&fit=crop', caption: 'Tilt up' },
             { src: 'https://images.unsplash.com/photo-1496568816309-51d7c20e3b21?w=600&h=400&fit=crop', caption: 'Building reveal' },
             { src: 'https://images.unsplash.com/photo-1493863641943-9b68992a8d07?w=600&h=400&fit=crop', caption: 'Tilt down' }
+        ],
+        videos: [
+            { src: 'https://cdn.midjourney.com/video/8cd7fc99-d201-4091-9768-11b7155615f3/0.mp4', caption: 'Camera tilt example 1' },
+            { src: 'https://cdn.midjourney.com/video/c4fb2244-3298-4e02-96b5-b82a895a5897/0.mp4', caption: 'Camera tilt example 2' }
         ]
     },
 
@@ -1392,6 +1396,10 @@ const cameraData = {
             { src: 'https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=600&h=400&fit=crop', caption: 'Backward dolly' },
             { src: 'https://images.unsplash.com/photo-1493863641943-9b68992a8d07?w=600&h=400&fit=crop', caption: 'Smooth movement' },
             { src: 'https://images.unsplash.com/photo-1524712245354-2c4e5e7121c0?w=600&h=400&fit=crop', caption: 'Track dolly' }
+        ],
+        videos: [
+            { src: 'https://cdn.midjourney.com/video/32f518ca-b8d7-43bf-9bad-affa753b4eff/0.mp4', caption: 'Dolly shot example 1' },
+            { src: 'https://cdn.midjourney.com/video/42e456a4-d573-4561-a9f5-925999d559ab/0.mp4', caption: 'Dolly shot example 2' }
         ]
     },
 
@@ -1411,6 +1419,10 @@ const cameraData = {
             { src: 'https://images.unsplash.com/photo-1485846234645-a62644f84728?w=600&h=400&fit=crop', caption: 'Lateral tracking' },
             { src: 'https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=600&h=400&fit=crop', caption: 'Action follow' },
             { src: 'https://images.unsplash.com/photo-1493863641943-9b68992a8d07?w=600&h=400&fit=crop', caption: 'Smooth tracking' }
+        ],
+        videos: [
+            { src: 'https://cdn.midjourney.com/video/f32eaa9d-664e-41ad-9efb-b79f42e1b6b4/0.mp4', caption: 'Tracking shot example 1' },
+            { src: 'https://cdn.midjourney.com/video/c4546ac9-cad6-481b-988b-5430e101053e/0.mp4', caption: 'Tracking shot example 2' }
         ]
     },
 
@@ -1427,9 +1439,11 @@ const cameraData = {
         ],
         images: [
             { src: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=600&h=400&fit=crop', caption: 'Aerial movement' },
-            { src: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop', caption: 'Epic reveal' },
-            { src: 'https://images.unsplash.com/photo-1444927714506-8492d94b4e3d?w=600&h=400&fit=crop', caption: 'High crane' },
-            { src: 'https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=600&h=400&fit=crop', caption: 'Sweeping shot' }
+            { src: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop', caption: 'Epic reveal' }
+        ],
+        videos: [
+            { src: 'https://cdn.midjourney.com/video/a31ce983-b68f-4d08-86b4-612adab33ec4/0.mp4', caption: 'Crane shot example 1' },
+            { src: 'https://cdn.midjourney.com/video/c99c1d2d-657c-4dde-bd41-52d075b8ed30/0.mp4', caption: 'Crane shot example 2' }
         ]
     },
 
@@ -1449,6 +1463,10 @@ const cameraData = {
             { src: 'https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=600&h=400&fit=crop', caption: 'Natural shake' },
             { src: 'https://images.unsplash.com/photo-1471341971476-ae15ff5dd4ea?w=600&h=400&fit=crop', caption: 'Raw feeling' },
             { src: 'https://images.unsplash.com/photo-1493863641943-9b68992a8d07?w=600&h=400&fit=crop', caption: 'Intimate view' }
+        ],
+        videos: [
+            { src: 'https://cdn.midjourney.com/video/06c262d7-2224-434d-ae1e-ca0f8c65eba6/0.mp4', caption: 'Handheld camera example 1' },
+            { src: 'https://cdn.midjourney.com/video/62dbb6e7-f3f5-4e12-bccf-4f6f93c3c49e/0.mp4', caption: 'Handheld camera example 2' }
         ]
     },
 
@@ -1469,13 +1487,17 @@ const cameraData = {
             { src: 'https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=600&h=400&fit=crop', caption: 'Scene change' },
             { src: 'https://images.unsplash.com/photo-1524712245354-2c4e5e7121c0?w=600&h=400&fit=crop', caption: 'Quick cut' },
             { src: 'https://images.unsplash.com/photo-1493863641943-9b68992a8d07?w=600&h=400&fit=crop', caption: 'Direct switch' }
+        ],
+        videos: [
+            { src: 'https://cdn.midjourney.com/video/83fc363e-51dc-41ff-b026-8c6e7da0275b/0.mp4', caption: 'Hard cut example 1' },
+            { src: 'https://cdn.midjourney.com/video/36aa24ba-9579-4b2c-8c46-41d802ad8c56/0.mp4', caption: 'Hard cut example 2' }
         ]
     },
 
     'fade': {
         title: '페이드(Fade)',
         koreanTitle: '페이드',
-        prompt: 'fade transition',
+        prompt: 'fade in,out',
         description: '화면이 점점 어두워지거나(Fade Out) 밝아지는(Fade In) 전환 효과입니다.',
         usage: [
             '시간의 경과 표현',
@@ -1488,6 +1510,10 @@ const cameraData = {
             { src: 'https://images.unsplash.com/photo-1485846234645-a62644f84728?w=600&h=400&fit=crop', caption: 'Fade in' },
             { src: 'https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=600&h=400&fit=crop', caption: 'Gradual transition' },
             { src: 'https://images.unsplash.com/photo-1493863641943-9b68992a8d07?w=600&h=400&fit=crop', caption: 'Soft ending' }
+        ],
+        videos: [
+            { src: 'https://cdn.midjourney.com/video/c5b6d43e-513c-47b0-9b6f-695e2a5ebe41/0.mp4', caption: 'Fade in/out example 1' },
+            { src: 'https://cdn.midjourney.com/video/b1eeef73-00cd-492c-b6b9-7e5c3a33e400/0.mp4', caption: 'Fade in/out example 2' }
         ]
     },
 

@@ -41,10 +41,72 @@ document.addEventListener('DOMContentLoaded', function() {
     if (videoCategoryIcon) {
         videoCategoryIcon.style.transform = 'rotate(0deg)';
     }
+
+    // Add click event to content area to close all dropdowns
+    const contentArea = document.querySelector('.content');
+    if (contentArea) {
+        contentArea.addEventListener('click', closeAllDropdowns);
+    }
+
+    // Prevent sidebar clicks from closing dropdowns
+    const sidebar = document.querySelector('.sidebar');
+    if (sidebar) {
+        sidebar.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+    }
 });
 
+// Close all dropdowns function
+function closeAllDropdowns() {
+    // Close major categories
+    const imageCategory = document.getElementById('image-category');
+    const videoCategory = document.getElementById('video-category');
+    const imageCategoryIcon = document.getElementById('image-category-icon');
+    const videoCategoryIcon = document.getElementById('video-category-icon');
+
+    if (imageCategory && imageCategory.style.display === 'block') {
+        imageCategory.style.display = 'none';
+        if (imageCategoryIcon) imageCategoryIcon.style.transform = 'rotate(0)';
+    }
+
+    if (videoCategory && videoCategory.style.display === 'block') {
+        videoCategory.style.display = 'none';
+        if (videoCategoryIcon) videoCategoryIcon.style.transform = 'rotate(0)';
+    }
+
+    // Close all sections
+    const allSectionItems = document.querySelectorAll('[id$="-items"]');
+    const allSectionChevrons = document.querySelectorAll('[id$="-chevron"]');
+
+    allSectionItems.forEach(item => {
+        if (item.style.display === 'block') {
+            item.style.display = 'none';
+        }
+    });
+
+    allSectionChevrons.forEach(chevron => {
+        chevron.style.transform = 'rotate(0)';
+    });
+
+    // Close all submenus
+    const allSubmenus = document.querySelectorAll('.submenu-items');
+    const allSubmenuIcons = document.querySelectorAll('[id$="-submenu-icon"]');
+
+    allSubmenus.forEach(submenu => {
+        if (submenu.style.display === 'block') {
+            submenu.style.display = 'none';
+        }
+    });
+
+    allSubmenuIcons.forEach(icon => {
+        icon.style.transform = 'rotate(0)';
+    });
+}
+
 // Toggle Major Category
-function toggleMajorCategory(categoryId) {
+function toggleMajorCategory(categoryId, event) {
+    if (event) event.stopPropagation();
     console.log('Toggling major category:', categoryId);
     const category = document.getElementById(categoryId);
     const icon = document.getElementById(categoryId + '-icon');
@@ -61,7 +123,8 @@ function toggleMajorCategory(categoryId) {
 }
 
 // Toggle Section
-function toggleSection(sectionId) {
+function toggleSection(sectionId, event) {
+    if (event) event.stopPropagation();
     console.log('Toggling section:', sectionId);
     const items = document.getElementById(sectionId + '-items');
     const chevron = document.getElementById(sectionId + '-chevron');
@@ -78,7 +141,8 @@ function toggleSection(sectionId) {
 }
 
 // Toggle Submenu
-function toggleSubmenu(submenuId) {
+function toggleSubmenu(submenuId, event) {
+    if (event) event.stopPropagation();
     console.log('Toggling submenu:', submenuId);
     const submenu = document.getElementById(submenuId);
     const icon = document.getElementById(submenuId + '-icon');
@@ -232,60 +296,43 @@ function displayContent() {
                         </ul>
                     </div>
                 ` : ''}
+
+                <!-- 예시 영상 또는 이미지 섹션 (그리드 내부) -->
+                ${currentData.videos && currentData.videos.length > 0 ? `
+                    <div class="content-section-box" style="grid-column: 1 / -1;">
+                        <h3 class="section-title">예시 영상</h3>
+                        <div class="video-grid">
+                            ${currentData.videos.map((video, index) => `
+                                <div class="video-item tilt-active">
+                                    <video controls autoplay loop muted playsinline>
+                                        <source src="${video.src}" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    ${video.caption ? `<p class="video-caption">${video.caption}</p>` : ''}
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                ` : currentData.images && currentData.images.length > 0 ? `
+                    <div class="content-section-box" style="grid-column: 1 / -1;">
+                        <h3 class="section-title">예시 이미지</h3>
+                        <div class="image-grid">
+                            ${currentData.images.slice(0, 2).map(img => {
+                                const escapedCaption = (img.caption || '').replace(/'/g, "\\'");
+                                return `
+                                    <div class="image-item"
+                                         onclick="openImageModal('${img.src}', '${escapedCaption}')">
+                                        <img src="${img.src}"
+                                             alt="${img.caption || ''}">
+                                        ${img.caption ? `<p class="image-caption">${img.caption}</p>` : ''}
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+                    </div>
+                ` : ''}
             </div>
     `;
-
-    // Show videos if available, otherwise show images
-    if (currentData.videos && currentData.videos.length > 0) {
-        // For video-related items, show only videos
-        html += `
-            <div class="content-section" style="margin-top: 50px;">
-                <h3 class="section-title">예시 영상</h3>
-                <div class="video-grid">
-        `;
-
-        currentData.videos.forEach(video => {
-            html += `
-                <div class="video-item">
-                    <video controls autoplay loop muted playsinline>
-                        <source src="${video.src}" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    ${video.caption ? `<p class="video-caption">${video.caption}</p>` : ''}
-                </div>
-            `;
-        });
-
-        html += `
-                </div>
-            </div>
-        `;
-    } else if (currentData.images && currentData.images.length > 0) {
-        // For image-related items, show only images
-        const imagesToShow = currentData.images.slice(0, 2); // Only show first 2 images
-        html += `
-            <div class="content-section" style="margin-top: 50px;">
-                <h3 class="section-title">예시 이미지</h3>
-                <div class="image-grid">
-        `;
-
-        imagesToShow.forEach(img => {
-            const escapedCaption = (img.caption || '').replace(/'/g, "\\'");
-            html += `
-                <div class="image-item"
-                     onclick="openImageModal('${img.src}', '${escapedCaption}')">
-                    <img src="${img.src}"
-                         alt="${img.caption || ''}">
-                    ${img.caption ? `<p class="image-caption">${img.caption}</p>` : ''}
-                </div>
-            `;
-        });
-
-        html += `
-                </div>
-            </div>
-        `;
-    }
 
     // Always hide pagination
     if (pagination) {

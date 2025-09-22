@@ -1313,7 +1313,7 @@ const cameraData = {
     'fade': {
         title: '페이드(Fade)',
         koreanTitle: '페이드',
-        prompt: 'fade transition',
+        prompt: 'fade in,out',
         description: '화면이 점점 어두워지거나(Fade Out) 밝아지는(Fade In) 전환 효과입니다.',
         usage: [
             '시간의 경과 표현',
