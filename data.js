@@ -1167,10 +1167,8 @@ const cameraData = {
             '콘셉트 스케치'
         ],
         images: [
-            { src: 'https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?w=600&h=400&fit=crop', caption: 'Graphite sketch' },
-            { src: 'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=600&h=400&fit=crop', caption: 'Detailed drawing' },
-            { src: 'https://images.unsplash.com/photo-1602491453631-e2a5ad90a131?w=600&h=400&fit=crop', caption: 'Pencil portrait' },
-            { src: 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=600&h=400&fit=crop', caption: 'Shading technique' }
+            { src: 'https://cdn.midjourney.com/16c9ca32-fe0c-4504-aec8-5fc1340522e8/0_2.png', caption: 'Pencil drawing style 1' },
+            { src: 'https://cdn.midjourney.com/16c9ca32-fe0c-4504-aec8-5fc1340522e8/0_1.png', caption: 'Pencil drawing style 2' }
         ]
     },
 
