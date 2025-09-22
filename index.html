@@ -15,7 +15,7 @@
     <!-- Header -->
     <header class="header">
         <div class="header-content">
-            <div class="logo-section">
+            <div class="logo-section" style="cursor: pointer;" onclick="window.location.href='index.html'">
                 <i data-lucide="camera" class="logo-icon"></i>
                 <h1>AIFI FRAME WORK</h1>
             </div>
@@ -47,6 +47,14 @@
                             동영상 갤러리
                         </a>
                     </div>
+                </div>
+
+                <!-- 프레임워크 시작 버튼 -->
+                <div class="menu-section" style="margin-top: 15px;">
+                    <button class="menu-header" onclick="showContent('framework-stages')" style="background: linear-gradient(135deg, #4caf50, #45a049); border: 1px solid #388e3c;">
+                        <i data-lucide="rocket" class="menu-icon"></i>
+                        <span>프레임워크 시작</span>
+                    </button>
                 </div>
 
                 <!-- 이미지 관련 대분류 -->
@@ -351,6 +359,15 @@
                     </button>
                 </div>
 
+                <!-- 프레임추출기 버튼 -->
+                <div class="menu-section" style="margin-top: 10px;">
+                    <button class="menu-header" onclick="window.open('https://aififrame.netlify.app/', '_blank')" style="background: linear-gradient(135deg, #673ab7, #512da8); border: 1px solid rgba(103, 58, 183, 0.3); cursor: pointer;">
+                        <i data-lucide="frame" class="menu-icon"></i>
+                        <span>프레임추출기</span>
+                        <i data-lucide="external-link" style="width: 16px; height: 16px; margin-left: auto;"></i>
+                    </button>
+                </div>
+
             </div>
         </aside>
 
@@ -359,9 +376,13 @@
             <div id="content-area">
                 <!-- Content will be dynamically loaded here -->
                 <div class="welcome-message">
-                    <i data-lucide="aperture" class="welcome-icon"></i>
-                    <h2>AIFI FRAME WORK GUIDE</h2>
-                    <p>AIFI 프레임워크의 블록화 프롬프트를 명확하게 알기위한 지침 가이드</p>
+                    <div class="main-image-container">
+                        <img src="images/main.png" alt="AIFI FRAME WORK" class="main-hero-image">
+                        <div class="welcome-overlay">
+                            <h2>AIFI FRAME WORK GUIDE</h2>
+                            <p>AIFI 프레임워크의 블록화 프롬프트를 명확하게 알기위한 지침 가이드</p>
+                        </div>
+                    </div>
                 </div>
             </div>
 

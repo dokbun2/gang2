@@ -1634,6 +1634,10 @@ const cameraData = {
             { src: 'https://images.unsplash.com/photo-1474224017046-182ece80b263?w=600&h=400&fit=crop', caption: 'Movement blur' },
             { src: 'https://images.unsplash.com/photo-1484589065579-248aad0d8b13?w=600&h=400&fit=crop', caption: 'Dynamic motion' },
             { src: 'https://images.unsplash.com/photo-1509909756405-be0199881695?w=600&h=400&fit=crop', caption: 'Action blur' }
+        ],
+        videos: [
+            { src: 'https://cdn.midjourney.com/video/d9a5afb5-a846-4a58-8fb7-e2e217f34063/0.mp4', caption: 'Motion blur example 1' },
+            { src: 'https://cdn.midjourney.com/video/e1d217d4-bc4a-413f-8c24-3993c5002b8e/0.mp4', caption: 'Motion blur example 2' }
         ]
     },
 
@@ -1847,6 +1851,82 @@ const cameraData = {
                 koreanName: '핑거 컬',
                 description: 'tight finger curls hairstyle',
                 image: 'https://cdn.midjourney.com/364f299c-41ec-4e83-b28b-8930fd6d8c25/0_2.png'
+            }
+        ],
+        images: []
+    },
+
+    // ============= FRAMEWORK STAGES =============
+    'framework-stages': {
+        title: '프레임워크 스테이지',
+        koreanTitle: 'AIFI Framework Stages',
+        prompt: '',
+        description: 'AIFI 프레임워크의 8단계 스테이지를 통해 체계적으로 학습하고 실습할 수 있습니다. 각 스테이지는 Google Gemini를 활용한 실전 프로젝트입니다.',
+        usage: [],
+        stages: [
+            {
+                id: 1,
+                title: '스테이지 1',
+                subtitle: '기초 프롬프트 이해',
+                description: 'AIFI 프레임워크의 기본 구조와 프롬프트 작성법을 학습합니다.',
+                icon: '🎯',
+                url: 'https://gemini.google.com/gem/1tWO58mOJuoVdeKxEOCNYWHHUvUeAEXla?usp=sharing'
+            },
+            {
+                id: 2,
+                title: '스테이지 2',
+                subtitle: '이미지 스타일 마스터',
+                description: '다양한 이미지 스타일과 기법을 활용한 프롬프트를 작성합니다.',
+                icon: '🎨',
+                url: 'https://gemini.google.com/gem/1jjSS7hLmZi3E0O0Tuaq0gQtYBSEfx6dw?usp=sharing'
+            },
+            {
+                id: 3,
+                title: '스테이지 3',
+                subtitle: '카메라 효과 활용',
+                description: '카메라 앵글과 움직임을 프롬프트에 적용하는 방법을 익힙니다.',
+                icon: '📸',
+                url: 'https://gemini.google.com/gem/1w6gliyVgUX9_JHm89-VNDsfpinsWEO4R?usp=sharing'
+            },
+            {
+                id: 4,
+                title: '스테이지 4',
+                subtitle: '조명과 분위기',
+                description: '조명 효과를 활용한 분위기 있는 이미지 생성법을 학습합니다.',
+                icon: '💡',
+                url: 'https://gemini.google.com/gem/1kDHXJePLBkyRK07OSkGioVNCxn9XP4TZ?usp=sharing'
+            },
+            {
+                id: 5,
+                title: '스테이지 5',
+                subtitle: '영상 프롬프트',
+                description: '동영상 생성을 위한 고급 프롬프트 기법을 마스터합니다.',
+                icon: '🎬',
+                url: 'https://gemini.google.com/gem/1bRtrcTpDrX23xM_dflC5S5Qek-wdvrul?usp=sharing'
+            },
+            {
+                id: 6,
+                title: '스테이지 6',
+                subtitle: '스토리텔링',
+                description: '내러티브와 스토리를 담은 컨텐츠 제작법을 배웁니다.',
+                icon: '📚',
+                url: 'https://gemini.google.com/gem/1TvK1sSlig1Nboted16aPAZqeHJTViEA4?usp=sharing'
+            },
+            {
+                id: 7,
+                title: '스테이지 7',
+                subtitle: '고급 테크닉',
+                description: '전문가 수준의 고급 프롬프트 엔지니어링을 학습합니다.',
+                icon: '🚀',
+                url: 'https://gemini.google.com/gem/1MUSQm549C4dLV83q_uzNzNAVVJ3MahYQ?usp=sharing'
+            },
+            {
+                id: 8,
+                title: '스테이지 8',
+                subtitle: '프로젝트 완성',
+                description: '종합 프로젝트를 통해 실전 역량을 완성합니다.',
+                icon: '🏆',
+                url: 'https://gemini.google.com/gem/1qq6JWNfWdzAfwFsdKjyZOTnn7MgXONzc?usp=sharing'
             }
         ],
         images: []

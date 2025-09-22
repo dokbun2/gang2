@@ -273,6 +273,49 @@ function displayContent() {
         return;
     }
 
+    // Special layout for framework stages
+    if (contentKey === 'framework-stages' && currentData.stages) {
+        let html = `
+            <div class="content-container">
+                <div class="content-header">
+                    <h2 class="content-title">${currentData.title || ''}</h2>
+                    ${currentData.koreanTitle ? `<span class="content-subtitle">${currentData.koreanTitle}</span>` : ''}
+                </div>
+
+                <div class="content-section-box" style="margin-bottom: 30px;">
+                    <p class="section-text">${currentData.description}</p>
+                </div>
+
+                <div class="stages-grid">
+                    ${currentData.stages.map((stage) => `
+                        <div class="stage-card">
+                            <div class="stage-content">
+                                <h3 class="stage-title">${stage.title}</h3>
+                                <p class="stage-subtitle">${stage.subtitle}</p>
+                                <p class="stage-description">${stage.description}</p>
+                            </div>
+                            <a href="${stage.url}" target="_blank" class="stage-link-button">
+                                <i data-lucide="external-link"></i>
+                                <span>바로가기</span>
+                            </a>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+
+        contentArea.innerHTML = html;
+        if (pagination) {
+            pagination.style.display = 'none';
+        }
+
+        // Re-initialize icons
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+        return;
+    }
+
     // Special layout for instructor introduction
     if (currentData.instructorInfo) {
         let html = `
