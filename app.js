@@ -501,89 +501,130 @@ function renderAifiTabContent(tab) {
     switch(tab) {
         case 'generator':
             return `
-                <div class="aifi-card">
-                    <div class="aifi-card-title">텍스트로 이미지 생성하기</div>
-                    <div class="form-group">
-                        <label>프롬프트 입력</label>
-                        <textarea id="gen-prompt" class="aifi-textarea" rows="4"
-                                  placeholder="생성하고 싶은 이미지를 자세히 설명해주세요..."></textarea>
+                <div class="aifi-content-wrapper">
+                    <div class="aifi-left-panel">
+                        <div class="aifi-panel-title">텍스트로 이미지 생성하기</div>
+                        <div class="form-group" style="flex: 1; display: flex; flex-direction: column;">
+                            <label>프롬프트 입력</label>
+                            <textarea id="gen-prompt" class="aifi-textarea aifi-large-textarea"
+                                      placeholder="생성하고 싶은 이미지를 자세히 설명해주세요..."></textarea>
+                        </div>
+                        <button class="button aifi-button" onclick="generateAifiImage()" style="width: 100%;">
+                            이미지 생성
+                        </button>
+                        <div class="aifi-loading" id="gen-loading" style="display: none; margin-top: 15px;">
+                            <div class="spinner"></div>
+                            <p>이미지를 생성하는 중...</p>
+                        </div>
                     </div>
-                    <button class="button aifi-button" onclick="generateAifiImage()">
-                        이미지 생성
-                    </button>
-                    <div class="aifi-loading" id="gen-loading" style="display: none;">
-                        <div class="spinner"></div>
-                        <p>이미지를 생성하는 중...</p>
+                    <div class="aifi-right-panel">
+                        <div class="aifi-panel-title">생성된 이미지</div>
+                        <div id="gen-result" class="aifi-result-area">
+                            <div class="aifi-empty-state">이곳에 생성된 이미지가 표시됩니다.</div>
+                        </div>
                     </div>
-                    <div id="gen-result"></div>
                 </div>
             `;
 
         case 'variator':
             return `
-                <div class="aifi-card">
-                    <div class="aifi-card-title">이미지 변형하기</div>
-                    <div class="aifi-upload-area" id="var-upload" onclick="document.getElementById('var-file').click()">
-                        <p>이미지를 클릭하여 선택하거나 드래그하세요</p>
-                        <input type="file" id="var-file" accept="image/*" style="display: none;"
-                               onchange="handleAifiFile(event, 'variator')">
+                <div class="aifi-content-wrapper">
+                    <div class="aifi-left-panel">
+                        <div class="aifi-panel-title">이미지 변형</div>
+                        <div style="flex: 1; display: flex; flex-direction: column;">
+                            <div class="aifi-upload-area" id="var-upload" onclick="document.getElementById('var-file').click()" style="flex: 0 0 250px;">
+                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                    <polyline points="17 8 12 3 7 8"></polyline>
+                                    <line x1="12" y1="3" x2="12" y2="15"></line>
+                                </svg>
+                                <p>이미지를 업로드하세요</p>
+                                <p style="font-size: 12px; color: #666;">PNG, JPG, WEBP (최대 4MB)</p>
+                                <input type="file" id="var-file" accept="image/*" style="display: none;"
+                                       onchange="handleAifiFile(event, 'variator')">
+                            </div>
+                            <div id="var-preview"></div>
+                            <div class="form-group" style="margin-top: 20px; flex: 1; display: flex; flex-direction: column;">
+                                <label>변형 지시사항</label>
+                                <textarea id="var-prompt" class="aifi-textarea" placeholder="예: 이 고양이에게 우주 헬멧을 씌워줘" style="flex: 1; resize: none;"></textarea>
+                            </div>
+                        </div>
+                        <button class="button aifi-button" onclick="variateAifiImage()" style="width: 100%; margin-top: 20px;">
+                            이미지 변형 생성
+                        </button>
+                        <div class="aifi-loading" id="var-loading" style="display: none; margin-top: 15px;">
+                            <div class="spinner"></div>
+                            <p>이미지를 변형하는 중...</p>
+                        </div>
                     </div>
-                    <div id="var-preview"></div>
-                    <div class="form-group">
-                        <label>변형 지시사항</label>
-                        <textarea id="var-prompt" class="aifi-textarea" rows="3"
-                                  placeholder="어떻게 변형하고 싶으신가요? (예: 스타일 변경, 색상 조정, 요소 추가 등)"></textarea>
+                    <div class="aifi-right-panel">
+                        <div class="aifi-panel-title">변형된 이미지</div>
+                        <div id="var-result" class="aifi-result-area">
+                            <div class="aifi-empty-state">이곳에 변형된 이미지가 표시됩니다.</div>
+                        </div>
                     </div>
-                    <button class="button aifi-button" onclick="variateAifiImage()">
-                        이미지 변형
-                    </button>
-                    <div class="aifi-loading" id="var-loading" style="display: none;">
-                        <div class="spinner"></div>
-                        <p>이미지를 변형하는 중...</p>
-                    </div>
-                    <div id="var-result"></div>
                 </div>
             `;
 
         case 'extractor':
             return `
-                <div class="aifi-card">
-                    <div class="aifi-card-title">이미지에서 프롬프트 추출하기</div>
-                    <div class="aifi-upload-area" id="ext-upload" onclick="document.getElementById('ext-file').click()">
-                        <p>📸</p>
-                        <p>분석할 이미지를 선택하세요</p>
-                        <input type="file" id="ext-file" accept="image/*" style="display: none;"
-                               onchange="handleAifiFile(event, 'extractor')">
+                <div class="aifi-content-wrapper">
+                    <div class="aifi-left-panel">
+                        <div class="aifi-panel-title">프롬프트 추출</div>
+                        <div style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
+                            <div class="aifi-upload-area" id="ext-upload" onclick="document.getElementById('ext-file').click()" style="flex: 0 0 auto;">
+                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                    <polyline points="17 8 12 3 7 8"></polyline>
+                                    <line x1="12" y1="3" x2="12" y2="15"></line>
+                                </svg>
+                                <p>이미지를 업로드하세요</p>
+                                <p style="font-size: 12px; color: #666;">PNG, JPG, WEBP (최대 4MB)</p>
+                                <input type="file" id="ext-file" accept="image/*" style="display: none;"
+                                       onchange="handleAifiFile(event, 'extractor')">
+                            </div>
+                            <div id="ext-preview"></div>
+                        </div>
+                        <button class="button aifi-button" onclick="extractAifiPrompt()" style="width: 100%; margin-top: auto;">
+                            프롬프트 추출
+                        </button>
+                        <div class="aifi-loading" id="ext-loading" style="display: none; margin-top: 15px;">
+                            <div class="spinner"></div>
+                            <p>이미지를 분석하는 중...</p>
+                        </div>
                     </div>
-                    <div id="ext-preview"></div>
-                    <button class="button aifi-button" onclick="extractAifiPrompt()">
-                        프롬프트 추출
-                    </button>
-                    <div class="aifi-loading" id="ext-loading" style="display: none;">
-                        <div class="spinner"></div>
-                        <p>이미지를 분석하는 중...</p>
+                    <div class="aifi-right-panel">
+                        <div class="aifi-panel-title">추출된 프롬프트</div>
+                        <div id="ext-result" class="aifi-result-area">
+                            <div class="aifi-empty-state">이곳에 추출된 프롬프트가 표시됩니다.</div>
+                        </div>
                     </div>
-                    <div id="ext-result"></div>
                 </div>
             `;
 
         case 'video':
             return `
-                <div class="aifi-card">
-                    <div class="aifi-card-title">영상 프롬프트 생성하기</div>
-                    <div class="form-group">
-                        <label>영상 아이디어</label>
-                        <textarea id="video-prompt" class="aifi-textarea" rows="4"
-                                  placeholder="만들고 싶은 영상을 설명해주세요... (예: 은행 강도가 화를 내며 전화를 끊는 장면)"></textarea>
+                <div class="aifi-content-wrapper">
+                    <div class="aifi-left-panel">
+                        <div class="aifi-panel-title">영상 프롬프트 생성</div>
+                        <div class="form-group" style="flex: 1; display: flex; flex-direction: column;">
+                            <label>영상 아이디어</label>
+                            <textarea id="video-prompt" class="aifi-textarea" placeholder="장면, 캐릭터, 동작에 대한 아이디어를 입력하세요. Veo 3 모델에 최적화된 상세한 JSON 프롬프트를 생성해 드립니다.\n\n예: 은행 강도 두 명이서 사무실에서 볼펜으로 서류를 작성하는 체크 정면 은행에서 촬영한 장면" style="flex: 1; resize: none;"></textarea>
+                        </div>
+                        <button class="button aifi-button" onclick="generateAifiVideoPrompt()" style="width: 100%; margin-top: 20px;">
+                            프롬프트 생성
+                        </button>
+                        <div class="aifi-loading" id="video-loading" style="display: none; margin-top: 15px;">
+                            <div class="spinner"></div>
+                            <p>영상 프롬프트를 생성하는 중...</p>
+                        </div>
                     </div>
-                    <button class="button aifi-button" onclick="generateAifiVideoPrompt()">
-                        프롬프트 생성
-                    </button>
-                    <div class="aifi-loading" id="video-loading" style="display: none;">
-                        <div class="spinner"></div>
-                        <p>영상 프롬프트를 생성하는 중...</p>
+                    <div class="aifi-right-panel">
+                        <div class="aifi-panel-title">생성된 프롬프트</div>
+                        <div id="video-result" class="aifi-result-area">
+                            <div class="aifi-empty-state">이곳에 생성된 영상 프롬프트가 표시됩니다.</div>
+                        </div>
                     </div>
-                    <div id="video-result"></div>
                 </div>
             `;
 
@@ -771,6 +812,12 @@ function handleAifiFile(event, type) {
         return;
     }
 
+    // 파일 크기 체크 (4MB)
+    if (file.size > 4 * 1024 * 1024) {
+        showAifiAlert('error', '파일 크기는 4MB 이하여야 합니다.');
+        return;
+    }
+
     const reader = new FileReader();
     reader.onload = function(e) {
         const base64 = e.target.result.split(',')[1];
@@ -779,37 +826,64 @@ function handleAifiFile(event, type) {
             mimeType: file.type
         };
 
-        // Show preview
-        const previewDiv = document.getElementById(`${type === 'variator' ? 'var' : 'ext'}-preview`);
-        previewDiv.innerHTML = `
-            <div class="aifi-image-preview-container">
-                <img src="${e.target.result}" class="aifi-preview-image">
-                <button class="aifi-remove-btn" onclick="clearAifiImage('${type}')" title="이미지 제거">
-                    <i data-lucide="x" style="width: 18px; height: 18px;"></i>
+        // Upload area 자체를 이미지로 교체
+        const uploadArea = document.getElementById(`${type === 'variator' ? 'var' : 'ext'}-upload`);
+        uploadArea.style.padding = '0';
+        uploadArea.style.overflow = 'hidden';
+        uploadArea.style.background = 'transparent';
+        uploadArea.style.border = 'none';
+        uploadArea.innerHTML = `
+            <div style="position: relative; width: 100%; height: 100%;">
+                <img src="${e.target.result}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                <button onclick="clearAifiImage('${type}')"
+                        style="position: absolute; top: 10px; right: 10px;
+                               background: rgba(0,0,0,0.7); color: white;
+                               border: none; border-radius: 50%;
+                               width: 30px; height: 30px;
+                               cursor: pointer; display: flex;
+                               align-items: center; justify-content: center;
+                               font-size: 16px; line-height: 1;"
+                        title="이미지 제거">
+                    ×
                 </button>
             </div>
-            <div class="aifi-image-info">
-                <span class="aifi-file-name">${file.name}</span>
-                <span class="aifi-file-size">${formatFileSize(file.size)}</span>
-            </div>
         `;
+
+        // preview div 비우기
+        const previewDiv = document.getElementById(`${type === 'variator' ? 'var' : 'ext'}-preview`);
+        if (previewDiv) previewDiv.innerHTML = '';
     };
     reader.readAsDataURL(file);
-
-    // Update lucide icons
-    if (typeof lucide !== 'undefined') {
-        setTimeout(() => lucide.createIcons(), 100);
-    }
 }
 
 function clearAifiImage(type) {
     aifiUploadedImages[type] = null;
-    const previewDiv = document.getElementById(`${type === 'variator' ? 'var' : 'ext'}-preview`);
-    previewDiv.innerHTML = '';
+
+    // Upload area를 원래 상태로 복구
+    const uploadArea = document.getElementById(`${type === 'variator' ? 'var' : 'ext'}-upload`);
+    uploadArea.style.padding = '40px';
+    uploadArea.style.overflow = 'visible';
+    uploadArea.style.background = '';
+    uploadArea.style.border = '';
+    uploadArea.innerHTML = `
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="17 8 12 3 7 8"></polyline>
+            <line x1="12" y1="3" x2="12" y2="15"></line>
+        </svg>
+        <p>이미지를 업로드하세요</p>
+        <p style="font-size: 12px; color: #666;">PNG, JPG, WEBP (최대 4MB)</p>
+        <input type="file" id="${type === 'variator' ? 'var' : 'ext'}-file" accept="image/*" style="display: none;"
+               onchange="handleAifiFile(event, '${type}')">
+    `;
 
     // Reset file input
     const fileInput = document.getElementById(`${type === 'variator' ? 'var' : 'ext'}-file`);
     if (fileInput) fileInput.value = '';
+
+    // Clear preview div
+    const previewDiv = document.getElementById(`${type === 'variator' ? 'var' : 'ext'}-preview`);
+    if (previewDiv) previewDiv.innerHTML = '';
 }
 
 // Format file size helper

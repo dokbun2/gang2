@@ -802,10 +802,8 @@ const cameraData = {
             '레트로 또는 미래적 느낌'
         ],
         images: [
-            { src: 'https://images.unsplash.com/photo-1514782831304-632d84503f6f?w=600&h=400&fit=crop', caption: 'Cyberpunk neon' },
-            { src: 'https://images.unsplash.com/photo-1496568816309-51d7c20e3b21?w=600&h=400&fit=crop', caption: 'Urban neon' },
-            { src: 'https://images.unsplash.com/photo-1519608425089-7f3bfa6f6bb8?w=600&h=400&fit=crop', caption: 'Neon portrait' },
-            { src: 'https://images.unsplash.com/photo-1502081640163-5c2098bb1343?w=600&h=400&fit=crop', caption: 'Colorful lights' }
+            { src: 'https://cdn.midjourney.com/4af97fe2-2693-49d4-b3ec-0f7a6fc176c4/0_1.png', caption: 'Cyberpunk neon' },
+            { src: 'https://cdn.midjourney.com/4938d176-c472-46fc-97dd-a05c078ec5ee/0_0.png', caption: 'Urban neon' }
         ]
     },
 
@@ -821,10 +819,8 @@ const cameraData = {
             '종교적이거나 의식적인 장면'
         ],
         images: [
-            { src: 'https://images.unsplash.com/photo-1511207538754-e8555f2bc187?w=600&h=400&fit=crop', caption: 'Warm candle glow' },
-            { src: 'https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?w=600&h=400&fit=crop', caption: 'Romantic mood' },
-            { src: 'https://images.unsplash.com/photo-1543165796-5426273eaab3?w=600&h=400&fit=crop', caption: 'Intimate lighting' },
-            { src: 'https://images.unsplash.com/photo-1481653125770-b78c206c59d4?w=600&h=400&fit=crop', caption: 'Candle ambiance' }
+            { src: 'https://cdn.midjourney.com/8dabe2d6-6f2b-42bb-b587-4525adc0405e/0_2.png', caption: 'Warm candle glow' },
+            { src: 'https://cdn.midjourney.com/a5f77818-07f2-4f0f-b826-3af8625ead47/0_2.png', caption: 'Romantic mood' }
         ]
     },
 
@@ -859,8 +855,8 @@ const cameraData = {
             '생존이나 모험 테마'
         ],
         images: [
-            { src: 'https://images.unsplash.com/photo-1510797215324-95aa89f43c33?w=600&h=400&fit=crop', caption: 'Campfire glow' },
-            { src: 'https://images.unsplash.com/photo-1467810563316-b5476525c0f9?w=600&h=400&fit=crop', caption: 'Fire warmth' },
+            { src: 'https://cdn.midjourney.com/a2a6fe7d-0d3c-40eb-bc7d-f3b81810a1b0/0_0.png', caption: 'Campfire glow' },
+            { src: 'https://cdn.midjourney.com/111691e6-6254-448c-bc8a-9c12733c0ec6/0_3.png', caption: 'Fire warmth' },
             { src: 'https://images.unsplash.com/photo-1414124488080-0188dcbb8834?w=600&h=400&fit=crop', caption: 'Flickering light' },
             { src: 'https://images.unsplash.com/photo-1453365607868-7deed8cc7d26?w=600&h=400&fit=crop', caption: 'Orange flames' }
         ]

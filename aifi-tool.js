@@ -242,6 +242,9 @@ async function generateAlternativePrompt(prompt) {
             const enhancedPrompt = data.candidates[0].content.parts[0].text;
             // 생성된 프롬프트를 결과 영역에 표시
             const resultDiv = document.getElementById('gen-result');
+            resultDiv.style.border = 'none';
+            resultDiv.style.background = 'transparent';
+            resultDiv.style.padding = '0';
             resultDiv.innerHTML = `
                 <div style="flex: 1; display: flex; flex-direction: column;">
                     <div style="background: rgba(255, 193, 7, 0.1); border: 1px solid rgba(255, 193, 7, 0.3); border-radius: 10px; padding: 15px; margin-bottom: 15px;">
@@ -467,9 +470,14 @@ function showLoading(type, show) {
 
 function displayGeneratedImage(base64) {
     const resultDiv = document.getElementById('gen-result');
+    resultDiv.style.border = 'none';
+    resultDiv.style.background = 'transparent';
+    resultDiv.style.padding = '0';
     resultDiv.innerHTML = `
-        <img src="data:image/jpeg;base64,${base64}" style="width: 100%; border-radius: 8px; margin-bottom: 15px;">
-        <div style="display: flex; gap: 10px; justify-content: center;">
+        <div style="flex: 1; display: flex; flex-direction: column;">
+            <img src="data:image/jpeg;base64,${base64}" style="width: 100%; height: 100%; object-fit: contain; border-radius: 10px; flex: 1;">
+        </div>
+        <div style="display: flex; gap: 10px; justify-content: center; margin-top: 20px;">
             <button class="button" onclick="downloadImage('${base64}')">
                 다운로드
             </button>
@@ -482,6 +490,11 @@ function displayGeneratedImage(base64) {
 
 function displayPromptResult(type, prompt) {
     const resultDiv = document.getElementById(`${type}-result`);
+
+    // 스타일 초기화
+    resultDiv.style.border = 'none';
+    resultDiv.style.background = 'transparent';
+    resultDiv.style.padding = '0';
 
     // 모든 탭에서 동일한 스타일로 통일
     resultDiv.innerHTML = `

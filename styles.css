@@ -623,6 +623,76 @@ body {
     font-weight: 600;
 }
 
+/* AIFI 2-Column Layout */
+.aifi-content-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    align-items: stretch;
+    min-height: 600px;
+}
+
+.aifi-left-panel, .aifi-right-panel {
+    background: rgba(30, 30, 30, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 30px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+}
+
+.aifi-panel-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #ccc;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.aifi-result-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.02);
+    padding: 20px;
+}
+
+.aifi-empty-state {
+    color: rgba(255, 255, 255, 0.25);
+    text-align: center;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    background: rgba(255, 255, 255, 0.01);
+    border: 2px dashed rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 40px;
+}
+
+.aifi-large-textarea {
+    flex: 1;
+    min-height: 400px;
+    resize: none;
+}
+
+@media (max-width: 768px) {
+    .aifi-content-wrapper {
+        grid-template-columns: 1fr;
+        min-height: auto;
+    }
+
+    .aifi-left-panel, .aifi-right-panel {
+        min-height: 400px;
+    }
+}
+
 .aifi-tabs {
     display: flex;
     gap: 10px;
