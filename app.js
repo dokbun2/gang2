@@ -343,7 +343,17 @@ function displayContent() {
                                 <span class="info-value">${comp}</span>
                             </div>
                         `).join('')}
-                        <div class="instructor-info-item">
+                        ${currentData.instructorInfo.career ? `
+                            <div class="instructor-info-item" style="margin-top: 15px;">
+                                <span class="info-label">경력사항:</span>
+                            </div>
+                            ${currentData.instructorInfo.career.map(career => `
+                                <div class="instructor-info-item career">
+                                    <span class="info-value" style="margin-left: 20px;">• ${career}</span>
+                                </div>
+                            `).join('')}
+                        ` : ''}
+                        <div class="instructor-info-item" style="margin-top: 15px;">
                             <span class="info-label">Email:</span>
                             <span class="info-value">${currentData.instructorInfo.email}</span>
                         </div>
@@ -353,7 +363,7 @@ function displayContent() {
                         </div>
 
                         <div class="instructor-experience">
-                            <h4>주요 경력</h4>
+                            <h4>주요 활동</h4>
                             <ul>
                                 ${currentData.usage.map(exp => `<li>${exp}</li>`).join('')}
                             </ul>

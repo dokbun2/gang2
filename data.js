@@ -17,8 +17,8 @@ const cameraData = {
         },
         description: 'AI 기술과 창의적 콘텐츠 제작 분야의 전문가로, 다년간의 경험을 바탕으로 AIFI 프레임워크에 합류하게 되었습니다.',
         usage: [
-            'AIFI 프레임워크 설계 및 개발',
-            '10년 이상의 IT 업무경력 보유',
+            'AIFI 프레임워크 웹페이지 개발',
+            '5년 이상의 IT 관련업무 경력보유',
             'AI 이미지/영상 생성 전문가',
             '다수의 기업 AI 도입 컨설팅 경험',
         ]
@@ -1869,7 +1869,6 @@ const cameraData = {
                 title: '스테이지 1',
                 subtitle: '기초 프롬프트 이해',
                 description: 'AIFI 프레임워크의 기본 구조와 프롬프트 작성법을 학습합니다.',
-                icon: '🎯',
                 url: 'https://gemini.google.com/gem/1tWO58mOJuoVdeKxEOCNYWHHUvUeAEXla?usp=sharing'
             },
             {
@@ -1877,7 +1876,6 @@ const cameraData = {
                 title: '스테이지 2',
                 subtitle: '이미지 스타일 마스터',
                 description: '다양한 이미지 스타일과 기법을 활용한 프롬프트를 작성합니다.',
-                icon: '🎨',
                 url: 'https://gemini.google.com/gem/1jjSS7hLmZi3E0O0Tuaq0gQtYBSEfx6dw?usp=sharing'
             },
             {
@@ -1885,7 +1883,6 @@ const cameraData = {
                 title: '스테이지 3',
                 subtitle: '카메라 효과 활용',
                 description: '카메라 앵글과 움직임을 프롬프트에 적용하는 방법을 익힙니다.',
-                icon: '📸',
                 url: 'https://gemini.google.com/gem/1w6gliyVgUX9_JHm89-VNDsfpinsWEO4R?usp=sharing'
             },
             {
@@ -1893,7 +1890,6 @@ const cameraData = {
                 title: '스테이지 4',
                 subtitle: '조명과 분위기',
                 description: '조명 효과를 활용한 분위기 있는 이미지 생성법을 학습합니다.',
-                icon: '💡',
                 url: 'https://gemini.google.com/gem/1kDHXJePLBkyRK07OSkGioVNCxn9XP4TZ?usp=sharing'
             },
             {
@@ -1901,7 +1897,6 @@ const cameraData = {
                 title: '스테이지 5',
                 subtitle: '영상 프롬프트',
                 description: '동영상 생성을 위한 고급 프롬프트 기법을 마스터합니다.',
-                icon: '🎬',
                 url: 'https://gemini.google.com/gem/1bRtrcTpDrX23xM_dflC5S5Qek-wdvrul?usp=sharing'
             },
             {
@@ -1909,7 +1904,6 @@ const cameraData = {
                 title: '스테이지 6',
                 subtitle: '스토리텔링',
                 description: '내러티브와 스토리를 담은 컨텐츠 제작법을 배웁니다.',
-                icon: '📚',
                 url: 'https://gemini.google.com/gem/1TvK1sSlig1Nboted16aPAZqeHJTViEA4?usp=sharing'
             },
             {
@@ -1917,7 +1911,6 @@ const cameraData = {
                 title: '스테이지 7',
                 subtitle: '고급 테크닉',
                 description: '전문가 수준의 고급 프롬프트 엔지니어링을 학습합니다.',
-                icon: '🚀',
                 url: 'https://gemini.google.com/gem/1MUSQm549C4dLV83q_uzNzNAVVJ3MahYQ?usp=sharing'
             },
             {
@@ -1925,7 +1918,6 @@ const cameraData = {
                 title: '스테이지 8',
                 subtitle: '프로젝트 완성',
                 description: '종합 프로젝트를 통해 실전 역량을 완성합니다.',
-                icon: '🏆',
                 url: 'https://gemini.google.com/gem/1qq6JWNfWdzAfwFsdKjyZOTnn7MgXONzc?usp=sharing'
             }
         ],
