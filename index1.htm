@@ -9,7 +9,7 @@
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <!-- Custom Styles -->
-    <link rel="stylesheet" href="styles.css?v=2.1">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- Header -->
@@ -30,25 +30,6 @@
         <!-- Sidebar -->
         <aside class="sidebar">
             <div class="sidebar-content">
-
-                <!-- AIFI 프레임워크 소개 -->
-                <div class="menu-section" style="margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid #333;">
-                    <button class="menu-header" onclick="toggleSection('aifi-info')" style="background: linear-gradient(135deg, #2a2a2a, #1f1f1f); border: 1px solid #444;">
-                        <i data-lucide="book-open" class="menu-icon"></i>
-                        <span>AIFI 프레임워크</span>
-                        <i data-lucide="chevron-down" class="chevron-icon" id="aifi-info-chevron"></i>
-                    </button>
-                    <div class="menu-items" id="aifi-info-items">
-                        <a href="#" class="menu-item" onclick="showContent('instructor-intro')">
-                            <i data-lucide="user" style="width: 16px; height: 16px; margin-right: 8px;"></i>
-                            강사 소개
-                        </a>
-                        <a href="video-gallery.html" class="menu-item">
-                            <i data-lucide="play-circle" style="width: 16px; height: 16px; margin-right: 8px;"></i>
-                            동영상 갤러리
-                        </a>
-                    </div>
-                </div>
 
                 <!-- 이미지 관련 대분류 -->
                 <div class="major-category">
@@ -169,7 +150,6 @@
                                 <a href="#" class="menu-item" onclick="showContent('blue-hour')">블루 아워(Blue Hour)</a>
                                 <a href="#" class="menu-item" onclick="showContent('overcast')">흐린 날(Overcast)</a>
                                 <a href="#" class="menu-item" onclick="showContent('harsh-sunlight')">강한 햇빛(Harsh Sunlight)</a>
-                                </div>
                             </div>
 
                             <div class="submenu-group">
@@ -182,7 +162,6 @@
                                 <a href="#" class="menu-item" onclick="showContent('butterfly')">버터플라이 조명(Butterfly)</a>
                                 <a href="#" class="menu-item" onclick="showContent('split-lighting')">스플릿 조명(Split Lighting)</a>
                                 <a href="#" class="menu-item" onclick="showContent('rim-lighting')">림 조명(Rim Lighting)</a>
-                                </div>
                             </div>
 
                             <div class="submenu-group">
@@ -195,7 +174,6 @@
                                 <a href="#" class="menu-item" onclick="showContent('candlelight')">촛불(Candlelight)</a>
                                 <a href="#" class="menu-item" onclick="showContent('moonlight')">달빛(Moonlight)</a>
                                 <a href="#" class="menu-item" onclick="showContent('firelight')">화염 조명(Firelight)</a>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -270,13 +248,11 @@
                 </div>
 
                 <!-- 영상 관련 대분류 -->
-                <div class="major-category" style="margin-top: 10px;">
-                    <button class="major-category-header" onclick="toggleMajorCategory('video-category')">
+                <div class="major-category">
+                    <div class="major-category-header">
                         <i data-lucide="video" class="category-icon"></i>
                         <span>영상 관련(Video)</span>
-                        <i data-lucide="chevron-down" class="chevron-icon" id="video-category-icon"></i>
-                    </button>
-                    <div class="major-category-content" id="video-category">
+                    </div>
 
                     <!-- 카메라 효과 중분류 -->
                     <div class="menu-section">
@@ -314,7 +290,6 @@
                             </div>
                         </div>
                     </div>
-                    </div>
                 </div>
 
             </div>
@@ -349,9 +324,9 @@
     </div>
 
     <!-- Image Modal -->
-    <div id="image-modal" class="image-modal" onclick="closeImageModal()">
+    <div id="image-modal" class="image-modal">
         <span class="modal-close" onclick="closeImageModal()">&times;</span>
-        <img class="modal-content" id="modal-image" onclick="event.stopPropagation()">
+        <img class="modal-content" id="modal-image">
         <div class="modal-caption" id="modal-caption"></div>
     </div>
 

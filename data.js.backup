@@ -1,29 +1,5 @@
 // Extended Camera & Visual Guide Data
 const cameraData = {
-    // ============= AIFI FRAMEWORK INFO =============
-    // 강사 소개
-    'instructor-intro': {
-        title: '강사 소개',
-        koreanTitle: 'Instructor Introduction',
-        instructorInfo: {
-            name: '김진욱',
-            position: 'AIFI 프레임워크 개발이사',
-            company: [
-                '(주)알앤픽 대표이사',
-                '(주)제이콥 소프트 전략영업대표'
-            ],
-            email: 'ggamsire@gmail.com',
-            image: 'images/instructor.jpg'
-        },
-        description: 'AI 기술과 창의적 콘텐츠 제작 분야의 전문가로, 다년간의 경험을 바탕으로 AIFI 프레임워크에 합류하게 되었습니다.',
-        usage: [
-            'AIFI 프레임워크 설계 및 개발',
-            '10년 이상의 IT 업무경력 보유',
-            'AI 이미지/영상 생성 전문가',
-            '다수의 기업 AI 도입 컨설팅 경험',
-        ]
-    },
-
     // ============= CAMERA SHOTS =============
     // Shot Size
     'extreme-closeup': {
@@ -39,9 +15,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://cdn.midjourney.com/ecfcd186-90cd-4674-a321-8643dbac907c/0_3.png', caption: 'Eye extreme close-up' },
-            { src: 'https://cdn.midjourney.com/78fd0ea7-2a19-4442-8ab0-9e652c69ab52/0_1.png', caption: 'Detail shot' },
-            { src: 'https://images.unsplash.com/photo-1524502397800-2eeaad7c3fe5?w=600&h=400&fit=crop', caption: 'Texture emphasis' },
-            { src: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&h=400&fit=crop', caption: 'Emotion focus' }
+            { src: 'https://cdn.midjourney.com/78fd0ea7-2a19-4442-8ab0-9e652c69ab52/0_1.png', caption: 'Detail shot' }
         ]
     },
 
@@ -58,9 +32,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://cdn.midjourney.com/c5198e9d-612f-46fa-b06f-9c63064b80d4/0_3.png', caption: 'Portrait close-up' },
-            { src: 'https://cdn.midjourney.com/dae4392d-4bae-4e1d-882b-46817dfed2cb/0_1.png', caption: 'Emotional expression' },
-            { src: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=600&h=400&fit=crop', caption: 'Character detail' },
-            { src: 'https://images.unsplash.com/photo-1504257432389-52343af06ae3?w=600&h=400&fit=crop', caption: 'Face focus' }
+            { src: 'https://cdn.midjourney.com/dae4392d-4bae-4e1d-882b-46817dfed2cb/0_1.png', caption: 'Emotional expression' }
         ]
     },
 
@@ -77,9 +49,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://cdn.midjourney.com/d21ac535-abd1-4dd4-a9fb-7e0160cb9f3a/0_3.png', caption: 'Standard medium shot' },
-            { src: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&h=400&fit=crop', caption: 'Conversation shot' },
-            { src: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&h=400&fit=crop', caption: 'Waist-up framing' },
-            { src: 'https://images.unsplash.com/photo-1522529599102-193c0d76b5b6?w=600&h=400&fit=crop', caption: 'Natural perspective' }
+            { src: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&h=400&fit=crop', caption: 'Conversation shot' }
         ]
     },
 
@@ -96,9 +66,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://cdn.midjourney.com/51ec9dbc-30a4-4fd2-910e-b70bd468630f/0_2.png', caption: 'Classic cowboy shot' },
-            { src: 'https://cdn.midjourney.com/42973f1e-0776-479c-a943-efb1ffc6acd8/0_2.png', caption: 'Action ready stance' },
-            { src: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&h=400&fit=crop', caption: 'Mid-thigh framing' },
-            { src: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=600&h=400&fit=crop', caption: 'Power pose' }
+            { src: 'https://cdn.midjourney.com/42973f1e-0776-479c-a943-efb1ffc6acd8/0_2.png', caption: 'Action ready stance' }
         ]
     },
 
@@ -115,9 +83,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://cdn.midjourney.com/5da09c9c-3c66-4c57-915e-b299e7ba4640/0_1.png', caption: 'Full body shot' },
-            { src: 'https://cdn.midjourney.com/992308ef-59aa-49d0-a99e-d790c52c1213/0_3.png', caption: 'Complete figure' },
-            { src: 'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=600&h=400&fit=crop', caption: 'Head to toe view' },
-            { src: 'https://images.unsplash.com/photo-1581044777550-4cfa60707c03?w=600&h=400&fit=crop', caption: 'Character reveal' }
+            { src: 'https://cdn.midjourney.com/992308ef-59aa-49d0-a99e-d790c52c1213/0_3.png', caption: 'Complete figure' }
         ]
     },
 
@@ -134,9 +100,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://cdn.midjourney.com/61484eb1-c523-4aeb-88af-46c56c7ea91d/0_2.png', caption: 'Wide landscape' },
-            { src: 'https://cdn.midjourney.com/06cb726a-cf6d-4526-97ef-e14f45000cba/0_3.png', caption: 'Environmental context' },
-            { src: 'https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=600&h=400&fit=crop', caption: 'Spatial relationship' },
-            { src: 'https://images.unsplash.com/photo-1444927714506-8492d94b4e3d?w=600&h=400&fit=crop', caption: 'Scene setting' }
+            { src: 'https://cdn.midjourney.com/06cb726a-cf6d-4526-97ef-e14f45000cba/0_3.png', caption: 'Environmental context' }
         ]
     },
 
@@ -153,9 +117,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://cdn.midjourney.com/01c90d39-d174-443b-89dd-e1c799a2fa2a/0_0.png', caption: 'Vast landscape' },
-            { src: 'https://cdn.midjourney.com/bbe2c719-f087-48ad-bd89-717e9160465c/0_1.png', caption: 'Epic scale' },
-            { src: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=600&h=400&fit=crop', caption: 'Environmental dominance' },
-            { src: 'https://images.unsplash.com/photo-1444927714506-8492d94b4e3d?w=600&h=400&fit=crop', caption: 'Grand establishing shot' }
+            { src: 'https://cdn.midjourney.com/bbe2c719-f087-48ad-bd89-717e9160465c/0_1.png', caption: 'Epic scale' }
         ]
     },
 
@@ -173,9 +135,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://cdn.midjourney.com/38bd6991-5210-4ac1-aaef-36a3ac8c72a0/0_3.png', caption: 'Neutral perspective' },
-            { src: 'https://cdn.midjourney.com/a3851e06-e287-4455-8dc6-06142d7b5fdb/0_2.png', caption: 'Natural eye contact' },
-            { src: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&h=400&fit=crop', caption: 'Equal relationship' },
-            { src: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600&h=400&fit=crop', caption: 'Standard angle' }
+            { src: 'https://cdn.midjourney.com/a3851e06-e287-4455-8dc6-06142d7b5fdb/0_2.png', caption: 'Natural eye contact' }
         ]
     },
 
@@ -192,9 +152,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://cdn.midjourney.com/8a422d4f-d700-4229-9502-480a5f751470/0_1.png', caption: 'Power perspective' },
-            { src: 'https://cdn.midjourney.com/3173d561-014c-42c0-a409-e27a869922fa/0_3.png', caption: 'Heroic angle' },
-            { src: 'https://images.unsplash.com/photo-1522529599102-193c0d76b5b6?w=600&h=400&fit=crop', caption: 'Dominant view' },
-            { src: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&h=400&fit=crop', caption: 'Looking up' }
+            { src: 'https://cdn.midjourney.com/3173d561-014c-42c0-a409-e27a869922fa/0_3.png', caption: 'Heroic angle' }
         ]
     },
 
@@ -211,9 +169,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://cdn.midjourney.com/73b6717f-27ec-4209-bf84-fd052c4fb13f/0_1.png', caption: 'Looking down' },
-            { src: 'https://cdn.midjourney.com/5dfe60ae-2b2c-43bf-8691-abdb78d18db1/0_1.png', caption: 'Vulnerable angle' },
-            { src: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=600&h=400&fit=crop', caption: 'Overview perspective' },
-            { src: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&h=400&fit=crop', caption: 'Superior view' }
+            { src: 'https://cdn.midjourney.com/5dfe60ae-2b2c-43bf-8691-abdb78d18db1/0_1.png', caption: 'Vulnerable angle' }
         ]
     },
 
@@ -230,9 +186,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://cdn.midjourney.com/60dc7d0d-5723-490e-8aff-aabe07a8ba86/0_1.png', caption: 'Aerial view' },
-            { src: 'https://cdn.midjourney.com/6f7202ee-2943-4106-953b-a7acb87bc199/0_0.png', caption: 'Top-down perspective' },
-            { src: 'https://images.unsplash.com/photo-1444927714506-8492d94b4e3d?w=600&h=400&fit=crop', caption: 'Pattern view' },
-            { src: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop', caption: 'Map-like angle' }
+            { src: 'https://cdn.midjourney.com/6f7202ee-2943-4106-953b-a7acb87bc199/0_0.png', caption: 'Top-down perspective' }
         ]
     },
 
@@ -249,9 +203,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://cdn.midjourney.com/5a913eff-45cc-4722-b443-61640fdde23a/0_1.png', caption: 'Food overhead' },
-            { src: 'https://cdn.midjourney.com/10a4ddbb-f471-4f5a-91ad-41de26782a81/0_2.png', caption: 'Table top view' },
-            { src: 'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=600&h=400&fit=crop', caption: 'Flat lay style' },
-            { src: 'https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=600&h=400&fit=crop', caption: 'Direct overhead' }
+            { src: 'https://cdn.midjourney.com/10a4ddbb-f471-4f5a-91ad-41de26782a81/0_2.png', caption: 'Table top view' }
         ]
     },
 
@@ -268,9 +220,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://cdn.midjourney.com/1ec7b0a2-cf1d-4e61-8ed4-e3ed66af22b9/0_3.png', caption: 'Tilted perspective' },
-            { src: 'https://cdn.midjourney.com/1ec7b0a2-cf1d-4e61-8ed4-e3ed66af22b9/0_0.png', caption: 'Dynamic angle' },
-            { src: 'https://images.unsplash.com/photo-1508847154043-be5407fcaa5a?w=600&h=400&fit=crop', caption: 'Unstable feeling' },
-            { src: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=600&h=400&fit=crop', caption: 'Dramatic tilt' }
+            { src: 'https://cdn.midjourney.com/1ec7b0a2-cf1d-4e61-8ed4-e3ed66af22b9/0_0.png', caption: 'Dynamic angle' }
         ]
     },
 
@@ -287,9 +237,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://cdn.midjourney.com/7b03ce40-99f9-4eca-a268-7c948c708571/0_1.png', caption: 'Ground perspective' },
-            { src: 'https://cdn.midjourney.com/7b03ce40-99f9-4eca-a268-7c948c708571/0_1.png', caption: 'Looking up' },
-            { src: 'https://images.unsplash.com/photo-1486718448742-163732cd1544?w=600&h=400&fit=crop', caption: 'Extreme low angle' },
-            { src: 'https://images.unsplash.com/photo-1508138221679-760a23a2285b?w=600&h=400&fit=crop', caption: 'Heroic angle' }
+            { src: 'https://cdn.midjourney.com/7b03ce40-99f9-4eca-a268-7c948c708571/0_1.png', caption: 'Looking up' }
         ]
     },
 
@@ -306,9 +254,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://cdn.midjourney.com/74aede5c-1cf3-42d3-900c-48858fb17363/0_2.png', caption: 'Floor level' },
-            { src: 'https://cdn.midjourney.com/ab7951b4-0f65-467a-bebe-acc759f54395/0_2.png', caption: 'Ground perspective' },
-            { src: 'https://images.unsplash.com/photo-1526336024174-e58f5cdd8e13?w=600&h=400&fit=crop', caption: 'Low position' },
-            { src: 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=600&h=400&fit=crop', caption: 'Surface level' }
+            { src: 'https://cdn.midjourney.com/ab7951b4-0f65-467a-bebe-acc759f54395/0_2.png', caption: 'Ground perspective' }
         ]
     },
 
@@ -326,9 +272,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://cdn.midjourney.com/a0710f91-79ad-40fe-909a-4545c37e8ece/0_0.png', caption: 'Profile portrait' },
-            { src: 'https://cdn.midjourney.com/f7620359-b4cb-4b5c-a916-884d513e1e29/0_1.png', caption: 'Side silhouette' },
-            { src: 'https://images.unsplash.com/photo-1507114845806-0347f6150324?w=600&h=400&fit=crop', caption: 'Lateral view' },
-            { src: 'https://images.unsplash.com/photo-1529068755536-a5ade0dcb4e8?w=600&h=400&fit=crop', caption: 'Profile angle' }
+            { src: 'https://cdn.midjourney.com/f7620359-b4cb-4b5c-a916-884d513e1e29/0_1.png', caption: 'Side silhouette' }
         ]
     },
 
@@ -345,9 +289,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://cdn.midjourney.com/5955ef5b-7be0-40a6-a036-f5f746e85bd6/0_0.png', caption: 'Back silhouette' },
-            { src: 'https://cdn.midjourney.com/b9f049fd-63d7-4509-a1cb-79889845dbda/0_1.png', caption: 'Rear perspective' },
-            { src: 'https://images.unsplash.com/photo-1513097633097-329a3a64e0d4?w=600&h=400&fit=crop', caption: 'From behind' },
-            { src: 'https://images.unsplash.com/photo-1492681290082-e932832941e6?w=600&h=400&fit=crop', caption: 'Walking away' }
+            { src: 'https://cdn.midjourney.com/b9f049fd-63d7-4509-a1cb-79889845dbda/0_1.png', caption: 'Rear perspective' }
         ]
     },
 
@@ -364,9 +306,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://cdn.midjourney.com/9c48b1a3-8c09-4535-bafe-96ce308604a6/0_0.png', caption: 'Three-quarter portrait' },
-            { src: 'https://cdn.midjourney.com/2075f43a-1663-47bd-be27-e4af8e9db1b4/0_3.png', caption: '45-degree angle' },
-            { src: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&h=400&fit=crop', caption: 'Classic angle' },
-            { src: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600&h=400&fit=crop', caption: 'Natural pose' }
+            { src: 'https://cdn.midjourney.com/2075f43a-1663-47bd-be27-e4af8e9db1b4/0_3.png', caption: '45-degree angle' }
         ]
     },
 
@@ -383,9 +323,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://cdn.midjourney.com/687b9db2-7c89-41b3-8106-7386dbad9be0/0_3.png', caption: 'Rear quarter angle' },
-            { src: 'https://cdn.midjourney.com/063df8f1-c026-48ad-94bc-92bc8342b678/0_2.png', caption: 'Back diagonal view' },
-            { src: 'https://images.unsplash.com/photo-1495078065017-564723e7e3e7?w=600&h=400&fit=crop', caption: 'Behind angle' },
-            { src: 'https://images.unsplash.com/photo-1470093851219-69951fcbb533?w=600&h=400&fit=crop', caption: 'Departure angle' }
+            { src: 'https://cdn.midjourney.com/063df8f1-c026-48ad-94bc-92bc8342b678/0_2.png', caption: 'Back diagonal view' }
         ]
     },
 
@@ -403,9 +341,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://cdn.midjourney.com/06cb4cc7-c0af-48de-80d0-1fffa21b9fe0/0_1.png', caption: 'First person view' },
-            { src: 'https://cdn.midjourney.com/1e242962-cae4-41f8-b92b-3607635148f2/0_1.png', caption: 'Eyes perspective' },
-            { src: 'https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?w=600&h=400&fit=crop', caption: 'Subjective camera' },
-            { src: 'https://images.unsplash.com/photo-1525296141-b09a774890e8?w=600&h=400&fit=crop', caption: 'POV angle' }
+            { src: 'https://cdn.midjourney.com/1e242962-cae4-41f8-b92b-3607635148f2/0_1.png', caption: 'Eyes perspective' }
         ]
     },
 
@@ -422,9 +358,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://cdn.midjourney.com/dcf0a650-031a-4946-94c6-0fde0f74a24a/0_3.png', caption: 'OTS dialogue' },
-            { src: 'https://cdn.midjourney.com/df89236a-54ff-44ca-9899-6c3fd31cc954/0_0.png', caption: 'Shoulder frame' },
-            { src: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&h=400&fit=crop', caption: 'Conversation angle' },
-            { src: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&h=400&fit=crop', caption: 'OTS perspective' }
+            { src: 'https://cdn.midjourney.com/df89236a-54ff-44ca-9899-6c3fd31cc954/0_0.png', caption: 'Shoulder frame' }
         ]
     },
 
@@ -441,9 +375,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://cdn.midjourney.com/4269eb8b-a48e-4088-98ce-f919f8191e96/0_3.png', caption: 'Two people' },
-            { src: 'https://cdn.midjourney.com/4d77bc10-14d2-4539-a028-2e9d721431f7/0_0.png', caption: 'Group dynamics' },
-            { src: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=600&h=400&fit=crop', caption: 'Team shot' },
-            { src: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&h=400&fit=crop', caption: 'Multiple subjects' }
+            { src: 'https://cdn.midjourney.com/4d77bc10-14d2-4539-a028-2e9d721431f7/0_0.png', caption: 'Group dynamics' }
         ]
     },
 
@@ -460,9 +392,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=600&h=400&fit=crop', caption: 'City establishing' },
-            { src: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop', caption: 'Location setup' },
-            { src: 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=600&h=400&fit=crop', caption: 'Environment shot' },
-            { src: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=600&h=400&fit=crop', caption: 'Scene setting' }
+            { src: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop', caption: 'Location setup' }
         ]
     },
 
@@ -479,9 +409,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://cdn.midjourney.com/2e366ab0-7897-447a-b2d0-d471fc497fca/0_2.png', caption: 'Full scene view' },
-            { src: 'https://cdn.midjourney.com/41f6bc5b-c4cf-47ad-9e90-3a24f6b6025f/0_3.png', caption: 'Wide coverage' },
-            { src: 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=600&h=400&fit=crop', caption: 'Complete action' },
-            { src: 'https://images.unsplash.com/photo-1460881680858-30d872d5b530?w=600&h=400&fit=crop', caption: 'Stage view' }
+            { src: 'https://cdn.midjourney.com/41f6bc5b-c4cf-47ad-9e90-3a24f6b6025f/0_3.png', caption: 'Wide coverage' }
         ]
     },
 
@@ -498,9 +426,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://cdn.midjourney.com/30d736f5-c5f1-4a8a-afd2-4f35980095e1/0_0.png', caption: 'Detail insert' },
-            { src: 'https://cdn.midjourney.com/1c40d32b-f3ce-4b7d-b9e9-d4f8a1867ba1/0_3.png', caption: 'Close detail' },
-            { src: 'https://images.unsplash.com/photo-1511367461989-f85a21fda167?w=600&h=400&fit=crop', caption: 'Information shot' },
-            { src: 'https://images.unsplash.com/photo-1524634126442-357e0eac3c14?w=600&h=400&fit=crop', caption: 'Cutaway detail' }
+            { src: 'https://cdn.midjourney.com/1c40d32b-f3ce-4b7d-b9e9-d4f8a1867ba1/0_3.png', caption: 'Close detail' }
         ]
     },
 
@@ -518,9 +444,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://cdn.midjourney.com/11557617-e77f-406a-9e6c-85df3e6172b7/0_3.png', caption: 'Third lines' },
-            { src: 'https://cdn.midjourney.com/fae22985-04ae-42d0-a533-bba482e2e853/0_3.png', caption: 'Intersection points' },
-            { src: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=600&h=400&fit=crop', caption: 'Balanced composition' },
-            { src: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&h=400&fit=crop', caption: 'Grid placement' }
+            { src: 'https://cdn.midjourney.com/fae22985-04ae-42d0-a533-bba482e2e853/0_3.png', caption: 'Intersection points' }
         ]
     },
 
@@ -537,9 +461,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://cdn.midjourney.com/707e3cb8-f4e9-4db8-801b-ff27d6149990/0_0.png', caption: 'Central focus' },
-            { src: 'https://cdn.midjourney.com/24e95385-d267-4e57-94d1-c0fa4e5fd0c1/0_0.png', caption: 'Middle placement' },
-            { src: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600&h=400&fit=crop', caption: 'Centered subject' },
-            { src: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=600&h=400&fit=crop', caption: 'Direct composition' }
+            { src: 'https://cdn.midjourney.com/24e95385-d267-4e57-94d1-c0fa4e5fd0c1/0_0.png', caption: 'Middle placement' }
         ]
     },
 
@@ -556,9 +478,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://cdn.midjourney.com/b9923de1-02c8-4102-90c1-54a671f82c58/0_2.png', caption: 'Perfect symmetry' },
-            { src: 'https://cdn.midjourney.com/18ae1a6d-08f8-4f21-bab7-04c75b2e4bcd/0_2.png', caption: 'Mirror composition' },
-            { src: 'https://images.unsplash.com/photo-1518005020951-eccb494ad742?w=600&h=400&fit=crop', caption: 'Balanced structure' },
-            { src: 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=600&h=400&fit=crop', caption: 'Symmetric design' }
+            { src: 'https://cdn.midjourney.com/18ae1a6d-08f8-4f21-bab7-04c75b2e4bcd/0_2.png', caption: 'Mirror composition' }
         ]
     },
 
@@ -575,9 +495,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://cdn.midjourney.com/fc2d46e4-5147-4b45-94e5-27e22a38de4b/0_1.png', caption: 'Natural frame' },
-            { src: 'https://cdn.midjourney.com/8894ecf6-5d3c-4627-9142-9200fdfad06a/0_0.png', caption: 'Doorway frame' },
-            { src: 'https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=600&h=400&fit=crop', caption: 'Window frame' },
-            { src: 'https://images.unsplash.com/photo-1445109673451-c511bb51bd17?w=600&h=400&fit=crop', caption: 'Nested frames' }
+            { src: 'https://cdn.midjourney.com/8894ecf6-5d3c-4627-9142-9200fdfad06a/0_0.png', caption: 'Doorway frame' }
         ]
     },
 
@@ -594,9 +512,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://cdn.midjourney.com/10f8acdb-55ab-45e4-ac66-79076f2da806/0_0.png', caption: 'Diagonal lines' },
-            { src: 'https://cdn.midjourney.com/3a24a4e3-4559-434f-a880-2592c0f84fc8/0_2.png', caption: 'Dynamic angle' },
-            { src: 'https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=600&h=400&fit=crop', caption: 'Tilted composition' },
-            { src: 'https://images.unsplash.com/photo-1505739998589-00fc191ce01d?w=600&h=400&fit=crop', caption: 'Energy lines' }
+            { src: 'https://cdn.midjourney.com/3a24a4e3-4559-434f-a880-2592c0f84fc8/0_2.png', caption: 'Dynamic angle' }
         ]
     },
 
@@ -613,9 +529,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://cdn.midjourney.com/7c85f633-9ce2-41de-a997-6e1214f5b345/0_2.png', caption: 'Multiple layers' },
-            { src: 'https://cdn.midjourney.com/b6ce553f-a266-4f73-bfec-0583345c74f9/0_3.png', caption: 'Depth layers' },
-            { src: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&h=400&fit=crop', caption: 'Foreground-background' },
-            { src: 'https://images.unsplash.com/photo-1431794062232-2a99a5431c6c?w=600&h=400&fit=crop', caption: 'Dimensional depth' }
+            { src: 'https://cdn.midjourney.com/b6ce553f-a266-4f73-bfec-0583345c74f9/0_3.png', caption: 'Depth layers' }
         ]
     },
 
@@ -632,9 +546,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://cdn.midjourney.com/001e51a5-1535-45e7-96a9-60e9e7155ad6/0_2.png', caption: 'Empty space' },
-            { src: 'https://cdn.midjourney.com/189a0627-065e-4341-b69d-5eb6d2f267e5/0_3.png', caption: 'Minimalist composition' },
-            { src: 'https://images.unsplash.com/photo-1509228627152-72ae9ae6848d?w=600&h=400&fit=crop', caption: 'Isolation effect' },
-            { src: 'https://images.unsplash.com/photo-1521405924368-64c5b84bec60?w=600&h=400&fit=crop', caption: 'White space' }
+            { src: 'https://cdn.midjourney.com/189a0627-065e-4341-b69d-5eb6d2f267e5/0_3.png', caption: 'Minimalist composition' }
         ]
     },
 
@@ -653,9 +565,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=600&h=400&fit=crop', caption: 'Warm golden light' },
-            { src: 'https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?w=600&h=400&fit=crop', caption: 'Sunset glow' },
-            { src: 'https://images.unsplash.com/photo-1495616811223-4d98c6e9c869?w=600&h=400&fit=crop', caption: 'Magic hour' },
-            { src: 'https://images.unsplash.com/photo-1475924156734-496f6cac6ec1?w=600&h=400&fit=crop', caption: 'Romantic lighting' }
+            { src: 'https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?w=600&h=400&fit=crop', caption: 'Sunset glow' }
         ]
     },
 
@@ -672,9 +582,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://images.unsplash.com/photo-1514539079130-25950c84af65?w=600&h=400&fit=crop', caption: 'Blue twilight' },
-            { src: 'https://images.unsplash.com/photo-1493514789931-586cb221d7a7?w=600&h=400&fit=crop', caption: 'Urban blue hour' },
-            { src: 'https://images.unsplash.com/photo-1428908728789-d2de25dbd4e2?w=600&h=400&fit=crop', caption: 'Mystical atmosphere' },
-            { src: 'https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?w=600&h=400&fit=crop', caption: 'Evening blues' }
+            { src: 'https://images.unsplash.com/photo-1493514789931-586cb221d7a7?w=600&h=400&fit=crop', caption: 'Urban blue hour' }
         ]
     },
 
@@ -691,9 +599,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=600&h=400&fit=crop', caption: 'Soft diffused light' },
-            { src: 'https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?w=600&h=400&fit=crop', caption: 'Even lighting' },
-            { src: 'https://images.unsplash.com/photo-1476820865390-c52aeebb9891?w=600&h=400&fit=crop', caption: 'Cloudy atmosphere' },
-            { src: 'https://images.unsplash.com/photo-1429734956993-8a9b0555e122?w=600&h=400&fit=crop', caption: 'Natural diffusion' }
+            { src: 'https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?w=600&h=400&fit=crop', caption: 'Even lighting' }
         ]
     },
 
@@ -710,9 +616,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?w=600&h=400&fit=crop', caption: 'Strong shadows' },
-            { src: 'https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=600&h=400&fit=crop', caption: 'High contrast' },
-            { src: 'https://images.unsplash.com/photo-1506765515384-028b60a970df?w=600&h=400&fit=crop', caption: 'Direct sunlight' },
-            { src: 'https://images.unsplash.com/photo-1517524285303-d6fc683dddf8?w=600&h=400&fit=crop', caption: 'Sharp definition' }
+            { src: 'https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=600&h=400&fit=crop', caption: 'High contrast' }
         ]
     },
 
@@ -730,9 +634,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop', caption: 'Classic portrait' },
-            { src: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&h=400&fit=crop', caption: 'Triangle of light' },
-            { src: 'https://images.unsplash.com/photo-1522529599102-193c0d76b5b6?w=600&h=400&fit=crop', caption: 'Artistic lighting' },
-            { src: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&h=400&fit=crop', caption: 'Dramatic mood' }
+            { src: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&h=400&fit=crop', caption: 'Triangle of light' }
         ]
     },
 
@@ -749,9 +651,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&h=400&fit=crop', caption: 'Glamour lighting' },
-            { src: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600&h=400&fit=crop', caption: 'Beauty shot' },
-            { src: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=600&h=400&fit=crop', caption: 'Fashion portrait' },
-            { src: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&h=400&fit=crop', caption: 'Hollywood style' }
+            { src: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600&h=400&fit=crop', caption: 'Beauty shot' }
         ]
     },
 
@@ -768,9 +668,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop', caption: 'Half-lit face' },
-            { src: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&h=400&fit=crop', caption: 'Film noir style' },
-            { src: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&h=400&fit=crop', caption: 'Dramatic split' },
-            { src: 'https://images.unsplash.com/photo-1522529599102-193c0d76b5b6?w=600&h=400&fit=crop', caption: 'Mystery mood' }
+            { src: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&h=400&fit=crop', caption: 'Film noir style' }
         ]
     },
 
@@ -787,9 +685,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&h=400&fit=crop', caption: 'Edge lighting' },
-            { src: 'https://images.unsplash.com/photo-1495745966610-2a67f2297e5e?w=600&h=400&fit=crop', caption: 'Backlit outline' },
-            { src: 'https://images.unsplash.com/photo-1516726817505-f5ed825624d8?w=600&h=400&fit=crop', caption: 'Glowing edges' },
-            { src: 'https://images.unsplash.com/photo-1502136969935-8d8eef54d77b?w=600&h=400&fit=crop', caption: 'Separation light' }
+            { src: 'https://images.unsplash.com/photo-1495745966610-2a67f2297e5e?w=600&h=400&fit=crop', caption: 'Backlit outline' }
         ]
     },
 
@@ -807,9 +703,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://images.unsplash.com/photo-1514782831304-632d84503f6f?w=600&h=400&fit=crop', caption: 'Cyberpunk neon' },
-            { src: 'https://images.unsplash.com/photo-1496568816309-51d7c20e3b21?w=600&h=400&fit=crop', caption: 'Urban neon' },
-            { src: 'https://images.unsplash.com/photo-1519608425089-7f3bfa6f6bb8?w=600&h=400&fit=crop', caption: 'Neon portrait' },
-            { src: 'https://images.unsplash.com/photo-1502081640163-5c2098bb1343?w=600&h=400&fit=crop', caption: 'Colorful lights' }
+            { src: 'https://images.unsplash.com/photo-1496568816309-51d7c20e3b21?w=600&h=400&fit=crop', caption: 'Urban neon' }
         ]
     },
 
@@ -826,9 +720,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://images.unsplash.com/photo-1511207538754-e8555f2bc187?w=600&h=400&fit=crop', caption: 'Warm candle glow' },
-            { src: 'https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?w=600&h=400&fit=crop', caption: 'Romantic mood' },
-            { src: 'https://images.unsplash.com/photo-1543165796-5426273eaab3?w=600&h=400&fit=crop', caption: 'Intimate lighting' },
-            { src: 'https://images.unsplash.com/photo-1481653125770-b78c206c59d4?w=600&h=400&fit=crop', caption: 'Candle ambiance' }
+            { src: 'https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?w=600&h=400&fit=crop', caption: 'Romantic mood' }
         ]
     },
 
@@ -845,9 +737,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=600&h=400&fit=crop', caption: 'Blue moonlight' },
-            { src: 'https://images.unsplash.com/photo-1514897575457-c4db467cf78e?w=600&h=400&fit=crop', caption: 'Night atmosphere' },
-            { src: 'https://images.unsplash.com/photo-1505506874110-6a7a69069a08?w=600&h=400&fit=crop', caption: 'Mystical moon' },
-            { src: 'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=600&h=400&fit=crop', caption: 'Lunar glow' }
+            { src: 'https://images.unsplash.com/photo-1514897575457-c4db467cf78e?w=600&h=400&fit=crop', caption: 'Night atmosphere' }
         ]
     },
 
@@ -864,9 +754,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://images.unsplash.com/photo-1510797215324-95aa89f43c33?w=600&h=400&fit=crop', caption: 'Campfire glow' },
-            { src: 'https://images.unsplash.com/photo-1467810563316-b5476525c0f9?w=600&h=400&fit=crop', caption: 'Fire warmth' },
-            { src: 'https://images.unsplash.com/photo-1414124488080-0188dcbb8834?w=600&h=400&fit=crop', caption: 'Flickering light' },
-            { src: 'https://images.unsplash.com/photo-1453365607868-7deed8cc7d26?w=600&h=400&fit=crop', caption: 'Orange flames' }
+            { src: 'https://images.unsplash.com/photo-1467810563316-b5476525c0f9?w=600&h=400&fit=crop', caption: 'Fire warmth' }
         ]
     },
 
@@ -885,9 +773,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://cdn.midjourney.com/d2fe4f03-1643-4b45-ad5a-87017e5a19c4/0_0.png', caption: 'Realistic portrait' },
-            { src: 'https://cdn.midjourney.com/b39be7d5-1837-4321-ae3a-cf50fb17e6c7/0_0.png', caption: 'Photo-real render' },
-            { src: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=600&h=400&fit=crop', caption: 'Ultra detailed' },
-            { src: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&h=400&fit=crop', caption: 'Lifelike quality' }
+            { src: 'https://cdn.midjourney.com/b39be7d5-1837-4321-ae3a-cf50fb17e6c7/0_0.png', caption: 'Photo-real render' }
         ]
     },
 
@@ -904,9 +790,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://cdn.midjourney.com/052cd281-1382-4bd6-8e79-7e9dd0218282/0_3.png', caption: 'Extreme detail' },
-            { src: 'https://cdn.midjourney.com/7281badd-7f38-4704-96d8-d603f747c986/0_1.png', caption: 'Beyond reality' },
-            { src: 'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=600&h=400&fit=crop', caption: 'Micro details' },
-            { src: 'https://images.unsplash.com/photo-1514846226882-28b324ef7f28?w=600&h=400&fit=crop', caption: 'Ultra precision' }
+            { src: 'https://cdn.midjourney.com/7281badd-7f38-4704-96d8-d603f747c986/0_1.png', caption: 'Beyond reality' }
         ]
     },
 
@@ -923,9 +807,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://cdn.midjourney.com/3db3c134-87da-4db0-87cf-eafc57fb46bc/0_0.png', caption: 'Dreamlike scene' },
-            { src: 'https://cdn.midjourney.com/fa3d4d5d-8a1b-4396-a61e-f9e40417882e/0_1.png', caption: 'Surreal composition' },
-            { src: 'https://images.unsplash.com/photo-1482245294234-b3f2f8d5f1a4?w=600&h=400&fit=crop', caption: 'Fantasy elements' },
-            { src: 'https://images.unsplash.com/photo-1495195129352-aeb325a55b65?w=600&h=400&fit=crop', caption: 'Impossible reality' }
+            { src: 'https://cdn.midjourney.com/fa3d4d5d-8a1b-4396-a61e-f9e40417882e/0_1.png', caption: 'Surreal composition' }
         ]
     },
 
@@ -942,9 +824,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://cdn.midjourney.com/31d32c66-4308-4d03-ba1c-9e5bcfbbdd7a/0_1.png', caption: 'Painterly style' },
-            { src: 'https://cdn.midjourney.com/225a11b4-c839-4e69-bfd5-6d3b2943fcce/0_2.png', caption: 'Light effects' },
-            { src: 'https://images.unsplash.com/photo-1505506874110-6a7a69069a08?w=600&h=400&fit=crop', caption: 'Color impressions' },
-            { src: 'https://images.unsplash.com/photo-1490730141103-6cac27aaab94?w=600&h=400&fit=crop', caption: 'Brushstroke texture' }
+            { src: 'https://cdn.midjourney.com/225a11b4-c839-4e69-bfd5-6d3b2943fcce/0_2.png', caption: 'Light effects' }
         ]
     },
 
@@ -961,9 +841,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://cdn.midjourney.com/19d2d425-aa59-4c35-92af-ff2a278fb95a/0_1.png', caption: 'Simple forms' },
-            { src: 'https://cdn.midjourney.com/e63b8047-e15d-4b5a-9613-3e06c73478b0/0_1.png', caption: 'Clean composition' },
-            { src: 'https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=600&h=400&fit=crop', caption: 'Essential elements' },
-            { src: 'https://images.unsplash.com/photo-1493397212122-2b85dda8106b?w=600&h=400&fit=crop', caption: 'Reduced aesthetic' }
+            { src: 'https://cdn.midjourney.com/e63b8047-e15d-4b5a-9613-3e06c73478b0/0_1.png', caption: 'Clean composition' }
         ]
     },
 
@@ -981,9 +859,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://cdn.midjourney.com/d7cb8ae6-8e12-4fb5-829f-106a8d1a9862/0_2.png', caption: 'Digital artwork' },
-            { src: 'https://cdn.midjourney.com/00d6475e-4689-4912-ace1-c32394fe6486/0_3.png', caption: 'Painted digitally' },
-            { src: 'https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=600&h=400&fit=crop', caption: 'Digital brushwork' },
-            { src: 'https://images.unsplash.com/photo-1502899576159-f224dc2349fa?w=600&h=400&fit=crop', caption: 'Digital canvas' }
+            { src: 'https://cdn.midjourney.com/00d6475e-4689-4912-ace1-c32394fe6486/0_3.png', caption: 'Painted digitally' }
         ]
     },
 
@@ -1000,9 +876,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://cdn.midjourney.com/42848a4c-d7f9-402c-9a02-d69b847deaed/0_0.png', caption: 'Character concept' },
-            { src: 'https://cdn.midjourney.com/bf513a5b-1cc5-44b1-b9ea-2f28173320f7/0_3.png', caption: 'Environment art' },
-            { src: 'https://images.unsplash.com/photo-1578321272176-b7bbc0679853?w=600&h=400&fit=crop', caption: 'Visual development' },
-            { src: 'https://images.unsplash.com/photo-1561731216-c3a4d99437d5?w=600&h=400&fit=crop', caption: 'Concept design' }
+            { src: 'https://cdn.midjourney.com/bf513a5b-1cc5-44b1-b9ea-2f28173320f7/0_3.png', caption: 'Environment art' }
         ]
     },
 
@@ -1019,9 +893,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://cdn.midjourney.com/d40dce8b-9ad9-4b26-a7c1-6e0735d40a6b/0_1.png', caption: 'Epic landscape' },
-            { src: 'https://cdn.midjourney.com/78a28f07-f5d9-4611-9406-345930da1465/0_2.png', caption: 'Film background' },
-            { src: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=600&h=400&fit=crop', caption: 'Fantasy world' },
-            { src: 'https://images.unsplash.com/photo-1444927714506-8492d94b4e3d?w=600&h=400&fit=crop', caption: 'Set extension' }
+            { src: 'https://cdn.midjourney.com/78a28f07-f5d9-4611-9406-345930da1465/0_2.png', caption: 'Film background' }
         ]
     },
 
@@ -1038,9 +910,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://cdn.midjourney.com/31eeae82-57d2-4e27-84b0-65cd6a0349f4/0_0.png', caption: '3D model' },
-            { src: 'https://cdn.midjourney.com/92fb90a9-1eca-434c-8812-e74a4b9f1f18/0_0.png', caption: 'CGI render' },
-            { src: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop', caption: 'Product viz' },
-            { src: 'https://images.unsplash.com/photo-1535223289827-42f1e9919769?w=600&h=400&fit=crop', caption: 'Architectural render' }
+            { src: 'https://cdn.midjourney.com/92fb90a9-1eca-434c-8812-e74a4b9f1f18/0_0.png', caption: 'CGI render' }
         ]
     },
 
@@ -1058,9 +928,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600&h=400&fit=crop', caption: 'Anime character' },
-            { src: 'https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?w=600&h=400&fit=crop', caption: 'Manga style' },
-            { src: 'https://images.unsplash.com/photo-1612198188060-c7c2a3b66eae?w=600&h=400&fit=crop', caption: 'Japanese animation' },
-            { src: 'https://images.unsplash.com/photo-1578321272176-b7bbc0679853?w=600&h=400&fit=crop', caption: 'Anime art' }
+            { src: 'https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?w=600&h=400&fit=crop', caption: 'Manga style' }
         ]
     },
 
@@ -1077,9 +945,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://cdn.midjourney.com/668a82a1-c1f7-499b-92bd-caacb8f54646/0_2.png', caption: 'Cartoon character' },
-            { src: 'https://cdn.midjourney.com/80c4bf03-2ac1-4e59-b3f9-92736e41b81a/0_0.png', caption: 'Simplified style' },
-            { src: 'https://images.unsplash.com/photo-1561494653-744c43aed0c1?w=600&h=400&fit=crop', caption: 'Fun illustration' },
-            { src: 'https://images.unsplash.com/photo-1578321272176-b7bbc0679853?w=600&h=400&fit=crop', caption: 'Toon style' }
+            { src: 'https://cdn.midjourney.com/80c4bf03-2ac1-4e59-b3f9-92736e41b81a/0_0.png', caption: 'Simplified style' }
         ]
     },
 
@@ -1096,9 +962,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://cdn.midjourney.com/c09d35ad-6780-4e83-b6a9-9413f5fa1c0f/0_0.png', caption: 'Comic art' },
-            { src: 'https://images.unsplash.com/photo-1601645191163-3fc0d5d64e35?w=600&h=400&fit=crop', caption: 'Superhero style' },
-            { src: 'https://images.unsplash.com/photo-1588862081167-d5b98006637e?w=600&h=400&fit=crop', caption: 'Pop art effect' },
-            { src: 'https://images.unsplash.com/photo-1612198188060-c7c2a3b66eae?w=600&h=400&fit=crop', caption: 'Action comic' }
+            { src: 'https://images.unsplash.com/photo-1601645191163-3fc0d5d64e35?w=600&h=400&fit=crop', caption: 'Superhero style' }
         ]
     },
 
@@ -1115,9 +979,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=600&h=400&fit=crop', caption: 'Watercolor painting' },
-            { src: 'https://images.unsplash.com/photo-1519638399535-1b036603ac77?w=600&h=400&fit=crop', caption: 'Fluid colors' },
-            { src: 'https://images.unsplash.com/photo-1505506874110-6a7a69069a08?w=600&h=400&fit=crop', caption: 'Soft washes' },
-            { src: 'https://images.unsplash.com/photo-1490730141103-6cac27aaab94?w=600&h=400&fit=crop', caption: 'Transparent layers' }
+            { src: 'https://images.unsplash.com/photo-1519638399535-1b036603ac77?w=600&h=400&fit=crop', caption: 'Fluid colors' }
         ]
     },
 
@@ -1136,9 +998,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=600&h=400&fit=crop', caption: 'Oil on canvas' },
-            { src: 'https://images.unsplash.com/photo-1578321272176-b7bbc0679853?w=600&h=400&fit=crop', caption: 'Classic technique' },
-            { src: 'https://images.unsplash.com/photo-1571115764595-644a1f56a55c?w=600&h=400&fit=crop', caption: 'Rich texture' },
-            { src: 'https://images.unsplash.com/photo-1519638399535-1b036603ac77?w=600&h=400&fit=crop', caption: 'Traditional art' }
+            { src: 'https://images.unsplash.com/photo-1578321272176-b7bbc0679853?w=600&h=400&fit=crop', caption: 'Classic technique' }
         ]
     },
 
@@ -1155,9 +1015,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=600&h=400&fit=crop', caption: 'Acrylic art' },
-            { src: 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=600&h=400&fit=crop', caption: 'Vibrant colors' },
-            { src: 'https://images.unsplash.com/photo-1549887534-1541e9326642?w=600&h=400&fit=crop', caption: 'Modern painting' },
-            { src: 'https://images.unsplash.com/photo-1578321272176-b7bbc0679853?w=600&h=400&fit=crop', caption: 'Bold strokes' }
+            { src: 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=600&h=400&fit=crop', caption: 'Vibrant colors' }
         ]
     },
 
@@ -1174,9 +1032,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?w=600&h=400&fit=crop', caption: 'Graphite sketch' },
-            { src: 'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=600&h=400&fit=crop', caption: 'Detailed drawing' },
-            { src: 'https://images.unsplash.com/photo-1602491453631-e2a5ad90a131?w=600&h=400&fit=crop', caption: 'Pencil portrait' },
-            { src: 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=600&h=400&fit=crop', caption: 'Shading technique' }
+            { src: 'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=600&h=400&fit=crop', caption: 'Detailed drawing' }
         ]
     },
 
@@ -1193,9 +1049,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?w=600&h=400&fit=crop', caption: 'Charcoal portrait' },
-            { src: 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=600&h=400&fit=crop', caption: 'Expressive marks' },
-            { src: 'https://images.unsplash.com/photo-1569172122301-bc5008bc09c5?w=600&h=400&fit=crop', caption: 'Deep blacks' },
-            { src: 'https://images.unsplash.com/photo-1602491453631-e2a5ad90a131?w=600&h=400&fit=crop', caption: 'Tonal range' }
+            { src: 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=600&h=400&fit=crop', caption: 'Expressive marks' }
         ]
     },
 
@@ -1213,9 +1067,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=600&h=400&fit=crop', caption: 'Digital capture' },
-            { src: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=600&h=400&fit=crop', caption: 'Modern photography' },
-            { src: 'https://images.unsplash.com/photo-1471341971476-ae15ff5dd4ea?w=600&h=400&fit=crop', caption: 'High resolution' },
-            { src: 'https://images.unsplash.com/photo-1493863641943-9b68992a8d07?w=600&h=400&fit=crop', caption: 'Digital medium' }
+            { src: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=600&h=400&fit=crop', caption: 'Modern photography' }
         ]
     },
 
@@ -1232,9 +1084,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=600&h=400&fit=crop', caption: 'Film grain' },
-            { src: 'https://images.unsplash.com/photo-1518998053901-5348d3961a04?w=600&h=400&fit=crop', caption: 'Analog feel' },
-            { src: 'https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=600&h=400&fit=crop', caption: 'Vintage look' },
-            { src: 'https://images.unsplash.com/photo-1495121605193-b116b5b9c5fe?w=600&h=400&fit=crop', caption: 'Film aesthetic' }
+            { src: 'https://images.unsplash.com/photo-1518998053901-5348d3961a04?w=600&h=400&fit=crop', caption: 'Analog feel' }
         ]
     },
 
@@ -1251,9 +1101,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://images.unsplash.com/photo-1526081347589-65d54dd96d6e?w=600&h=400&fit=crop', caption: 'Instant photo' },
-            { src: 'https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?w=600&h=400&fit=crop', caption: 'White border' },
-            { src: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&h=400&fit=crop', caption: 'Retro instant' },
-            { src: 'https://images.unsplash.com/photo-1526081715791-7c538f86e977?w=600&h=400&fit=crop', caption: 'Polaroid style' }
+            { src: 'https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?w=600&h=400&fit=crop', caption: 'White border' }
         ]
     },
 
@@ -1270,9 +1118,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop', caption: 'Light trails' },
-            { src: 'https://images.unsplash.com/photo-1514897575457-c4db467cf78e?w=600&h=400&fit=crop', caption: 'Star trails' },
-            { src: 'https://images.unsplash.com/photo-1519608425089-7f3bfa6f6bb8?w=600&h=400&fit=crop', caption: 'Motion blur' },
-            { src: 'https://images.unsplash.com/photo-1493514789931-586cb221d7a7?w=600&h=400&fit=crop', caption: 'Time lapse' }
+            { src: 'https://images.unsplash.com/photo-1514897575457-c4db467cf78e?w=600&h=400&fit=crop', caption: 'Star trails' }
         ]
     },
 
@@ -1290,9 +1136,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://images.unsplash.com/photo-1582738411706-bfc8e691d1c2?w=600&h=400&fit=crop', caption: 'Mixed elements' },
-            { src: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop', caption: 'Paper collage' },
-            { src: 'https://images.unsplash.com/photo-1578321272176-b7bbc0679853?w=600&h=400&fit=crop', caption: 'Composite art' },
-            { src: 'https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3?w=600&h=400&fit=crop', caption: 'Layered media' }
+            { src: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop', caption: 'Paper collage' }
         ]
     },
 
@@ -1309,9 +1153,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://images.unsplash.com/photo-1561494653-744c43aed0c1?w=600&h=400&fit=crop', caption: 'Digital composite' },
-            { src: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop', caption: 'Photo manipulation' },
-            { src: 'https://images.unsplash.com/photo-1550684376-efcbd6e3f031?w=600&h=400&fit=crop', caption: 'Digital layers' },
-            { src: 'https://images.unsplash.com/photo-1578321272176-b7bbc0679853?w=600&h=400&fit=crop', caption: 'Mixed digital' }
+            { src: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop', caption: 'Photo manipulation' }
         ]
     },
 
@@ -1328,9 +1170,7 @@ const cameraData = {
         ],
         images: [
             { src: 'https://images.unsplash.com/photo-1578321272176-b7bbc0679853?w=600&h=400&fit=crop', caption: 'Combined media' },
-            { src: 'https://images.unsplash.com/photo-1549490349-8643362247b5?w=600&h=400&fit=crop', caption: 'Experimental art' },
-            { src: 'https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=600&h=400&fit=crop', caption: 'Mixed textures' },
-            { src: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop', caption: 'Hybrid technique' }
+            { src: 'https://images.unsplash.com/photo-1549490349-8643362247b5?w=600&h=400&fit=crop', caption: 'Experimental art' }
         ]
     },
 

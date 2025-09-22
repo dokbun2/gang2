@@ -17,6 +17,30 @@ document.addEventListener('DOMContentLoaded', function() {
     if (pagination) {
         pagination.style.display = 'none';
     }
+
+    // Hide all major categories by default
+    const imageCategory = document.getElementById('image-category');
+    const videoCategory = document.getElementById('video-category');
+
+    if (imageCategory) {
+        imageCategory.style.display = 'none';
+    }
+
+    if (videoCategory) {
+        videoCategory.style.display = 'none';
+    }
+
+    // Reset all chevron icons to default position
+    const imageCategoryIcon = document.getElementById('image-category-icon');
+    const videoCategoryIcon = document.getElementById('video-category-icon');
+
+    if (imageCategoryIcon) {
+        imageCategoryIcon.style.transform = 'rotate(0deg)';
+    }
+
+    if (videoCategoryIcon) {
+        videoCategoryIcon.style.transform = 'rotate(0deg)';
+    }
 });
 
 // Toggle Major Category
@@ -111,91 +135,123 @@ function displayContent() {
 
     if (!contentArea) return;
 
+    // Special layout for instructor introduction
+    if (currentData.instructorInfo) {
+        let html = `
+            <div class="content-container">
+                <div class="content-header">
+                    <h2 class="content-title">${currentData.title || ''}</h2>
+                    ${currentData.koreanTitle ? `<span class="content-subtitle">${currentData.koreanTitle}</span>` : ''}
+                </div>
+
+                <div class="instructor-layout">
+                    <div class="instructor-photo">
+                        <img src="${currentData.instructorInfo.image}" alt="${currentData.instructorInfo.name}">
+                    </div>
+                    <div class="instructor-details">
+                        <div class="instructor-info-item">
+                            <span class="info-label">이름:</span>
+                            <span class="info-value">${currentData.instructorInfo.name}</span>
+                        </div>
+                        <div class="instructor-info-item">
+                            <span class="info-label">소속:</span>
+                            <span class="info-value">${currentData.instructorInfo.position}</span>
+                        </div>
+                        ${currentData.instructorInfo.company.map(comp => `
+                            <div class="instructor-info-item company">
+                                <span class="info-value">${comp}</span>
+                            </div>
+                        `).join('')}
+                        <div class="instructor-info-item">
+                            <span class="info-label">Email:</span>
+                            <span class="info-value">${currentData.instructorInfo.email}</span>
+                        </div>
+
+                        <div class="instructor-description">
+                            <p>${currentData.description}</p>
+                        </div>
+
+                        <div class="instructor-experience">
+                            <h4>주요 경력</h4>
+                            <ul>
+                                ${currentData.usage.map(exp => `<li>${exp}</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        contentArea.innerHTML = html;
+        if (pagination) {
+            pagination.style.display = 'none';
+        }
+
+        // Re-initialize icons
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+        return;
+    }
+
     let html = `
         <div class="content-container">
             <div class="content-header">
                 <h2 class="content-title">${currentData.title || ''}</h2>
                 ${currentData.koreanTitle ? `<span class="content-subtitle">${currentData.koreanTitle}</span>` : ''}
             </div>
+
+            <div class="content-sections-wrapper">
+                <!-- 설명 및 프롬프트 섹션 -->
+                <div class="content-section-box">
+                    <h3 class="section-title">설명 및 프롬프트</h3>
+                    ${currentData.description ? `
+                        <div class="description-area">
+                            <p class="section-text">${currentData.description}</p>
+                        </div>
+                    ` : ''}
+                    ${currentData.prompt ? `
+                        <div class="prompt-area">
+                            <h4 class="subsection-title">프롬프트</h4>
+                            <div class="prompt-box">
+                                <code>${currentData.prompt}</code>
+                                <button class="copy-btn" onclick="copyToClipboard('${currentData.prompt.replace(/'/g, "\\'")}')">
+                                    복사
+                                </button>
+                            </div>
+                        </div>
+                    ` : ''}
+                </div>
+
+                <!-- 사용 케이스 섹션 -->
+                ${currentData.usage && currentData.usage.length > 0 ? `
+                    <div class="content-section-box">
+                        <h3 class="section-title">사용 케이스</h3>
+                        <ul class="usage-list">
+                            ${currentData.usage.map(use => `<li>${use}</li>`).join('')}
+                        </ul>
+                    </div>
+                ` : ''}
+            </div>
     `;
 
-    // Add description
-    if (currentData.description) {
-        html += `
-            <div class="content-section">
-                <h3 class="section-title">설명</h3>
-                <p class="section-text">${currentData.description}</p>
-            </div>
-        `;
-    }
-
-    // Add prompt
-    if (currentData.prompt) {
-        html += `
-            <div class="content-section">
-                <h3 class="section-title">프롬프트</h3>
-                <div class="prompt-box">
-                    <code>${currentData.prompt}</code>
-                    <button class="copy-btn" onclick="copyToClipboard('${currentData.prompt.replace(/'/g, "\\'")}')"
-                            style="background: linear-gradient(135deg, #ff6b6b, #ff8e53);
-                                   color: white;
-                                   border: none;
-                                   padding: 8px 16px;
-                                   border-radius: 8px;
-                                   cursor: pointer;
-                                   margin-top: 10px;">
-                        복사
-                    </button>
-                </div>
-            </div>
-        `;
-    }
-
-    // Add usage
-    if (currentData.usage && currentData.usage.length > 0) {
-        html += `
-            <div class="content-section">
-                <h3 class="section-title">사용 케이스</h3>
-                <ul class="usage-list">
-        `;
-
-        currentData.usage.forEach(use => {
-            html += `<li>${use}</li>`;
-        });
-
-        html += `
-                </ul>
-            </div>
-        `;
-    }
-
-    // Add all images (no pagination)
+    // Add only first 2 images
     if (currentData.images && currentData.images.length > 0) {
+        const imagesToShow = currentData.images.slice(0, 2); // Only show first 2 images
         html += `
-            <div class="content-section">
+            <div class="content-section" style="margin-top: 50px;">
                 <h3 class="section-title">예시 이미지</h3>
-                <div class="image-grid" style="display: grid;
-                                              grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-                                              gap: 20px;
-                                              margin-top: 20px;">
+                <div class="image-grid">
         `;
 
-        currentData.images.forEach(img => {
+        imagesToShow.forEach(img => {
             const escapedCaption = (img.caption || '').replace(/'/g, "\\'");
             html += `
                 <div class="image-item"
-                     onclick="openImageModal('${img.src}', '${escapedCaption}')"
-                     style="cursor: pointer;
-                            border-radius: 8px;
-                            overflow: hidden;
-                            background: white;
-                            box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                     onclick="openImageModal('${img.src}', '${escapedCaption}')">
                     <img src="${img.src}"
-                         alt="${img.caption || ''}"
-                         style="width: 100%;
-                                height: 200px;
-                                object-fit: cover;">
-                    ${img.caption ? `<p class="image-caption" style="padding: 10px; font-size: 14px; color: #666;">${img.caption}</p>` : ''}
+                         alt="${img.caption || ''}">
+                    ${img.caption ? `<p class="image-caption">${img.caption}</p>` : ''}
                 </div>
             `;
         });
@@ -251,6 +307,13 @@ function closeImageModal() {
         modal.style.display = 'none';
     }
 }
+
+// ESC key to close modal
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape' || event.keyCode === 27) {
+        closeImageModal();
+    }
+});
 
 // Copy to clipboard
 function copyToClipboard(text) {
