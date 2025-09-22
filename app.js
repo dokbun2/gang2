@@ -199,6 +199,12 @@ function displayContent() {
 
     if (!contentArea) return;
 
+    // Check if it's a tool type (AIFI tool)
+    if (currentData.type === 'tool') {
+        displayAIFITool();
+        return;
+    }
+
     // Special layout for instructor introduction
     if (currentData.instructorInfo) {
         let html = `
@@ -405,4 +411,778 @@ function copyToClipboard(text) {
     }
 
     document.body.removeChild(textarea);
+}
+
+// AIFI Tool Variables
+let aifiApiKey = localStorage.getItem('gemini_api_key') || '';
+let aifiCurrentTab = 'generator';
+let aifiUploadedImages = {
+    variator: null,
+    extractor: null
+};
+
+// Display AIFI Tool
+function displayAIFITool() {
+    const contentArea = document.getElementById('content-area');
+    const pagination = document.getElementById('pagination');
+
+    // Hide pagination
+    if (pagination) {
+        pagination.style.display = 'none';
+    }
+
+    let html = `
+        <div class="content-container">
+            <div class="content-header" style="position: relative;">
+                <div>
+                    <h2 class="content-title">${currentData.title || ''}</h2>
+                    <span class="content-subtitle">${currentData.koreanTitle || ''}</span>
+                </div>
+                <button class="aifi-settings-btn" onclick="openAifiSettings()" title="API 설정">
+                    <i data-lucide="settings" style="width: 20px; height: 20px;"></i>
+                    <span>API 설정</span>
+                </button>
+            </div>
+
+            ${!aifiApiKey ? `
+            <div class="aifi-warning-card">
+                <i data-lucide="alert-circle" style="width: 24px; height: 24px;"></i>
+                <div>
+                    <p>API 키가 설정되지 않았습니다.</p>
+                    <small>상단의 'API 설정' 버튼을 클릭하여 설정해주세요.</small>
+                </div>
+            </div>
+            ` : ''}
+
+            <!-- Tabs -->
+            <div class="aifi-tabs">
+                <button class="aifi-tab ${aifiCurrentTab === 'generator' ? 'active' : ''}"
+                        onclick="switchAifiTab('generator')">
+                    이미지 생성
+                </button>
+                <button class="aifi-tab ${aifiCurrentTab === 'variator' ? 'active' : ''}"
+                        onclick="switchAifiTab('variator')">
+                    이미지 변형
+                </button>
+                <button class="aifi-tab ${aifiCurrentTab === 'extractor' ? 'active' : ''}"
+                        onclick="switchAifiTab('extractor')">
+                    프롬프트 추출
+                </button>
+                <button class="aifi-tab ${aifiCurrentTab === 'video' ? 'active' : ''}"
+                        onclick="switchAifiTab('video')">
+                    영상 프롬프트
+                </button>
+            </div>
+
+            <!-- Tab Contents -->
+            <div class="aifi-tab-content">
+                ${renderAifiTabContent(aifiCurrentTab)}
+            </div>
+
+            <div id="aifi-alerts"></div>
+        </div>
+    `;
+
+    contentArea.innerHTML = html;
+
+    // Setup drag and drop if needed
+    if (aifiCurrentTab === 'variator' || aifiCurrentTab === 'extractor') {
+        setupAifiDragDrop();
+    }
+
+    // Update icons
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
+}
+
+// Render AIFI Tab Content
+function renderAifiTabContent(tab) {
+    switch(tab) {
+        case 'generator':
+            return `
+                <div class="aifi-card">
+                    <div class="aifi-card-title">텍스트로 이미지 생성하기</div>
+                    <div class="form-group">
+                        <label>프롬프트 입력</label>
+                        <textarea id="gen-prompt" class="aifi-textarea" rows="4"
+                                  placeholder="생성하고 싶은 이미지를 자세히 설명해주세요..."></textarea>
+                    </div>
+                    <button class="button aifi-button" onclick="generateAifiImage()">
+                        이미지 생성
+                    </button>
+                    <div class="aifi-loading" id="gen-loading" style="display: none;">
+                        <div class="spinner"></div>
+                        <p>이미지를 생성하는 중...</p>
+                    </div>
+                    <div id="gen-result"></div>
+                </div>
+            `;
+
+        case 'variator':
+            return `
+                <div class="aifi-card">
+                    <div class="aifi-card-title">이미지 변형하기</div>
+                    <div class="aifi-upload-area" id="var-upload" onclick="document.getElementById('var-file').click()">
+                        <p>이미지를 클릭하여 선택하거나 드래그하세요</p>
+                        <input type="file" id="var-file" accept="image/*" style="display: none;"
+                               onchange="handleAifiFile(event, 'variator')">
+                    </div>
+                    <div id="var-preview"></div>
+                    <div class="form-group">
+                        <label>변형 지시사항</label>
+                        <textarea id="var-prompt" class="aifi-textarea" rows="3"
+                                  placeholder="어떻게 변형하고 싶으신가요? (예: 스타일 변경, 색상 조정, 요소 추가 등)"></textarea>
+                    </div>
+                    <button class="button aifi-button" onclick="variateAifiImage()">
+                        이미지 변형
+                    </button>
+                    <div class="aifi-loading" id="var-loading" style="display: none;">
+                        <div class="spinner"></div>
+                        <p>이미지를 변형하는 중...</p>
+                    </div>
+                    <div id="var-result"></div>
+                </div>
+            `;
+
+        case 'extractor':
+            return `
+                <div class="aifi-card">
+                    <div class="aifi-card-title">이미지에서 프롬프트 추출하기</div>
+                    <div class="aifi-upload-area" id="ext-upload" onclick="document.getElementById('ext-file').click()">
+                        <p>📸</p>
+                        <p>분석할 이미지를 선택하세요</p>
+                        <input type="file" id="ext-file" accept="image/*" style="display: none;"
+                               onchange="handleAifiFile(event, 'extractor')">
+                    </div>
+                    <div id="ext-preview"></div>
+                    <button class="button aifi-button" onclick="extractAifiPrompt()">
+                        프롬프트 추출
+                    </button>
+                    <div class="aifi-loading" id="ext-loading" style="display: none;">
+                        <div class="spinner"></div>
+                        <p>이미지를 분석하는 중...</p>
+                    </div>
+                    <div id="ext-result"></div>
+                </div>
+            `;
+
+        case 'video':
+            return `
+                <div class="aifi-card">
+                    <div class="aifi-card-title">영상 프롬프트 생성하기</div>
+                    <div class="form-group">
+                        <label>영상 아이디어</label>
+                        <textarea id="video-prompt" class="aifi-textarea" rows="4"
+                                  placeholder="만들고 싶은 영상을 설명해주세요... (예: 은행 강도가 화를 내며 전화를 끊는 장면)"></textarea>
+                    </div>
+                    <button class="button aifi-button" onclick="generateAifiVideoPrompt()">
+                        프롬프트 생성
+                    </button>
+                    <div class="aifi-loading" id="video-loading" style="display: none;">
+                        <div class="spinner"></div>
+                        <p>영상 프롬프트를 생성하는 중...</p>
+                    </div>
+                    <div id="video-result"></div>
+                </div>
+            `;
+
+        default:
+            return '';
+    }
+}
+
+// AIFI Tool Functions
+function openAifiSettings() {
+    const modal = document.getElementById('aifi-settings-modal');
+    if (modal) {
+        modal.style.display = 'flex';
+        // Load existing key
+        const existingKey = localStorage.getItem('gemini_api_key') || '';
+        const keyInput = document.getElementById('modal-api-key');
+        if (keyInput) {
+            keyInput.value = existingKey;
+        }
+        updateApiStatus(existingKey ? '설정됨' : '미설정');
+    }
+}
+
+function closeAifiSettings() {
+    const modal = document.getElementById('aifi-settings-modal');
+    if (modal) {
+        modal.style.display = 'none';
+    }
+}
+
+function saveAifiSettings() {
+    const key = document.getElementById('modal-api-key').value.trim();
+    if (!key) {
+        showAifiAlert('error', 'API 키를 입력해주세요.');
+        return;
+    }
+
+    aifiApiKey = key;
+    localStorage.setItem('gemini_api_key', key);
+    updateApiStatus('설정됨');
+    showAifiAlert('success', 'API 키가 저장되었습니다!');
+
+    // Refresh display and close modal
+    setTimeout(() => {
+        closeAifiSettings();
+        displayAIFITool();
+    }, 1000);
+}
+
+function updateApiStatus(status, isError = false) {
+    const statusText = document.getElementById('api-status-text');
+    if (statusText) {
+        statusText.textContent = status;
+        statusText.style.color = isError ? '#ff6b6b' : (status === '설정됨' ? '#4CAF50' : '#999');
+    }
+}
+
+async function testAifiApi() {
+    const key = document.getElementById('modal-api-key').value.trim();
+    const testBtn = document.getElementById('test-api-btn');
+
+    if (!key) {
+        showAifiAlert('error', 'API 키를 입력해주세요.');
+        return;
+    }
+
+    // Update button state
+    const originalHTML = testBtn.innerHTML;
+    testBtn.disabled = true;
+    testBtn.innerHTML = `
+        <div class="spinner-small"></div>
+        <span>테스트 중...</span>
+    `;
+    testBtn.classList.add('testing');
+
+    updateApiStatus('연결 테스트 중...', false);
+
+    try {
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${key}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                contents: [{
+                    parts: [{
+                        text: "Hello, this is a test"
+                    }]
+                }]
+            })
+        });
+
+        if (response.ok) {
+            updateApiStatus('연결 성공!', false);
+            showAifiAlert('success', 'API 연결이 확인되었습니다!');
+
+            // Success animation
+            testBtn.innerHTML = `
+                <i data-lucide="check-circle" style="width: 16px; height: 16px;"></i>
+                <span>연결 성공!</span>
+            `;
+            testBtn.classList.add('success');
+            testBtn.classList.remove('testing');
+
+            setTimeout(() => {
+                testBtn.innerHTML = originalHTML;
+                testBtn.classList.remove('success');
+                testBtn.disabled = false;
+                if (typeof lucide !== 'undefined') lucide.createIcons();
+            }, 2000);
+        } else {
+            updateApiStatus('연결 실패', true);
+            showAifiAlert('error', 'API 키가 올바르지 않습니다.');
+
+            // Error animation
+            testBtn.innerHTML = `
+                <i data-lucide="x-circle" style="width: 16px; height: 16px;"></i>
+                <span>연결 실패</span>
+            `;
+            testBtn.classList.add('error');
+            testBtn.classList.remove('testing');
+
+            setTimeout(() => {
+                testBtn.innerHTML = originalHTML;
+                testBtn.classList.remove('error');
+                testBtn.disabled = false;
+                if (typeof lucide !== 'undefined') lucide.createIcons();
+            }, 2000);
+        }
+    } catch (error) {
+        updateApiStatus('연결 실패', true);
+        showAifiAlert('error', '연결 테스트에 실패했습니다.');
+
+        // Error animation
+        testBtn.innerHTML = `
+            <i data-lucide="x-circle" style="width: 16px; height: 16px;"></i>
+            <span>오류 발생</span>
+        `;
+        testBtn.classList.add('error');
+        testBtn.classList.remove('testing');
+
+        setTimeout(() => {
+            testBtn.innerHTML = originalHTML;
+            testBtn.classList.remove('error');
+            testBtn.disabled = false;
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+        }, 2000);
+    }
+}
+
+function switchAifiTab(tab) {
+    aifiCurrentTab = tab;
+    displayAIFITool();
+}
+
+function showAifiAlert(type, message) {
+    const alertsDiv = document.getElementById('aifi-alerts');
+    if (!alertsDiv) return;
+
+    const alert = document.createElement('div');
+    alert.className = `aifi-alert aifi-alert-${type}`;
+    alert.textContent = message;
+
+    alertsDiv.appendChild(alert);
+
+    setTimeout(() => {
+        alert.remove();
+    }, 5000);
+}
+
+function showAifiLoading(id, show) {
+    const loading = document.getElementById(`${id}-loading`);
+    if (loading) {
+        loading.style.display = show ? 'block' : 'none';
+    }
+}
+
+// File handling
+function handleAifiFile(event, type) {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    if (!file.type.startsWith('image/')) {
+        showAifiAlert('error', '이미지 파일만 업로드 가능합니다.');
+        return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        const base64 = e.target.result.split(',')[1];
+        aifiUploadedImages[type] = {
+            base64: base64,
+            mimeType: file.type
+        };
+
+        // Show preview
+        const previewDiv = document.getElementById(`${type === 'variator' ? 'var' : 'ext'}-preview`);
+        previewDiv.innerHTML = `
+            <div class="aifi-image-preview-container">
+                <img src="${e.target.result}" class="aifi-preview-image">
+                <button class="aifi-remove-btn" onclick="clearAifiImage('${type}')" title="이미지 제거">
+                    <i data-lucide="x" style="width: 18px; height: 18px;"></i>
+                </button>
+            </div>
+            <div class="aifi-image-info">
+                <span class="aifi-file-name">${file.name}</span>
+                <span class="aifi-file-size">${formatFileSize(file.size)}</span>
+            </div>
+        `;
+    };
+    reader.readAsDataURL(file);
+
+    // Update lucide icons
+    if (typeof lucide !== 'undefined') {
+        setTimeout(() => lucide.createIcons(), 100);
+    }
+}
+
+function clearAifiImage(type) {
+    aifiUploadedImages[type] = null;
+    const previewDiv = document.getElementById(`${type === 'variator' ? 'var' : 'ext'}-preview`);
+    previewDiv.innerHTML = '';
+
+    // Reset file input
+    const fileInput = document.getElementById(`${type === 'variator' ? 'var' : 'ext'}-file`);
+    if (fileInput) fileInput.value = '';
+}
+
+// Format file size helper
+function formatFileSize(bytes) {
+    if (bytes === 0) return '0 Bytes';
+    const k = 1024;
+    const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return Math.round(bytes / Math.pow(k, i) * 100) / 100 + ' ' + sizes[i];
+}
+
+// Drag and drop
+function setupAifiDragDrop() {
+    const uploadAreas = document.querySelectorAll('.aifi-upload-area');
+
+    uploadAreas.forEach(area => {
+        area.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            area.classList.add('dragover');
+        });
+
+        area.addEventListener('dragleave', () => {
+            area.classList.remove('dragover');
+        });
+
+        area.addEventListener('drop', (e) => {
+            e.preventDefault();
+            area.classList.remove('dragover');
+
+            const file = e.dataTransfer.files[0];
+            if (file && file.type.startsWith('image/')) {
+                const input = area.querySelector('input[type="file"]');
+                const dataTransfer = new DataTransfer();
+                dataTransfer.items.add(file);
+                input.files = dataTransfer.files;
+                input.dispatchEvent(new Event('change'));
+            }
+        });
+    });
+}
+
+// API Functions with correct model names
+async function generateAifiImage() {
+    if (!aifiApiKey) {
+        showAifiAlert('error', 'API 키를 먼저 설정해주세요.');
+        return;
+    }
+
+    const prompt = document.getElementById('gen-prompt').value.trim();
+    if (!prompt) {
+        showAifiAlert('error', '프롬프트를 입력해주세요.');
+        return;
+    }
+
+    showAifiLoading('gen', true);
+
+    try {
+        // First, enhance the prompt using Gemini 2.5 Flash
+        const enhanceResponse = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${aifiApiKey}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                contents: [{
+                    parts: [{
+                        text: `Enhance this prompt for image generation. Make it detailed and descriptive in English:\n\n"${prompt}"\n\nEnhanced prompt:`
+                    }]
+                }]
+            })
+        });
+
+        const enhanceData = await enhanceResponse.json();
+        let enhancedPrompt = prompt;
+
+        if (enhanceData.candidates && enhanceData.candidates[0]) {
+            enhancedPrompt = enhanceData.candidates[0].content.parts[0].text;
+        }
+
+        // Then, generate the actual image using Nano Banana (gemini-2.5-flash-image-preview)
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image-preview:generateContent?key=${aifiApiKey}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                contents: [{
+                    parts: [{
+                        text: enhancedPrompt
+                    }]
+                }],
+                generationConfig: {
+                    responseModalities: ["IMAGE", "TEXT"]
+                }
+            })
+        });
+
+        const data = await response.json();
+
+        if (data.candidates && data.candidates[0]) {
+            // Check for image in response
+            let imageBase64 = null;
+            let textResponse = null;
+
+            for (const part of data.candidates[0].content.parts) {
+                if (part.inlineData && part.inlineData.data) {
+                    imageBase64 = part.inlineData.data;
+                } else if (part.text) {
+                    textResponse = part.text;
+                }
+            }
+
+            if (imageBase64) {
+                displayAifiGeneratedImage('gen', imageBase64);
+            } else {
+                // If no image, show the enhanced prompt
+                displayAifiPromptResult('gen', enhancedPrompt);
+            }
+        } else {
+            showAifiAlert('error', '이미지 생성에 실패했습니다.');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        showAifiAlert('error', '프롬프트 생성에 실패했습니다.');
+    } finally {
+        showAifiLoading('gen', false);
+    }
+}
+
+async function generateAifiTextPrompt(prompt) {
+    // Using gemini-2.5-flash for text generation
+    try {
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${aifiApiKey}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                contents: [{
+                    parts: [{
+                        text: `다음 아이디어를 Midjourney나 DALL-E 3에서 사용할 수 있는 상세한 이미지 생성 프롬프트로 변환해주세요. 영어로 작성하고, 스타일, 조명, 구도, 색상 등을 포함해주세요:\n\n"${prompt}"\n\n프롬프트:`
+                    }]
+                }]
+            })
+        });
+
+        const data = await response.json();
+        if (data.candidates && data.candidates[0]) {
+            const enhancedPrompt = data.candidates[0].content.parts[0].text;
+            displayAifiPromptResult('gen', enhancedPrompt);
+        }
+    } catch (error) {
+        showAifiAlert('error', '프롬프트 생성에 실패했습니다.');
+    }
+}
+
+async function variateAifiImage() {
+    if (!aifiApiKey) {
+        showAifiAlert('error', 'API 키를 먼저 설정해주세요.');
+        return;
+    }
+
+    if (!aifiUploadedImages.variator) {
+        showAifiAlert('error', '먼저 이미지를 업로드해주세요.');
+        return;
+    }
+
+    const prompt = document.getElementById('var-prompt').value.trim();
+    if (!prompt) {
+        showAifiAlert('error', '변형 지시사항을 입력해주세요.');
+        return;
+    }
+
+    showAifiLoading('var', true);
+
+    try {
+        // Using gemini-2.5-flash for image analysis and variation
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${aifiApiKey}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                contents: [{
+                    parts: [
+                        {
+                            inline_data: {
+                                mime_type: aifiUploadedImages.variator.mimeType,
+                                data: aifiUploadedImages.variator.base64
+                            }
+                        },
+                        {
+                            text: `이 이미지를 다음과 같이 변형하기 위한 상세한 프롬프트를 생성해주세요: "${prompt}"\n\n원본 이미지의 주요 요소를 유지하면서 요청된 변형을 적용한 새로운 이미지 생성 프롬프트를 영어로 작성해주세요.`
+                        }
+                    ]
+                }]
+            })
+        });
+
+        const data = await response.json();
+        if (data.candidates && data.candidates[0]) {
+            const variationPrompt = data.candidates[0].content.parts[0].text;
+            displayAifiPromptResult('var', variationPrompt);
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        showAifiAlert('error', '이미지 변형에 실패했습니다.');
+    } finally {
+        showAifiLoading('var', false);
+    }
+}
+
+async function extractAifiPrompt() {
+    if (!aifiApiKey) {
+        showAifiAlert('error', 'API 키를 먼저 설정해주세요.');
+        return;
+    }
+
+    if (!aifiUploadedImages.extractor) {
+        showAifiAlert('error', '먼저 이미지를 업로드해주세요.');
+        return;
+    }
+
+    showAifiLoading('ext', true);
+
+    try {
+        // Using gemini-2.5-flash for prompt extraction
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${aifiApiKey}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                contents: [{
+                    parts: [
+                        {
+                            inline_data: {
+                                mime_type: aifiUploadedImages.extractor.mimeType,
+                                data: aifiUploadedImages.extractor.base64
+                            }
+                        },
+                        {
+                            text: `Analyze this image and generate a detailed prompt that could recreate it. Include:\n\nSTYLE: [artistic style, rendering technique]\nMEDIUM: [medium/technique]\nSUBJECT: [main subject description]\nCAMERA: [shot type, angle]\nCOMPOSITION: [compositional elements]\nLIGHTING: [lighting style and setup]\nCOLOR: [color palette, tone]\nMOOD: [atmosphere, emotion]\nDETAILS: [specific details, textures]\nQUALITY: [quality modifiers]\n\nFormat it as a structured prompt suitable for Midjourney or DALL-E.`
+                        }
+                    ]
+                }]
+            })
+        });
+
+        const data = await response.json();
+        if (data.candidates && data.candidates[0]) {
+            const extractedPrompt = data.candidates[0].content.parts[0].text;
+            displayAifiPromptResult('ext', extractedPrompt);
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        showAifiAlert('error', '프롬프트 추출에 실패했습니다.');
+    } finally {
+        showAifiLoading('ext', false);
+    }
+}
+
+async function generateAifiVideoPrompt() {
+    if (!aifiApiKey) {
+        showAifiAlert('error', 'API 키를 먼저 설정해주세요.');
+        return;
+    }
+
+    const prompt = document.getElementById('video-prompt').value.trim();
+    if (!prompt) {
+        showAifiAlert('error', '영상 아이디어를 입력해주세요.');
+        return;
+    }
+
+    showAifiLoading('video', true);
+
+    try {
+        // Using gemini-2.5-flash for video prompt generation
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${aifiApiKey}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                contents: [{
+                    parts: [{
+                        text: `Create a detailed video generation prompt in JSON format for: "${prompt}"\n\nInclude these elements in the JSON:\n- metadata (title, duration)\n- scene description\n- camera movements\n- character details (if any)\n- lighting setup\n- audio/dialogue\n- visual style\n- color grading\n\nFormat as a clean JSON object.`
+                    }]
+                }],
+                generationConfig: {
+                    temperature: 0.7
+                }
+            })
+        });
+
+        const data = await response.json();
+        if (data.candidates && data.candidates[0]) {
+            let videoPrompt = data.candidates[0].content.parts[0].text;
+
+            // Try to format as JSON
+            try {
+                const jsonMatch = videoPrompt.match(/\{[\s\S]*\}/);
+                if (jsonMatch) {
+                    const jsonObj = JSON.parse(jsonMatch[0]);
+                    videoPrompt = JSON.stringify(jsonObj, null, 2);
+                }
+            } catch (e) {
+                // If not valid JSON, use as is
+            }
+
+            displayAifiPromptResult('video', videoPrompt);
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        showAifiAlert('error', '영상 프롬프트 생성에 실패했습니다.');
+    } finally {
+        showAifiLoading('video', false);
+    }
+}
+
+// Display results
+function displayAifiGeneratedImage(type, base64) {
+    const resultDiv = document.getElementById(`${type}-result`);
+    resultDiv.innerHTML = `
+        <div class="aifi-result">
+            <img src="data:image/jpeg;base64,${base64}" class="aifi-result-image">
+            <div style="margin-top: 15px;">
+                <button class="button aifi-button" onclick="downloadAifiImage('${base64}')">
+                    이미지 다운로드
+                </button>
+            </div>
+        </div>
+    `;
+}
+
+function displayAifiPromptResult(type, prompt) {
+    const resultDiv = document.getElementById(`${type}-result`);
+    resultDiv.innerHTML = `
+        <div class="aifi-result">
+            <div class="aifi-result-text">${prompt.replace(/\n/g, '<br>')}</div>
+            <div style="margin-top: 15px;">
+                <button class="button aifi-button" onclick="copyAifiToClipboard('${btoa(prompt)}')">
+                    클립보드에 복사
+                </button>
+            </div>
+        </div>
+    `;
+}
+
+function copyAifiToClipboard(base64Text) {
+    const text = atob(base64Text);
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+    textarea.style.position = 'fixed';
+    textarea.style.left = '-999999px';
+    document.body.appendChild(textarea);
+    textarea.select();
+
+    try {
+        document.execCommand('copy');
+        showAifiAlert('success', '클립보드에 복사되었습니다!');
+    } catch (err) {
+        showAifiAlert('error', '복사에 실패했습니다.');
+    }
+
+    document.body.removeChild(textarea);
+}
+
+function downloadAifiImage(base64) {
+    const link = document.createElement('a');
+    link.href = `data:image/jpeg;base64,${base64}`;
+    link.download = `generated-${Date.now()}.jpg`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
 }

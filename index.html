@@ -21,7 +21,6 @@
             </div>
             <div class="header-info">
                 <span class="badge">v2.0</span>
-                <span class="author">by 향기펀치</span>
             </div>
         </div>
     </header>
@@ -320,6 +319,21 @@
                     </div>
                 </div>
 
+                <!-- AIFI 생성 도구 섹션 -->
+                <div class="menu-section" style="margin-top: 20px; padding-top: 20px; border-top: 2px solid #ff6b6b;">
+                    <button class="menu-header" onclick="toggleSection('aifi-tools')" style="background: linear-gradient(135deg, #ff6b6b, #ff8e53); border: 1px solid rgba(255, 107, 107, 0.3);">
+                        <i data-lucide="sparkles" class="menu-icon"></i>
+                        <span>AIFI AI 도구</span>
+                        <i data-lucide="chevron-down" class="chevron-icon" id="aifi-tools-chevron"></i>
+                    </button>
+                    <div class="menu-items" id="aifi-tools-items">
+                        <a href="#" class="menu-item" onclick="showContent('aifi-tool')">
+                            <i data-lucide="wand-2" style="width: 16px; height: 16px; margin-right: 8px;"></i>
+                            AI 프롬프트 생성기
+                        </a>
+                    </div>
+                </div>
+
             </div>
         </aside>
 
@@ -358,8 +372,53 @@
         <div class="modal-caption" id="modal-caption"></div>
     </div>
 
+    <!-- AIFI API Settings Modal -->
+    <div id="aifi-settings-modal" class="aifi-modal" style="display: none;">
+        <div class="aifi-modal-content">
+            <div class="aifi-modal-header">
+                <h3>⚙️ API 설정</h3>
+                <button class="aifi-modal-close" onclick="closeAifiSettings()">&times;</button>
+            </div>
+            <div class="aifi-modal-body">
+                <div class="form-group">
+                    <label for="modal-api-key">Gemini API Key</label>
+                    <input type="password" id="modal-api-key" class="aifi-input"
+                           placeholder="AIzaSy... 형식의 API 키를 입력하세요">
+                    <small class="aifi-help-text">
+                        API 키가 없으신가요?
+                        <a href="https://makersuite.google.com/app/apikey" target="_blank" class="aifi-link">
+                            여기서 무료로 생성하세요 →
+                        </a>
+                    </small>
+                </div>
+                <div class="aifi-api-status">
+                    <span class="status-label">상태:</span>
+                    <span class="status-value" id="api-status-text">미설정</span>
+                </div>
+            </div>
+            <div class="aifi-modal-footer">
+                <button class="aifi-test-btn" id="test-api-btn" onclick="testAifiApi()">
+                    <i data-lucide="zap" style="width: 16px; height: 16px;"></i>
+                    <span>연결 테스트</span>
+                </button>
+                <button class="button aifi-button" onclick="saveAifiSettings()">
+                    <i data-lucide="save" style="width: 16px; height: 16px;"></i>
+                    저장하기
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- Custom Scripts -->
     <script src="data.js"></script>
     <script src="app.js"></script>
+    <script>
+        // Initialize Lucide icons after modal is added
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        });
+    </script>
 </body>
 </html>

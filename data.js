@@ -24,6 +24,14 @@ const cameraData = {
         ]
     },
 
+    // AIFI AI 생성 도구
+    'aifi-tool': {
+        title: 'AIFI AI 생성 도구',
+        koreanTitle: 'AI Image & Video Prompt Generator',
+        type: 'tool',
+        description: 'Gemini AI를 활용한 이미지 및 영상 프롬프트 생성 도구'
+    },
+
     // ============= CAMERA SHOTS =============
     // Shot Size
     'extreme-closeup': {
@@ -652,10 +660,8 @@ const cameraData = {
             '마법 같은 분위기 연출'
         ],
         images: [
-            { src: 'https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=600&h=400&fit=crop', caption: 'Warm golden light' },
-            { src: 'https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?w=600&h=400&fit=crop', caption: 'Sunset glow' },
-            { src: 'https://images.unsplash.com/photo-1495616811223-4d98c6e9c869?w=600&h=400&fit=crop', caption: 'Magic hour' },
-            { src: 'https://images.unsplash.com/photo-1475924156734-496f6cac6ec1?w=600&h=400&fit=crop', caption: 'Romantic lighting' }
+            { src: 'https://cdn.midjourney.com/7d1356ab-4c07-4ff1-81d3-041e8362cc73/0_2.png', caption: 'Warm golden light' },
+            { src: 'https://cdn.midjourney.com/d10a0b2e-7a41-41d2-a7f7-06971c628062/0_3.png', caption: 'Sunset glow' }
         ]
     },
 
@@ -690,10 +696,8 @@ const cameraData = {
             '피부톤을 자연스럽게 표현'
         ],
         images: [
-            { src: 'https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=600&h=400&fit=crop', caption: 'Soft diffused light' },
-            { src: 'https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?w=600&h=400&fit=crop', caption: 'Even lighting' },
-            { src: 'https://images.unsplash.com/photo-1476820865390-c52aeebb9891?w=600&h=400&fit=crop', caption: 'Cloudy atmosphere' },
-            { src: 'https://images.unsplash.com/photo-1429734956993-8a9b0555e122?w=600&h=400&fit=crop', caption: 'Natural diffusion' }
+            { src: 'https://cdn.midjourney.com/bf83ba48-3509-439a-9173-42b2144b6d7d/0_2.png', caption: 'Soft diffused light' },
+            { src: 'https://cdn.midjourney.com/d92e6b97-10d7-4677-8f68-7d387bc93a63/0_1.png', caption: 'Even lighting' }
         ]
     },
 
@@ -729,10 +733,8 @@ const cameraData = {
             '진중한 느낌의 포트레이트'
         ],
         images: [
-            { src: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop', caption: 'Classic portrait' },
-            { src: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&h=400&fit=crop', caption: 'Triangle of light' },
-            { src: 'https://images.unsplash.com/photo-1522529599102-193c0d76b5b6?w=600&h=400&fit=crop', caption: 'Artistic lighting' },
-            { src: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&h=400&fit=crop', caption: 'Dramatic mood' }
+            { src: 'https://cdn.midjourney.com/5ced8630-9548-4815-9d04-101416c6091f/0_1.png', caption: 'Classic portrait' },
+            { src: 'https://cdn.midjourney.com/e7570d7b-c644-4b22-82c7-a1c5f65a6b78/0_3.png', caption: 'Triangle of light' }
         ]
     },
 
@@ -748,10 +750,8 @@ const cameraData = {
             '이상적인 아름다움 표현'
         ],
         images: [
-            { src: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&h=400&fit=crop', caption: 'Glamour lighting' },
-            { src: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600&h=400&fit=crop', caption: 'Beauty shot' },
-            { src: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=600&h=400&fit=crop', caption: 'Fashion portrait' },
-            { src: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&h=400&fit=crop', caption: 'Hollywood style' }
+            { src: 'https://cdn.midjourney.com/686815c8-2fd7-426b-8cd5-04b08da5f3cb/0_2.png', caption: 'Glamour lighting' },
+            { src: 'https://cdn.midjourney.com/686815c8-2fd7-426b-8cd5-04b08da5f3cb/0_1.png', caption: 'Beauty shot' }
         ]
     },
 
@@ -767,10 +767,8 @@ const cameraData = {
             '내적 갈등의 표현'
         ],
         images: [
-            { src: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop', caption: 'Half-lit face' },
-            { src: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&h=400&fit=crop', caption: 'Film noir style' },
-            { src: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&h=400&fit=crop', caption: 'Dramatic split' },
-            { src: 'https://images.unsplash.com/photo-1522529599102-193c0d76b5b6?w=600&h=400&fit=crop', caption: 'Mystery mood' }
+            { src: 'https://cdn.midjourney.com/59125b2d-47e7-4c1d-b885-968ad468f946/0_1.png', caption: 'Half-lit face' },
+            { src: 'https://cdn.midjourney.com/1b5a31d7-5f49-45f1-9af9-4ec860fea2eb/0_1.png', caption: 'Film noir style' }
         ]
     },
 
@@ -786,10 +784,8 @@ const cameraData = {
             '실루엣 강조'
         ],
         images: [
-            { src: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&h=400&fit=crop', caption: 'Edge lighting' },
-            { src: 'https://images.unsplash.com/photo-1495745966610-2a67f2297e5e?w=600&h=400&fit=crop', caption: 'Backlit outline' },
-            { src: 'https://images.unsplash.com/photo-1516726817505-f5ed825624d8?w=600&h=400&fit=crop', caption: 'Glowing edges' },
-            { src: 'https://images.unsplash.com/photo-1502136969935-8d8eef54d77b?w=600&h=400&fit=crop', caption: 'Separation light' }
+            { src: 'https://cdn.midjourney.com/57943433-2b1e-446c-9882-b3dcd82d96f2/0_1.png', caption: 'Edge lighting' },
+            { src: 'https://cdn.midjourney.com/179a1289-1570-423f-a45b-70cb1c15c961/0_3.png', caption: 'Backlit outline' }
         ]
     },
 
@@ -1305,10 +1301,8 @@ const cameraData = {
             '멀티미디어 작품'
         ],
         images: [
-            { src: 'https://images.unsplash.com/photo-1578321272176-b7bbc0679853?w=600&h=400&fit=crop', caption: 'Combined media' },
-            { src: 'https://images.unsplash.com/photo-1549490349-8643362247b5?w=600&h=400&fit=crop', caption: 'Experimental art' },
-            { src: 'https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=600&h=400&fit=crop', caption: 'Mixed textures' },
-            { src: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop', caption: 'Hybrid technique' }
+            { src: 'https://cdn.midjourney.com/2142e7e4-96e0-4097-9a79-13f3917517ee/0_3.png', caption: 'Combined media' },
+            { src: 'https://cdn.midjourney.com/a125b558-1439-4418-af59-bd93ea06554b/0_1.png', caption: 'Experimental art' }
         ]
     },
 
