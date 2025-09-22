@@ -1236,10 +1236,8 @@ const cameraData = {
             '감성 포토'
         ],
         images: [
-            { src: 'https://images.unsplash.com/photo-1526081347589-65d54dd96d6e?w=600&h=400&fit=crop', caption: 'Instant photo' },
-            { src: 'https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?w=600&h=400&fit=crop', caption: 'White border' },
-            { src: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&h=400&fit=crop', caption: 'Retro instant' },
-            { src: 'https://images.unsplash.com/photo-1526081715791-7c538f86e977?w=600&h=400&fit=crop', caption: 'Polaroid style' }
+            { src: 'https://cdn.midjourney.com/921d12af-5786-4098-88e9-78e94f101587/0_0.png', caption: 'Instant photo' },
+            { src: 'https://cdn.midjourney.com/6fc4a8aa-c6f3-436d-973e-5539a27a95af/0_3.png', caption: 'White border' }
         ]
     },
 
@@ -1255,10 +1253,8 @@ const cameraData = {
             '도시 야경'
         ],
         images: [
-            { src: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop', caption: 'Light trails' },
-            { src: 'https://images.unsplash.com/photo-1514897575457-c4db467cf78e?w=600&h=400&fit=crop', caption: 'Star trails' },
-            { src: 'https://images.unsplash.com/photo-1519608425089-7f3bfa6f6bb8?w=600&h=400&fit=crop', caption: 'Motion blur' },
-            { src: 'https://images.unsplash.com/photo-1493514789931-586cb221d7a7?w=600&h=400&fit=crop', caption: 'Time lapse' }
+            { src: 'https://cdn.midjourney.com/22bd560a-8fb1-43e8-9eec-641db953e70e/0_3.png', caption: 'Light trails' },
+            { src: 'https://cdn.midjourney.com/7a451c1c-45b3-4fd4-a635-c91914774097/0_0.png', caption: 'Star trails' }
         ]
     },
 
@@ -1275,10 +1271,8 @@ const cameraData = {
             '콘셉추얼 아트'
         ],
         images: [
-            { src: 'https://images.unsplash.com/photo-1582738411706-bfc8e691d1c2?w=600&h=400&fit=crop', caption: 'Mixed elements' },
-            { src: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop', caption: 'Paper collage' },
-            { src: 'https://images.unsplash.com/photo-1578321272176-b7bbc0679853?w=600&h=400&fit=crop', caption: 'Composite art' },
-            { src: 'https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3?w=600&h=400&fit=crop', caption: 'Layered media' }
+            { src: 'https://cdn.midjourney.com/c1d12a67-4db2-4a95-a722-82abf22bbb94/0_0.png', caption: 'Mixed elements' },
+            { src: 'https://cdn.midjourney.com/5bc4cc7b-b578-4ab8-8b3e-3f333d3d61c8/0_1.png', caption: 'Paper collage' }
         ]
     },
 
@@ -1294,10 +1288,8 @@ const cameraData = {
             '디지털 아트'
         ],
         images: [
-            { src: 'https://images.unsplash.com/photo-1561494653-744c43aed0c1?w=600&h=400&fit=crop', caption: 'Digital composite' },
-            { src: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop', caption: 'Photo manipulation' },
-            { src: 'https://images.unsplash.com/photo-1550684376-efcbd6e3f031?w=600&h=400&fit=crop', caption: 'Digital layers' },
-            { src: 'https://images.unsplash.com/photo-1578321272176-b7bbc0679853?w=600&h=400&fit=crop', caption: 'Mixed digital' }
+            { src: 'https://cdn.midjourney.com/cdc74a9a-0d7d-44d8-87b8-39cec11b2b6b/0_1.png', caption: 'Digital composite' },
+            { src: 'https://cdn.midjourney.com/43d9e2e1-84ba-471f-b8cf-0b432459b4fb/0_2.png', caption: 'Photo manipulation' }
         ]
     },
 
