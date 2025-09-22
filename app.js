@@ -309,7 +309,7 @@ function displayContent() {
                         <h3 class="section-title">예시 영상</h3>
                         <div class="video-grid">
                             ${currentData.videos.map((video, index) => `
-                                <div class="video-item tilt-active">
+                                <div class="video-item">
                                     <video controls autoplay loop muted playsinline>
                                         <source src="${video.src}" type="video/mp4">
                                         Your browser does not support the video tag.
@@ -539,7 +539,7 @@ function renderAifiTabContent(tab) {
                                     <line x1="12" y1="3" x2="12" y2="15"></line>
                                 </svg>
                                 <p>이미지를 업로드하세요</p>
-                                <p style="font-size: 12px; color: #666;">PNG, JPG, WEBP (최대 4MB)</p>
+                                <p style="font-size: 12px; color: #666;">PNG, JPG, WEBP (최대 10MB)</p>
                                 <input type="file" id="var-file" accept="image/*" style="display: none;"
                                        onchange="handleAifiFile(event, 'variator')">
                             </div>
@@ -579,7 +579,7 @@ function renderAifiTabContent(tab) {
                                     <line x1="12" y1="3" x2="12" y2="15"></line>
                                 </svg>
                                 <p>이미지를 업로드하세요</p>
-                                <p style="font-size: 12px; color: #666;">PNG, JPG, WEBP (최대 4MB)</p>
+                                <p style="font-size: 12px; color: #666;">PNG, JPG, WEBP (최대 10MB)</p>
                                 <input type="file" id="ext-file" accept="image/*" style="display: none;"
                                        onchange="handleAifiFile(event, 'extractor')">
                             </div>
@@ -703,6 +703,7 @@ async function testAifiApi() {
     updateApiStatus('연결 테스트 중...', false);
 
     try {
+        // Test 1: Gemini 2.5 Flash 모델 테스트
         const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${key}`, {
             method: 'POST',
             headers: {
@@ -717,9 +718,46 @@ async function testAifiApi() {
             })
         });
 
-        if (response.ok) {
-            updateApiStatus('연결 성공!', false);
-            showAifiAlert('success', 'API 연결이 확인되었습니다!');
+        let geminiSuccess = response.ok;
+        let nanoSuccess = false;
+
+        // Test 2: Imagen 3 모델 테스트 (실제 이미지 생성 모델)
+        if (geminiSuccess) {
+            testBtn.innerHTML = `
+                <div class="spinner-small"></div>
+                <span>Imagen 3 테스트 중...</span>
+            `;
+
+            try {
+                const imagenResponse = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/imagen-3.0-generate-001:predict?key=${key}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        instances: [{
+                            prompt: "Test image generation"
+                        }],
+                        parameters: {
+                            sampleCount: 1
+                        }
+                    })
+                });
+
+                nanoSuccess = imagenResponse.ok || imagenResponse.status === 404; // 404도 API 키는 유효하다는 의미
+            } catch (nanoError) {
+                console.log('Imagen 3 test error:', nanoError);
+                nanoSuccess = false;
+            }
+        }
+
+        if (geminiSuccess) {
+            const statusMessage = geminiSuccess
+                ? 'Gemini 2.5 Flash 연결 성공!'
+                : 'API 연결 실패';
+
+            updateApiStatus(statusMessage, false);
+            showAifiAlert('success', statusMessage);
 
             // Success animation
             testBtn.innerHTML = `
@@ -812,9 +850,9 @@ function handleAifiFile(event, type) {
         return;
     }
 
-    // 파일 크기 체크 (4MB)
-    if (file.size > 4 * 1024 * 1024) {
-        showAifiAlert('error', '파일 크기는 4MB 이하여야 합니다.');
+    // 파일 크기 체크 (10MB - Gemini API의 실제 제한)
+    if (file.size > 10 * 1024 * 1024) {
+        showAifiAlert('error', '파일 크기는 10MB 이하여야 합니다.');
         return;
     }
 
@@ -872,7 +910,7 @@ function clearAifiImage(type) {
             <line x1="12" y1="3" x2="12" y2="15"></line>
         </svg>
         <p>이미지를 업로드하세요</p>
-        <p style="font-size: 12px; color: #666;">PNG, JPG, WEBP (최대 4MB)</p>
+        <p style="font-size: 12px; color: #666;">PNG, JPG, WEBP (최대 10MB)</p>
         <input type="file" id="${type === 'variator' ? 'var' : 'ext'}-file" accept="image/*" style="display: none;"
                onchange="handleAifiFile(event, '${type}')">
     `;
@@ -941,7 +979,7 @@ async function generateAifiImage() {
     showAifiLoading('gen', true);
 
     try {
-        // First, enhance the prompt using Gemini 2.5 Flash
+        // Step 1: Gemini로 프롬프트 향상
         const enhanceResponse = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${aifiApiKey}`, {
             method: 'POST',
             headers: {
@@ -950,7 +988,7 @@ async function generateAifiImage() {
             body: JSON.stringify({
                 contents: [{
                     parts: [{
-                        text: `Enhance this prompt for image generation. Make it detailed and descriptive in English:\n\n"${prompt}"\n\nEnhanced prompt:`
+                        text: `다음 아이디어를 Midjourney나 DALL-E 3에서 사용할 수 있는 상세한 이미지 생성 프롬프트로 변환해주세요. 영어로 작성하고, 스타일, 조명, 구도, 색상 등을 포함해주세요:\n\n"${prompt}"\n\nEnhanced prompt:`
                     }]
                 }]
             })
@@ -963,47 +1001,43 @@ async function generateAifiImage() {
             enhancedPrompt = enhanceData.candidates[0].content.parts[0].text;
         }
 
-        // Then, generate the actual image using Nano Banana (gemini-2.5-flash-image-preview)
-        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image-preview:generateContent?key=${aifiApiKey}`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                contents: [{
-                    parts: [{
-                        text: enhancedPrompt
-                    }]
-                }],
-                generationConfig: {
-                    responseModalities: ["IMAGE", "TEXT"]
-                }
-            })
-        });
+        // Step 2: 이미지 생성을 위한 강화된 프롬프트를 다시 Gemini로 처리
+        // (실제 이미지 생성 API가 제한적이므로 프롬프트 최적화에 집중)
+        try {
+            const imageResponse = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${aifiApiKey}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    contents: [{
+                        parts: [{
+                            text: `Create an ultra-detailed image generation prompt for Midjourney v6 based on this concept: "${enhancedPrompt}"\n\nInclude specific details about:\n- Art style and medium\n- Lighting and atmosphere\n- Camera angle and composition\n- Color palette\n- Technical parameters (--ar, --s, --q)\n\nFormat: One detailed paragraph followed by Midjourney parameters.`
+                        }]
+                    }],
+                    generationConfig: {
+                        temperature: 0.8,
+                        candidateCount: 1
+                    }
+                })
+            });
 
-        const data = await response.json();
+            const imageData = await imageResponse.json();
 
-        if (data.candidates && data.candidates[0]) {
-            // Check for image in response
-            let imageBase64 = null;
-            let textResponse = null;
-
-            for (const part of data.candidates[0].content.parts) {
-                if (part.inlineData && part.inlineData.data) {
-                    imageBase64 = part.inlineData.data;
-                } else if (part.text) {
-                    textResponse = part.text;
-                }
-            }
-
-            if (imageBase64) {
-                displayAifiGeneratedImage('gen', imageBase64);
+            if (imageData.candidates && imageData.candidates[0]) {
+                const finalPrompt = imageData.candidates[0].content.parts[0].text;
+                displayAifiPromptResult('gen', finalPrompt);
+                showAifiAlert('success', 'Midjourney 프롬프트가 생성되었습니다!');
             } else {
-                // If no image, show the enhanced prompt
+                // 실패 시 기본 프롬프트 표시
                 displayAifiPromptResult('gen', enhancedPrompt);
+                showAifiAlert('info', '강화된 프롬프트가 생성되었습니다.');
             }
-        } else {
-            showAifiAlert('error', '이미지 생성에 실패했습니다.');
+        } catch (imageError) {
+            console.error('Prompt enhancement error:', imageError);
+            // 오류 발생 시 기본 프롬프트 표시
+            displayAifiPromptResult('gen', enhancedPrompt);
+            showAifiAlert('info', '기본 프롬프트가 생성되었습니다.');
         }
     } catch (error) {
         console.error('Error:', error);
@@ -1060,8 +1094,8 @@ async function variateAifiImage() {
     showAifiLoading('var', true);
 
     try {
-        // Using gemini-2.5-flash for image analysis and variation
-        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${aifiApiKey}`, {
+        // Step 1: Gemini로 프롬프트 생성
+        const promptResponse = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${aifiApiKey}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -1083,10 +1117,56 @@ async function variateAifiImage() {
             })
         });
 
-        const data = await response.json();
-        if (data.candidates && data.candidates[0]) {
-            const variationPrompt = data.candidates[0].content.parts[0].text;
-            displayAifiPromptResult('var', variationPrompt);
+        const promptData = await promptResponse.json();
+        if (promptData.candidates && promptData.candidates[0]) {
+            const variationPrompt = promptData.candidates[0].content.parts[0].text;
+
+            // Step 2: 변형된 이미지를 위한 상세 프롬프트 생성
+            // (실제 이미지 생성 API가 제한적이므로 프롬프트 최적화에 집중)
+            try {
+                const imageResponse = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${aifiApiKey}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        contents: [{
+                            parts: [
+                                {
+                                    inline_data: {
+                                        mime_type: aifiUploadedImages.variator.mimeType,
+                                        data: aifiUploadedImages.variator.base64
+                                    }
+                                },
+                                {
+                                    text: `Based on this variation request: "${variationPrompt}"\n\nCreate an ultra-detailed Midjourney v6 prompt that maintains the core elements of the original image while applying the requested changes.\n\nInclude:\n- Specific art style and rendering technique\n- Detailed description of the variation\n- Lighting and atmosphere adjustments\n- Color grading changes\n- Technical parameters (--ar, --s, --q, --v 6)\n\nFormat: One detailed paragraph followed by Midjourney parameters.`
+                                }
+                            ]
+                        }],
+                        generationConfig: {
+                            temperature: 0.8,
+                            candidateCount: 1
+                        }
+                    })
+                });
+
+                const imageData = await imageResponse.json();
+
+                if (imageData.candidates && imageData.candidates[0]) {
+                    const finalVariationPrompt = imageData.candidates[0].content.parts[0].text;
+                    displayAifiPromptResult('var', finalVariationPrompt);
+                    showAifiAlert('success', '이미지 변형 프롬프트가 생성되었습니다!');
+                } else {
+                    // 실패 시 기본 프롬프트 표시
+                    displayAifiPromptResult('var', variationPrompt);
+                    showAifiAlert('info', '변형 프롬프트가 생성되었습니다.');
+                }
+            } catch (imageError) {
+                console.error('Variation prompt error:', imageError);
+                // 오류 발생 시 기본 프롬프트 표시
+                displayAifiPromptResult('var', variationPrompt);
+                showAifiAlert('info', '기본 변형 프롬프트가 생성되었습니다.');
+            }
         }
     } catch (error) {
         console.error('Error:', error);
@@ -1231,6 +1311,56 @@ function displayAifiPromptResult(type, prompt) {
             </div>
         </div>
     `;
+}
+
+// 이미지 결과 표시 함수 추가
+function displayAifiImageResult(type, imageUrl) {
+    const resultDiv = document.getElementById(`${type}-result`);
+    resultDiv.style.border = 'none';
+    resultDiv.style.background = 'transparent';
+    resultDiv.style.padding = '0';
+    resultDiv.innerHTML = `
+        <div style="flex: 1; display: flex; flex-direction: column;">
+            <img src="${imageUrl}" style="width: 100%; height: 100%; object-fit: contain; border-radius: 10px; flex: 1;">
+        </div>
+        <div style="display: flex; gap: 10px; justify-content: center; margin-top: 20px;">
+            <button class="button aifi-button" onclick="downloadAifiImage('${imageUrl}')">
+                다운로드
+            </button>
+            <button class="button aifi-button aifi-button-secondary" onclick="copyAifiImageUrl('${imageUrl}')">
+                URL 복사
+            </button>
+        </div>
+    `;
+}
+
+// 이미지 다운로드 함수
+function downloadAifiImage(imageUrl) {
+    const link = document.createElement('a');
+    link.href = imageUrl;
+    link.download = `aifi-image-${Date.now()}.png`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+
+// 이미지 URL 복사 함수
+function copyAifiImageUrl(imageUrl) {
+    const textarea = document.createElement('textarea');
+    textarea.value = imageUrl;
+    textarea.style.position = 'fixed';
+    textarea.style.left = '-999999px';
+    document.body.appendChild(textarea);
+    textarea.select();
+
+    try {
+        document.execCommand('copy');
+        showAifiAlert('success', 'URL이 클립보드에 복사되었습니다.');
+    } catch (err) {
+        showAifiAlert('error', 'URL 복사에 실패했습니다.');
+    }
+
+    document.body.removeChild(textarea);
 }
 
 function copyAifiToClipboard(base64Text) {

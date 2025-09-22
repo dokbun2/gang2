@@ -836,8 +836,8 @@ const cameraData = {
             '꿈같은 분위기'
         ],
         images: [
-            { src: 'https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=600&h=400&fit=crop', caption: 'Blue moonlight' },
-            { src: 'https://images.unsplash.com/photo-1514897575457-c4db467cf78e?w=600&h=400&fit=crop', caption: 'Night atmosphere' },
+            { src: 'https://cdn.midjourney.com/c59c229a-70d8-43f7-8db9-9163c4fb3f07/0_3.png', caption: 'Blue moonlight' },
+            { src: 'https://cdn.midjourney.com/151c05d8-bba3-4cd6-af08-c82d771ac7f7/0_3.png', caption: 'Night atmosphere' },
             { src: 'https://images.unsplash.com/photo-1505506874110-6a7a69069a08?w=600&h=400&fit=crop', caption: 'Mystical moon' },
             { src: 'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=600&h=400&fit=crop', caption: 'Lunar glow' }
         ]
@@ -1501,6 +1501,9 @@ const cameraData = {
             { src: 'https://images.unsplash.com/photo-1516571748831-5d81767b788d?w=600&h=400&fit=crop', caption: 'Smooth blend' },
             { src: 'https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=600&h=400&fit=crop', caption: 'Overlapping images' },
             { src: 'https://images.unsplash.com/photo-1524712245354-2c4e5e7121c0?w=600&h=400&fit=crop', caption: 'Soft transition' }
+        ],
+        videos: [
+            { src: 'https://www.dropbox.com/scl/fi/g1rr6b4wmchcvype8uzqv/.mp4?rlkey=yyg9msfagzhqu0dk5rp6q3knr&st=2mrkv037&raw=1', caption: 'Dissolve transition effect' }
         ]
     },
 
@@ -1520,6 +1523,9 @@ const cameraData = {
             { src: 'https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=600&h=400&fit=crop', caption: 'Screen wipe' },
             { src: 'https://images.unsplash.com/photo-1524712245354-2c4e5e7121c0?w=600&h=400&fit=crop', caption: 'Slide transition' },
             { src: 'https://images.unsplash.com/photo-1493863641943-9b68992a8d07?w=600&h=400&fit=crop', caption: 'Creative wipe' }
+        ],
+        videos: [
+            { src: 'https://www.dropbox.com/scl/fi/2pprt6g78qvmx74cdxwh6/.mp4?rlkey=kz9y0duem3yse1v7cki9vjj3q&st=bk9pfjjp&raw=1', caption: 'Wipe transition effect' }
         ]
     },
 
@@ -1559,6 +1565,10 @@ const cameraData = {
             { src: 'https://images.unsplash.com/photo-1474224017046-182ece80b263?w=600&h=400&fit=crop', caption: 'Action detail' },
             { src: 'https://images.unsplash.com/photo-1484589065579-248aad0d8b13?w=600&h=400&fit=crop', caption: 'Time stretch' },
             { src: 'https://images.unsplash.com/photo-1509909756405-be0199881695?w=600&h=400&fit=crop', caption: 'Epic moment' }
+        ],
+        videos: [
+            { src: 'https://cdn.midjourney.com/video/1230e36a-fc0e-46f0-9f92-14d7cafb9767/0.mp4', caption: 'Slow motion example 1' },
+            { src: 'https://cdn.midjourney.com/video/1fc09d91-03f1-4657-948b-20717809598a/0.mp4', caption: 'Slow motion example 2' }
         ]
     },
 
@@ -1578,6 +1588,10 @@ const cameraData = {
             { src: 'https://images.unsplash.com/photo-1493514789931-586cb221d7a7?w=600&h=400&fit=crop', caption: 'City timelapse' },
             { src: 'https://images.unsplash.com/photo-1505506874110-6a7a69069a08?w=600&h=400&fit=crop', caption: 'Cloud movement' },
             { src: 'https://images.unsplash.com/photo-1519608425089-7f3bfa6f6bb8?w=600&h=400&fit=crop', caption: 'Star trails' }
+        ],
+        videos: [
+            { src: 'https://cdn.midjourney.com/video/83dd9038-03eb-4191-acc4-7e408af64086/0.mp4', caption: 'Time-lapse example 1' },
+            { src: 'https://cdn.midjourney.com/video/0d1299d0-84d1-4c6c-b953-adf573e24d83/0.mp4', caption: 'Time-lapse example 2' }
         ]
     },
 
@@ -1597,6 +1611,10 @@ const cameraData = {
             { src: 'https://images.unsplash.com/photo-1474224017046-182ece80b263?w=600&h=400&fit=crop', caption: 'Action pause' },
             { src: 'https://images.unsplash.com/photo-1509909756405-be0199881695?w=600&h=400&fit=crop', caption: 'Still frame' },
             { src: 'https://images.unsplash.com/photo-1484589065579-248aad0d8b13?w=600&h=400&fit=crop', caption: 'Time stop' }
+        ],
+        videos: [
+            { src: 'https://cdn.midjourney.com/video/ec06fa05-a333-4821-96a7-09fe3ff59666/0.mp4', caption: 'Freeze frame example 1' },
+            { src: 'https://cdn.midjourney.com/video/53c3a3e7-25a2-4cbf-bde0-2aae52d1a542/0.mp4', caption: 'Freeze frame example 2' }
         ]
     },
 

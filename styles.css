@@ -1461,54 +1461,7 @@ body {
     }
 }
 
-/* Camera Tilt Animation for Videos */
-@keyframes cameraTiltUp {
-    0% { transform: perspective(1000px) rotateX(0deg) translateY(0); }
-    100% { transform: perspective(1000px) rotateX(-15deg) translateY(-10px); }
-}
-
-@keyframes cameraTiltDown {
-    0% { transform: perspective(1000px) rotateX(0deg) translateY(0); }
-    100% { transform: perspective(1000px) rotateX(15deg) translateY(10px); }
-}
-
-@keyframes cameraTiltLeft {
-    0% { transform: perspective(1000px) rotateY(0deg) translateX(0); }
-    100% { transform: perspective(1000px) rotateY(15deg) translateX(-10px); }
-}
-
-@keyframes cameraTiltRight {
-    0% { transform: perspective(1000px) rotateY(0deg) translateX(0); }
-    100% { transform: perspective(1000px) rotateY(-15deg) translateX(10px); }
-}
-
-@keyframes cameraTiltDiagonal {
-    0% { transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1); }
-    50% { transform: perspective(1000px) rotateX(-10deg) rotateY(10deg) scale(1.05); }
-    100% { transform: perspective(1000px) rotateX(10deg) rotateY(-10deg) scale(1); }
-}
-
-/* Video container with tilt effect */
-.video-item.tilt-active {
-    transform-style: preserve-3d;
-    animation: cameraTiltDiagonal 3s ease-in-out infinite alternate;
-}
-
-.video-item.tilt-up {
-    animation: cameraTiltUp 2s ease-in-out infinite alternate;
-}
-
-.video-item.tilt-down {
-    animation: cameraTiltDown 2s ease-in-out infinite alternate;
-}
-
-.video-item.tilt-left {
-    animation: cameraTiltLeft 2s ease-in-out infinite alternate;
-}
-
-.video-item.tilt-right {
-    animation: cameraTiltRight 2s ease-in-out infinite alternate;
-}
+/* Camera Tilt Animation removed - was causing unwanted movement */
 
 .video-item:hover video {
     transform: scale(1.02);
