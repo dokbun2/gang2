@@ -491,8 +491,9 @@ h1, h2, h3, h4, h5, h6 {
 /* Instructor Layout */
 .instructor-layout {
     display: flex;
-    gap: 40px;
+    gap: 60px;
     margin-top: 30px;
+    padding-left: 20px;
 }
 
 .instructor-photo {
@@ -500,8 +501,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .instructor-photo img {
-    width: 280px;
-    height: 350px;
+    width: 360px;
+    height: 450px;
     object-fit: cover;
     border-radius: 10px;
     border: 3px solid #ff6b6b;
@@ -510,6 +511,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .instructor-details {
     flex: 1;
+    padding-left: 30px;
 }
 
 .instructor-info-item {
