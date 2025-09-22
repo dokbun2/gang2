@@ -1133,10 +1133,8 @@ const cameraData = {
             '고전 미술'
         ],
         images: [
-            { src: 'https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=600&h=400&fit=crop', caption: 'Oil on canvas' },
-            { src: 'https://images.unsplash.com/photo-1578321272176-b7bbc0679853?w=600&h=400&fit=crop', caption: 'Classic technique' },
-            { src: 'https://images.unsplash.com/photo-1571115764595-644a1f56a55c?w=600&h=400&fit=crop', caption: 'Rich texture' },
-            { src: 'https://images.unsplash.com/photo-1519638399535-1b036603ac77?w=600&h=400&fit=crop', caption: 'Traditional art' }
+            { src: 'https://cdn.midjourney.com/52db56d1-d6ef-432e-8c93-f81e5c5b4d1a/0_1.png', caption: 'Oil painting style 1' },
+            { src: 'https://cdn.midjourney.com/95fd8a75-a4ac-4713-a26f-fc8e4f717dea/0_3.png', caption: 'Oil painting style 2' }
         ]
     },
 
@@ -1152,10 +1150,8 @@ const cameraData = {
             '일러스트레이션'
         ],
         images: [
-            { src: 'https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=600&h=400&fit=crop', caption: 'Acrylic art' },
-            { src: 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=600&h=400&fit=crop', caption: 'Vibrant colors' },
-            { src: 'https://images.unsplash.com/photo-1549887534-1541e9326642?w=600&h=400&fit=crop', caption: 'Modern painting' },
-            { src: 'https://images.unsplash.com/photo-1578321272176-b7bbc0679853?w=600&h=400&fit=crop', caption: 'Bold strokes' }
+            { src: 'https://cdn.midjourney.com/e5791bf6-6494-4166-bb0c-6cc421e05284/0_1.png', caption: 'Acrylic painting style 1' },
+            { src: 'https://cdn.midjourney.com/f708965d-5c00-4279-aedd-9df3542195f2/0_0.png', caption: 'Acrylic painting style 2' }
         ]
     },
 
