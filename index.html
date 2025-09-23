@@ -437,13 +437,26 @@
             </div>
             <div class="aifi-modal-body">
                 <div class="form-group">
-                    <label for="modal-api-key">Gemini API Key</label>
+                    <label for="modal-nano-api-key" style="color: #4CAF50; font-weight: bold;">🎨 Nano Banana API Key (이미지 생성용)</label>
+                    <input type="password" id="modal-nano-api-key" class="aifi-input"
+                           placeholder="Nano Banana API 키를 입력하세요">
+                    <small class="aifi-help-text" style="background: rgba(76, 175, 80, 0.1); border: 1px solid rgba(76, 175, 80, 0.3); border-radius: 6px; padding: 8px; margin: 8px 0; display: block;">
+                        <span style="color: #4CAF50; font-size: 12px;">✅ 실제 이미지 생성 및 변형 지원</span><br>
+                        <span style="color: #999; font-size: 11px;">Stable Diffusion XL 모델을 사용하여 고품질 이미지를 생성합니다</span><br>
+                        <a href="https://nano-banana.com" target="_blank" class="aifi-link" style="color: #4CAF50;">
+                            Nano Banana에서 API 키 받기 →
+                        </a>
+                    </small>
+                </div>
+                <div class="form-group" style="margin-top: 20px;">
+                    <label for="modal-api-key">📝 Gemini API Key (텍스트 처리용)</label>
                     <input type="password" id="modal-api-key" class="aifi-input"
                            placeholder="AIzaSy... 형식의 API 키를 입력하세요">
                     <small class="aifi-help-text">
-                        API 키가 없으신가요?
+                        <span style="color: #999; font-size: 11px;">프롬프트 추출, 영상 프롬프트 생성에 사용됩니다</span><br>
+                        <span style="color: #FFC107; font-size: 11px;">⚠️ Nano Banana API가 없으면 프롬프트만 생성됩니다</span><br>
                         <a href="https://makersuite.google.com/app/apikey" target="_blank" class="aifi-link">
-                            여기서 무료로 생성하세요 →
+                            Google AI Studio에서 무료로 생성하기 →
                         </a>
                     </small>
                 </div>

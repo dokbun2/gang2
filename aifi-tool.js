@@ -1,8 +1,12 @@
-// AIFI Tool - Vanilla JS Version
+// AIFI Tool - ES Module Version with Google AI SDK
+
+// Google AI SDK를 ES 모듈 형태로 가져옵니다.
+import { GoogleGenerativeAI } from "https://cdn.jsdelivr.net/npm/@google/generative-ai/dist/index.min.js";
 
 // Global variables
 let geminiApiKey = localStorage.getItem('gemini_api_key') || '';
 let nanoBananaApiKey = localStorage.getItem('nano_banana_api_key') || '';
+let genAI = null; // Google AI SDK 인스턴스
 let currentTab = 'generator';
 let uploadedImages = {
     variator: null,
@@ -14,11 +18,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // Check if API keys exist
     if (geminiApiKey) {
         document.getElementById('gemini-api-key').value = geminiApiKey;
+        // Google AI SDK 초기화
+        genAI = new GoogleGenerativeAI(geminiApiKey);
     }
     if (nanoBananaApiKey) {
         document.getElementById('nano-api-key').value = nanoBananaApiKey;
     }
-    if (geminiApiKey && nanoBananaApiKey) {
+    if (geminiApiKey) {
         document.getElementById('api-key-card').style.display = 'none';
     }
 
@@ -27,30 +33,40 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // API Key Management
-function saveApiKey() {
+window.saveApiKey = function() {
     const geminiKey = document.getElementById('gemini-api-key').value.trim();
-    const nanoKey = document.getElementById('nano-api-key').value.trim();
 
-    if (!geminiKey || !nanoKey) {
-        showAlert('error', '모든 API 키를 입력해주세요.');
+    if (!geminiKey) {
+        showAlert('error', 'Gemini API 키를 입력해주세요.');
         return;
     }
 
     geminiApiKey = geminiKey;
-    nanoBananaApiKey = nanoKey;
     localStorage.setItem('gemini_api_key', geminiKey);
-    localStorage.setItem('nano_banana_api_key', nanoKey);
+
+    // Google AI SDK 초기화
+    genAI = new GoogleGenerativeAI(geminiApiKey);
+
+    // Nano Banana API 키는 선택사항
+    const nanoKey = document.getElementById('nano-api-key').value.trim();
+    if (nanoKey) {
+        nanoBananaApiKey = nanoKey;
+        localStorage.setItem('nano_banana_api_key', nanoKey);
+    }
+
     document.getElementById('api-key-card').style.display = 'none';
     showAlert('success', 'API 키가 저장되었습니다!');
 }
 
 // Tab Switching
-function switchTab(tabName) {
+window.switchTab = function(tabName) {
     // Update buttons
     document.querySelectorAll('.tab-button').forEach(btn => {
         btn.classList.remove('active');
     });
-    event.target.classList.add('active');
+    if (event && event.target) {
+        event.target.classList.add('active');
+    }
 
     // Update content
     document.querySelectorAll('.tab-content').forEach(content => {
@@ -73,11 +89,11 @@ function showAlert(type, message) {
 }
 
 // File Handling
-function handleVariatorFile(event) {
+window.handleVariatorFile = function(event) {
     handleImageFile(event, 'variator');
 }
 
-function handleExtractorFile(event) {
+window.handleExtractorFile = function(event) {
     handleImageFile(event, 'extractor');
 }
 
@@ -125,7 +141,7 @@ function handleImageFile(event, type) {
     reader.readAsDataURL(file);
 }
 
-function clearImage(type) {
+window.clearImage = function(type) {
     uploadedImages[type] = null;
 
     // 업로드 영역을 원래 상태로 복구
@@ -179,7 +195,11 @@ function setupDragAndDrop() {
 
 // API Functions
 async function generateImage() {
-    if (!checkApiKey()) return;
+    if (!geminiApiKey) {
+        showAlert('error', 'API 키를 먼저 설정해주세요.');
+        document.getElementById('api-key-card').style.display = 'block';
+        return;
+    }
 
     const prompt = document.getElementById('gen-prompt').value.trim();
     if (!prompt) {
@@ -190,42 +210,186 @@ async function generateImage() {
     showLoading('gen', true);
 
     try {
-        // Nano Banana API를 사용하여 이미지 생성
-        const response = await fetch('https://api.nanobanano.com/v1/generate', {
-            method: 'POST',
-            headers: {
-                'Authorization': `Bearer ${nanoBananaApiKey}`,
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                prompt: prompt,
-                model: 'flux-1.1-pro',
-                width: 1024,
-                height: 1024,
-                steps: 30
-            })
-        });
+        // Nano Banana API가 있으면 사용, 없으면 Gemini API 사용
+        if (nanoBananaApiKey) {
+            // Nano Banana API로 실제 이미지 생성
+            const response = await fetch('https://api.nanobanana.com/v1/generate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-api-key': nanoBananaApiKey
+                },
+                body: JSON.stringify({
+                    prompt: prompt,
+                    model: 'sdxl',  // Stable Diffusion XL
+                    width: 1024,
+                    height: 1024,
+                    steps: 30,
+                    cfg_scale: 7.5
+                })
+            });
 
-        if (!response.ok) {
-            throw new Error('이미지 생성에 실패했습니다.');
-        }
+            if (!response.ok) {
+                throw new Error(`API error: ${response.status}`);
+            }
 
-        const data = await response.json();
-        if (data.image) {
-            displayGeneratedImage(data.image);
+            const data = await response.json();
+
+            // Nano Banana API 응답 처리
+            if (data.status === 'processing') {
+                // 비동기 처리인 경우
+                showAlert('info', '이미지 생성 중... 잠시만 기다려주세요.');
+
+                const taskId = data.task_id || data.id;
+                let result = await pollNanoBananaResult(taskId, nanoBananaApiKey);
+
+                if (result && result.image_url) {
+                    displayGeneratedImageFromUrl(result.image_url);
+                    showAlert('success', '이미지가 성공적으로 생성되었습니다!');
+                } else if (result && result.image) {
+                    displayGeneratedImage(result.image);
+                    showAlert('success', '이미지가 성공적으로 생성되었습니다!');
+                } else {
+                    throw new Error('No image data in response');
+                }
+            } else if (data.image_url) {
+                // 동기 처리 - 즉시 이미지 URL 반환
+                displayGeneratedImageFromUrl(data.image_url);
+                showAlert('success', '이미지가 성공적으로 생성되었습니다!');
+            } else if (data.image) {
+                // Base64 이미지 반환
+                displayGeneratedImage(data.image);
+                showAlert('success', '이미지가 성공적으로 생성되었습니다!');
+            } else {
+                throw new Error('Unexpected response format');
+            }
         } else {
-            // Nano Banana가 실패하면 프롬프트 향상 제공
-            showAlert('warning', 'Nano Banana API를 사용할 수 없습니다. 향상된 프롬프트를 생성합니다.');
+            // Nano Banana API 키가 없으면 Gemini로 프롬프트 생성
+            console.log('Nano Banana API key not found, using Gemini for prompt enhancement');
+            showAlert('info', 'Nano Banana API 키가 없습니다. Gemini로 향상된 프롬프트를 생성합니다.');
             generateAlternativePrompt(prompt);
         }
+
     } catch (error) {
-        console.error('Error:', error);
-        // 에러 발생시 프롬프트 향상 제공
+        console.error('Error in generateImage:', error);
+        showAlert('warning', 'Nano Banana API 오류. Gemini로 프롬프트를 생성합니다.');
         generateAlternativePrompt(prompt);
     } finally {
         showLoading('gen', false);
     }
 }
+
+// Polling function for Nano Banana API
+async function pollNanoBananaResult(taskId, apiKey) {
+    const maxAttempts = 30; // 최대 30초 대기
+    let attempts = 0;
+
+    while (attempts < maxAttempts) {
+        try {
+            const response = await fetch(`https://api.nanobanana.com/v1/status/${taskId}`, {
+                headers: {
+                    'x-api-key': apiKey
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error(`Polling error: ${response.status}`);
+            }
+
+            const result = await response.json();
+
+            if (result.status === 'completed' || result.status === 'success') {
+                return result;
+            } else if (result.status === 'failed' || result.status === 'error') {
+                throw new Error(`Task ${result.status}: ${result.error || 'Unknown error'}`);
+            }
+
+            // 1초 대기 후 재시도
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            attempts++;
+        } catch (error) {
+            console.error('Polling error:', error);
+            attempts++;
+        }
+    }
+
+    throw new Error('Timeout waiting for image generation');
+}
+
+// Display image from URL
+async function displayGeneratedImageFromUrl(imageUrl) {
+    const resultDiv = document.getElementById('gen-result');
+    resultDiv.style.border = 'none';
+    resultDiv.style.background = 'transparent';
+    resultDiv.style.padding = '0';
+
+    resultDiv.innerHTML = `
+        <div style="flex: 1; display: flex; flex-direction: column;">
+            <img src="${imageUrl}" style="width: 100%; height: 100%; object-fit: contain; border-radius: 10px; flex: 1;"
+                 crossorigin="anonymous"
+                 onerror="console.error('Image failed to load')">
+        </div>
+        <div style="display: flex; gap: 10px; justify-content: center; margin-top: 20px;">
+            <button class="button" onclick="downloadImageFromUrl('${imageUrl}')">
+                다운로드
+            </button>
+            <button class="button button-secondary" onclick="copyImagePrompt()">
+                프롬프트 복사
+            </button>
+        </div>
+    `;
+}
+
+// Display variated image from URL
+async function displayVariatedImageFromUrl(imageUrl) {
+    const resultDiv = document.getElementById('var-result');
+    resultDiv.style.border = 'none';
+    resultDiv.style.background = 'transparent';
+    resultDiv.style.padding = '0';
+
+    resultDiv.innerHTML = `
+        <div style="flex: 1; display: flex; flex-direction: column;">
+            <img src="${imageUrl}" style="width: 100%; height: 100%; object-fit: contain; border-radius: 10px; flex: 1;"
+                 crossorigin="anonymous"
+                 onerror="console.error('Image failed to load')">
+        </div>
+        <div style="display: flex; gap: 10px; justify-content: center; margin-top: 20px;">
+            <button class="button" onclick="downloadImageFromUrl('${imageUrl}')">
+                다운로드
+            </button>
+        </div>
+    `;
+}
+
+// Download image from URL
+window.downloadImageFromUrl = async function(imageUrl) {
+    try {
+        const response = await fetch(imageUrl);
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
+
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = `generated-${Date.now()}.png`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
+        window.URL.revokeObjectURL(url);
+    } catch (error) {
+        console.error('Download error:', error);
+        // 대체 방법: 새 탭에서 열기
+        window.open(imageUrl, '_blank');
+    }
+}
+
+// Export functions to window for HTML onclick events
+window.generateImage = generateImage;
+window.generateAlternativePrompt = generateAlternativePrompt;
+window.variateImage = variateImage;
+window.extractPrompt = extractPrompt;
+window.generateVideoPrompt = generateVideoPrompt;
+window.fallbackToGeminiVariation = fallbackToGeminiVariation;
 
 async function generateAlternativePrompt(prompt) {
     // Gemini 2.5 Flash를 사용하여 향상된 프롬프트 생성
@@ -238,7 +402,16 @@ async function generateAlternativePrompt(prompt) {
             body: JSON.stringify({
                 contents: [{
                     parts: [{
-                        text: `다음 아이디어를 Midjourney나 DALL-E 3에서 사용할 수 있는 상세한 이미지 생성 프롬프트로 변환해주세요. 영어로 작성하고, 스타일, 조명, 구도, 색상 등을 포함해주세요. 프롬프트만 제공하고 추가 설명은 하지 마세요.\n\n"${prompt}"`
+                        text: `Create an enhanced image generation prompt for: "${prompt}"
+
+Rules:
+1. Output ONLY the final prompt text
+2. No introductions like "Here is" or "This is"
+3. No explanations or additional text
+4. Single paragraph format
+5. Include: style, lighting, composition, colors, camera angle, quality modifiers
+
+Prompt:`
                     }]
                 }]
             })
@@ -246,7 +419,17 @@ async function generateAlternativePrompt(prompt) {
 
         const data = await response.json();
         if (data.candidates && data.candidates[0]) {
-            const enhancedPrompt = data.candidates[0].content.parts[0].text;
+            let enhancedPrompt = data.candidates[0].content.parts[0].text;
+            // 모든 안내문 제거
+            enhancedPrompt = enhancedPrompt.replace(/^(Here is|Here's|This is|Here are).*?[:.]\s*/gi, '');
+            enhancedPrompt = enhancedPrompt.replace(/^.*?prompt.*?[:.]\s*/gi, '');
+            enhancedPrompt = enhancedPrompt.replace(/^Prompt[:.]\s*/gi, '');
+            // 마지막 줄만 추출 (경우에 따라)
+            const lines = enhancedPrompt.split('\n').filter(line => line.trim());
+            if (lines.length > 1 && lines[lines.length - 1].length > 50) {
+                enhancedPrompt = lines[lines.length - 1];
+            }
+            enhancedPrompt = enhancedPrompt.trim();
             // 생성된 프롬프트를 결과 영역에 표시
             const resultDiv = document.getElementById('gen-result');
             resultDiv.style.border = 'none';
@@ -254,9 +437,6 @@ async function generateAlternativePrompt(prompt) {
             resultDiv.style.padding = '0';
             resultDiv.innerHTML = `
                 <div style="flex: 1; display: flex; flex-direction: column;">
-                    <div style="background: rgba(255, 193, 7, 0.1); border: 1px solid rgba(255, 193, 7, 0.3); border-radius: 10px; padding: 15px; margin-bottom: 15px;">
-                        <p style="color: #FFC107; margin: 0; font-size: 12px;">⚠️ Imagen API 대신 프롬프트를 생성했습니다</p>
-                    </div>
                     <div class="result-text" style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 10px; padding: 20px; font-size: 13px; line-height: 1.6; flex: 1; overflow-y: auto; color: #e0e0e0; font-family: 'Courier New', monospace;">${enhancedPrompt}</div>
                 </div>
                 <div style="margin-top: 20px; display: flex; justify-content: center;">
@@ -272,7 +452,11 @@ async function generateAlternativePrompt(prompt) {
 }
 
 async function variateImage() {
-    if (!checkApiKey()) return;
+    if (!geminiApiKey) {
+        showAlert('error', 'API 키를 먼저 설정해주세요.');
+        document.getElementById('api-key-card').style.display = 'block';
+        return;
+    }
 
     if (!uploadedImages.variator) {
         showAlert('error', '먼저 이미지를 업로드해주세요.');
@@ -288,41 +472,112 @@ async function variateImage() {
     showLoading('var', true);
 
     try {
-        // Nano Banana API를 사용하여 이미지 변형
-        const response = await fetch('https://api.nanobanano.com/v1/img2img', {
-            method: 'POST',
-            headers: {
-                'Authorization': `Bearer ${nanoBananaApiKey}`,
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                image: uploadedImages.variator.base64,
-                prompt: prompt,
-                model: 'flux-1.1-pro',
-                strength: 0.7,
-                steps: 30
-            })
-        });
+        if (nanoBananaApiKey) {
+            // Nano Banana API로 이미지 변형
+            const response = await fetch('https://api.nanobanana.com/v1/img2img', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-api-key': nanoBananaApiKey
+                },
+                body: JSON.stringify({
+                    init_image: `data:${uploadedImages.variator.mimeType};base64,${uploadedImages.variator.base64}`,
+                    prompt: prompt,
+                    model: 'sdxl',
+                    strength: 0.75,  // 변형 강도 (0-1)
+                    steps: 30,
+                    cfg_scale: 7.5,
+                    width: 1024,
+                    height: 1024
+                })
+            });
 
-        const data = await response.json();
-        if (data.image) {
-            displayVariatedImage(data.image);
+            if (!response.ok) {
+                throw new Error(`API error: ${response.status}`);
+            }
+
+            const data = await response.json();
+
+            // Nano Banana API 응답 처리
+            if (data.status === 'processing') {
+                showAlert('info', '이미지 변형 중... 잠시만 기다려주세요.');
+
+                const taskId = data.task_id || data.id;
+                let result = await pollNanoBananaResult(taskId, nanoBananaApiKey);
+
+                if (result && result.image_url) {
+                    displayVariatedImageFromUrl(result.image_url);
+                    showAlert('success', '이미지가 성공적으로 변형되었습니다!');
+                } else if (result && result.image) {
+                    displayVariatedImage(result.image);
+                    showAlert('success', '이미지가 성공적으로 변형되었습니다!');
+                } else {
+                    throw new Error('No image data in response');
+                }
+            } else if (data.image_url) {
+                displayVariatedImageFromUrl(data.image_url);
+                showAlert('success', '이미지가 성공적으로 변형되었습니다!');
+            } else if (data.image) {
+                displayVariatedImage(data.image);
+                showAlert('success', '이미지가 성공적으로 변형되었습니다!');
+            } else {
+                throw new Error('Unexpected response format');
+            }
         } else {
-            // 실패하면 Gemini로 프롬프트 생성
-            fallbackToGeminiVariation(prompt);
+            // Nano Banana API 키가 없으면 Gemini로 변형 프롬프트 생성
+            console.log('Nano Banana API key not found, using Gemini for variation prompt');
+            showAlert('info', 'Nano Banana API 키가 없습니다. Gemini로 변형 프롬프트를 생성합니다.');
+
+            // 이미지 분석 + 변형 프롬프트 생성을 위해 gemini-2.5-flash 모델 사용
+            const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
+
+            const imagePart = {
+                inlineData: {
+                    data: uploadedImages.variator.base64,
+                    mimeType: uploadedImages.variator.mimeType
+                }
+            };
+
+            const textPart = {
+                text: `Analyze this image and create a detailed prompt that would generate a variation with these modifications: "${prompt}"
+
+Provide ONLY the image generation prompt without any explanations or additional text.`
+            };
+
+            const result = await model.generateContent([imagePart, textPart]);
+            const response = await result.response;
+
+            if (response && response.candidates && response.candidates[0]) {
+                let variationPrompt = response.candidates[0].content.parts[0].text;
+
+                // 안내문 제거
+                variationPrompt = variationPrompt.replace(/^(Here is|Here's|This is|Here are).*?[:.]\s*/gi, '');
+                variationPrompt = variationPrompt.replace(/^.*?prompt.*?[:.]\s*/gi, '');
+                variationPrompt = variationPrompt.trim();
+
+                displayPromptResult('var', variationPrompt);
+            }
         }
+
     } catch (error) {
-        console.error('Error:', error);
-        // 에러 발생시 Gemini로 프롬프트 생성
+        console.error('Error in variateImage:', error);
+
+        if (nanoBananaApiKey) {
+            showAlert('warning', 'Nano Banana API 오류. Gemini로 변형 프롬프트를 생성합니다.');
+        }
+
+        // Fallback to Gemini prompt generation
         fallbackToGeminiVariation(prompt);
     } finally {
         showLoading('var', false);
     }
 }
 
+window.variateImage = variateImage;
+
 async function fallbackToGeminiVariation(prompt) {
     try {
-        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-vision:generateContent?key=${geminiApiKey}`, {
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${geminiApiKey}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -337,7 +592,9 @@ async function fallbackToGeminiVariation(prompt) {
                             }
                         },
                         {
-                            text: `이 이미지를 다음과 같이 변형하기 위한 상세한 프롬프트를 생성해주세요: "${prompt}"\n\n원본 이미지의 주요 요소를 유지하면서 요청된 변형을 적용한 새로운 이미지 생성 프롬프트만 영어로 작성해주세요. 추가 설명이나 안내글은 포함하지 마세요.`
+                            text: `Analyze this image and create a variation prompt with these changes: "${prompt}"
+
+Provide ONLY the enhanced prompt without explanations. Maintain the core elements while applying the requested variations. Output format: single paragraph English prompt.`
                         }
                     ]
                 }]
@@ -360,9 +617,16 @@ function displayVariatedImage(base64) {
     resultDiv.style.border = 'none';
     resultDiv.style.background = 'transparent';
     resultDiv.style.padding = '0';
+
+    // base64가 data URL인지 확인
+    let imageSrc = base64;
+    if (!base64.startsWith('data:')) {
+        imageSrc = `data:image/png;base64,${base64}`;
+    }
+
     resultDiv.innerHTML = `
         <div style="flex: 1; display: flex; flex-direction: column;">
-            <img src="data:image/jpeg;base64,${base64}" style="width: 100%; height: 100%; object-fit: contain; border-radius: 10px; flex: 1;">
+            <img src="${imageSrc}" style="width: 100%; height: 100%; object-fit: contain; border-radius: 10px; flex: 1;" onerror="console.error('Image failed to load')">
         </div>
         <div style="display: flex; gap: 10px; justify-content: center; margin-top: 20px;">
             <button class="button" onclick="downloadImage('${base64}')">
@@ -383,7 +647,7 @@ async function extractPrompt() {
     showLoading('ext', true);
 
     try {
-        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-vision:generateContent?key=${geminiApiKey}`, {
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${geminiApiKey}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -488,16 +752,17 @@ Provide ONLY the JSON object without any explanation or additional text. Include
 
 // Helper Functions
 function checkApiKey() {
-    if (!geminiApiKey || !nanoBananaApiKey) {
-        showAlert('error', 'API 키를 먼저 설정해주세요.');
+    if (!geminiApiKey) {
+        showAlert('error', 'Gemini API 키를 먼저 설정해주세요.');
         document.getElementById('api-key-card').style.display = 'block';
         document.getElementById('api-key-card').scrollIntoView({ behavior: 'smooth' });
         return false;
     }
+    // Nano Banana API 키는 선택사항
     return true;
 }
 
-function copyImagePrompt() {
+window.copyImagePrompt = function() {
     const prompt = document.getElementById('gen-prompt').value;
     if (prompt) {
         copyToClipboard(btoa(prompt));
@@ -518,9 +783,16 @@ function displayGeneratedImage(base64) {
     resultDiv.style.border = 'none';
     resultDiv.style.background = 'transparent';
     resultDiv.style.padding = '0';
+
+    // base64가 data URL인지 확인
+    let imageSrc = base64;
+    if (!base64.startsWith('data:')) {
+        imageSrc = `data:image/png;base64,${base64}`;
+    }
+
     resultDiv.innerHTML = `
         <div style="flex: 1; display: flex; flex-direction: column;">
-            <img src="data:image/jpeg;base64,${base64}" style="width: 100%; height: 100%; object-fit: contain; border-radius: 10px; flex: 1;">
+            <img src="${imageSrc}" style="width: 100%; height: 100%; object-fit: contain; border-radius: 10px; flex: 1;" onerror="console.error('Image failed to load')">
         </div>
         <div style="display: flex; gap: 10px; justify-content: center; margin-top: 20px;">
             <button class="button" onclick="downloadImage('${base64}')">
@@ -554,7 +826,7 @@ function displayPromptResult(type, prompt) {
     `;
 }
 
-function copyToClipboard(base64Text) {
+window.copyToClipboard = function(base64Text) {
     const text = atob(base64Text);
     const textarea = document.createElement('textarea');
     textarea.value = text;
@@ -573,7 +845,7 @@ function copyToClipboard(base64Text) {
     document.body.removeChild(textarea);
 }
 
-function downloadImage(base64) {
+window.downloadImage = function(base64) {
     const link = document.createElement('a');
     link.href = `data:image/jpeg;base64,${base64}`;
     link.download = `generated-${Date.now()}.jpg`;

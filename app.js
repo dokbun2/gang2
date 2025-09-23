@@ -526,6 +526,7 @@ function copyToClipboard(text) {
 
 // AIFI Tool Variables
 let aifiApiKey = localStorage.getItem('gemini_api_key') || '';
+let nanoBananaApiKey = localStorage.getItem('nano_banana_api_key') || '';
 let aifiCurrentTab = 'generator';
 let aifiUploadedImages = {
     variator: null,
@@ -749,13 +750,21 @@ function openAifiSettings() {
     const modal = document.getElementById('aifi-settings-modal');
     if (modal) {
         modal.style.display = 'flex';
-        // Load existing key
-        const existingKey = localStorage.getItem('gemini_api_key') || '';
-        const keyInput = document.getElementById('modal-api-key');
-        if (keyInput) {
-            keyInput.value = existingKey;
+        // Load existing keys
+        const existingGeminiKey = localStorage.getItem('gemini_api_key') || '';
+        const existingNanoKey = localStorage.getItem('nano_banana_api_key') || '';
+
+        const geminiInput = document.getElementById('modal-api-key');
+        const nanoInput = document.getElementById('modal-nano-api-key');
+
+        if (geminiInput) {
+            geminiInput.value = existingGeminiKey;
         }
-        updateApiStatus(existingKey ? '설정됨' : '미설정');
+        if (nanoInput) {
+            nanoInput.value = existingNanoKey;
+        }
+
+        updateApiStatus((existingGeminiKey || existingNanoKey) ? '설정됨' : '미설정');
     }
 }
 
@@ -767,14 +776,25 @@ function closeAifiSettings() {
 }
 
 function saveAifiSettings() {
-    const key = document.getElementById('modal-api-key').value.trim();
-    if (!key) {
-        showAifiAlert('error', 'API 키를 입력해주세요.');
+    const geminiKey = document.getElementById('modal-api-key').value.trim();
+    const nanoKey = document.getElementById('modal-nano-api-key').value.trim();
+
+    if (!geminiKey && !nanoKey) {
+        showAifiAlert('error', '최소 하나의 API 키를 입력해주세요.');
         return;
     }
 
-    aifiApiKey = key;
-    localStorage.setItem('gemini_api_key', key);
+    // Save keys
+    if (geminiKey) {
+        aifiApiKey = geminiKey;
+        localStorage.setItem('gemini_api_key', geminiKey);
+    }
+
+    if (nanoKey) {
+        nanoBananaApiKey = nanoKey;
+        localStorage.setItem('nano_banana_api_key', nanoKey);
+    }
+
     updateApiStatus('설정됨');
     showAifiAlert('success', 'API 키가 저장되었습니다!');
 
@@ -1076,7 +1096,7 @@ function setupAifiDragDrop() {
 
 // API Functions with correct model names
 async function generateAifiImage() {
-    if (!aifiApiKey) {
+    if (!aifiApiKey && !nanoBananaApiKey) {
         showAifiAlert('error', 'API 키를 먼저 설정해주세요.');
         return;
     }
@@ -1090,71 +1110,155 @@ async function generateAifiImage() {
     showAifiLoading('gen', true);
 
     try {
-        // Step 1: Gemini로 프롬프트 향상
-        const enhanceResponse = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${aifiApiKey}`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                contents: [{
-                    parts: [{
-                        text: `다음 아이디어를 Midjourney나 DALL-E 3에서 사용할 수 있는 상세한 이미지 생성 프롬프트로 변환해주세요. 영어로 작성하고, 스타일, 조명, 구도, 색상 등을 포함해주세요:\n\n"${prompt}"\n\nEnhanced prompt:`
-                    }]
-                }]
-            })
-        });
-
-        const enhanceData = await enhanceResponse.json();
-        let enhancedPrompt = prompt;
-
-        if (enhanceData.candidates && enhanceData.candidates[0]) {
-            enhancedPrompt = enhanceData.candidates[0].content.parts[0].text;
-        }
-
-        // Step 2: 이미지 생성을 위한 강화된 프롬프트를 다시 Gemini로 처리
-        // (실제 이미지 생성 API가 제한적이므로 프롬프트 최적화에 집중)
-        try {
-            const imageResponse = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${aifiApiKey}`, {
+        // Nano Banana API가 있으면 실제 이미지 생성
+        if (nanoBananaApiKey) {
+            const response = await fetch('https://api.nanobanana.com/v1/generate', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'x-api-key': nanoBananaApiKey
                 },
                 body: JSON.stringify({
-                    contents: [{
-                        parts: [{
-                            text: `Create an ultra-detailed image generation prompt for Midjourney v6 based on this concept: "${enhancedPrompt}"\n\nInclude specific details about:\n- Art style and medium\n- Lighting and atmosphere\n- Camera angle and composition\n- Color palette\n- Technical parameters (--ar, --s, --q)\n\nFormat: One detailed paragraph followed by Midjourney parameters.`
-                        }]
-                    }],
-                    generationConfig: {
-                        temperature: 0.8,
-                        candidateCount: 1
-                    }
+                    prompt: prompt,
+                    model: 'sdxl',  // Stable Diffusion XL
+                    width: 1024,
+                    height: 1024,
+                    steps: 30,
+                    cfg_scale: 7.5
                 })
             });
 
-            const imageData = await imageResponse.json();
-
-            if (imageData.candidates && imageData.candidates[0]) {
-                const finalPrompt = imageData.candidates[0].content.parts[0].text;
-                displayAifiPromptResult('gen', finalPrompt);
-                showAifiAlert('success', 'Midjourney 프롬프트가 생성되었습니다!');
-            } else {
-                // 실패 시 기본 프롬프트 표시
-                displayAifiPromptResult('gen', enhancedPrompt);
-                showAifiAlert('info', '강화된 프롬프트가 생성되었습니다.');
+            if (!response.ok) {
+                throw new Error(`API error: ${response.status}`);
             }
-        } catch (imageError) {
-            console.error('Prompt enhancement error:', imageError);
-            // 오류 발생 시 기본 프롬프트 표시
-            displayAifiPromptResult('gen', enhancedPrompt);
-            showAifiAlert('info', '기본 프롬프트가 생성되었습니다.');
+
+            const data = await response.json();
+
+            // Nano Banana API 응답 처리
+            if (data.status === 'processing') {
+                showAifiAlert('info', '이미지 생성 중... 잠시만 기다려주세요.');
+
+                const taskId = data.task_id || data.id;
+                let result = await pollNanoBananaResult(taskId, nanoBananaApiKey);
+
+                if (result && result.image_url) {
+                    displayAifiImageFromUrl('gen', result.image_url);
+                    showAifiAlert('success', '이미지가 성공적으로 생성되었습니다!');
+                } else if (result && result.image) {
+                    displayAifiGeneratedImage('gen', result.image);
+                    showAifiAlert('success', '이미지가 성공적으로 생성되었습니다!');
+                } else {
+                    throw new Error('No image data in response');
+                }
+            } else if (data.image_url) {
+                displayAifiImageFromUrl('gen', data.image_url);
+                showAifiAlert('success', '이미지가 성공적으로 생성되었습니다!');
+            } else if (data.image) {
+                displayAifiGeneratedImage('gen', data.image);
+                showAifiAlert('success', '이미지가 성공적으로 생성되었습니다!');
+            } else {
+                throw new Error('Unexpected response format');
+            }
+        } else if (aifiApiKey) {
+            // Nano Banana API가 없으면 Gemini로 프롬프트 생성
+            showAifiAlert('info', 'Nano Banana API 키가 없습니다. Gemini로 향상된 프롬프트를 생성합니다.');
+            await generateAifiTextPrompt(prompt);
+        } else {
+            showAifiAlert('error', 'API 키를 먼저 설정해주세요.');
         }
+
     } catch (error) {
-        console.error('Error:', error);
-        showAifiAlert('error', '프롬프트 생성에 실패했습니다.');
+        console.error('Error in generateAifiImage:', error);
+        if (nanoBananaApiKey) {
+            showAifiAlert('warning', 'Nano Banana API 오류. Gemini로 프롬프트를 생성합니다.');
+            if (aifiApiKey) {
+                await generateAifiTextPrompt(prompt);
+            }
+        } else {
+            showAifiAlert('error', '이미지 생성에 실패했습니다.');
+        }
     } finally {
         showAifiLoading('gen', false);
+    }
+}
+
+// Polling function for Nano Banana API
+async function pollNanoBananaResult(taskId, apiKey) {
+    const maxAttempts = 30; // 최대 30초 대기
+    let attempts = 0;
+
+    while (attempts < maxAttempts) {
+        try {
+            const response = await fetch(`https://api.nanobanana.com/v1/status/${taskId}`, {
+                headers: {
+                    'x-api-key': apiKey
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error(`Polling error: ${response.status}`);
+            }
+
+            const result = await response.json();
+
+            if (result.status === 'completed' || result.status === 'success') {
+                return result;
+            } else if (result.status === 'failed' || result.status === 'error') {
+                throw new Error(`Task ${result.status}: ${result.error || 'Unknown error'}`);
+            }
+
+            // 1초 대기 후 재시도
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            attempts++;
+        } catch (error) {
+            console.error('Polling error:', error);
+            attempts++;
+        }
+    }
+
+    throw new Error('Timeout waiting for image generation');
+}
+
+// Display image from URL
+function displayAifiImageFromUrl(type, imageUrl) {
+    const resultDiv = document.getElementById(`${type}-result`);
+    resultDiv.style.border = 'none';
+    resultDiv.style.background = 'transparent';
+    resultDiv.style.padding = '0';
+
+    resultDiv.innerHTML = `
+        <div style="flex: 1; display: flex; flex-direction: column;">
+            <img src="${imageUrl}" style="width: 100%; height: 100%; object-fit: contain; border-radius: 10px; flex: 1;"
+                 crossorigin="anonymous"
+                 onerror="console.error('Image failed to load')">
+        </div>
+        <div style="display: flex; gap: 10px; justify-content: center; margin-top: 20px;">
+            <button class="button aifi-button" onclick="downloadAifiImageFromUrl('${imageUrl}')">
+                다운로드
+            </button>
+        </div>
+    `;
+}
+
+// Download image from URL
+async function downloadAifiImageFromUrl(imageUrl) {
+    try {
+        const response = await fetch(imageUrl);
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
+
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = `generated-${Date.now()}.png`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
+        window.URL.revokeObjectURL(url);
+    } catch (error) {
+        console.error('Download error:', error);
+        // 대체 방법: 새 탭에서 열기
+        window.open(imageUrl, '_blank');
     }
 }
 
