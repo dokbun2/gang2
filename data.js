@@ -1992,7 +1992,7 @@ const cameraData = {
         title: '침팬지 영상만들기',
         koreanTitle: 'Chimpanzee Video Creation',
         description: 'ASMR 스타일의 침팬지 짜장면 먹방 영상을 만드는 실습과제입니다. 왼쪽 동영상을 참고하여 오른쪽 프롬프트를 활용해 영상을 생성해보세요.',
-        videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+        videoUrl: 'https://www.dropbox.com/scl/fi/1gt32p4lcuyqlt1o1o0wj/.mp4?rlkey=tb6pmhxchm40ld4pfrmg6bvqe&st=wux1wog8&raw=1',
         prompt: `{
   "core_module": {
     "character": {

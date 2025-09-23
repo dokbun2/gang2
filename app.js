@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Hide all major categories by default
     const imageCategory = document.getElementById('image-category');
     const videoCategory = document.getElementById('video-category');
+    const practiceCategory = document.getElementById('practice-category');
 
     if (imageCategory) {
         imageCategory.style.display = 'none';
@@ -31,9 +32,14 @@ document.addEventListener('DOMContentLoaded', function() {
         videoCategory.style.display = 'none';
     }
 
+    if (practiceCategory) {
+        practiceCategory.style.display = 'none';
+    }
+
     // Reset all chevron icons to default position
     const imageCategoryIcon = document.getElementById('image-category-icon');
     const videoCategoryIcon = document.getElementById('video-category-icon');
+    const practiceCategoryIcon = document.getElementById('practice-category-icon');
 
     if (imageCategoryIcon) {
         imageCategoryIcon.style.transform = 'rotate(0deg)';
@@ -41,6 +47,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (videoCategoryIcon) {
         videoCategoryIcon.style.transform = 'rotate(0deg)';
+    }
+
+    if (practiceCategoryIcon) {
+        practiceCategoryIcon.style.transform = 'rotate(0deg)';
     }
 
     // Add click event to content area to close all dropdowns
@@ -63,8 +73,10 @@ function closeAllDropdowns() {
     // Close major categories
     const imageCategory = document.getElementById('image-category');
     const videoCategory = document.getElementById('video-category');
+    const practiceCategory = document.getElementById('practice-category');
     const imageCategoryIcon = document.getElementById('image-category-icon');
     const videoCategoryIcon = document.getElementById('video-category-icon');
+    const practiceCategoryIcon = document.getElementById('practice-category-icon');
 
     if (imageCategory && imageCategory.style.display === 'block') {
         imageCategory.style.display = 'none';
@@ -74,6 +86,11 @@ function closeAllDropdowns() {
     if (videoCategory && videoCategory.style.display === 'block') {
         videoCategory.style.display = 'none';
         if (videoCategoryIcon) videoCategoryIcon.style.transform = 'rotate(0)';
+    }
+
+    if (practiceCategory && practiceCategory.style.display === 'block') {
+        practiceCategory.style.display = 'none';
+        if (practiceCategoryIcon) practiceCategoryIcon.style.transform = 'rotate(0)';
     }
 
     // Close all sections
@@ -1613,12 +1630,12 @@ function displayPracticeContent() {
                 <div class="practice-video-section">
                     <h3 class="section-title">참고 영상</h3>
                     <div class="video-container">
-                        <iframe
+                        <video
                             src="${currentData.videoUrl}"
-                            frameborder="0"
-                            allowfullscreen
-                            class="practice-video">
-                        </iframe>
+                            controls
+                            class="practice-video"
+                            onclick="openVideoFullscreen(this)">
+                        </video>
                     </div>
                 </div>
 
@@ -1633,6 +1650,29 @@ function displayPracticeContent() {
                     </div>
                     <div class="prompt-container">
                         <pre class="practice-prompt" id="practice-prompt">${currentData.prompt}</pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 실습과제 #1 섹션 -->
+            <div class="practice-exercises-section">
+                <h3 class="section-title">실습과제 #1</h3>
+                <div class="exercise-grid">
+                    <div class="exercise-item">
+                        <h4 class="exercise-title">햄스터 돈가스먹방</h4>
+                        <p class="exercise-description">귀여운 햄스터가 돈가스를 먹는 먹방 영상을 만드는 실습과제입니다.</p>
+                        <button class="exercise-btn" onclick="showContent('hamster-video')">
+                            <i data-lucide="play" style="width: 16px; height: 16px; margin-right: 5px;"></i>
+                            실습하기
+                        </button>
+                    </div>
+                    <div class="exercise-item">
+                        <h4 class="exercise-title">악어 국수먹방</h4>
+                        <p class="exercise-description">우아한 악어가 국수를 먹는 독특한 먹방 영상을 만드는 실습과제입니다.</p>
+                        <button class="exercise-btn" onclick="showContent('crocodile-video')">
+                            <i data-lucide="play" style="width: 16px; height: 16px; margin-right: 5px;"></i>
+                            실습하기
+                        </button>
                     </div>
                 </div>
             </div>
@@ -1678,4 +1718,15 @@ function copyPracticePrompt() {
     }
 
     document.body.removeChild(textarea);
+}
+function openVideoFullscreen(videoElement) {
+    if (videoElement.requestFullscreen) {
+        videoElement.requestFullscreen();
+    } else if (videoElement.mozRequestFullScreen) { // Firefox
+        videoElement.mozRequestFullScreen();
+    } else if (videoElement.webkitRequestFullscreen) { // Chrome, Safari, Opera
+        videoElement.webkitRequestFullscreen();
+    } else if (videoElement.msRequestFullscreen) { // IE/Edge
+        videoElement.msRequestFullscreen();
+    }
 }
