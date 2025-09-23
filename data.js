@@ -6,7 +6,7 @@ const cameraData = {
         title: '강사 소개',
         koreanTitle: 'Instructor Introduction',
         instructorInfo: {
-            name: '김진욱',
+            name: '김진욱 (하루오프)',
             position: 'AIFI 프레임워크 개발이사',
             company: [
                 '(주)알앤픽 대표이사',
@@ -1647,7 +1647,7 @@ const cameraData = {
         koreanTitle: '강사 소개',
         prompt: 'AIFI 프레임워크 창시자',
         instructorInfo: {
-            name: '김진욱',
+            name: '김진욱 (하루오프)',
             nickname: '하루오프',
             positions: [
                 'AIFI 프레임워크 개발 이사',
