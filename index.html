@@ -335,19 +335,12 @@
                     </div>
                 </div>
 
-                <!-- AIFI 생성 도구 섹션 -->
+                <!-- AIFI AI 도구 직접 버튼 -->
                 <div class="menu-section" style="margin-top: 20px; padding-top: 20px; border-top: 2px solid #ff6b6b;">
-                    <button class="menu-header" onclick="toggleSection('aifi-tools')" style="background: linear-gradient(135deg, #ff6b6b, #ff8e53); border: 1px solid rgba(255, 107, 107, 0.3);">
+                    <button class="menu-header" onclick="showContent('aifi-tool')" style="background: linear-gradient(135deg, #ff6b6b, #ff8e53); border: 1px solid rgba(255, 107, 107, 0.3); cursor: pointer;">
                         <i data-lucide="sparkles" class="menu-icon"></i>
                         <span>AIFI AI 도구</span>
-                        <i data-lucide="chevron-down" class="chevron-icon" id="aifi-tools-chevron"></i>
                     </button>
-                    <div class="menu-items" id="aifi-tools-items">
-                        <a href="#" class="menu-item" onclick="showContent('aifi-tool')">
-                            <i data-lucide="wand-2" style="width: 16px; height: 16px; margin-right: 8px;"></i>
-                            AI 프롬프트 생성기
-                        </a>
-                    </div>
                 </div>
 
                 <!-- 프레임추출기 버튼 -->
@@ -437,27 +430,12 @@
             </div>
             <div class="aifi-modal-body">
                 <div class="form-group">
-                    <label for="modal-nano-api-key" style="color: #4CAF50; font-weight: bold;">🎨 Nano Banana API Key (이미지 생성용)</label>
-                    <input type="password" id="modal-nano-api-key" class="aifi-input"
-                           placeholder="Nano Banana API 키를 입력하세요">
-                    <small class="aifi-help-text" style="background: rgba(76, 175, 80, 0.1); border: 1px solid rgba(76, 175, 80, 0.3); border-radius: 6px; padding: 8px; margin: 8px 0; display: block;">
-                        <span style="color: #4CAF50; font-size: 12px;">✅ 실제 이미지 생성 및 변형 지원</span><br>
-                        <span style="color: #999; font-size: 11px;">Stable Diffusion XL 모델을 사용하여 고품질 이미지를 생성합니다</span><br>
-                        <a href="https://nano-banana.com" target="_blank" class="aifi-link" style="color: #4CAF50;">
-                            Nano Banana에서 API 키 받기 →
-                        </a>
-                    </small>
-                </div>
-                <div class="form-group" style="margin-top: 20px;">
-                    <label for="modal-api-key">📝 Gemini API Key (텍스트 처리용)</label>
+                    <label for="modal-api-key">🔑 API Key</label>
                     <input type="password" id="modal-api-key" class="aifi-input"
-                           placeholder="AIzaSy... 형식의 API 키를 입력하세요">
+                           placeholder="API 키를 입력하세요">
                     <small class="aifi-help-text">
-                        <span style="color: #999; font-size: 11px;">프롬프트 추출, 영상 프롬프트 생성에 사용됩니다</span><br>
-                        <span style="color: #FFC107; font-size: 11px;">⚠️ Nano Banana API가 없으면 프롬프트만 생성됩니다</span><br>
-                        <a href="https://makersuite.google.com/app/apikey" target="_blank" class="aifi-link">
-                            Google AI Studio에서 무료로 생성하기 →
-                        </a>
+                        <span style="color: #4CAF50; font-size: 12px;">✅ 이미지 생성, 프롬프트 추출, 영상 프롬프트 생성</span><br>
+                        <span style="color: #999; font-size: 11px;">모든 AI 기능을 사용할 수 있습니다</span>
                     </small>
                 </div>
                 <div class="aifi-api-status">

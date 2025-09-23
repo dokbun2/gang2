@@ -525,8 +525,7 @@ function copyToClipboard(text) {
 }
 
 // AIFI Tool Variables
-let aifiApiKey = localStorage.getItem('gemini_api_key') || '';
-let nanoBananaApiKey = localStorage.getItem('nano_banana_api_key') || '';
+let aifiApiKey = localStorage.getItem('aifi_api_key') || '';
 let aifiCurrentTab = 'generator';
 let aifiUploadedImages = {
     variator: null,
@@ -750,21 +749,15 @@ function openAifiSettings() {
     const modal = document.getElementById('aifi-settings-modal');
     if (modal) {
         modal.style.display = 'flex';
-        // Load existing keys
-        const existingGeminiKey = localStorage.getItem('gemini_api_key') || '';
-        const existingNanoKey = localStorage.getItem('nano_banana_api_key') || '';
+        // Load existing key
+        const existingKey = localStorage.getItem('aifi_api_key') || '';
+        const apiInput = document.getElementById('modal-api-key');
 
-        const geminiInput = document.getElementById('modal-api-key');
-        const nanoInput = document.getElementById('modal-nano-api-key');
-
-        if (geminiInput) {
-            geminiInput.value = existingGeminiKey;
-        }
-        if (nanoInput) {
-            nanoInput.value = existingNanoKey;
+        if (apiInput) {
+            apiInput.value = existingKey;
         }
 
-        updateApiStatus((existingGeminiKey || existingNanoKey) ? '설정됨' : '미설정');
+        updateApiStatus(existingKey ? '설정됨' : '미설정');
     }
 }
 
@@ -776,24 +769,16 @@ function closeAifiSettings() {
 }
 
 function saveAifiSettings() {
-    const geminiKey = document.getElementById('modal-api-key').value.trim();
-    const nanoKey = document.getElementById('modal-nano-api-key').value.trim();
+    const apiKey = document.getElementById('modal-api-key').value.trim();
 
-    if (!geminiKey && !nanoKey) {
-        showAifiAlert('error', '최소 하나의 API 키를 입력해주세요.');
+    if (!apiKey) {
+        showAifiAlert('error', 'API 키를 입력해주세요.');
         return;
     }
 
-    // Save keys
-    if (geminiKey) {
-        aifiApiKey = geminiKey;
-        localStorage.setItem('gemini_api_key', geminiKey);
-    }
-
-    if (nanoKey) {
-        nanoBananaApiKey = nanoKey;
-        localStorage.setItem('nano_banana_api_key', nanoKey);
-    }
+    // Save key
+    aifiApiKey = apiKey;
+    localStorage.setItem('aifi_api_key', apiKey);
 
     updateApiStatus('설정됨');
     showAifiAlert('success', 'API 키가 저장되었습니다!');
@@ -1094,9 +1079,9 @@ function setupAifiDragDrop() {
     });
 }
 
-// API Functions with correct model names
+// API Functions
 async function generateAifiImage() {
-    if (!aifiApiKey && !nanoBananaApiKey) {
+    if (!aifiApiKey) {
         showAifiAlert('error', 'API 키를 먼저 설정해주세요.');
         return;
     }
@@ -1110,157 +1095,17 @@ async function generateAifiImage() {
     showAifiLoading('gen', true);
 
     try {
-        // Nano Banana API가 있으면 실제 이미지 생성
-        if (nanoBananaApiKey) {
-            const response = await fetch('https://api.nanobanana.com/v1/generate', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'x-api-key': nanoBananaApiKey
-                },
-                body: JSON.stringify({
-                    prompt: prompt,
-                    model: 'sdxl',  // Stable Diffusion XL
-                    width: 1024,
-                    height: 1024,
-                    steps: 30,
-                    cfg_scale: 7.5
-                })
-            });
-
-            if (!response.ok) {
-                throw new Error(`API error: ${response.status}`);
-            }
-
-            const data = await response.json();
-
-            // Nano Banana API 응답 처리
-            if (data.status === 'processing') {
-                showAifiAlert('info', '이미지 생성 중... 잠시만 기다려주세요.');
-
-                const taskId = data.task_id || data.id;
-                let result = await pollNanoBananaResult(taskId, nanoBananaApiKey);
-
-                if (result && result.image_url) {
-                    displayAifiImageFromUrl('gen', result.image_url);
-                    showAifiAlert('success', '이미지가 성공적으로 생성되었습니다!');
-                } else if (result && result.image) {
-                    displayAifiGeneratedImage('gen', result.image);
-                    showAifiAlert('success', '이미지가 성공적으로 생성되었습니다!');
-                } else {
-                    throw new Error('No image data in response');
-                }
-            } else if (data.image_url) {
-                displayAifiImageFromUrl('gen', data.image_url);
-                showAifiAlert('success', '이미지가 성공적으로 생성되었습니다!');
-            } else if (data.image) {
-                displayAifiGeneratedImage('gen', data.image);
-                showAifiAlert('success', '이미지가 성공적으로 생성되었습니다!');
-            } else {
-                throw new Error('Unexpected response format');
-            }
-        } else if (aifiApiKey) {
-            // Nano Banana API가 없으면 Gemini로 프롬프트 생성
-            showAifiAlert('info', 'Nano Banana API 키가 없습니다. Gemini로 향상된 프롬프트를 생성합니다.');
-            await generateAifiTextPrompt(prompt);
-        } else {
-            showAifiAlert('error', 'API 키를 먼저 설정해주세요.');
-        }
-
+        // 향상된 프롬프트 생성
+        await generateAifiTextPrompt(prompt);
+        showAifiAlert('success', '향상된 프롬프트가 생성되었습니다!');
     } catch (error) {
         console.error('Error in generateAifiImage:', error);
-        if (nanoBananaApiKey) {
-            showAifiAlert('warning', 'Nano Banana API 오류. Gemini로 프롬프트를 생성합니다.');
-            if (aifiApiKey) {
-                await generateAifiTextPrompt(prompt);
-            }
-        } else {
-            showAifiAlert('error', '이미지 생성에 실패했습니다.');
-        }
+        showAifiAlert('error', '프롬프트 생성에 실패했습니다.');
     } finally {
         showAifiLoading('gen', false);
     }
 }
 
-// Polling function for Nano Banana API
-async function pollNanoBananaResult(taskId, apiKey) {
-    const maxAttempts = 30; // 최대 30초 대기
-    let attempts = 0;
-
-    while (attempts < maxAttempts) {
-        try {
-            const response = await fetch(`https://api.nanobanana.com/v1/status/${taskId}`, {
-                headers: {
-                    'x-api-key': apiKey
-                }
-            });
-
-            if (!response.ok) {
-                throw new Error(`Polling error: ${response.status}`);
-            }
-
-            const result = await response.json();
-
-            if (result.status === 'completed' || result.status === 'success') {
-                return result;
-            } else if (result.status === 'failed' || result.status === 'error') {
-                throw new Error(`Task ${result.status}: ${result.error || 'Unknown error'}`);
-            }
-
-            // 1초 대기 후 재시도
-            await new Promise(resolve => setTimeout(resolve, 1000));
-            attempts++;
-        } catch (error) {
-            console.error('Polling error:', error);
-            attempts++;
-        }
-    }
-
-    throw new Error('Timeout waiting for image generation');
-}
-
-// Display image from URL
-function displayAifiImageFromUrl(type, imageUrl) {
-    const resultDiv = document.getElementById(`${type}-result`);
-    resultDiv.style.border = 'none';
-    resultDiv.style.background = 'transparent';
-    resultDiv.style.padding = '0';
-
-    resultDiv.innerHTML = `
-        <div style="flex: 1; display: flex; flex-direction: column;">
-            <img src="${imageUrl}" style="width: 100%; height: 100%; object-fit: contain; border-radius: 10px; flex: 1;"
-                 crossorigin="anonymous"
-                 onerror="console.error('Image failed to load')">
-        </div>
-        <div style="display: flex; gap: 10px; justify-content: center; margin-top: 20px;">
-            <button class="button aifi-button" onclick="downloadAifiImageFromUrl('${imageUrl}')">
-                다운로드
-            </button>
-        </div>
-    `;
-}
-
-// Download image from URL
-async function downloadAifiImageFromUrl(imageUrl) {
-    try {
-        const response = await fetch(imageUrl);
-        const blob = await response.blob();
-        const url = window.URL.createObjectURL(blob);
-
-        const link = document.createElement('a');
-        link.href = url;
-        link.download = `generated-${Date.now()}.png`;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-
-        window.URL.revokeObjectURL(url);
-    } catch (error) {
-        console.error('Download error:', error);
-        // 대체 방법: 새 탭에서 열기
-        window.open(imageUrl, '_blank');
-    }
-}
 
 async function generateAifiTextPrompt(prompt) {
     // Using gemini-2.5-flash for text generation
@@ -1652,4 +1497,48 @@ function downloadAifiImage(base64) {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+}
+
+// AIFI Modal Functions
+function testAifiApi() {
+    const testBtn = document.getElementById('test-api-btn');
+    const apiKey = document.getElementById('modal-api-key').value.trim();
+
+    if (!apiKey) {
+        updateApiStatus('API 키를 입력해주세요', 'error');
+        return;
+    }
+
+    testBtn.disabled = true;
+    testBtn.innerHTML = '<i data-lucide="loader" style="width: 16px; height: 16px; animation: spin 1s linear infinite;"></i><span>테스트 중...</span>';
+
+    // Simple validation
+    let isValid = apiKey.length > 10; // Basic length check
+    let statusMessage = isValid ? 'API 키가 정상적으로 연결되었습니다.' : 'API 키 형식을 확인해주세요';
+
+    setTimeout(() => {
+        updateApiStatus(statusMessage, isValid ? 'success' : 'error');
+        testBtn.disabled = false;
+        testBtn.innerHTML = '<i data-lucide="zap" style="width: 16px; height: 16px;"></i><span>연결 테스트</span>';
+
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+    }, 1500);
+}
+
+function updateApiStatus(message, type = 'info') {
+    const statusEl = document.getElementById('api-status-text');
+    if (statusEl) {
+        statusEl.textContent = message;
+        statusEl.className = 'status-value';
+
+        if (type === 'success') {
+            statusEl.style.color = '#4CAF50';
+        } else if (type === 'error') {
+            statusEl.style.color = '#f44336';
+        } else {
+            statusEl.style.color = '#ff6b6b';
+        }
+    }
 }

@@ -1867,57 +1867,57 @@ const cameraData = {
             {
                 id: 1,
                 title: '스테이지 1',
-                subtitle: '기초 프롬프트 이해',
-                description: 'AIFI 프레임워크의 기본 구조와 프롬프트 작성법을 학습합니다.',
+                subtitle: '시놉시스 아이디어 창출 단계',
+                description: '창의적인 스토리 아이디어를 구상하고 시놉시스를 작성하는 방법을 학습합니다.',
                 url: 'https://gemini.google.com/gem/1tWO58mOJuoVdeKxEOCNYWHHUvUeAEXla?usp=sharing'
             },
             {
                 id: 2,
                 title: '스테이지 2',
-                subtitle: '이미지 스타일 마스터',
-                description: '다양한 이미지 스타일과 기법을 활용한 프롬프트를 작성합니다.',
+                subtitle: '시나리오 작성단계',
+                description: '구체적인 시나리오와 스크립트를 작성하여 스토리를 완성합니다.',
                 url: 'https://gemini.google.com/gem/1jjSS7hLmZi3E0O0Tuaq0gQtYBSEfx6dw?usp=sharing'
             },
             {
                 id: 3,
                 title: '스테이지 3',
-                subtitle: '카메라 효과 활용',
-                description: '카메라 앵글과 움직임을 프롬프트에 적용하는 방법을 익힙니다.',
+                subtitle: '컨셉아트 단계',
+                description: '스토리에 맞는 비주얼 컨셉과 아트워크를 기획하고 설계합니다.',
                 url: 'https://gemini.google.com/gem/1w6gliyVgUX9_JHm89-VNDsfpinsWEO4R?usp=sharing'
             },
             {
                 id: 4,
                 title: '스테이지 4',
-                subtitle: '조명과 분위기',
-                description: '조명 효과를 활용한 분위기 있는 이미지 생성법을 학습합니다.',
+                subtitle: '컨셉아트 프롬프트 생성단계',
+                description: '컨셉아트를 AI로 생성하기 위한 정확하고 효과적인 프롬프트를 작성합니다.',
                 url: 'https://gemini.google.com/gem/1kDHXJePLBkyRK07OSkGioVNCxn9XP4TZ?usp=sharing'
             },
             {
                 id: 5,
                 title: '스테이지 5',
-                subtitle: '영상 프롬프트',
-                description: '동영상 생성을 위한 고급 프롬프트 기법을 마스터합니다.',
+                subtitle: '장면분할 단계',
+                description: '스토리를 구체적인 장면과 시퀀스로 분할하고 구성합니다.',
                 url: 'https://gemini.google.com/gem/1bRtrcTpDrX23xM_dflC5S5Qek-wdvrul?usp=sharing'
             },
             {
                 id: 6,
                 title: '스테이지 6',
-                subtitle: '스토리텔링',
-                description: '내러티브와 스토리를 담은 컨텐츠 제작법을 배웁니다.',
+                subtitle: '샷 이미지 프롬프트 생성단계',
+                description: '각 샷에 필요한 상세한 이미지 프롬프트를 생성하고 최적화합니다.',
                 url: 'https://gemini.google.com/gem/1TvK1sSlig1Nboted16aPAZqeHJTViEA4?usp=sharing'
             },
             {
                 id: 7,
                 title: '스테이지 7',
-                subtitle: '고급 테크닉',
-                description: '전문가 수준의 고급 프롬프트 엔지니어링을 학습합니다.',
+                subtitle: '영상프롬프트 생성단계',
+                description: '동영상 생성을 위한 고급 프롬프트와 시네마틱 요소를 구성합니다.',
                 url: 'https://gemini.google.com/gem/1MUSQm549C4dLV83q_uzNzNAVVJ3MahYQ?usp=sharing'
             },
             {
                 id: 8,
                 title: '스테이지 8',
-                subtitle: '프로젝트 완성',
-                description: '종합 프로젝트를 통해 실전 역량을 완성합니다.',
+                subtitle: '오디오 프롬프트 생성단계',
+                description: '음향, 음악, 내레이션 등 오디오 요소를 위한 프롬프트를 완성합니다.',
                 url: 'https://gemini.google.com/gem/1qq6JWNfWdzAfwFsdKjyZOTnn7MgXONzc?usp=sharing'
             }
         ],
