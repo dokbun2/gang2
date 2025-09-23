@@ -24,9 +24,9 @@ const cameraData = {
         ]
     },
 
-    // AIFI AI 생성 도구
+    // AIFI AI툴
     'aifi-tool': {
-        title: 'AIFI AI 생성 도구',
+        title: 'AIFI AI툴',
         koreanTitle: 'AI Image & Video Prompt Generator',
         type: 'tool',
         description: 'Gemini AI를 활용한 이미지 및 영상 프롬프트 생성 도구'

@@ -249,15 +249,6 @@ function displayContent() {
                     `).join('')}
                 </div>
 
-                <!-- Usage Cases -->
-                ${currentData.usage && currentData.usage.length > 0 ? `
-                    <div class="content-section-box" style="margin-top: 30px;">
-                        <h3 class="section-title">사용 케이스</h3>
-                        <ul class="usage-list">
-                            ${currentData.usage.map(use => `<li>${use}</li>`).join('')}
-                        </ul>
-                    </div>
-                ` : ''}
             </div>
         `;
 
@@ -404,15 +395,6 @@ function displayContent() {
                     ` : ''}
                 </div>
 
-                <!-- 사용 케이스 섹션 -->
-                ${currentData.usage && currentData.usage.length > 0 ? `
-                    <div class="content-section-box">
-                        <h3 class="section-title">사용 케이스</h3>
-                        <ul class="usage-list">
-                            ${currentData.usage.map(use => `<li>${use}</li>`).join('')}
-                        </ul>
-                    </div>
-                ` : ''}
 
                 <!-- 예시 영상 또는 이미지 섹션 (그리드 내부) -->
                 ${currentData.videos && currentData.videos.length > 0 ? `
@@ -1118,7 +1100,7 @@ async function generateAifiTextPrompt(prompt) {
             body: JSON.stringify({
                 contents: [{
                     parts: [{
-                        text: `다음 아이디어를 Midjourney나 DALL-E 3에서 사용할 수 있는 상세한 이미지 생성 프롬프트로 변환해주세요. 영어로 작성하고, 스타일, 조명, 구도, 색상 등을 포함해주세요:\n\n"${prompt}"\n\n프롬프트:`
+                        text: `Convert this idea into a detailed image generation prompt for Midjourney or DALL-E 3. Write in English and include style, lighting, composition, and colors. Provide ONLY the clean prompt without any explanations or additional text:\n\n"${prompt}"`
                     }]
                 }]
             })
@@ -1126,7 +1108,17 @@ async function generateAifiTextPrompt(prompt) {
 
         const data = await response.json();
         if (data.candidates && data.candidates[0]) {
-            const enhancedPrompt = data.candidates[0].content.parts[0].text;
+            let enhancedPrompt = data.candidates[0].content.parts[0].text;
+
+            // 불필요한 안내문 제거
+            enhancedPrompt = enhancedPrompt
+                .replace(/^Here's.*?:\s*/i, '')
+                .replace(/^Enhanced prompt.*?:\s*/i, '')
+                .replace(/^Prompt.*?:\s*/i, '')
+                .replace(/^\*\*.*?\*\*\s*/gm, '')
+                .replace(/^#{1,6}\s.*$/gm, '')
+                .trim();
+
             displayAifiPromptResult('gen', enhancedPrompt);
         }
     } catch (error) {
@@ -1266,7 +1258,7 @@ async function extractAifiPrompt() {
                             }
                         },
                         {
-                            text: `Analyze this image and generate a detailed prompt that could recreate it. Include:\n\nSTYLE: [artistic style, rendering technique]\nMEDIUM: [medium/technique]\nSUBJECT: [main subject description]\nCAMERA: [shot type, angle]\nCOMPOSITION: [compositional elements]\nLIGHTING: [lighting style and setup]\nCOLOR: [color palette, tone]\nMOOD: [atmosphere, emotion]\nDETAILS: [specific details, textures]\nQUALITY: [quality modifiers]\n\nFormat it as a structured prompt suitable for Midjourney or DALL-E.`
+                            text: `Analyze this image and create a clean, direct prompt that could recreate it using Midjourney or DALL-E. Write ONLY the prompt text without any explanations, headers, or additional formatting. Just provide the raw prompt that can be copied and used directly.`
                         }
                     ]
                 }]
@@ -1275,7 +1267,19 @@ async function extractAifiPrompt() {
 
         const data = await response.json();
         if (data.candidates && data.candidates[0]) {
-            const extractedPrompt = data.candidates[0].content.parts[0].text;
+            let extractedPrompt = data.candidates[0].content.parts[0].text;
+
+            // 불필요한 안내문 제거
+            extractedPrompt = extractedPrompt
+                .replace(/^Here's a prompt.*?:\s*/i, '')
+                .replace(/^This prompt.*?:\s*/i, '')
+                .replace(/^Generated prompt.*?:\s*/i, '')
+                .replace(/^Prompt.*?:\s*/i, '')
+                .replace(/^\*\*.*?\*\*\s*/gm, '')
+                .replace(/^#{1,6}\s.*$/gm, '')
+                .replace(/^---+$/gm, '')
+                .trim();
+
             displayAifiPromptResult('ext', extractedPrompt);
         }
     } catch (error) {
