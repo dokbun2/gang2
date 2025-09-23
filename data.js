@@ -1974,7 +1974,7 @@ const cameraData = {
                 title: '스테이지 7',
                 subtitle: '영상프롬프트 생성단계',
                 description: '동영상 생성을 위한 고급 프롬프트와 시네마틱 요소를 구성합니다.',
-                url: 'https://gemini.google.com/gem/1MUSQm549C4dLV83q_uzNzNAVVJ3MahYQ?usp=sharing'
+                url: 'https://gemini.google.com/gem/1OKB-2BgKza-Sv7cVVpJcGTdf1Mkx55PX?usp=sharing'
             },
             {
                 id: 8,
@@ -1992,7 +1992,7 @@ const cameraData = {
         title: '침팬지 영상만들기',
         koreanTitle: 'Chimpanzee Video Creation',
         description: 'ASMR 스타일의 침팬지 짜장면 먹방 영상을 만드는 실습과제입니다. 왼쪽 동영상을 참고하여 오른쪽 프롬프트를 활용해 영상을 생성해보세요.',
-        videoUrl: 'https://www.dropbox.com/scl/fi/1gt32p4lcuyqlt1o1o0wj/.mp4?rlkey=tb6pmhxchm40ld4pfrmg6bvqe&st=wux1wog8&raw=1',
+        videoUrl: 'https://www.dropbox.com/scl/fi/1gt32p4lcuyqlt1o1o0wj/.mp4?rlkey=tb6pmhxchm40ld4pfrmg6bvqe&st=ypw3koep&raw=1',
         prompt: `{
   "core_module": {
     "character": {

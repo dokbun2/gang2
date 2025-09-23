@@ -215,7 +215,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .major-category + .major-category {
-    margin-top: 50px !important;
+    margin-top: 20px !important;
 }
 
 .major-category:last-child {
@@ -2426,6 +2426,27 @@ h1, h2, h3, h4, h5, h6 {
 .aifi-test-btn:hover {
     background: rgba(33, 150, 243, 0.2);
     border-color: rgba(33, 150, 243, 0.5);
+}
+
+/* 햄스터 돈가스먹방과 악어 국수먹방 섹션의 글씨 크기 확대 */
+[data-content-id="hamster-video"] h2,
+[data-content-id="crocodile-video"] h2 {
+    font-size: 1.2em !important;
+}
+
+[data-content-id="hamster-video"] .content-description,
+[data-content-id="crocodile-video"] .content-description {
+    font-size: 1.2em !important;
+}
+
+[data-content-id="hamster-video"] p,
+[data-content-id="crocodile-video"] p {
+    font-size: 1.2em !important;
+}
+
+[data-content-id="hamster-video"] .practice-prompt,
+[data-content-id="crocodile-video"] .practice-prompt {
+    font-size: 1.2em !important;
 }
 
 .aifi-test-btn:disabled {

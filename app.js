@@ -1643,10 +1643,20 @@ function displayPracticeContent() {
                 <div class="practice-prompt-section">
                     <div class="prompt-header">
                         <h3 class="section-title">예시 프롬프트</h3>
-                        <button class="copy-prompt-btn" onclick="copyPracticePrompt()">
-                            <i data-lucide="copy" style="width: 16px; height: 16px; margin-right: 5px;"></i>
-                            복사하기
-                        </button>
+                        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                            <button class="copy-prompt-btn" onclick="copyPracticePrompt()">
+                                <i data-lucide="copy" style="width: 16px; height: 16px; margin-right: 5px;"></i>
+                                복사하기
+                            </button>
+                            <button class="copy-prompt-btn" onclick="copyCustomPrompt()" style="background: linear-gradient(135deg, #4caf50, #45a049);">
+                                <i data-lucide="scissors" style="width: 16px; height: 16px; margin-right: 5px;"></i>
+                                커스텀지침복사
+                            </button>
+                            <button class="copy-prompt-btn" onclick="copyCustomInstructionsPrompt()" style="background: linear-gradient(135deg, #ff9800, #f57c00);">
+                                <i data-lucide="plus-circle" style="width: 16px; height: 16px; margin-right: 5px;"></i>
+                                커스텀지침추가복사
+                            </button>
+                        </div>
                     </div>
                     <div class="prompt-container">
                         <pre class="practice-prompt" id="practice-prompt">${currentData.prompt}</pre>
@@ -1654,9 +1664,9 @@ function displayPracticeContent() {
                 </div>
             </div>
 
-            <!-- 실습과제 #1 섹션 -->
+            <!-- 실습과제 #2 섹션 -->
             <div class="practice-exercises-section">
-                <h3 class="section-title">실습과제 #1</h3>
+                <h3 class="section-title">실습과제 #2</h3>
                 <div class="exercise-grid">
                     <div class="exercise-item">
                         <h4 class="exercise-title">햄스터 돈가스먹방</h4>
@@ -1719,6 +1729,113 @@ function copyPracticePrompt() {
 
     document.body.removeChild(textarea);
 }
+
+function copyCustomPrompt() {
+    // prompt_object_v6의 핵심 내용만 추출
+    const fullPrompt = currentData.prompt;
+
+    // prompt_object_v6 이후의 내용만 추출
+    const promptObjectStart = fullPrompt.indexOf('prompt_object_v6');
+    if (promptObjectStart === -1) {
+        // prompt_object_v6가 없으면 전체 프롬프트 사용
+        copyToClipboardWithFeedback(fullPrompt);
+        return;
+    }
+
+    // prompt_object_v6 이후 첫 번째 {부터 시작
+    const afterPromptObject = fullPrompt.substring(promptObjectStart);
+    const firstBraceIndex = afterPromptObject.indexOf('{');
+
+    if (firstBraceIndex === -1) {
+        copyToClipboardWithFeedback(fullPrompt);
+        return;
+    }
+
+    // { 부터 끝까지 추출 (마지막 }` 부분 제거)
+    let corePrompt = afterPromptObject.substring(firstBraceIndex);
+
+    // 끝의 }` 패턴 제거
+    corePrompt = corePrompt.replace(/\}(\s*`\s*)?$/, '}');
+
+    copyToClipboardWithFeedback(corePrompt);
+}
+
+function copyToClipboardWithFeedback(text) {
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+    textarea.style.position = 'fixed';
+    textarea.style.left = '-999999px';
+    document.body.appendChild(textarea);
+    textarea.select();
+
+    try {
+        document.execCommand('copy');
+        // Update button text
+        const btn = event.currentTarget;
+        const originalText = btn.innerHTML;
+        btn.innerHTML = '<i data-lucide="check" style="width: 16px; height: 16px; margin-right: 5px;"></i>복사완료!';
+        btn.classList.add('copied');
+        setTimeout(() => {
+            btn.innerHTML = originalText;
+            btn.classList.remove('copied');
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        }, 2000);
+    } catch (err) {
+        console.error('복사 실패:', err);
+    }
+    document.body.removeChild(textarea);
+}
+
+function copyCustomInstructionsPrompt() {
+    // 기존 핵심 프롬프트 추출
+    const fullPrompt = currentData.prompt;
+    const promptObjectStart = fullPrompt.indexOf('prompt_object_v6');
+
+    let corePrompt = '';
+    if (promptObjectStart !== -1) {
+        const afterPromptObject = fullPrompt.substring(promptObjectStart);
+        const firstBraceIndex = afterPromptObject.indexOf('{');
+
+        if (firstBraceIndex !== -1) {
+            corePrompt = afterPromptObject.substring(firstBraceIndex);
+            corePrompt = corePrompt.replace(/\}(\s*`\s*)?$/, '}');
+        }
+    }
+
+    if (!corePrompt) {
+        corePrompt = fullPrompt;
+    }
+
+    // 기본 커스텀 지침
+    const customInstructions = `1. 대사: 나는 하늘을 날고 있는 슈퍼고슴도치 하루오프다
+
+2. 목소리 톤 : 귀여운 10대의 소년의 목소리
+
+3. 영상길이 : 8초 이내`;
+
+    // JSON 형태의 프롬프트인 경우, 마지막 } 앞에 커스텀 지침 추가
+    let finalPrompt = corePrompt;
+    if (corePrompt.includes('{') && corePrompt.includes('}')) {
+        const lastBraceIndex = corePrompt.lastIndexOf('}');
+        const beforeLastBrace = corePrompt.substring(0, lastBraceIndex);
+
+        // 커스텀 지침을 JSON 구조에 맞게 추가
+        const customSection = `,
+  "custom_instructions": \`
+${customInstructions}
+\``;
+
+        finalPrompt = beforeLastBrace + customSection + '\n}';
+    } else {
+        // JSON이 아닌 경우 단순히 뒤에 추가
+        finalPrompt = corePrompt + '\n\n[커스텀 지침]\n' + customInstructions;
+    }
+
+    copyToClipboardWithFeedback(finalPrompt);
+}
+
 function openVideoFullscreen(videoElement) {
     if (videoElement.requestFullscreen) {
         videoElement.requestFullscreen();

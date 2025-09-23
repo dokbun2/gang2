@@ -270,11 +270,11 @@
                         </div>
                     </div>
 
-                    <!-- 헤어스타일 섹션 -->
+                    <!-- 실습과제 #1 섹션 -->
                     <div class="menu-section" style="margin-top: 15px;">
                         <button class="menu-header" onclick="showContent('hairstyles')" style="background: linear-gradient(135deg, #9b59b6, #8e44ad); border: 1px solid #7d3c98;">
                             <i data-lucide="scissors" class="menu-icon"></i>
-                            <span>헤어스타일(HAIRSTYLES)</span>
+                            <span>실습과제 #1</span>
                         </button>
                     </div>
                 </div>
@@ -335,11 +335,23 @@
                         <i data-lucide="chevron-down" class="chevron-icon" id="practice-category-icon"></i>
                     </button>
                     <div class="major-category-content" id="practice-category">
-                        <!-- 동물 먹방 중분류 -->
+                        <!-- 실습과제 #1 중분류 -->
+                        <div class="menu-section">
+                            <button class="menu-header" onclick="toggleSection('hairstyle-practice')" style="background: linear-gradient(135deg, #9b59b6, #8e44ad); border: 1px solid #7d3c98;">
+                                <i data-lucide="scissors" class="menu-icon"></i>
+                                <span>실습과제 #1</span>
+                                <i data-lucide="chevron-down" class="chevron-icon" id="hairstyle-practice-chevron"></i>
+                            </button>
+                            <div class="menu-items" id="hairstyle-practice-items">
+                                <a href="#" class="menu-item" onclick="showContent('hairstyles')">헤어스타일 변경</a>
+                            </div>
+                        </div>
+
+                        <!-- 실습자료 #2 중분류 -->
                         <div class="menu-section">
                             <button class="menu-header" onclick="toggleSection('animal-mukbang')">
                                 <i data-lucide="utensils" class="menu-icon"></i>
-                                <span>실습자료 #1</span>
+                                <span>실습자료 #2</span>
                                 <i data-lucide="chevron-down" class="chevron-icon" id="animal-mukbang-chevron"></i>
                             </button>
                             <div class="menu-items" id="animal-mukbang-items">
