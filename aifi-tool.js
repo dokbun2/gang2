@@ -1,7 +1,8 @@
 // AIFI Tool - Vanilla JS Version
 
 // Global variables
-let apiKey = localStorage.getItem('gemini_api_key') || '';
+let geminiApiKey = localStorage.getItem('gemini_api_key') || '';
+let nanoBananaApiKey = localStorage.getItem('nano_banana_api_key') || '';
 let currentTab = 'generator';
 let uploadedImages = {
     variator: null,
@@ -10,9 +11,14 @@ let uploadedImages = {
 
 // Initialize
 document.addEventListener('DOMContentLoaded', function() {
-    // Check if API key exists
-    if (apiKey) {
-        document.getElementById('api-key').value = apiKey;
+    // Check if API keys exist
+    if (geminiApiKey) {
+        document.getElementById('gemini-api-key').value = geminiApiKey;
+    }
+    if (nanoBananaApiKey) {
+        document.getElementById('nano-api-key').value = nanoBananaApiKey;
+    }
+    if (geminiApiKey && nanoBananaApiKey) {
         document.getElementById('api-key-card').style.display = 'none';
     }
 
@@ -22,14 +28,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // API Key Management
 function saveApiKey() {
-    const key = document.getElementById('api-key').value.trim();
-    if (!key) {
-        showAlert('error', 'API 키를 입력해주세요.');
+    const geminiKey = document.getElementById('gemini-api-key').value.trim();
+    const nanoKey = document.getElementById('nano-api-key').value.trim();
+
+    if (!geminiKey || !nanoKey) {
+        showAlert('error', '모든 API 키를 입력해주세요.');
         return;
     }
 
-    apiKey = key;
-    localStorage.setItem('gemini_api_key', key);
+    geminiApiKey = geminiKey;
+    nanoBananaApiKey = nanoKey;
+    localStorage.setItem('gemini_api_key', geminiKey);
+    localStorage.setItem('nano_banana_api_key', nanoKey);
     document.getElementById('api-key-card').style.display = 'none';
     showAlert('success', 'API 키가 저장되었습니다!');
 }
@@ -180,22 +190,19 @@ async function generateImage() {
     showLoading('gen', true);
 
     try {
-        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/imagen-3.0-generate-001:predict?key=${apiKey}`, {
+        // Nano Banana API를 사용하여 이미지 생성
+        const response = await fetch('https://api.nanobanano.com/v1/generate', {
             method: 'POST',
             headers: {
+                'Authorization': `Bearer ${nanoBananaApiKey}`,
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                instances: [{
-                    prompt: `전문 사진작가가 찍은 것처럼, 초현실적이고 상세하며, 시네마틱한 스타일로: ${prompt}`
-                }],
-                parameters: {
-                    sampleCount: 1,
-                    aspectRatio: '1:1',
-                    outputOptions: {
-                        mimeType: 'image/jpeg'
-                    }
-                }
+                prompt: prompt,
+                model: 'flux-1.1-pro',
+                width: 1024,
+                height: 1024,
+                steps: 30
             })
         });
 
@@ -204,16 +211,16 @@ async function generateImage() {
         }
 
         const data = await response.json();
-        if (data.predictions && data.predictions[0]) {
-            displayGeneratedImage(data.predictions[0].bytesBase64Encoded);
+        if (data.image) {
+            displayGeneratedImage(data.image);
         } else {
-            // Imagen이 실패하면 대체 방법 사용
-            showAlert('warning', 'Imagen API를 사용할 수 없습니다. 대체 프롬프트를 생성합니다.');
+            // Nano Banana가 실패하면 프롬프트 향상 제공
+            showAlert('warning', 'Nano Banana API를 사용할 수 없습니다. 향상된 프롬프트를 생성합니다.');
             generateAlternativePrompt(prompt);
         }
     } catch (error) {
         console.error('Error:', error);
-        // 에러 발생시 대체 프롬프트 생성
+        // 에러 발생시 프롬프트 향상 제공
         generateAlternativePrompt(prompt);
     } finally {
         showLoading('gen', false);
@@ -221,9 +228,9 @@ async function generateImage() {
 }
 
 async function generateAlternativePrompt(prompt) {
-    // Gemini를 사용하여 향상된 프롬프트 생성
+    // Gemini 2.5 Flash를 사용하여 향상된 프롬프트 생성
     try {
-        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${apiKey}`, {
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${geminiApiKey}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -231,7 +238,7 @@ async function generateAlternativePrompt(prompt) {
             body: JSON.stringify({
                 contents: [{
                     parts: [{
-                        text: `다음 아이디어를 Midjourney나 DALL-E 3에서 사용할 수 있는 상세한 이미지 생성 프롬프트로 변환해주세요. 영어로 작성하고, 스타일, 조명, 구도, 색상 등을 포함해주세요:\n\n"${prompt}"\n\n프롬프트:`
+                        text: `다음 아이디어를 Midjourney나 DALL-E 3에서 사용할 수 있는 상세한 이미지 생성 프롬프트로 변환해주세요. 영어로 작성하고, 스타일, 조명, 구도, 색상 등을 포함해주세요. 프롬프트만 제공하고 추가 설명은 하지 마세요.\n\n"${prompt}"`
                     }]
                 }]
             })
