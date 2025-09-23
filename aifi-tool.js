@@ -288,7 +288,41 @@ async function variateImage() {
     showLoading('var', true);
 
     try {
-        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro-vision:generateContent?key=${apiKey}`, {
+        // Nano Banana API를 사용하여 이미지 변형
+        const response = await fetch('https://api.nanobanano.com/v1/img2img', {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${nanoBananaApiKey}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                image: uploadedImages.variator.base64,
+                prompt: prompt,
+                model: 'flux-1.1-pro',
+                strength: 0.7,
+                steps: 30
+            })
+        });
+
+        const data = await response.json();
+        if (data.image) {
+            displayVariatedImage(data.image);
+        } else {
+            // 실패하면 Gemini로 프롬프트 생성
+            fallbackToGeminiVariation(prompt);
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        // 에러 발생시 Gemini로 프롬프트 생성
+        fallbackToGeminiVariation(prompt);
+    } finally {
+        showLoading('var', false);
+    }
+}
+
+async function fallbackToGeminiVariation(prompt) {
+    try {
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-vision:generateContent?key=${geminiApiKey}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -303,7 +337,7 @@ async function variateImage() {
                             }
                         },
                         {
-                            text: `이 이미지를 다음과 같이 변형하기 위한 상세한 프롬프트를 생성해주세요: "${prompt}"\n\n원본 이미지의 주요 요소를 유지하면서 요청된 변형을 적용한 새로운 이미지 생성 프롬프트를 영어로 작성해주세요.`
+                            text: `이 이미지를 다음과 같이 변형하기 위한 상세한 프롬프트를 생성해주세요: "${prompt}"\n\n원본 이미지의 주요 요소를 유지하면서 요청된 변형을 적용한 새로운 이미지 생성 프롬프트만 영어로 작성해주세요. 추가 설명이나 안내글은 포함하지 마세요.`
                         }
                     ]
                 }]
@@ -318,9 +352,24 @@ async function variateImage() {
     } catch (error) {
         console.error('Error:', error);
         showAlert('error', '이미지 변형에 실패했습니다.');
-    } finally {
-        showLoading('var', false);
     }
+}
+
+function displayVariatedImage(base64) {
+    const resultDiv = document.getElementById('var-result');
+    resultDiv.style.border = 'none';
+    resultDiv.style.background = 'transparent';
+    resultDiv.style.padding = '0';
+    resultDiv.innerHTML = `
+        <div style="flex: 1; display: flex; flex-direction: column;">
+            <img src="data:image/jpeg;base64,${base64}" style="width: 100%; height: 100%; object-fit: contain; border-radius: 10px; flex: 1;">
+        </div>
+        <div style="display: flex; gap: 10px; justify-content: center; margin-top: 20px;">
+            <button class="button" onclick="downloadImage('${base64}')">
+                다운로드
+            </button>
+        </div>
+    `;
 }
 
 async function extractPrompt() {
@@ -334,7 +383,7 @@ async function extractPrompt() {
     showLoading('ext', true);
 
     try {
-        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro-vision:generateContent?key=${apiKey}`, {
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-vision:generateContent?key=${geminiApiKey}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -349,20 +398,9 @@ async function extractPrompt() {
                             }
                         },
                         {
-                            text: `Analyze this image and generate a detailed prompt that could recreate it. Include:
+                            text: `Analyze this image and generate only the prompt that could recreate it. Do not include any explanations, instructions, or additional text. Just provide the prompt in this format:
 
-STYLE: [artistic style, rendering technique]
-MEDIUM: [medium/technique]
-SUBJECT: [main subject description]
-CAMERA: [shot type, angle]
-COMPOSITION: [compositional elements]
-LIGHTING: [lighting style and setup]
-COLOR: [color palette, tone]
-MOOD: [atmosphere, emotion]
-DETAILS: [specific details, textures]
-QUALITY: [quality modifiers]
-
-Format it as a structured prompt suitable for Midjourney or DALL-E.`
+[style], [medium], [subject], [camera angle], [composition], [lighting], [color palette], [mood], [details], [quality modifiers]`
                         }
                     ]
                 }]
@@ -394,7 +432,7 @@ async function generateVideoPrompt() {
     showLoading('video', true);
 
     try {
-        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${apiKey}`, {
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${geminiApiKey}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -402,19 +440,19 @@ async function generateVideoPrompt() {
             body: JSON.stringify({
                 contents: [{
                     parts: [{
-                        text: `Create a detailed video generation prompt in JSON format for: "${prompt}"
+                        text: `Create a video generation prompt in JSON format for: "${prompt}"
 
-Include these elements in the JSON:
-- metadata (title, duration)
-- scene description
-- camera movements
-- character details (if any)
-- lighting setup
-- audio/dialogue
-- visual style
-- color grading
-
-Format as a clean JSON object.`
+Provide ONLY the JSON object without any explanation or additional text. Include:
+{
+  "metadata": {"title": "", "duration": ""},
+  "scene": "",
+  "camera": "",
+  "characters": "",
+  "lighting": "",
+  "audio": "",
+  "style": "",
+  "color": ""
+}`
                     }]
                 }],
                 generationConfig: {
@@ -450,7 +488,7 @@ Format as a clean JSON object.`
 
 // Helper Functions
 function checkApiKey() {
-    if (!apiKey) {
+    if (!geminiApiKey || !nanoBananaApiKey) {
         showAlert('error', 'API 키를 먼저 설정해주세요.');
         document.getElementById('api-key-card').style.display = 'block';
         document.getElementById('api-key-card').scrollIntoView({ behavior: 'smooth' });

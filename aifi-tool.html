@@ -362,17 +362,27 @@
         <div class="card" id="api-key-card">
             <div class="card-title">API 설정</div>
             <div class="form-group">
-                <label for="api-key">Gemini API Key</label>
-                <input type="text" id="api-key" placeholder="AIzaSy... 형식의 API 키를 입력하세요">
+                <label for="gemini-api-key">Gemini 2.5 Flash API Key</label>
+                <input type="text" id="gemini-api-key" placeholder="AIzaSy... 형식의 API 키를 입력하세요">
                 <small style="color: #999; display: block; margin-top: 8px;">
-                    API 키가 없으신가요?
+                    프롬프트 추출 및 영상 프롬프트 생성용
                     <a href="https://makersuite.google.com/app/apikey" target="_blank" style="color: #ff6b6b;">
-                        여기서 무료로 생성하세요
+                        Google AI Studio에서 무료로 생성하기 →
+                    </a>
+                </small>
+            </div>
+            <div class="form-group" style="margin-top: 20px;">
+                <label for="nano-api-key">Nano Banana API Key</label>
+                <input type="text" id="nano-api-key" placeholder="$NANO... 형식의 API 키를 입력하세요">
+                <small style="color: #999; display: block; margin-top: 8px;">
+                    이미지 생성 및 변형용 (유료)
+                    <a href="https://nanobanano.com" target="_blank" style="color: #ff6b6b;">
+                        Nano Banana에서 API 키 생성하기 →
                     </a>
                 </small>
             </div>
             <button class="button" onclick="saveApiKey()">
-                저장하기
+                API 키 저장
             </button>
         </div>
 
