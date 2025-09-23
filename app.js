@@ -343,16 +343,6 @@ function displayContent() {
                                 <span class="info-value">${comp}</span>
                             </div>
                         `).join('')}
-                        ${currentData.instructorInfo.career ? `
-                            <div class="instructor-info-item" style="margin-top: 15px;">
-                                <span class="info-label">경력사항:</span>
-                            </div>
-                            ${currentData.instructorInfo.career.map(career => `
-                                <div class="instructor-info-item career">
-                                    <span class="info-value" style="margin-left: 20px;">• ${career}</span>
-                                </div>
-                            `).join('')}
-                        ` : ''}
                         <div class="instructor-info-item" style="margin-top: 15px;">
                             <span class="info-label">Email:</span>
                             <span class="info-value">${currentData.instructorInfo.email}</span>

@@ -12,12 +12,6 @@ const cameraData = {
                 '(주)알앤픽 대표이사',
                 '(주)제이콥 소프트 전략영업대표'
             ],
-            career: [
-                '(주)스테이지파이브 부사장(카카오계열사)',
-                '(주)씨에스렌탈 대표',
-                '(주)웰릭스렌탈 대표',
-                '금융기관(농협, 캐피탈사 등)'
-            ],
             email: 'ggamsire@gmail.com',
             image: 'images/instructor.jpg'
         },
