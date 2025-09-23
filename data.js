@@ -1791,7 +1791,8 @@ const cameraData = {
             '패션 일러스트레이션',
             '뷰티 콘텐츠 제작'
         ],
-        hairstyles: [
+        currentTab: 'woman',
+        womanHairstyles: [
             {
                 name: 'bun',
                 koreanName: '번 헤어',
@@ -1807,7 +1808,7 @@ const cameraData = {
             {
                 name: 'wavy',
                 koreanName: '웨이브',
-                description: 'shoulder-length wavy hair',
+                description: 'wavy hair',
                 image: 'https://cdn.midjourney.com/73c5cf81-a0cc-4a88-9ed4-3e0c2fa37a01/0_2.png'
             },
             {
@@ -1851,6 +1852,68 @@ const cameraData = {
                 koreanName: '핑거 컬',
                 description: 'tight finger curls hairstyle',
                 image: 'https://cdn.midjourney.com/364f299c-41ec-4e83-b28b-8930fd6d8c25/0_2.png'
+            }
+        ],
+        manHairstyles: [
+            {
+                name: 'undercut',
+                koreanName: '언더컷',
+                description: 'undercut haircut',
+                image: 'https://cdn.midjourney.com/dfef2aae-0c79-4b4f-8f3d-9c255416dbc6/0_0.png'
+            },
+            {
+                name: 'fade haircut',
+                koreanName: '페이드 컷',
+                description: 'fade haircut',
+                image: 'https://cdn.midjourney.com/0b69e682-8996-4d55-81b6-642980ae0b39/0_3.png'
+            },
+            {
+                name: 'buzz cut',
+                koreanName: '버즈컷',
+                description: 'buzz cut',
+                image: 'https://cdn.midjourney.com/14401a7d-a7ea-488c-bb00-988449f49688/0_2.png'
+            },
+            {
+                name: 'pompadour',
+                koreanName: '포마드',
+                description: 'pompadour hairstyle',
+                image: 'https://cdn.midjourney.com/ec8c4da2-4ea8-435c-8532-df4f36d008b6/0_1.png'
+            },
+            {
+                name: 'quiff',
+                koreanName: '퀴프',
+                description: 'quiff hairstyle',
+                image: 'https://cdn.midjourney.com/bf4f82b4-c637-40e0-8f57-6cefcfc283b8/0_3.png'
+            },
+            {
+                name: 'side part',
+                koreanName: '사이드 파트',
+                description: 'side part hairstyle',
+                image: 'https://cdn.midjourney.com/5d4da5ba-b20a-47c3-a14a-89009ba59c70/0_2.png'
+            },
+            {
+                name: 'man bun',
+                koreanName: '맨번',
+                description: 'man bun hairstyle',
+                image: 'https://cdn.midjourney.com/240d7963-d4d2-4c40-8eec-ddca6f7bb7e3/0_1.png'
+            },
+            {
+                name: 'crew cut',
+                koreanName: '크루컷',
+                description: 'crew cut',
+                image: 'https://cdn.midjourney.com/c6227112-8a39-4cb5-8150-229bbaa5b39d/0_3.png'
+            },
+            {
+                name: 'slicked back',
+                koreanName: '슬릭백',
+                description: 'slicked back hairstyle',
+                image: 'https://cdn.midjourney.com/c5bf2f7e-3efb-45f7-9b42-0e528a5ebe58/0_2.png'
+            },
+            {
+                name: 'textured crop',
+                koreanName: '텍스처드 크롭',
+                description: 'textured crop hairstyle',
+                image: 'https://cdn.midjourney.com/99ef0e6a-f544-497d-88ea-3d2b8d4a02dd/0_3.png'
             }
         ],
         images: []
@@ -1922,5 +1985,183 @@ const cameraData = {
             }
         ],
         images: []
+    },
+
+    // ============= 실습과제 =============
+    'chimpanzee-video': {
+        title: '침팬지 영상만들기',
+        koreanTitle: 'Chimpanzee Video Creation',
+        description: 'ASMR 스타일의 침팬지 짜장면 먹방 영상을 만드는 실습과제입니다. 왼쪽 동영상을 참고하여 오른쪽 프롬프트를 활용해 영상을 생성해보세요.',
+        videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+        prompt: `{
+  "core_module": {
+    "character": {
+      "char_01": {
+        "id": "Chimpanzee_ASMR_BJ",
+        "signature_details": "An adult chimpanzee with expressive, thoughtful eyes. He has the calm and serious persona of a professional ASMRtist.",
+        "voice_consistency": "An extremely close, breathy ASMR whisper, as if his lips are almost touching the microphone."
+      }
+    },
+    "location_baseline": {
+      "setting": "A cozy, dimly lit room set up like a personal recording studio for ASMR.",
+      "architecture": "A simple wooden table with a professional condenser microphone placed prominently.",
+      "color_palette": "Warm tones, deep browns, soft oranges, and dark shadows."
+    },
+    "project_style": "ASMR, Mukbang (eating show), cinematic close-up, serious gourmet, photorealistic, high-detail"
+  },
+  "video_module": {
+    "metadata": {
+      "prompt_name": "chimpanzee_jjajangmyeon_asmr_whisper",
+      "duration_seconds": 8
+    },
+    "global": {
+      "description": "In a cozy ASMR studio, a thoughtful chimpanzee whispers an introduction to a bowl of Jajangmyeon (black bean noodles) before performing an intense, satisfying noodle slurp.",
+      "style": "photorealistic, hyper-realistic, shallow depth of field, cinematic"
+    },
+    "dialogue_block": {
+      "dialogue": "'자... 오늘의 메뉴는 짜장면입니다... 소리 한번 들어보시죠. (Ja... oneurui menyuneun jjajangmyeon-imnida... Sori hanbeon deureobosijyo.)'"
+    },
+    "sequence": [
+      {
+        "timestamp": "00:00-00:08",
+        "camera": "Static medium close-up, slowly pushing in to an extreme close-up on the mouth and noodles for the final slurp.",
+        "motion": "The chimpanzee whispers his introduction (dialogue) while gently stirring the glossy black noodles with chopsticks. He then lifts a large bundle of noodles right up to the microphone and slurps them into his mouth with intense satisfaction.",
+        "audio": "Starts with an extremely soft, breathy whispered dialogue. This is followed by the wet, sticky sound of noodles being mixed, and culminates in a loud, deeply satisfying, and wet ASMR SLURP sound that dominates the final seconds.",
+        "elements": [
+          "chimpanzee's face",
+          "condenser microphone",
+          "a bowl of glossy Jajangmyeon",
+          "slurping noodles"
+        ],
+        "ending": "The sequence ends mid-slurp, with noodles still hanging from his mouth."
+      }
+    ],
+    "negative_prompts": [
+      "cartoon",
+      "unrealistic CGI",
+      "clean, quiet eating",
+      "no microphone",
+      "bright lighting",
+      "shouting or talking loudly"
+    ]
+  }
+}`,
+        type: 'practice'
+    },
+
+    'hamster-video': {
+        title: '햄스터 돈가스먹방',
+        koreanTitle: 'Hamster Pork Cutlet Mukbang',
+        description: '귀여운 햄스터가 돈가스를 먹는 먹방 영상을 만드는 실습과제입니다.',
+        videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+        prompt: `{
+  "core_module": {
+    "character": {
+      "char_01": {
+        "id": "Hamster_Mukbang_Star",
+        "signature_details": "A fluffy golden hamster with bright, curious eyes and chubby cheeks. Has an enthusiastic and cheerful personality.",
+        "voice_consistency": "High-pitched, excited squeaking sounds with occasional satisfied 'nom nom' sounds."
+      }
+    },
+    "location_baseline": {
+      "setting": "A miniature dining setup with a tiny table and chair, perfectly sized for a hamster.",
+      "architecture": "A cute wooden dining table with a small plate and miniature utensils.",
+      "color_palette": "Bright, warm colors with pastel accents, well-lit and cheerful."
+    },
+    "project_style": "Cute mukbang, kawaii style, bright lighting, high-detail, adorable"
+  },
+  "video_module": {
+    "metadata": {
+      "prompt_name": "hamster_pork_cutlet_mukbang",
+      "duration_seconds": 8
+    },
+    "global": {
+      "description": "A cute hamster enthusiastically eating a miniature pork cutlet with tiny utensils, showing pure joy and satisfaction.",
+      "style": "photorealistic, cute, bright lighting, shallow depth of field"
+    },
+    "sequence": [
+      {
+        "timestamp": "00:00-00:08",
+        "camera": "Close-up shot focusing on the hamster's face and the tiny pork cutlet, slowly zooming in.",
+        "motion": "The hamster picks up the miniature pork cutlet with its tiny paws, takes big enthusiastic bites, stuffing its cheeks full. Chews happily while making satisfied sounds.",
+        "audio": "Cheerful squeaking, crunching sounds of the crispy cutlet, and satisfied 'nom nom' sounds.",
+        "elements": [
+          "fluffy golden hamster",
+          "miniature pork cutlet",
+          "tiny dining table",
+          "small utensils",
+          "stuffed cheeks"
+        ],
+        "ending": "The hamster pauses mid-chew with stuffed cheeks, looking directly at the camera with satisfied eyes."
+      }
+    ],
+    "negative_prompts": [
+      "realistic sized food",
+      "dark lighting",
+      "scared hamster",
+      "messy eating",
+      "cartoon style"
+    ]
+  }
+}`,
+        type: 'practice'
+    },
+
+    'crocodile-video': {
+        title: '악어 국수먹방',
+        koreanTitle: 'Crocodile Noodle Mukbang',
+        description: '우아한 악어가 국수를 먹는 독특한 먹방 영상을 만드는 실습과제입니다.',
+        videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+        prompt: `{
+  "core_module": {
+    "character": {
+      "char_01": {
+        "id": "Elegant_Crocodile_Diner",
+        "signature_details": "A large, sophisticated crocodile wearing a gentleman's bow tie. Has refined table manners despite being a predator.",
+        "voice_consistency": "Deep, rumbling sounds with occasional satisfied grunts and slurping."
+      }
+    },
+    "location_baseline": {
+      "setting": "An elegant dining room with fine dining atmosphere, white tablecloth and proper utensils.",
+      "architecture": "A formal dining table with crystal glasses, silver cutlery, and fine china.",
+      "color_palette": "Rich, elegant colors - deep greens, gold accents, warm lighting."
+    },
+    "project_style": "Sophisticated dining, elegant mukbang, formal atmosphere, high-class, photorealistic"
+  },
+  "video_module": {
+    "metadata": {
+      "prompt_name": "crocodile_noodle_elegant_dining",
+      "duration_seconds": 8
+    },
+    "global": {
+      "description": "An elegant crocodile in formal attire delicately eating noodles with surprising grace and sophistication.",
+      "style": "photorealistic, cinematic lighting, elegant, sophisticated"
+    },
+    "sequence": [
+      {
+        "timestamp": "00:00-00:08",
+        "camera": "Medium shot showing the crocodile at the dining table, slowly pushing in to focus on the noodle eating action.",
+        "motion": "The crocodile carefully picks up noodles with a fork, twirling them elegantly before bringing them to its massive jaws. Eats with surprising delicacy and grace.",
+        "audio": "Gentle classical background music, the sound of silverware, sophisticated slurping, and deep satisfied rumbles.",
+        "elements": [
+          "elegant crocodile with bow tie",
+          "fine dining table setting",
+          "bowl of noodles",
+          "proper silverware",
+          "crystal glasses"
+        ],
+        "ending": "The crocodile pauses, dabbing its mouth with a napkin in a very gentlemanly manner."
+      }
+    ],
+    "negative_prompts": [
+      "messy eating",
+      "aggressive behavior",
+      "cartoon style",
+      "poor table manners",
+      "dark, scary atmosphere"
+    ]
+  }
+}`,
+        type: 'practice'
     }
 };

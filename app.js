@@ -209,8 +209,19 @@ function displayContent() {
         return;
     }
 
+    // Check if it's a practice type (실습과제)
+    if (currentData.type === 'practice') {
+        displayPracticeContent();
+        return;
+    }
+
     // Special layout for hairstyles
-    if (contentKey === 'hairstyles' && currentData.hairstyles) {
+    if (contentKey === 'hairstyles' && (currentData.womanHairstyles || currentData.manHairstyles)) {
+        const currentTab = currentData.currentTab || 'woman';
+        const currentHairstyles = currentTab === 'woman' ? currentData.womanHairstyles : currentData.manHairstyles;
+        const promptPrefix = currentTab === 'woman' ? 'A beautiful Korean actress with' : 'Korean man with';
+        const promptSuffix = currentTab === 'woman' ? 'hair style with blonde color' : 'haircut';
+
         let html = `
             <div class="content-container hairstyle-container">
                 <div class="content-header">
@@ -218,10 +229,22 @@ function displayContent() {
                     ${currentData.koreanTitle ? `<span class="content-subtitle">${currentData.koreanTitle}</span>` : ''}
                 </div>
 
+                <!-- Tabs -->
+                <div class="hairstyle-tabs" style="display: flex; gap: 10px; margin-bottom: 20px;">
+                    <button class="hairstyle-tab ${currentTab === 'woman' ? 'active' : ''}" onclick="switchHairstyleTab('woman')">
+                        <i data-lucide="user" style="width: 16px; height: 16px; margin-right: 8px;"></i>
+                        WOMAN
+                    </button>
+                    <button class="hairstyle-tab ${currentTab === 'man' ? 'active' : ''}" onclick="switchHairstyleTab('man')">
+                        <i data-lucide="user-check" style="width: 16px; height: 16px; margin-right: 8px;"></i>
+                        MAN
+                    </button>
+                </div>
+
                 <!-- Prompt Preview Section -->
                 <div class="hairstyle-prompt-preview">
                     <div class="prompt-preview-text" id="hairstyle-prompt">
-                        A beautiful actress with <span class="highlight-style">shoulder-length</span> { <span class="highlight-keyword">STYLE</span> } <span class="highlight-hair">hair style</span> with blonde color
+                        ${promptPrefix} { <span class="highlight-keyword">STYLE</span> } <span class="highlight-hair">${promptSuffix}</span>
                     </div>
                     <button class="copy-prompt-btn" onclick="copyHairstylePrompt()">
                         <i data-lucide="copy" style="width: 16px; height: 16px; margin-right: 5px;"></i>
@@ -236,8 +259,8 @@ function displayContent() {
 
                 <!-- Hairstyles Grid -->
                 <div class="hairstyles-grid">
-                    ${currentData.hairstyles.map((style, index) => `
-                        <div class="hairstyle-item" onclick="selectHairstyle('${style.name}', '${style.description}')">
+                    ${currentHairstyles.map((style, index) => `
+                        <div class="hairstyle-item" onclick="selectHairstyle('${style.name}', '${style.description}', '${currentTab}')">
                             <div class="hairstyle-image">
                                 <img src="${style.image}" alt="${style.name}">
                             </div>
@@ -1350,12 +1373,24 @@ async function generateAifiVideoPrompt() {
 
 // Hairstyle Functions
 let selectedHairstyle = 'STYLE';
+let currentHairstyleTab = 'woman';
 
-function selectHairstyle(styleName, styleDescription) {
+function switchHairstyleTab(tab) {
+    currentHairstyleTab = tab;
+    if (typeof cameraData !== 'undefined' && cameraData['hairstyles']) {
+        cameraData['hairstyles'].currentTab = tab;
+        displayContent();
+    }
+}
+
+function selectHairstyle(styleName, styleDescription, tab) {
     selectedHairstyle = styleDescription;
     const promptElement = document.getElementById('hairstyle-prompt');
     if (promptElement) {
-        promptElement.innerHTML = `A beautiful actress with <span class="highlight-style">shoulder-length</span> { <span class="highlight-keyword selected">${styleDescription}</span> } with blonde color`;
+        const promptPrefix = tab === 'woman' ? 'A beautiful Korean actress with' : 'Korean man with';
+        const promptSuffix = tab === 'woman' ? 'hair style with blonde color' : 'haircut';
+
+        promptElement.innerHTML = `${promptPrefix} { <span class="highlight-keyword selected">${styleDescription}</span> } ${promptSuffix}`;
 
         // Highlight selected hairstyle item
         document.querySelectorAll('.hairstyle-item').forEach(item => {
@@ -1366,7 +1401,10 @@ function selectHairstyle(styleName, styleDescription) {
 }
 
 function copyHairstylePrompt() {
-    const promptText = `A beautiful actress with shoulder-length { ${selectedHairstyle} } with blonde color`;
+    const tab = currentHairstyleTab;
+    const promptPrefix = tab === 'woman' ? 'A beautiful Korean actress with' : 'Korean man with';
+    const promptSuffix = tab === 'woman' ? 'hair style with blonde color' : 'haircut';
+    const promptText = `${promptPrefix} { ${selectedHairstyle} } ${promptSuffix}`;
 
     const textarea = document.createElement('textarea');
     textarea.value = promptText;
@@ -1545,4 +1583,99 @@ function updateApiStatus(message, type = 'info') {
             statusEl.style.color = '#ff6b6b';
         }
     }
+}
+
+// ============= 실습과제 관련 함수 =============
+function displayPracticeContent() {
+    const contentArea = document.getElementById('content-area');
+    const pagination = document.getElementById('pagination');
+
+    // Hide pagination
+    if (pagination) {
+        pagination.style.display = 'none';
+    }
+
+    let html = `
+        <div class="content-container practice-container">
+            <div class="content-header">
+                <h2 class="content-title">${currentData.title}</h2>
+                <span class="content-subtitle">${currentData.koreanTitle}</span>
+            </div>
+
+            <!-- Description -->
+            <div class="content-section-box">
+                <p class="section-text">${currentData.description}</p>
+            </div>
+
+            <!-- Practice Layout: Video + Prompt -->
+            <div class="practice-layout">
+                <!-- Video Section -->
+                <div class="practice-video-section">
+                    <h3 class="section-title">참고 영상</h3>
+                    <div class="video-container">
+                        <iframe
+                            src="${currentData.videoUrl}"
+                            frameborder="0"
+                            allowfullscreen
+                            class="practice-video">
+                        </iframe>
+                    </div>
+                </div>
+
+                <!-- Prompt Section -->
+                <div class="practice-prompt-section">
+                    <div class="prompt-header">
+                        <h3 class="section-title">예시 프롬프트</h3>
+                        <button class="copy-prompt-btn" onclick="copyPracticePrompt()">
+                            <i data-lucide="copy" style="width: 16px; height: 16px; margin-right: 5px;"></i>
+                            복사하기
+                        </button>
+                    </div>
+                    <div class="prompt-container">
+                        <pre class="practice-prompt" id="practice-prompt">${currentData.prompt}</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+
+    contentArea.innerHTML = html;
+
+    // Re-initialize icons
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
+}
+
+function copyPracticePrompt() {
+    const promptText = currentData.prompt;
+
+    const textarea = document.createElement('textarea');
+    textarea.value = promptText;
+    textarea.style.position = 'fixed';
+    textarea.style.left = '-999999px';
+    document.body.appendChild(textarea);
+    textarea.select();
+
+    try {
+        document.execCommand('copy');
+
+        // Update button text
+        const btn = event.currentTarget;
+        const originalText = btn.innerHTML;
+        btn.innerHTML = '<i data-lucide="check" style="width: 16px; height: 16px; margin-right: 5px;"></i>복사완료!';
+        btn.classList.add('copied');
+
+        setTimeout(() => {
+            btn.innerHTML = originalText;
+            btn.classList.remove('copied');
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        }, 2000);
+    } catch (err) {
+        console.error('복사 실패:', err);
+    }
+
+    document.body.removeChild(textarea);
 }
