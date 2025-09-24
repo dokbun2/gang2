@@ -1651,15 +1651,15 @@ function displayPracticeContent() {
                         <div style="display: flex; gap: 10px; flex-wrap: wrap;">
                             <button class="copy-prompt-btn" onclick="copyPracticePrompt()">
                                 <i data-lucide="copy" style="width: 16px; height: 16px; margin-right: 5px;"></i>
-                                복사하기
+                                복사
                             </button>
                             <button class="copy-prompt-btn" onclick="copyCustomPrompt()" style="background: linear-gradient(135deg, #4caf50, #45a049);">
                                 <i data-lucide="scissors" style="width: 16px; height: 16px; margin-right: 5px;"></i>
-                                커스텀지침복사
+                                1단계
                             </button>
                             <button class="copy-prompt-btn" onclick="copyCustomInstructionsPrompt()" style="background: linear-gradient(135deg, #ff9800, #f57c00);">
                                 <i data-lucide="plus-circle" style="width: 16px; height: 16px; margin-right: 5px;"></i>
-                                커스텀지침추가복사
+                                2단계
                             </button>
                         </div>
                     </div>
@@ -1736,33 +1736,20 @@ function copyPracticePrompt() {
 }
 
 function copyCustomPrompt() {
-    // prompt_object_v6의 핵심 내용만 추출
-    const fullPrompt = currentData.prompt;
+    // 1단계 버튼을 누르면 복사할 텍스트
+    const textToCopy = `커스텀 영상 만들자
 
-    // prompt_object_v6 이후의 내용만 추출
-    const promptObjectStart = fullPrompt.indexOf('prompt_object_v6');
-    if (promptObjectStart === -1) {
-        // prompt_object_v6가 없으면 전체 프롬프트 사용
-        copyToClipboardWithFeedback(fullPrompt);
-        return;
-    }
+실제 VEO AI에 직접 입력하실 수 있는 '핵심 프롬프트' 부분(prompt_object_v6의 내용)만
 
-    // prompt_object_v6 이후 첫 번째 {부터 시작
-    const afterPromptObject = fullPrompt.substring(promptObjectStart);
-    const firstBraceIndex = afterPromptObject.indexOf('{');
+출력해줘
 
-    if (firstBraceIndex === -1) {
-        copyToClipboardWithFeedback(fullPrompt);
-        return;
-    }
+즉 프롬프트는 prompt_object_v6 --> 이 코드 다음으로
 
-    // { 부터 끝까지 추출 (마지막 }` 부분 제거)
-    let corePrompt = afterPromptObject.substring(firstBraceIndex);
+{
 
-    // 끝의 }` 패턴 제거
-    corePrompt = corePrompt.replace(/\}(\s*`\s*)?$/, '}');
+"core_module": { ---> 이렇게 시작해`;
 
-    copyToClipboardWithFeedback(corePrompt);
+    copyToClipboardWithFeedback(textToCopy);
 }
 
 function copyToClipboardWithFeedback(text) {
