@@ -212,9 +212,11 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 1rem;
     font-family: inherit;
     min-height: 400px;
+    height: 400px;
     resize: vertical;
     line-height: 1.6;
     white-space: pre-wrap;
+    overflow-y: auto;
 }
 
 .prompt-text-area textarea:focus {
@@ -319,7 +321,8 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     .prompt-text-area textarea {
-        min-height: 300px;
+        min-height: 500px;
+        height: 500px;
         font-size: 0.95rem;
         padding: 15px;
     }
