@@ -188,7 +188,12 @@ function showContent(contentId) {
     // Check if content exists in cameraData
     if (typeof cameraData !== 'undefined' && cameraData[contentId]) {
         currentData = cameraData[contentId];
-        displayContent();
+        // Special handling for banana-magic content
+        if (contentId === 'banana-magic') {
+            displayBananaContent();
+        } else {
+            displayContent();
+        }
     } else {
         // Show error message
         if (contentArea) {
@@ -1808,5 +1813,96 @@ function openVideoFullscreen(videoElement) {
         videoElement.webkitRequestFullscreen();
     } else if (videoElement.msRequestFullscreen) { // IE/Edge
         videoElement.msRequestFullscreen();
+    }
+}
+
+// Display Banana Content Function
+function displayBananaContent() {
+    if (!currentData) return;
+
+    const contentArea = document.getElementById('content-area');
+    const pagination = document.getElementById('pagination');
+
+    if (!contentArea) return;
+
+    // Hide pagination for tool content
+    if (pagination) {
+        pagination.style.display = 'none';
+    }
+
+    contentArea.innerHTML = `
+        <div class="banana-magic-container">
+            <div class="magic-prompt-header">
+                <h1>마법의프롬프트</h1>
+                <p>나노바나나를 이용한 올인원 이미지편집기 구현 가이드</p>
+            </div>
+
+            <div class="magic-prompt-content">
+                <div class="prompt-text-area">
+                    <textarea readonly id="magic-prompt-text">너는 이미지생성과 관련된 전문개발자야 나노바바나를 이용해서 이미지생성, 이미지편집, 이미지합성 탭을 만들어서 올인원 이미지편집기를 만들거야
+
+[1단계] 이미지 생성
+이미지생성은 좌측에 이미지프롬프트를 입력하는 창이고 그 아래에는 프롬프트 입력창과 이미지생성버튼이 있어. 그리고 그 우측에는 이미지생성된 결과를 볼 수 있는 창이 있고 이미지는 다운로드 받을 수 있게 다운로드 버튼을 만들어줘.
+
+[2단계] 이미지 편집
+이미지편집은 좌측에 이미지업로드 창이 있고 그 아래에는 편집할 내용을 입력하는 프롬프트창이 있고 그아래에는 이미지편집버튼이 있어, 우측에는 이미지편집된 결과를 보여주는 창이 있고 편집된 이미지는 다운로드 받을 수 있게 다운로드 버튼을 만들어줘
+
+[3단계] 이미지 합성
+이미지합성은 한줄에 3개의 섹션으로 구성되어서 가장 왼쪽은 기본이미지, 합성이미지, 결과 이미지창을 만들어주고 기본이미지 아래에는 합성하기 버튼을 만들어주고 결과이미지는 합성된 결과를 보여주는 창으로 다운로드 받을 수 있게 다운로드 버튼을 만들어줘.
+
+최종적으로 각 창들의 크기는 통일성을 유지해서 만들어주고 업로드된 이미지는 그 창에 꽉차보이게 해줘
+다크테마로 화이트앤 블랙스타일로 만들어주고 아이콘은 루시드 아이콘으로 만들어줘, 모든 제목과 내용은 한글로 만들어줘</textarea>
+                    <button class="copy-btn" onclick="copyPromptText('magic-prompt-text')">
+                        <i data-lucide="copy"></i>
+                        복사하기
+                    </button>
+                </div>
+            </div>
+        </div>
+    `;
+
+    // Re-initialize icons
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
+}
+
+// 더 이상 필요없는 탭 전환 함수 제거
+
+// Copy Prompt Text Function
+function copyPromptText(textareaId) {
+    const textarea = document.getElementById(textareaId);
+    if (!textarea) return;
+
+    // Select and copy text
+    textarea.select();
+    textarea.setSelectionRange(0, 99999); // For mobile devices
+
+    try {
+        document.execCommand('copy');
+
+        // Update button text to show success
+        const button = document.querySelector(`[onclick="copyPromptText('${textareaId}')"]`);
+        const originalHTML = button.innerHTML;
+
+        button.innerHTML = '<i data-lucide="check"></i>복사완료!';
+        button.style.background = 'linear-gradient(135deg, #4CAF50, #45a049)';
+
+        setTimeout(() => {
+            button.innerHTML = originalHTML;
+            button.style.background = '';
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        }, 2000);
+
+    } catch (err) {
+        console.error('복사 실패:', err);
+        alert('복사에 실패했습니다.');
+    }
+
+    // Deselect text
+    if (window.getSelection) {
+        window.getSelection().removeAllRanges();
     }
 }

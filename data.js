@@ -32,6 +32,19 @@ const cameraData = {
         description: 'Gemini AI를 활용한 이미지 및 영상 프롬프트 생성 도구'
     },
 
+    // 바나나만들기 - 마법의프롬프트
+    'banana-magic': {
+        title: '마법의프롬프트',
+        koreanTitle: 'Nano Banana AI Image Editor',
+        type: 'tool',
+        description: '나노바나나를 이용한 올인원 이미지 편집기',
+        usage: [
+            '이미지 생성: 텍스트 프롬프트로 새로운 이미지 생성',
+            '이미지 편집: 기존 이미지를 텍스트로 편집',
+            '이미지 합성: 두 이미지를 합성하여 새로운 이미지 생성'
+        ]
+    },
+
     // ============= CAMERA SHOTS =============
     // Shot Size
     'extreme-closeup': {
