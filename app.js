@@ -1789,51 +1789,14 @@ function copyToClipboardWithFeedback(text) {
 }
 
 function copyCustomInstructionsPrompt() {
-    // 기존 핵심 프롬프트 추출
-    const fullPrompt = currentData.prompt;
-    const promptObjectStart = fullPrompt.indexOf('prompt_object_v6');
-
-    let corePrompt = '';
-    if (promptObjectStart !== -1) {
-        const afterPromptObject = fullPrompt.substring(promptObjectStart);
-        const firstBraceIndex = afterPromptObject.indexOf('{');
-
-        if (firstBraceIndex !== -1) {
-            corePrompt = afterPromptObject.substring(firstBraceIndex);
-            corePrompt = corePrompt.replace(/\}(\s*`\s*)?$/, '}');
-        }
-    }
-
-    if (!corePrompt) {
-        corePrompt = fullPrompt;
-    }
-
-    // 기본 커스텀 지침
+    // 커스텀 지침만 복사 (예시프롬프트 제외)
     const customInstructions = `1. 대사: 나는 하늘을 날고 있는 슈퍼고슴도치 하루오프다
 
 2. 목소리 톤 : 귀여운 10대의 소년의 목소리
 
 3. 영상길이 : 8초 이내`;
 
-    // JSON 형태의 프롬프트인 경우, 마지막 } 앞에 커스텀 지침 추가
-    let finalPrompt = corePrompt;
-    if (corePrompt.includes('{') && corePrompt.includes('}')) {
-        const lastBraceIndex = corePrompt.lastIndexOf('}');
-        const beforeLastBrace = corePrompt.substring(0, lastBraceIndex);
-
-        // 커스텀 지침을 JSON 구조에 맞게 추가
-        const customSection = `,
-  "custom_instructions": \`
-${customInstructions}
-\``;
-
-        finalPrompt = beforeLastBrace + customSection + '\n}';
-    } else {
-        // JSON이 아닌 경우 단순히 뒤에 추가
-        finalPrompt = corePrompt + '\n\n[커스텀 지침]\n' + customInstructions;
-    }
-
-    copyToClipboardWithFeedback(finalPrompt);
+    copyToClipboardWithFeedback(customInstructions);
 }
 
 function openVideoFullscreen(videoElement) {
