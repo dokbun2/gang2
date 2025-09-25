@@ -333,7 +333,7 @@ function displayContent() {
                                 </button>
                             </div>
                             <div class="prompt-content">
-                                <pre class="prompt-text">${prompt.content.substring(0, 500)}...</pre>
+                                <pre class="prompt-text">${prompt.content.substring(0, 400)}...</pre>
                             </div>
                             <div class="prompt-actions">
                                 <button class="view-full-prompt-btn" onclick="viewFullPrompt(${index})">

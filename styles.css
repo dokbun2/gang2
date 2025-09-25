@@ -397,7 +397,8 @@ h1, h2, h3, h4, h5, h6 {
 .main-container {
     display: flex;
     margin-top: 70px;
-    height: calc(100vh - 70px);
+    min-height: calc(100vh - 70px);
+    height: auto;
 }
 
 /* Sidebar */
@@ -406,7 +407,10 @@ h1, h2, h3, h4, h5, h6 {
     background: #1a1a1a;
     border-right: 1px solid #333;
     overflow-y: auto;
-    height: 100%;
+    height: 100vh;
+    position: sticky;
+    top: 70px;
+    max-height: calc(100vh - 70px);
 }
 
 .sidebar-content {
@@ -617,11 +621,14 @@ h1, h2, h3, h4, h5, h6 {
     background: #0f0f0f;
     display: flex;
     flex-direction: column;
+    min-height: calc(100vh - 70px);
+    height: auto;
 }
 
 #content-area {
     width: 100%;
-    height: 100%;
+    min-height: 100%;
+    height: auto;
     display: flex;
     flex-direction: column;
 }
@@ -658,7 +665,7 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 12px;
     padding: 30px;
     border: 1px solid #333;
-    min-height: calc(100vh - 130px);
+    min-height: auto;
     width: 100%;
     flex: 1;
     display: flex;
@@ -2894,20 +2901,39 @@ h1, h2, h3, h4, h5, h6 {
 /* VEO Prompts Styles */
 .veo-prompts-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
     padding: 20px 0;
+    width: 100%;
+}
+
+@media (max-width: 1600px) {
+    .veo-prompts-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 1200px) {
+    .veo-prompts-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .veo-prompts-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .veo-prompt-card {
     background: rgba(30, 30, 30, 0.8);
     border: 1px solid #444;
     border-radius: 12px;
-    padding: 25px;
+    padding: 20px;
     transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
-    min-height: 450px;
+    min-height: 400px;
 }
 
 .veo-prompt-card:hover {
@@ -2927,23 +2953,25 @@ h1, h2, h3, h4, h5, h6 {
 
 .prompt-title {
     color: #fff;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
     margin: 0;
+    flex: 1;
 }
 
 .copy-prompt-btn {
     display: flex;
     align-items: center;
-    gap: 8px;
-    padding: 8px 16px;
+    gap: 6px;
+    padding: 6px 12px;
     background: linear-gradient(135deg, #3498db, #2980b9);
     color: #fff;
     border: none;
     border-radius: 6px;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 13px;
     transition: all 0.3s ease;
+    white-space: nowrap;
 }
 
 .copy-prompt-btn:hover {
@@ -2952,12 +2980,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .copy-prompt-btn i {
-    width: 16px;
-    height: 16px;
+    width: 14px;
+    height: 14px;
 }
 
 .prompt-content {
     margin-bottom: 15px;
+    flex: 1;
 }
 
 .prompt-text {
@@ -2967,14 +2996,31 @@ h1, h2, h3, h4, h5, h6 {
     padding: 15px;
     color: #b0b0b0;
     font-family: 'Courier New', monospace;
-    font-size: 12px;
+    font-size: 11px;
     line-height: 1.5;
-    overflow: hidden;
     white-space: pre-wrap;
     word-wrap: break-word;
     margin: 0;
-    max-height: 300px;
+    height: 220px;
     overflow-y: auto;
+}
+
+.prompt-text::-webkit-scrollbar {
+    width: 6px;
+}
+
+.prompt-text::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+}
+
+.prompt-text::-webkit-scrollbar-thumb {
+    background: rgba(100, 100, 100, 0.4);
+    border-radius: 3px;
+}
+
+.prompt-text::-webkit-scrollbar-thumb:hover {
+    background: rgba(100, 100, 100, 0.6);
 }
 
 .prompt-actions {
@@ -2985,14 +3031,14 @@ h1, h2, h3, h4, h5, h6 {
 .view-full-prompt-btn {
     display: flex;
     align-items: center;
-    gap: 8px;
-    padding: 8px 16px;
+    gap: 6px;
+    padding: 6px 12px;
     background: rgba(60, 60, 60, 0.6);
     color: #999;
     border: 1px solid #444;
     border-radius: 6px;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 13px;
     transition: all 0.3s ease;
 }
 
@@ -3003,8 +3049,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .view-full-prompt-btn i {
-    width: 16px;
-    height: 16px;
+    width: 14px;
+    height: 14px;
 }
 
 /* Prompt Modal Styles */
