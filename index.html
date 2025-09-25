@@ -368,7 +368,16 @@
                             </button>
                             <div class="menu-items" id="animal-mukbang-items">
                                 <a href="#" class="menu-item" onclick="showContent('chimpanzee-video')">침팬지 영상만들기</a>
+                                <a href="#" class="menu-item" onclick="showContent('veo-prompts')">VEO영상 만들기</a>
                             </div>
+                        </div>
+
+                        <!-- 팀별과제 중분류 -->
+                        <div class="menu-section">
+                            <button class="menu-header" onclick="showContent('team-assignments')" style="background: linear-gradient(135deg, #3498db, #2980b9); border: 1px solid #1e6ba8; color: #fff;">
+                                <i data-lucide="users" class="menu-icon"></i>
+                                <span>팀별과제</span>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -457,6 +466,14 @@
         <span class="modal-close" onclick="closeImageModal()">&times;</span>
         <img class="modal-content" id="modal-image" onclick="event.stopPropagation()">
         <div class="modal-caption" id="modal-caption"></div>
+    </div>
+
+    <!-- Video Modal -->
+    <div id="video-modal" class="video-modal" onclick="closeVideoModal()">
+        <span class="modal-close" onclick="closeVideoModal()">&times;</span>
+        <div class="video-modal-content" onclick="event.stopPropagation()">
+            <iframe id="modal-video" class="modal-video-iframe" frameborder="0" allowfullscreen></iframe>
+        </div>
     </div>
 
     <!-- AIFI API Settings Modal -->

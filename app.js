@@ -309,6 +309,128 @@ function displayContent() {
         return;
     }
 
+    // Special layout for VEO prompts
+    if (currentData.type === 'veo-prompts' && currentData.prompts) {
+        let html = `
+            <div class="content-container">
+                <div class="content-header">
+                    <h2 class="content-title">${currentData.title || ''}</h2>
+                    ${currentData.koreanTitle ? `<span class="content-subtitle">${currentData.koreanTitle}</span>` : ''}
+                </div>
+
+                <div class="content-section-box" style="margin-bottom: 30px;">
+                    <p class="section-text">${currentData.description}</p>
+                </div>
+
+                <div class="veo-prompts-grid">
+                    ${currentData.prompts.map((prompt, index) => `
+                        <div class="veo-prompt-card">
+                            <div class="prompt-header">
+                                <h3 class="prompt-title">${prompt.title}</h3>
+                                <button class="copy-prompt-btn" onclick="copyVeoPrompt(${index})" title="프롬프트 복사">
+                                    <i data-lucide="copy"></i>
+                                    <span>복사</span>
+                                </button>
+                            </div>
+                            <div class="prompt-content">
+                                <pre class="prompt-text">${prompt.content.substring(0, 200)}...</pre>
+                            </div>
+                            <div class="prompt-actions">
+                                <button class="view-full-prompt-btn" onclick="viewFullPrompt(${index})">
+                                    <i data-lucide="eye"></i>
+                                    전체 보기
+                                </button>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+
+        contentArea.innerHTML = html;
+        if (pagination) {
+            pagination.style.display = 'none';
+        }
+
+        // Re-initialize icons
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+        return;
+    }
+
+    // Special layout for team assignments
+    if (currentData.type === 'team-videos' && currentData.teams) {
+        let html = `
+            <div class="content-container">
+                <div class="content-header">
+                    <h2 class="content-title">${currentData.title || ''}</h2>
+                    ${currentData.koreanTitle ? `<span class="content-subtitle">${currentData.koreanTitle}</span>` : ''}
+                </div>
+
+                <div class="content-section-box" style="margin-bottom: 30px;">
+                    <p class="section-text">${currentData.description}</p>
+                </div>
+
+                <div class="team-tabs">
+                    <div class="tab-buttons">
+                        ${Object.keys(currentData.teams).map((teamKey, index) => `
+                            <button class="tab-button ${index === 0 ? 'active' : ''}"
+                                    onclick="switchTeamTab('${teamKey}')"
+                                    data-team="${teamKey}">
+                                ${currentData.teams[teamKey].name}
+                            </button>
+                        `).join('')}
+                    </div>
+
+                    ${Object.keys(currentData.teams).map((teamKey, index) => `
+                        <div class="team-content ${index === 0 ? 'active' : ''}" id="team-${teamKey}" data-team="${teamKey}">
+                            <div class="videos-grid">
+                                ${currentData.teams[teamKey].videos.map((video, videoIndex) => `
+                                    <div class="video-card">
+                                        <div class="video-thumbnail" onclick="openVideoModal('${video.url || ''}')">
+                                            ${video.url && (video.url.includes('.mp4') || video.url.includes('dropbox.com')) ? `
+                                                <video src="${video.url}" muted></video>
+                                                <div class="video-play-overlay">
+                                                    <i data-lucide="play-circle"></i>
+                                                </div>
+                                            ` : video.url ? `
+                                                <iframe src="${video.url}" frameborder="0" allowfullscreen></iframe>
+                                                <div class="video-play-overlay">
+                                                    <i data-lucide="play-circle"></i>
+                                                </div>
+                                            ` : `
+                                                <img src="${video.thumbnail}" alt="${video.title}">
+                                                <div class="video-play-overlay">
+                                                    <i data-lucide="play-circle"></i>
+                                                </div>
+                                            `}
+                                        </div>
+                                        <div class="video-info">
+                                            <h4 class="video-title">${video.title}</h4>
+                                            <p class="video-description">${video.description}</p>
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+
+        contentArea.innerHTML = html;
+        if (pagination) {
+            pagination.style.display = 'none';
+        }
+
+        // Re-initialize icons
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+        return;
+    }
+
     // Special layout for framework stages
     if (contentKey === 'framework-stages' && currentData.stages) {
         let html = `
@@ -1892,4 +2014,193 @@ function copyPromptText(textareaId) {
     if (window.getSelection) {
         window.getSelection().removeAllRanges();
     }
+}
+
+// Switch team tab function
+function switchTeamTab(teamKey) {
+    // Remove active class from all tabs
+    const allTabs = document.querySelectorAll('.tab-button');
+    allTabs.forEach(tab => {
+        tab.classList.remove('active');
+    });
+
+    // Add active class to clicked tab
+    const clickedTab = document.querySelector(`.tab-button[data-team="${teamKey}"]`);
+    if (clickedTab) {
+        clickedTab.classList.add('active');
+    }
+
+    // Hide all team contents
+    const allTeamContents = document.querySelectorAll('.team-content');
+    allTeamContents.forEach(content => {
+        content.classList.remove('active');
+    });
+
+    // Show selected team content
+    const selectedContent = document.getElementById(`team-${teamKey}`);
+    if (selectedContent) {
+        selectedContent.classList.add('active');
+    }
+}
+
+// Open video modal function
+function openVideoModal(videoUrl) {
+    if (!videoUrl) {
+        alert('영상 URL이 아직 설정되지 않았습니다.');
+        return;
+    }
+
+    const modal = document.getElementById('video-modal');
+
+    if (modal) {
+        // Check if it's a direct video file (MP4, etc.) or Dropbox link
+        if (videoUrl.includes('.mp4') || videoUrl.includes('dropbox.com')) {
+            // Create video element for MP4 files
+            const modalContent = modal.querySelector('.video-modal-content');
+            modalContent.innerHTML = `
+                <video id="modal-video-player" controls autoplay style="width: 100%; height: 100%;">
+                    <source src="${videoUrl}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            `;
+        } else {
+            // Use iframe for YouTube or other embedded content
+            const modalContent = modal.querySelector('.video-modal-content');
+            let embedUrl = videoUrl;
+
+            // Convert YouTube URL to embed format if necessary
+            if (videoUrl.includes('youtube.com/watch')) {
+                const videoId = videoUrl.split('v=')[1]?.split('&')[0];
+                if (videoId) {
+                    embedUrl = `https://www.youtube.com/embed/${videoId}`;
+                }
+            } else if (videoUrl.includes('youtu.be/')) {
+                const videoId = videoUrl.split('youtu.be/')[1]?.split('?')[0];
+                if (videoId) {
+                    embedUrl = `https://www.youtube.com/embed/${videoId}`;
+                }
+            }
+
+            modalContent.innerHTML = `
+                <iframe id="modal-video" class="modal-video-iframe" src="${embedUrl}" frameborder="0" allowfullscreen></iframe>
+            `;
+        }
+
+        modal.style.display = 'flex';
+    }
+}
+
+// Close video modal function
+function closeVideoModal() {
+    const modal = document.getElementById('video-modal');
+
+    if (modal) {
+        modal.style.display = 'none';
+
+        // Clear modal content to stop video playback
+        const modalContent = modal.querySelector('.video-modal-content');
+        if (modalContent) {
+            modalContent.innerHTML = '';
+        }
+    }
+}
+
+// Copy VEO prompt to clipboard
+function copyVeoPrompt(promptIndex) {
+    if (!currentData || !currentData.prompts || !currentData.prompts[promptIndex]) {
+        alert('프롬프트를 찾을 수 없습니다.');
+        return;
+    }
+
+    const promptContent = currentData.prompts[promptIndex].content;
+
+    // Create a temporary textarea element
+    const textarea = document.createElement('textarea');
+    textarea.value = promptContent;
+    textarea.style.position = 'absolute';
+    textarea.style.left = '-9999px';
+    document.body.appendChild(textarea);
+
+    // Select and copy the text
+    textarea.select();
+    textarea.setSelectionRange(0, 99999); // For mobile devices
+
+    try {
+        document.execCommand('copy');
+
+        // Show success feedback
+        const button = event.target.closest('.copy-prompt-btn');
+        if (button) {
+            const originalHTML = button.innerHTML;
+            button.innerHTML = '<i data-lucide="check"></i><span>복사됨!</span>';
+            button.style.background = 'linear-gradient(135deg, #4caf50, #45a049)';
+
+            // Reset button after 2 seconds
+            setTimeout(() => {
+                button.innerHTML = originalHTML;
+                button.style.background = '';
+                if (typeof lucide !== 'undefined') {
+                    lucide.createIcons();
+                }
+            }, 2000);
+        }
+    } catch (err) {
+        alert('복사에 실패했습니다.');
+        console.error('Copy failed:', err);
+    }
+
+    // Remove the temporary textarea
+    document.body.removeChild(textarea);
+}
+
+// View full prompt in modal
+function viewFullPrompt(promptIndex) {
+    if (!currentData || !currentData.prompts || !currentData.prompts[promptIndex]) {
+        alert('프롬프트를 찾을 수 없습니다.');
+        return;
+    }
+
+    const prompt = currentData.prompts[promptIndex];
+
+    // Create modal for full prompt view
+    const modal = document.createElement('div');
+    modal.className = 'prompt-modal';
+    modal.innerHTML = `
+        <div class="prompt-modal-content">
+            <div class="prompt-modal-header">
+                <h2>${prompt.title}</h2>
+                <button class="modal-close-btn" onclick="this.closest('.prompt-modal').remove()">×</button>
+            </div>
+            <div class="prompt-modal-body">
+                <pre class="full-prompt-text">${prompt.content}</pre>
+            </div>
+            <div class="prompt-modal-footer">
+                <button class="copy-full-prompt-btn" onclick="copyFullPrompt('${promptIndex}')">
+                    <i data-lucide="copy"></i>
+                    전체 복사
+                </button>
+            </div>
+        </div>
+    `;
+
+    document.body.appendChild(modal);
+
+    // Initialize icons
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
+
+    // Close modal when clicking outside
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            modal.remove();
+        }
+    });
+}
+
+// Copy full prompt from modal
+function copyFullPrompt(promptIndex) {
+    copyVeoPrompt(parseInt(promptIndex));
+    // Close modal after copying
+    document.querySelector('.prompt-modal')?.remove();
 }

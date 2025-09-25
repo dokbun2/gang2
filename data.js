@@ -2176,5 +2176,520 @@ const cameraData = {
   }
 }`,
         type: 'practice'
+    },
+
+    // VEO 영상 프롬프트
+    'veo-prompts': {
+        title: 'VEO영상 만들기',
+        koreanTitle: 'VEO Video Prompts',
+        type: 'veo-prompts',
+        description: 'Google VEO를 위한 다양한 영상 생성 프롬프트 모음입니다. 각 프롬프트를 클릭하여 복사할 수 있습니다.',
+        prompts: [
+            {
+                title: '1. Nutella',
+                content: `{
+  "description": "Photorealistic cinematic shot of a sunlit kitchen nook. A sealed Nutella jar begins to vibrate gently, then bursts open—releasing a rich explosion of swirling chocolate, roasted hazelnuts, toast slices, strawberries, and golden syrup. The ingredients twirl mid-air in gravity-defying slow motion, assembling into a picture-perfect Nutella breakfast platter on a rustic wooden table.",
+
+  "style": "photorealistic cinematic",
+
+  "camera": "slow orbital shot from low angle upward, transitioning into an overhead top-down reveal",
+
+  "lighting": "morning sunlight streaming through soft white curtains, gentle glow on chocolate and fruit highlights",
+
+  "room": "cozy breakfast nook with wooden table, beige walls, ceramic mugs, and hanging plants",
+
+  "elements": [
+    "sealed Nutella jar (center of table)",
+    "thick chocolate ribbons swirling through air",
+    "flying toasted bread slices with golden crust",
+    "hazelnuts spinning and cracking mid-air",
+    "sliced bananas and strawberries tumbling gently",
+    "honey and syrup droplets catching light",
+    "knife spreading Nutella mid-air onto toast",
+    "glass of milk and warm coffee cup floating into frame",
+    "powdered sugar and cocoa mist drifting like fog"
+  ],
+
+  "motion": "jar shakes, lid pops and spins off, chocolate erupts upward with roasted hazelnuts orbiting it, toast slices fly in from off-screen, fruit slices rain down and assemble into a breakfast board as camera moves overhead",
+
+  "ending": "a beautifully arranged Nutella breakfast board sits steaming on the table, chocolate glistening in the sunlight, with a final hazelnut rolling slowly to a stop near the jar",
+
+  "text": "none",
+
+  "keywords": [
+    "16:9",
+    "Nutella explosion",
+    "hazelnuts",
+    "swirling chocolate",
+    "realistic food",
+    "breakfast aesthetic",
+    "slow motion",
+    "natural morning light",
+    "high detail",
+    "no text",
+    "chocolate swirl",
+    "toast fly-in",
+    "cinematic"
+  ]
+}`
+            },
+            {
+                title: '5. Dior perfume ad',
+                content: `{
+"description": "Cinematic ultra-close-up of a Dior perfume bottle resting delicately on a polished marble
+pedestal in an empty, misty hall. Dew-like droplets glisten on the glass. The bottle subtly shimmers-then the
+perfume spritzes in slow motion. From the mist, silk fabrics flow outward, forming ethereal dresses that float
+mid-air. Petals blossom and spiral upward, creating an enchanted garden suspended in time. Walls dissolve into
+open sky. A chandelier of stars assembles above. A luminous figure, representing elegance, dances through the
+floating petals as fragrance waves ripple through the scene. The entire space transforms into an otherworldly
+Dior dreamscape. No text.",
+"style": "cinematic, elegant magical realism",
+"camera": "starts with an intimate macro shot of the bottle surface and droplets, slowly dollies back while
+orbiting, then cranes upward to reveal the full ethereal transformation in sweeping, graceful motion",
+"lighting": "soft morning light transitioning into golden glow, ending with a moonlit sparkle across the
+scene",
+"environment": "quiet marble hall transforms into an infinite floating garden above the clouds",
+"elements": [
+"Dior perfume bottle (logo subtly visible, glass texture detailed)",
+"slow-motion perfume spritz with shimmering particles",
+"silk fabrics flowing from mist, creating mid-air couture dresses",
+"petals blooming and swirling upward",
+"walls dissolving into sky",
+"chandelier of stars forming piece by piece",
+"luminous figure dancing through floating elements",
+"light waves symbolizing fragrance spreading gracefully",
+"reflections and refractions of light on marble and glass",
+"a seamless blend of nature and luxury aesthetics"
+],
+"motion": "fluid, graceful chain reaction from the perfume spray-silks and petals animate in elegant
+slow-motion mixed with time-lapse as the world transforms around the bottle",
+"ending": "Dior perfume bottle in foreground, the surreal Dior dreamscape floating behind it, softly
+glowing",
+"text": "none",
+"keywords": [
+"Dior",
+"perfume transformation",
+"ethereal elegance",
+"magical realism",
+"luxury fashion",
+"floating garden",
+"silk and petals",
+"dreamscape",
+"cinematic",
+"no text"
+]
+}`
+            },
+            {
+                title: '6. Starbucks ad',
+                content: `{
+"description": "A cinematic, vibrant shot of a serene, sun-drenched coffee bar. At the center, a sleek
+Starbucks cup (green logo glowing subtly) rests on a polished wood table. The cup begins to steam, pulses
+softly, then the entire scene transforms dynamically: coffee beans scatter in slow motion, milk swirls mid-air,
+ice cubes fall into place, and a cold brew assembles itself in a transparent cup with precision. A fresh bakery
+item-a croissant-lands gently beside it. Warm tones of wood, green plants, and natural textures fill the
+background, evoking calm energy. No text.",
+"style": "cinematic, warm modern minimalism, sensory-rich",
+"camera": "starts ultra close on cup logo, then smooth dolly out and gentle crane up to reveal the full
+setup",
+"lighting": "golden hour sunlight with soft shadows and warm highlights",
+"environment": "cozy Starbucks interior with wooden textures, green plants, and ambient natural light",
+"elements": [
+"Starbucks cup (hot drink, logo subtly glowing)",
+"cold brew coffee in clear Starbucks cup (ice dropping in slow motion)",
+"coffee beans scattering and settling dynamically",
+"milk swirling in mid-air, seamlessly blending into the coffee",
+"fresh croissant landing softly on a wooden plate",
+"polished wooden table with visible grain",
+"small succulent plant for a natural touch",
+"subtle ambient decor (e.g., bookshelf, green accents)",
+"refined ceramic saucer and spoon",
+"sunlight casting moving reflections through window blinds"
+],
+"motion": "Starbucks cup gently pulses with warmth, coffee elements assemble in a mesmerizing flow, cold brew
+builds with cascading ice, bakery item lands with soft motion",
+"ending": "a beautifully arranged Starbucks moment on the table, steam rising, ice sparkling, inviting and
+serene",
+"text": "none",
+"keywords": [
+"16:9",
+"Starbucks",
+"coffee ritual",
+"warm aesthetic",
+"dynamic assembly",
+"natural light",
+"golden hour",
+"sensory",
+"no text",
+"inviting atmosphere"
+]
+}`
+            },
+            {
+                title: '7. Apple ad',
+                content: `{
+"description": "An elegant, high-end animated sequence on a seamless soft white background. At the center, a
+minimalist Apple-branded iPhone box (logo embossed subtly). The box levitates gently, opens with a slow,
+graceful motion. Products-latest iPhone (edge lighting glowing softly), AirPods Pro (case opening with fluid
+animation), MagSafe charger (magnetically snapping into place), and a sleek Apple Watch band (unfurling
+delicately)-float into formation with precision. Silver, space gray, and ceramic white tones dominate, creating
+a refined, sophisticated mood. No hard cuts-only smooth, continuous movement. Text: 'iPhone - Innovation
+Refined.'",
+"style": "cinematic, premium minimalism, Apple aesthetic",
+"camera": "starts ultra close on embossed Apple logo, gentle dolly out with floating camera motion, subtle
+parallax for depth",
+"lighting": "soft, diffused illumination with delicate reflections and shadows, evoking a calm premium feel",
+"room": "infinite seamless white environment-no walls, no floor-just soft gradients and floating products",
+"elements": [
+"Apple-branded iPhone box (subtle emboss, matte finish)",
+"latest iPhone with subtle edge glow animation",
+"AirPods Pro case with smooth lid animation",
+"MagSafe charger snapping into place magnetically",
+"Apple Watch band unfurling in slow motion",
+"no extra decor-pure focus on the products"
+],
+"motion": "Box levitates gently, opens in a slow, elegant lift. Products float up, rotate gracefully, align
+themselves into a symmetrical formation with seamless, natural motion-no sharp cuts.",
+"ending": "Perfectly balanced Apple product display in a soft white space. 'iPhone - Innovation Refined' text
+fades in with delicate typography.",
+"text": "iPhone - Innovation Refined",
+"keywords": [
+"16:9",
+"Apple",
+"iPhone",
+"minimalistic",
+"premium aesthetic",
+"silver, white, space gray",
+"fluid assembly",
+"elegant motion",
+"soft lighting",
+"no hard cuts",
+"calm luxury"
+]
+}`
+            },
+            {
+                title: '8. Corona ad',
+                content: `{
+"description": "Cinematic close-up of a cold, dewy Corona bottle sitting alone on a weathered beach table. It
+begins to hum, vibrate. The bottle cap *pops*-and the entire environment unfolds from inside: palm trees rise,
+lights string themselves, speakers assemble mid-air, sand shifts into a dance floor. A DJ booth builds from
+driftwood. Music kicks in. A beach rave is born. No text.",
+"style": "cinematic, magical realism",
+"camera": "starts ultra close, zooms out and cranes overhead as the world expands",
+"lighting": "sunset turning to neon-golden hour into party glow",
+"environment": "quiet beach transforms into high-energy beach rave",
+"elements": [
+"Corona bottle (label visible, condensation dripping)",
+"pop-top cap in slow motion",
+"exploding citrus slice",
+"sand morphing into dance floor",
+"palm trees rising",
+"neon lights snapping on",
+"DJ booth building itself",
+"crowd materializing mid-dance",
+"fire pit lighting",
+"surfboards as signage"
+],
+"motion": "explosion of elements from bottle, everything assembles in rapid time-lapse",
+"ending": "Corona bottle in foreground, beach rave in full swing behind it",
+"text": "none",
+"keywords": [
+"Corona",
+"beach party",
+"bottle transforms",
+"rave build",
+"sunset to night",
+"cinematic",
+"no text"
+]
+}`
+            },
+            {
+                title: '9. IKEA ad',
+                content: `{
+"description": "Cinematic shot of a sunlit Scandinavian bedroom. A sealed IKEA box trembles, opens, and flat
+pack furniture assembles rapidly into a serene, styled room highlighted by a yellow IKEA throw on the bed. No
+text.",
+"style": "cinematic",
+"camera": "fixed wide angle",
+"lighting": "natural warm with cool accents",
+"room": "Scandinavian bedroom",
+"elements": [
+"IKEA box (logo visible)",
+"bed with yellow throw",
+"bedside tables",
+"lamps",
+"wardrobe",
+"shelves",
+"mirror",
+"art",
+"rug",
+"curtains",
+"reading chair",
+"plants"
+],
+"motion": "box opens, furniture assembles precisely and rapidly",
+"ending": "calm, modern space with yellow IKEA accent",
+"text": "none",
+"keywords": [
+"16:9",
+"IKEA",
+"Scandinavian",
+"fast assembly",
+"no text",
+"warm & cool tones"
+]
+}`
+            },
+            {
+                title: '10. NYC skyline ad',
+                content: `metadata:
+prompt_name: "NYC City Assembly"
+base_style: "cinematic, photorealistic, 4K"
+aspect_ratio: "16:9"
+city_description: "A vast, empty urban plaza at dawn, ground level view with concrete pavement stretching
+into the mist."
+camera_setup: "A single, fixed, wide-angle shot. The camera holds its position for the entire 8-second
+duration."
+key_elements:
+- "A sealed steel shipping container stamped with 'NYC' in bold letters"
+assembled_elements:
+- "iconic Manhattan skyscrapers (e.g., Empire State Building, Chrysler Building)"
+- "Brooklyn Bridge arching into frame"
+- "yellow taxi cabs lined up along a street"
+- "hydrant and classic black street lamps"
+- "subway entrance staircase with MTA sign"
+- "Statue of Liberty's torch and crown silhouette"
+- "Central Park trees emerging in the background"
+- "water towers perched on rooftop structures"
+- "billboard frames and neon signs"
+- "sidewalk café tables and chairs full of people"
+negative_prompts: ["no text overlays", "no overt graphics"]
+timeline:
+- sequence: 1
+timestamp: "00:00-00:01"
+action: "In the center of the barren plaza sits the sealed NYC container. It begins to tremble as light fog
+swirls around it."
+audio: "Deep, resonant rumble echoing across empty concrete."
+- sequence: 2
+timestamp: "00:01-00:02"
+action: "The container's steel doors burst open outward, releasing a spray of mist and loose rivets."
+audio: "Sharp metallic clang, followed by hissing steam."
+- sequence: 3
+timestamp: "00:02-00:06"
+action: "Hyper-lapse: From the fixed vantage, city elements rocket out of the container and lock into
+place-steel beams rise, glass facades snap on, bridges span into view, and yellow taxis line up automatically."
+audio: "A rapid sequence of ASMR city-building sounds: metal clanks, glass sliding, cables snapping,
+engines revving softly."
+- sequence: 4
+timestamp: "00:06-00:08"
+action: "The final element-a single yellow taxi-glides forward and parks beside the newfound curb. All
+motion freezes as morning light bathes the fully formed New York Cityscape."
+audio: "A soft engine cut-off 'chug,' then the distant hum of awakening city traffic, fading into serene
+dawn silence."`
+            },
+            {
+                title: '11. Transformers-style Mecha ad',
+                content: `{
+"description": "The scene opens on a smooth, metallic silver egg resting in the center of a vast, gritty
+industrial hangar. Suddenly, glowing seams etch across its surface, and the egg doesn't unfold-it fractures.
+With a surge of energy, armored plates unlock and pull back, revealing a complex mechanical skeleton within. In
+a rapid, violent, and intricate sequence, components shift, rotate, and telescope outwards. Two massive legs
+slam down onto the concrete floor, followed by a powerful tail whipping out for balance. The main body expands
+upwards as a monstrous head, filled with razor-sharp metallic teeth, constructs itself piece by piece, all
+originating from the initial egg's mass.",
+"style": "Hyper-detailed, industrial mecha CGI. The aesthetic is inspired by 'Transformers' and 'Pacific Rim,'
+focusing on complex, hard-surface mechanics, intricate moving parts, and a sense of immense weight and power.",
+"camera": "A single, dynamic continuous shot. Starts as a close-up on the egg, then pulls back and orbits the
+transformation, dipping low to the ground as the legs impact and craning up to reveal the final, massive scale
+of the fully formed T-Rex. The camera shakes slightly with the impacts.",
+"lighting": "Begins with stark, top-down industrial lighting on the egg. As the transformation begins, a
+glowing blue power core ignites within the chest, casting internal light through the gaps in the armor. Sparks
+fly from grinding metal parts. The final lighting is dominated by the T-Rex's own glowing red optical
+sensors.",
+"setting": "A vast, dark, and gritty industrial hangar with a weathered concrete floor and visible support
+beams in the background, adding to the sense of scale.",
+"elements": [
+"smooth metallic silver egg",
+"glowing energy seams",
+"shifting armor plates",
+"exposed pistons, gears, and hydraulics",
+"a glowing internal power core",
+"powerful robotic legs and claws",
+"telescoping tail",
+"razor-sharp metallic teeth",
+"piercing red optical sensors (eyes)"
+],
+"motion": "A violent, multi-layered mechanical reconfiguration. The motion is not fluid but clunky and
+purposeful, defined by panels sliding, parts rotating 180 degrees, and pistons firing to lock limbs into place.
+It's a symphony of grinding gears, hissing pneumatics, and heavy, metallic 'clunks' as each component finds its
+final position. The transformation should feel engineered and explosive.",
+"ending": "The fully constructed robotic T-Rex stands in a low, predatory stance. It throws its head back, and
+its optical sensors flare to life with a piercing red glow as it lets out a deafening, synthesized metallic
+roar that echoes through the hangar.",
+"text": "As the final transformation completes, steam erupts from vents on its neck and shoulders.",
+"keywords": [
+"mecha",
+"robot",
+"T-Rex",
+"transformer",
+"transformation",
+"mechanical",
+"industrial",
+"hard surface modeling",
+"CGI",
+"sci-fi",
+"complex",
+"panel shifting",
+"robot dinosaur",
+"cybernetic",
+"explosive"
+]
+}`
+            },
+            {
+                title: '12. Grimoire Magic',
+                content: `{
+  "prompt": "An ultra-photorealistic, 8K video. The sequence of events in the timeline is mandatory and must occur in the specified order within 8 seconds. The 2D-to-3D transformation is the critical first step and must not be skipped.",
+  "scene": {
+    "environment": "A warm-lit grimoire page.",
+    "subject": "A flat, black ink drawing. On the right, an young female elf with a heart-gem staff. On the left, a horde of 10 ink monsters clustered together."
+  },
+  "timeline": [
+    {
+      "time": "0-3 seconds",
+      "event": "A finger touches the elf. This is the trigger. The flat ink of the elf and monsters immediately begins to swell and rise, unfolding from the page into fully photorealistic 3D characters. This is a physical awakening and is the main visual event of the first 3 seconds."
+    },
+    {
+      "time": "3-4 seconds",
+      "event": "Immediately after becoming fully 3D and standing on the page, the elf on the right powerfully slams the butt of her staff down.",
+      "dialogue": "As the staff hits, her voice shouts with power: \"fire!\""
+    },
+    {
+      "time": "4-7 seconds",
+      "event": "A visible shockwave erupts FROM the staff's impact point. The wave travels directly from right to left, aimed ONLY at the monsters. The elf remains completely unaffected.",
+      "details": "The monsters are thrown backward by the force and disintegrate into a cloud of dried ink particles. The page beneath them cracks and splinters from the energy.",
+      "camera": "Tracks the shockwave as it travels and destroys the monsters."
+    }
+  ],
+  "final_shot": "From 7 to 8 seconds, the shot shows the triumphant elf standing on the right side of the damaged page, as the ink dust from the monsters settles on the left.",
+  "audio": {
+    "category": "Epic & Forceful",
+    "elements": [
+      "magical rising/transformation sound",
+      "heavy staff impact boom",
+      "a powerful, clear shout",
+      "a directional shockwave sound with cracking and shattering",
+      "ink particles settling"
+    ]
+  },
+  "mood": [
+    "Epic",
+    "Forceful",
+    "Photorealistic",
+    "Sequential",
+    "Impactful"
+  ]
+}`
+            }
+        ]
+    },
+
+    // 팀별과제
+    'team-assignments': {
+        title: '팀별과제',
+        koreanTitle: 'Team Assignments',
+        type: 'team-videos',
+        description: '각 팀이 제작한 창의적인 영상 작품들을 감상하실 수 있습니다.',
+        teams: {
+            team1: {
+                name: '1팀',
+                videos: [
+                    {
+                        title: '1팀 작품 1',
+                        url: 'https://www.dropbox.com/scl/fi/4xzqj1cfbf87cvajt51ns/1.mp4?rlkey=evkpxud470yb6vdasgy01a7oi&st=dfv4fvbe&raw=1',
+                        thumbnail: 'https://via.placeholder.com/320x180/1a1a1a/666666?text=Team+1+Video+1',
+                        description: '팀 1의 첫 번째 작품'
+                    },
+                    {
+                        title: '1팀 작품 2',
+                        url: 'https://www.dropbox.com/scl/fi/81zjh3udfcd88zkdfodj8/2.mp4?rlkey=xz2zi542w2h65sslkrdkocfeq&st=n16rzvpb&raw=1',
+                        thumbnail: 'https://via.placeholder.com/320x180/1a1a1a/666666?text=Team+1+Video+2',
+                        description: '팀 1의 두 번째 작품'
+                    },
+                    {
+                        title: '영상 제목 3',
+                        url: '',
+                        thumbnail: 'https://via.placeholder.com/320x180/1a1a1a/666666?text=Video+3',
+                        description: '팀 1의 세 번째 작품'
+                    },
+                    {
+                        title: '영상 제목 4',
+                        url: '',
+                        thumbnail: 'https://via.placeholder.com/320x180/1a1a1a/666666?text=Video+4',
+                        description: '팀 1의 네 번째 작품'
+                    }
+                ]
+            },
+            team2: {
+                name: '2팀',
+                videos: [
+                    {
+                        title: '영상 제목 1',
+                        url: '',
+                        thumbnail: 'https://via.placeholder.com/320x180/1a1a1a/666666?text=Video+1',
+                        description: '팀 2의 첫 번째 작품'
+                    },
+                    {
+                        title: '영상 제목 2',
+                        url: '',
+                        thumbnail: 'https://via.placeholder.com/320x180/1a1a1a/666666?text=Video+2',
+                        description: '팀 2의 두 번째 작품'
+                    },
+                    {
+                        title: '영상 제목 3',
+                        url: '',
+                        thumbnail: 'https://via.placeholder.com/320x180/1a1a1a/666666?text=Video+3',
+                        description: '팀 2의 세 번째 작품'
+                    },
+                    {
+                        title: '영상 제목 4',
+                        url: '',
+                        thumbnail: 'https://via.placeholder.com/320x180/1a1a1a/666666?text=Video+4',
+                        description: '팀 2의 네 번째 작품'
+                    }
+                ]
+            },
+            team3: {
+                name: '3팀',
+                videos: [
+                    {
+                        title: '영상 제목 1',
+                        url: '',
+                        thumbnail: 'https://via.placeholder.com/320x180/1a1a1a/666666?text=Video+1',
+                        description: '팀 3의 첫 번째 작품'
+                    },
+                    {
+                        title: '영상 제목 2',
+                        url: '',
+                        thumbnail: 'https://via.placeholder.com/320x180/1a1a1a/666666?text=Video+2',
+                        description: '팀 3의 두 번째 작품'
+                    },
+                    {
+                        title: '영상 제목 3',
+                        url: '',
+                        thumbnail: 'https://via.placeholder.com/320x180/1a1a1a/666666?text=Video+3',
+                        description: '팀 3의 세 번째 작품'
+                    },
+                    {
+                        title: '영상 제목 4',
+                        url: '',
+                        thumbnail: 'https://via.placeholder.com/320x180/1a1a1a/666666?text=Video+4',
+                        description: '팀 3의 네 번째 작품'
+                    }
+                ]
+            }
+        }
     }
 };

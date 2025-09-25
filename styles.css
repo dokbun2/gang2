@@ -2698,4 +2698,196 @@ h1, h2, h3, h4, h5, h6 {
     opacity: 0.5;
     cursor: not-allowed;
 }
+
+/* Team Tabs Styles */
+.team-tabs {
+    margin-top: 20px;
+}
+
+.tab-buttons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #333;
+    padding-bottom: 10px;
+}
+
+.tab-button {
+    padding: 10px 30px;
+    background: rgba(45, 45, 45, 0.6);
+    color: #999;
+    border: 1px solid #444;
+    border-radius: 8px 8px 0 0;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+    bottom: -2px;
+}
+
+.tab-button:hover {
+    background: rgba(60, 60, 60, 0.8);
+    color: #fff;
+}
+
+.tab-button.active {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: #fff;
+    border-color: #2980b9;
+    border-bottom: 2px solid #1a1a1a;
+}
+
+.team-content {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.team-content.active {
+    display: block;
+}
+
+.videos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    padding: 20px 0;
+}
+
+.video-card {
+    background: rgba(30, 30, 30, 0.6);
+    border: 1px solid #444;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.video-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(52, 152, 219, 0.3);
+    border-color: #3498db;
+}
+
+.video-thumbnail {
+    position: relative;
+    width: 100%;
+    height: 180px;
+    background: #000;
+    overflow: hidden;
+}
+
+.video-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.video-thumbnail iframe {
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.video-thumbnail video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.video-play-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.4);
+    transition: background 0.3s ease;
+}
+
+.video-play-overlay i {
+    width: 60px;
+    height: 60px;
+    color: rgba(255, 255, 255, 0.9);
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+}
+
+.video-card:hover .video-play-overlay {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.video-info {
+    padding: 15px;
+}
+
+.video-title {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.video-description {
+    color: #999;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Video Modal Styles */
+.video-modal {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s ease;
+}
+
+.video-modal-content {
+    position: relative;
+    width: 90%;
+    max-width: 1200px;
+    height: 80vh;
+    background: #000;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.modal-video-iframe {
+    width: 100%;
+    height: 100%;
+}
+
+.video-modal .modal-close {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: 300;
+    cursor: pointer;
+    z-index: 10001;
+    transition: transform 0.3s ease;
+}
+
+.video-modal .modal-close:hover {
+    transform: scale(1.2);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
 }
