@@ -2620,7 +2620,7 @@ roar that echoes through the hangar.",
                     },
                     {
                         title: '영상 홍보영 제목 3',
-                        url: '',
+                        url: 'https://www.dropbox.com/scl/fi/1iunkgts3ohd3mntq5u2y/_-_.mp4?rlkey=0y2mw4nqoqb7sxredsdhguriw&st=igb3861w&raw=1',
                         thumbnail: 'https://via.placeholder.com/320x180/1a1a1a/666666?text=Video+3',
                         description: '팀 1의 세 번째 작품'
                     },
