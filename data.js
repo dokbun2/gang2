@@ -2614,7 +2614,7 @@ roar that echoes through the hangar.",
                     },
                     {
                         title: '1팀 작품 2',
-                        url: 'https://www.dropbox.com/scl/fi/81zjh3udfcd88zkdfodj8/2.mp4?rlkey=xz2zi542w2h65sslkrdkocfeq&st=n16rzvpb&raw=1',
+                        url: 'https://www.dropbox.com/scl/fi/23bctte2kwx88x6xxm8kd/.mp4?rlkey=omgbmcb0z5xzvg0lali0qq892&st=h7kpo03i&raw=1',
                         thumbnail: 'https://via.placeholder.com/320x180/1a1a1a/666666?text=Team+1+Video+2',
                         description: '팀 1의 두 번째 작품'
                     },
