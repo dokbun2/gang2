@@ -2607,19 +2607,19 @@ roar that echoes through the hangar.",
                 name: '1팀',
                 videos: [
                     {
-                        title: '1팀 작품 1',
+                        title: '1팀 김지후 작품',
                         url: 'https://www.dropbox.com/scl/fi/6lob93rbaxqxmef063ov0/1.mp4?rlkey=73llq8qwwprgnfbvth3frss6v&st=wb6kxtjl&raw=1',
                         thumbnail: 'https://via.placeholder.com/320x180/1a1a1a/666666?text=Team+1+Video+1',
                         description: '팀 1의 첫 번째 작품'
                     },
                     {
-                        title: '1팀 작품 2',
+                        title: '1팀 우정식 작품',
                         url: 'https://www.dropbox.com/scl/fi/23bctte2kwx88x6xxm8kd/.mp4?rlkey=omgbmcb0z5xzvg0lali0qq892&st=h7kpo03i&raw=1',
                         thumbnail: 'https://via.placeholder.com/320x180/1a1a1a/666666?text=Team+1+Video+2',
                         description: '팀 1의 두 번째 작품'
                     },
                     {
-                        title: '영상 제목 3',
+                        title: '영상 홍보영 제목 3',
                         url: '',
                         thumbnail: 'https://via.placeholder.com/320x180/1a1a1a/666666?text=Video+3',
                         description: '팀 1의 세 번째 작품'
