@@ -2608,7 +2608,7 @@ roar that echoes through the hangar.",
                 videos: [
                     {
                         title: '1팀 김지후 작품',
-                        url: 'https://www.dropbox.com/scl/fi/6lob93rbaxqxmef063ov0/1.mp4?rlkey=73llq8qwwprgnfbvth3frss6v&st=wb6kxtjl&raw=1',
+                        url: 'https://www.dropbox.com/scl/fi/6q32zb402x7vpb4en35ni/_.mp4?rlkey=6y1l9rcj1365egvu19i9onex3&st=mir00csr&raw=1',
                         thumbnail: 'https://via.placeholder.com/320x180/1a1a1a/666666?text=Team+1+Video+1',
                         description: '팀 1의 첫 번째 작품'
                     },
@@ -2626,7 +2626,7 @@ roar that echoes through the hangar.",
                     },
                     {
                         title: '영상 제목 4',
-                        url: '',
+                        url: 'https://www.dropbox.com/scl/fi/wq3zr6lmqbwnnhb4b03zw/ai.mp4?rlkey=pavyzay8gsk00ho6be6t0z5p6&st=v75fdnnj&dl=0',
                         thumbnail: 'https://via.placeholder.com/320x180/1a1a1a/666666?text=Video+4',
                         description: '팀 1의 네 번째 작품'
                     }
@@ -2636,20 +2636,20 @@ roar that echoes through the hangar.",
                 name: '2팀',
                 videos: [
                     {
-                        title: '영상 제목 1',
+                        title: '영상 김성환 1',
                         url: 'https://www.dropbox.com/scl/fi/eskbhy9rxztjog77ggh0j/.mp4?rlkey=j5hxeu4sk8qp2zxo1a2uhdt6x&st=hhgni73v&raw=1',
                         thumbnail: 'https://via.placeholder.com/320x180/1a1a1a/666666?text=Video+1',
                         description: '팀 2의 첫 번째 작품'
                     },
                     {
-                        title: '영상 제목 2',
-                        url: '',
+                        title: '영상 이윤서 2',
+                        url: 'https://www.dropbox.com/scl/fi/kkgg1xqdmbdqd5kn4insn/_.mp4?rlkey=3oa8t3hlpig7u7dfa50d2yv93&st=fr4f1b2b&raw=1',
                         thumbnail: 'https://via.placeholder.com/320x180/1a1a1a/666666?text=Video+2',
                         description: '팀 2의 두 번째 작품'
                     },
                     {
-                        title: '영상 제목 3',
-                        url: '',
+                        title: '영상 윤주철 3',
+                        url: 'https://www.dropbox.com/scl/fi/5quo5o1py594yyqqulhf7/.mp4?rlkey=jtxni7pygnhrfmuvoup0znivo&st=md7gq064&raw=1',
                         thumbnail: 'https://via.placeholder.com/320x180/1a1a1a/666666?text=Video+3',
                         description: '팀 2의 세 번째 작품'
                     },
