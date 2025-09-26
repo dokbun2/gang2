@@ -2637,7 +2637,7 @@ roar that echoes through the hangar.",
                 videos: [
                     {
                         title: '영상 제목 1',
-                        url: '',
+                        url: 'https://www.dropbox.com/scl/fi/eskbhy9rxztjog77ggh0j/.mp4?rlkey=j5hxeu4sk8qp2zxo1a2uhdt6x&st=hhgni73v&raw=1',
                         thumbnail: 'https://via.placeholder.com/320x180/1a1a1a/666666?text=Video+1',
                         description: '팀 2의 첫 번째 작품'
                     },
