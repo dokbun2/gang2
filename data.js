@@ -7,7 +7,7 @@ const cameraData = {
         koreanTitle: 'Instructor Introduction',
         instructorInfo: {
             name: '김진욱 (하루오프)',
-            position: 'AIFI 프레임워크 개발이사',
+            position: 'AI TOOLBOX 대표',
             company: [
                 '(주)알앤픽 대표이사',
                 '(주)제이콥 소프트 전략영업대표'
@@ -15,9 +15,9 @@ const cameraData = {
             email: 'ggamsire@gmail.com',
             image: 'images/instructor.jpg'
         },
-        description: 'AI 기술과 창의적 콘텐츠 제작 분야의 전문가로, 다년간의 경험을 바탕으로 AIFI 프레임워크에 합류하게 되었습니다.',
+        description: 'AI 기술과 창의적 콘텐츠 제작 분야의 전문가로, 다년간의 경험을 바탕으로 AI TOOLBOX에 합류하게 되었습니다.',
         usage: [
-            'AIFI 프레임워크 웹페이지 개발',
+            'AI TOOLBOX 웹페이지 개발',
             '5년 이상의 IT 관련업무 경력보유',
             'AI 이미지/영상 생성 전문가',
             '다수의 기업 AI 도입 컨설팅 경험',
@@ -1658,19 +1658,19 @@ const cameraData = {
     'instructor-profile': {
         title: '강사 소개',
         koreanTitle: '강사 소개',
-        prompt: 'AIFI 프레임워크 창시자',
+        prompt: 'AI TOOLBOX 창시자',
         instructorInfo: {
             name: '김진욱 (하루오프)',
             nickname: '하루오프',
             positions: [
-                'AIFI 프레임워크 개발 이사',
+                'AI TOOLBOX 개발 이사',
                 '(주)알앤픽 대표이사',
                 '(주)제이콥소프트 전략영업대표'
             ]
         },
-        description: 'AIFI 프레임워크의 전체적인 시스템 개발자로서 AIFI님과 함께 영상프레임워크의 새로움 패러다임을 도입하여 체계적인 프롬프트 엔지니어링과 창작 프로세스를 통해 누구나 고품질 콘텐츠를 제작할 수 있도록 하였습니다.',
+        description: 'AI TOOLBOX의 전체적인 시스템 개발자로서 AIFI님과 함께 영상프레임워크의 새로움 패러다임을 도입하여 체계적인 프롬프트 엔지니어링과 창작 프로세스를 통해 누구나 고품질 콘텐츠를 제작할 수 있도록 하였습니다.',
         usage: [
-            'AIFI 프레임워크 개발 및 교육',
+            'AI TOOLBOX 개발 및 교육',
             'AI 기반 콘텐츠 제작 솔루션',
             '체계적인 프롬프트 엔지니어링 방법론',
             '창작자를 위한 실무 교육 프로그램'
@@ -1684,7 +1684,7 @@ const cameraData = {
         title: '인트로 영상 갤러리',
         koreanTitle: '인트로 영상 갤러리',
         prompt: '영상 소개',
-        description: 'AIFI 프레임워크와 관련된 다양한 인트로 영상을 감상하실 수 있습니다. 각 영상을 클릭하면 전체화면으로 재생됩니다.',
+        description: 'AI TOOLBOX와 관련된 다양한 인트로 영상을 감상하실 수 있습니다. 각 영상을 클릭하면 전체화면으로 재생됩니다.',
         usage: [
             'AIFI JU0님의 영상',
             '기술 데모 영상',
@@ -1708,13 +1708,13 @@ const cameraData = {
                 url: 'https://www.dropbox.com/scl/fi/gfvw1jkg84kwoegz4l39w/E27D0315-B046-4036-B1CD-D43829E8BA47_video.MP4?rlkey=mcz0df3ivly21gucv1rfa1192&st=mhh9ow8i&raw=1',
                 thumbnail: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&h=400&fit=crop',
                 title: '튜토리얼 인트로',
-                description: '초보자를 위한 AIFI 프레임워크 튜토리얼 시작 영상입니다.'
+                description: '초보자를 위한 AI TOOLBOX 튜토리얼 시작 영상입니다.'
             },
             {
                 url: 'https://www.dropbox.com/scl/fi/7udhyo2b5v0p4u0uu91lh/_schema_httpjsonschemaorgdraft07-1.mp4?rlkey=lqhpz4al7u9t377kvx78ehn34&st=zizgjtd4&raw=1',
                 thumbnail: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=400&fit=crop',
                 title: '프로젝트 쇼케이스',
-                description: 'AIFI 프레임워크를 활용한 다양한 프로젝트 결과물을 소개하는 영상입니다.'
+                description: 'AI TOOLBOX를 활용한 다양한 프로젝트 결과물을 소개하는 영상입니다.'
             }
         ],
         images: [
@@ -1937,7 +1937,7 @@ const cameraData = {
         title: '프레임워크 스테이지',
         koreanTitle: 'AIFI Framework Stages',
         prompt: '',
-        description: 'AIFI 프레임워크의 8단계 스테이지를 통해 체계적으로 학습하고 실습할 수 있습니다. 각 스테이지는 Google Gemini를 활용한 실전 프로젝트입니다.',
+        description: 'AI TOOLBOX의 8단계 스테이지를 통해 체계적으로 학습하고 실습할 수 있습니다. 각 스테이지는 Google Gemini를 활용한 실전 프로젝트입니다.',
         usage: [],
         stages: [
             {
