@@ -6,8 +6,8 @@ const cameraData = {
         title: '강사 소개',
         koreanTitle: 'Instructor Introduction',
         instructorInfo: {
-            name: '김진욱 (하루오프)',
-            position: 'AI TOOLBOX 대표',
+            name: '김진욱 (툴비)',
+            position: 'AI TOOLBOX',
             company: [
                 '(주)알앤픽 대표이사',
                 '(주)제이콥 소프트 전략영업대표'
@@ -15,7 +15,7 @@ const cameraData = {
             email: 'ggamsire@gmail.com',
             image: 'images/instructor.jpg'
         },
-        description: 'AI 기술과 창의적 콘텐츠 제작 분야의 전문가로, 다년간의 경험을 바탕으로 AI TOOLBOX에 합류하게 되었습니다.',
+        description: 'AI 기술과 창의적 콘텐츠 제작 분야의 전문가로, 다년간의 경험을 바탕으로 AI툴박스를 만들게 되었습니다.',
         usage: [
             'AI TOOLBOX 웹페이지 개발',
             '5년 이상의 IT 관련업무 경력보유',
@@ -24,9 +24,9 @@ const cameraData = {
         ]
     },
 
-    // AIFI AI툴
+    // AI툴박스툴
     'aifi-tool': {
-        title: 'AIFI AI툴',
+        title: 'AI툴박스툴',
         koreanTitle: 'AI Image & Video Prompt Generator',
         type: 'tool',
         description: 'Gemini AI를 활용한 이미지 및 영상 프롬프트 생성 도구'
