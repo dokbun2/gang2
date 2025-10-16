@@ -4,6 +4,26 @@
 let currentData = null;
 let contentKey = null;
 
+// Toggle Mobile Menu
+function toggleMobileMenu() {
+    const sidebar = document.querySelector('.sidebar');
+    if (sidebar) {
+        sidebar.classList.toggle('active');
+    }
+}
+
+// Close mobile menu when clicking outside
+document.addEventListener('click', function(e) {
+    const sidebar = document.querySelector('.sidebar');
+    const menuToggle = document.querySelector('.mobile-menu-toggle');
+
+    if (sidebar && menuToggle) {
+        if (!sidebar.contains(e.target) && !menuToggle.contains(e.target) && sidebar.classList.contains('active')) {
+            sidebar.classList.remove('active');
+        }
+    }
+});
+
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', function() {
     console.log('App initialized');
