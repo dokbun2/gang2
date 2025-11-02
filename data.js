@@ -7,7 +7,7 @@ const cameraData = {
         koreanTitle: 'Instructor Introduction',
         instructorInfo: {
             name: '김진욱 (툴비)',
-            position: 'AI TOOLBOX',
+            position: 'AI TOOLBEE',
             company: [
                 '(주)알앤픽 대표이사',
                 '(주)제이콥 소프트 전략영업대표'
@@ -15,9 +15,9 @@ const cameraData = {
             email: 'ggamsire@gmail.com',
             image: 'images/instructor.jpg'
         },
-        description: 'AI 기술과 창의적 콘텐츠 제작 분야의 전문가로, 다년간의 경험을 바탕으로 AI툴박스를 만들게 되었습니다.',
+        description: 'AI 기술과 창의적 콘텐츠 제작 분야의 전문가로, 다년간의 경험을 바탕으로 AI툴비를 만들게 되었습니다.',
         usage: [
-            'AI TOOLBOX 웹페이지 개발',
+            'AI TOOLBEE 웹페이지 개발',
             '5년 이상의 IT 관련업무 경력보유',
             'AI 이미지/영상 생성 전문가',
             '다수의 기업 AI 도입 컨설팅 경험',
@@ -1658,19 +1658,19 @@ const cameraData = {
     'instructor-profile': {
         title: '강사 소개',
         koreanTitle: '강사 소개',
-        prompt: 'AI TOOLBOX 창시자',
+        prompt: 'AI TOOLBEE 창시자',
         instructorInfo: {
             name: '김진욱 (하루오프)',
             nickname: '하루오프',
             positions: [
-                'AI TOOLBOX 개발 이사',
+                'AI TOOLBEE 개발 이사',
                 '(주)알앤픽 대표이사',
                 '(주)제이콥소프트 전략영업대표'
             ]
         },
-        description: 'AI TOOLBOX의 전체적인 시스템 개발자로서 AIFI님과 함께 영상프레임워크의 새로움 패러다임을 도입하여 체계적인 프롬프트 엔지니어링과 창작 프로세스를 통해 누구나 고품질 콘텐츠를 제작할 수 있도록 하였습니다.',
+        description: 'AI TOOLBEE의 전체적인 시스템 개발자로서 AIFI님과 함께 영상프레임워크의 새로움 패러다임을 도입하여 체계적인 프롬프트 엔지니어링과 창작 프로세스를 통해 누구나 고품질 콘텐츠를 제작할 수 있도록 하였습니다.',
         usage: [
-            'AI TOOLBOX 개발 및 교육',
+            'AI TOOLBEE 개발 및 교육',
             'AI 기반 콘텐츠 제작 솔루션',
             '체계적인 프롬프트 엔지니어링 방법론',
             '창작자를 위한 실무 교육 프로그램'
@@ -1684,7 +1684,7 @@ const cameraData = {
         title: '인트로 영상 갤러리',
         koreanTitle: '인트로 영상 갤러리',
         prompt: '영상 소개',
-        description: 'AI TOOLBOX와 관련된 다양한 인트로 영상을 감상하실 수 있습니다. 각 영상을 클릭하면 전체화면으로 재생됩니다.',
+        description: 'AI TOOLBEE와 관련된 다양한 인트로 영상을 감상하실 수 있습니다. 각 영상을 클릭하면 전체화면으로 재생됩니다.',
         usage: [
             'AIFI JU0님의 영상',
             '기술 데모 영상',
@@ -1708,13 +1708,13 @@ const cameraData = {
                 url: 'https://www.dropbox.com/scl/fi/gfvw1jkg84kwoegz4l39w/E27D0315-B046-4036-B1CD-D43829E8BA47_video.MP4?rlkey=mcz0df3ivly21gucv1rfa1192&st=mhh9ow8i&raw=1',
                 thumbnail: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&h=400&fit=crop',
                 title: '튜토리얼 인트로',
-                description: '초보자를 위한 AI TOOLBOX 튜토리얼 시작 영상입니다.'
+                description: '초보자를 위한 AI TOOLBEE 튜토리얼 시작 영상입니다.'
             },
             {
                 url: 'https://www.dropbox.com/scl/fi/7udhyo2b5v0p4u0uu91lh/_schema_httpjsonschemaorgdraft07-1.mp4?rlkey=lqhpz4al7u9t377kvx78ehn34&st=zizgjtd4&raw=1',
                 thumbnail: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=400&fit=crop',
                 title: '프로젝트 쇼케이스',
-                description: 'AI TOOLBOX를 활용한 다양한 프로젝트 결과물을 소개하는 영상입니다.'
+                description: 'AI TOOLBEE를 활용한 다양한 프로젝트 결과물을 소개하는 영상입니다.'
             }
         ],
         images: [
@@ -1937,7 +1937,7 @@ const cameraData = {
         title: '프레임워크 스테이지',
         koreanTitle: 'AIFI Framework Stages',
         prompt: '',
-        description: 'AI TOOLBOX의 8단계 스테이지를 통해 체계적으로 학습하고 실습할 수 있습니다. 각 스테이지는 Google Gemini를 활용한 실전 프로젝트입니다.',
+        description: 'AI TOOLBEE의 8단계 스테이지를 통해 체계적으로 학습하고 실습할 수 있습니다. 각 스테이지는 Google Gemini를 활용한 실전 프로젝트입니다.',
         usage: [],
         stages: [
             {
@@ -2691,5 +2691,495 @@ roar that echoes through the hangar.",
                 ]
             }
         }
+    },
+
+    // ============= 튜토리얼 =============
+    'tutorial-block1': {
+        title: '[튜토리얼 1] 🤖 ai툴비 프롬프트 빌더 퀘스트: 챕터 1',
+        koreanTitle: '블록 1: 캐릭터(Character)',
+        prompt: '[블록 1: 캐릭터(Character)] 블록 조립하기',
+        description: '안녕하세요! 여러분의 AI 창작 가이드, ai툴비입니다. 🐝\n\n여러분이 상상하는 이미지를 완벽하게 만들어내기 위한 "궁극의 프롬프트 조립" 퀘스트를 시작하겠습니다.\n\n그 첫 번째 퀘스트는 이미지의 심장, [캐릭터(Character)] 블록입니다!\n\n\'캐릭터\'는 이미지의 \'주인공\'입니다. 하지만 그냥 a girl (소녀)이라고만 하면, AI는 \'어떤 소녀?\'인지 몰라 무작위로 이미지를 생성합니다.\n\n이번 퀘스트에서는 우리가 원하는 주인공을 AI가 정확히 그려낼 수 있도록, 3개의 작은 부품을 조립하여 [캐릭터] 블록을 완성해 보겠습니다.',
+        type: 'tutorial',
+        parts: [
+            {
+                title: '▶ 부품 1-1: 핵심 정체성 (Core Identity)',
+                description: '가장 먼저, 주인공이 <strong style="color: #ff6b6b;">\'누구\'</strong>인지, 또는 <strong style="color: #ff6b6b;">\'무엇\'</strong>인지 정체를 알려줘야 합니다.',
+                keywords: [
+                    'a warrior (전사)',
+                    'a wizard (마법사)',
+                    'a girl (소녀)',
+                    'a cyborg (사이보그)',
+                    'a robot (로봇)',
+                    'an alien (외계인)',
+                    'a cat (고양이)',
+                    'a dragon (용)'
+                ],
+                example: 'a girl'
+            },
+            {
+                title: '▶ 부품 1-2: 외형 묘사 (Appearance)',
+                description: '다음으로, 주인공의 \'외모\'를 구체적으로 묘사합니다. 이 부품이 AI의 <strong style="color: #ff6b6b;">\'무작위성\'</strong>을 없애는 핵심입니다!',
+                keywords: [
+                    '(인종/국적) young Korean girl, American teenager',
+                    '(머리 스타일) girl with short red hair, boy with blond curly hair',
+                    '(얼굴 특징) with glowing blue eyes, with freckles, wearing glasses'
+                ],
+                example: 'a young Korean girl with short black hair'
+            },
+            {
+                title: '▶ 부품 1-3: 의상 (Attire)',
+                description: '마지막으로, 주인공이 <strong style="color: #ff6b6b;">\'무엇을 입고있는지\'</strong> 알려주세요. 의상은 캐릭터의 직업이나 상황을 보여주는 중요한 단서입니다.',
+                keywords: [
+                    'wearing a blue dress (파란 드레스를 입은)',
+                    'wearing a school uniform (교복을 입은)',
+                    'in futuristic cyberpunk armor (미래형 사이버펑크 갑옷을 입은)',
+                    'wearing a yellow raincoat (노란색 비옷을 입은)',
+                    'in a white scientist gown (흰색 과학자 가운을 입은)'
+                ],
+                example: '"제 캐릭터에 어울리게 **wearing a yellow raincoat (노란색 비옷을 입은)**를 선택할게요."'
+            }
+        ],
+        completion: {
+            title: '🏆 퀘스트 1 완료!',
+            message: '축하합니다! 3개의 부품을 모두 모아 드디어 첫 번째 [캐릭터] 블록 조립을 완료했습니다!',
+            result: 'a young Korean girl with short black hair, wearing a yellow raincoat',
+            image: 'https://cdn.midjourney.com/d6fc99b2-73ca-4cc6-81b5-d75fb52276d0/0_2.png',
+            status: '<strong style="color: #ff6b6b;">\'캐릭터(Character)\'</strong> → 행동(Action) → 소품(Props) → 배경(Setting) → 스타일(Style) → 조명&시간(Lighting&Time) → 카메라(Camera)',
+            nextStep: '어떤가요? 그냥 \'소녀\'라고 했을 때보다 훨씬 더 구체적이고 흥미로운 주인공이 만들어졌죠?\n\n자, 이제 이 멋진 주인공이 \'무엇을 하고 있는지\' 정해줄 차례입니다.\n다음 챕터, \'블록 2: 행동(Action)\' 퀘스트에서 계속됩니다!'
+        },
+        usage: [
+            '📜 퀘스트 1: \'캐릭터\' 블록 조립하기',
+            '',
+            '▶ 부품 1-1: 핵심 정체성 (Core Identity)',
+            '가장 먼저, 주인공이 <strong style="color: #ff6b6b;">\'누구\'</strong>인지, 또는 <strong style="color: #ff6b6b;">\'무엇\'</strong>인지 정체를 알려줘야 합니다.',
+            '',
+            '키워드 예시 (Keywords):',
+            '• a warrior (전사)',
+            '• a wizard (마법사)',
+            '• a girl (소녀)',
+            '• a cyborg (사이보그)',
+            '• a robot (로봇)',
+            '• an alien (외계인)',
+            '• a cat (고양이)',
+            '• a dragon (용)',
+            '',
+            '"저는 **a girl (소녀)**를 주인공으로 선택해 볼게요!"',
+            '',
+            '▶ 부품 1-2: 외형 묘사 (Appearance)',
+            '다음으로, 주인공의 \'외모\'를 구체적으로 묘사합니다. 이 부품이 AI의 \'무작위성\'을 없애는 핵심입니다!',
+            '',
+            '키워드 예시 (Keywords):',
+            '• (인종/국적) young Korean girl, American teenager',
+            '• (머리 스타일) girl with short red hair, boy with blond curly hair',
+            '• (얼굴 특징) with glowing blue eyes, with freckles, wearing glasses',
+            '',
+            '"저는 a girl을 더 구체적으로 만들 거예요. **a young Korean girl with short black hair (검은 단발머리의 어린 한국 소녀)**로 정했습니다."',
+            '',
+            '▶ 부품 1-3: 의상 (Attire)',
+            '마지막으로, 주인공이 \'무엇을 입고 있는지\' 알려주세요. 의상은 캐릭터의 직업이나 상황을 보여주는 중요한 단서입니다.',
+            '',
+            '키워드 예시 (Keywords):',
+            '• wearing a blue dress (파란 드레스를 입은)',
+            '• wearing a school uniform (교복을 입은)',
+            '• in futuristic cyberpunk armor (미래형 사이버펑크 갑옷을 입은)',
+            '• wearing a yellow raincoat (노란색 비옷을 입은)',
+            '• in a white scientist gown (흰색 과학자 가운을 입은)',
+            '',
+            '"제 캐릭터에 어울리게 **wearing a yellow raincoat (노란색 비옷을 입은)**를 선택할게요."',
+            '',
+            '🏆 퀘스트 1 완료!',
+            '축하합니다! 3개의 부품을 모두 모아 드디어 첫 번째 [캐릭터] 블록 조립을 완료했습니다!',
+            '',
+            '(조립된 [캐릭터] 블록)',
+            '[a young Korean girl with short black hair, wearing a yellow raincoat]',
+            '',
+            '(현재 프롬프트 조립 상태)',
+            '캐릭터(Character) → <strong style="color: #ff6b6b;">행동(Action)\'</strong> → 소품(Props) → 배경(Setting) → 스타일(Style) → 조명&시간(Lighting&Time) → 카메라(Camera)',
+            '',
+            '어떤가요? 그냥 \'소녀\'라고 했을 때보다 훨씬 더 구체적이고 흥미로운 주인공이 만들어졌죠?',
+            '',
+            '자, 이제 이 멋진 주인공이 \'무엇을 하고 있는지\' 정해줄 차례입니다.',
+            '다음 챕터, \'블록 2: 행동(Action)\' 퀘스트에서 계속됩니다!'
+        ],
+        images: []
+    },
+
+    'tutorial-block2': {
+        title: '[튜토리얼 2] 🤖 ai툴비 프롬프트 빌더 퀘스트: 챕터 2',
+        koreanTitle: '블록 2: 행동(Action)',
+        prompt: '[블록 2: 행동(Action)] 블록 장착하기',
+        description: '안녕하세요! ai툴비입니다. 🐝\n\n지난 챕터에서 우리는 3개의 부품을 조립해 멋진 [캐릭터] 블록을 완성했습니다. (예: a young Korean girl with short black hair, wearing a yellow raincoat)\n\n하지만 이 캐릭터는 아직 \'무엇을 할지\' 정해지지 않은 상태입니다. 캐릭터가 그냥 멍하니 서 있기만 한다면 조금 심심하겠죠?\n\n두 번째 퀘스트, [행동(Action)] 블록은 우리 주인공에게 \'생명\'을 불어넣는 퀘스트입니다. 서 있는 전사와 달리고 있는 전사는 완전히 다른 이야기를 만드니까요!',
+        type: 'tutorial',
+        parts: [
+            {
+                title: '1. 정적인 행동 (Static Actions)',
+                description: '주로 인물의 상태나 모습을 강조할 때 사용합니다. (인물 사진이나 초상화에 유용해요!)',
+                keywords: [
+                    'standing : 서 있는',
+                    'sitting : 앉아 있는',
+                    'lying down : 누워 있는',
+                    'looking at the camera : 카메라를 응시하는',
+                    'leaning against a wall : 벽에 기대어 있는',
+                    'smiling : 미소짓는'
+                ],
+                example: ''
+            },
+            {
+                title: '2. 동적인 행동 (Dynamic Actions)',
+                description: '이미지에 \'움직임\'과 \'스토리\'를 부여합니다. (역동적인 장면 연출에 필수!)',
+                keywords: [
+                    'walking : 걷고 있는',
+                    'running : 달리고 있는',
+                    'jumping : 점프하는',
+                    'dancing : 춤추는',
+                    'fighting : 싸우는',
+                    'flying : 날아다니는'
+                ],
+                example: ''
+            },
+            {
+                title: '3. 구체적인 행동 (Specific Actions)',
+                description: '캐릭터의 직업이나 상황을 더 구체적으로 설명하는 행동입니다.',
+                keywords: [
+                    'reading a book : 책을 읽는',
+                    'casting a spell : 마법을 거는',
+                    'building a house : 집을 짓는',
+                    'typing on a keyboard : 키보드를 치는',
+                    'opening a door : 문을 여는',
+                    'holding a cup : 컵을 들고 있는'
+                ],
+                example: ''
+            }
+        ],
+        tip: {
+            title: '🐝 ai툴비의 꿀팁 (Tip!)',
+            content: '"동작(Action)과 시선(Gaze)을 조합하세요!"\n\n[행동] 블록을 더 풍부하게 만드는 비결은 \'시선\'을 함께 지정하는 것입니다.\n\n그냥 sitting (앉아 있는) 대신,\nsitting and looking up at the sky (앉아서 하늘을 올려다보는)\n\n그냥 walking (걷고 있는) 대신,\nwalking and looking at the camera (걸으면서 카메라를 쳐다보는)\n\n이렇게 \'동작 + 시선\'을 조합하면, AI는 훨씬 더 감성적이고 구체적인 장면을 연출해 냅니다!'
+        },
+        completion: {
+            title: '🏆 퀘스트 2 완료!',
+            message: '자, 이제 두 번째 [행동] 블록을 장착해 볼까요?',
+            choice: '[🐝 ai툴비의 선택] "저는 1챕터의 제 캐릭터(노란 우비 소녀)에게 어울리는 **walking (걷고 있는)**을 선택할게요. 비옷을 입었으니 어딘가를 걷고 있는 게 자연스럽겠죠?"',
+            result: 'a young Korean girl with short black hair, wearing a yellow raincoat, walking',
+            image: 'https://cdn.midjourney.com/5ebc3864-ef04-4244-b93c-3097749450ca/0_1.png',
+            status: '캐릭터(Character) → <strong style="color: #ff6b6b;">행동(Action)\'</strong> → 소품(Props) → 배경(Setting) → 스타일(Style) → 조명&시간(Lighting&Time) → 카메라(Camera)',
+            nextStep: '캐릭터가 정해졌고, 무엇을 하는지도 정해졌습니다. 그런데... 혹시 캐릭터가 손에 뭔가를 들고 있지는 않나요? (예를 들어, 노란 우비 소녀가 \'빨간 우산\'을 들고 있다면?)\n\n다음 챕터, \'블록 3: 소품(Props)\' 퀘스트에서 이어서 진행하겠습니다! 계속할까요?'
+        },
+        usage: [],
+        images: []
+    },
+
+    'tutorial-block3': {
+        title: '[튜토리얼 3] 🤖 ai툴비 프롬프트 빌더 퀘스트: 챕터 3',
+        koreanTitle: '블록 3: 소품(Props)',
+        prompt: '[블록 3: 소품(Props)] 블록 장착하기',
+        description: '안녕하세요! 여러분의 AI 가이드, ai툴비입니다. 🐝\n\n우리는 지난 퀘스트까지 \'누가\'(캐릭터) \'무엇을 하는지\'(행동) 정했습니다. (예: a young Korean girl... wearing a yellow raincoat + walking)\n\n이제 세 번째 퀘스트입니다. 혹시 여러분의 캐릭터가 손에 무언가를 들고 있진 않나요? 아니면 어깨에 가방을 메고 있거나, 허리에 칼을 차고 있을 수도 있죠.\n\n[소품(Props)] 블록은 캐릭터의 \'이야기\'를 더 풍부하게 만들어주는 아이템을 추가하는 퀘스트입니다. 전사가 빛나는 마법 검을 들고 있다면 그 스토리가 완전히 달라지겠죠?',
+        type: 'tutorial',
+        parts: [
+            {
+                title: '1. 손에 든 소품 (Hand-held Props)',
+                description: '캐릭터가 직접 \'들고\' 있거나 \'사용 중\'인 아이템입니다.',
+                keywords: [
+                    'holding a magic sword (마법 검을 들고 있는)',
+                    'holding a glowing book (빛나는 책을 들고 있는)',
+                    'holding a red umbrella (빨간 우산을 들고 있는)',
+                    'holding a cup of coffee (커피잔을 들고 있는)',
+                    'holding a smartphone (스마트폰을 들고 있는)'
+                ],
+                example: ''
+            },
+            {
+                title: '2. 착용/소지한 소품 (Worn / Carried Props)',
+                description: '\'의상\'(Attire)과는 조금 다릅니다. 캐릭터가 소지한 기능적인 아이템을 말합니다.',
+                keywords: [
+                    'with a backpack (백팩을 메고 있는)',
+                    'with a guitar on their back (등에 기타를 멘)',
+                    'wearing a magical amulet (마법의 목걸이를 착용한)',
+                    'with a camera around their neck (목에 카메라를 건)',
+                    'with a gas mask (방독면을 쓴)'
+                ],
+                example: ''
+            },
+            {
+                title: '3. 주변 소품 (Environmental Props)',
+                description: '캐릭터가 직접 소유한 것은 아니지만, 캐릭터와 \'함께 있는\' 중요한 물체입니다.',
+                keywords: [
+                    'a robot dog by their side (옆에 로봇 개가 있는)',
+                    'a cat sitting on their lap (무릎에 고양이가 앉아 있는)',
+                    'a campfire in front of them (앞에 캠프파이어가 있는)',
+                    'a motorcycle next to them (옆에 오토바이가 있는)'
+                ],
+                example: ''
+            }
+        ],
+        tip: {
+            title: '🐝 ai툴비의 꿀팁 (Tip!)',
+            content: '"with" 또는 "holding"으로 자연스럽게 붙여주세요!\n\n[소품] 블록을 [캐릭터]나 [행동] 블록에 연결하는 가장 쉬운 방법은 with (~와 함께) 또는 holding (~을 들고)이라는 \'접착제\' 키워드를 사용하는 것입니다.\n\n(조합 예시)\n[캐릭터: a warrior] + [행동: standing] + with a broken shield (부서진 방패와 함께)\n\n(조합 예시)\n[캐릭터: a girl] + [행동: sitting] + holding a cat (고양이를 안고)\n\n이렇게 하면 AI가 "아, 이 소품이 캐릭터와 연결된 것이구나!"라고 훨씬 명확하게 이해합니다.'
+        },
+        completion: {
+            title: '🏆 퀘스트 3 완료!',
+            message: '자, 이제 세 번째 [소품] 블록을 장착할 시간입니다.',
+            choice: '[🐝 ai툴비의 선택] "저는 1, 2챕터의 제 캐릭터(노란 우비를 입고 걷는 소녀)에게 어울리게, **holding a transparent umbrella (투명한 우산을 들고 있는)**를 추가할게요. 노란 비옷과 투명한 우산, 정말 잘 어울릴 것 같지 않나요?"',
+            result: 'a young Korean girl with short black hair, wearing a yellow raincoat, walking, holding a transparent umbrella',
+            image: 'https://cdn.midjourney.com/b5f5dda1-91af-4626-a9ec-b09ac1ac0cd9/0_1.png',
+            status: '캐릭터(Character) → 행동(Action) → <strong style="color: #ff6b6b;">소품(Props)\'</strong>  → 배경(Setting) → 스타일(Style) → 조명&시간(Lighting&Time) → 카메라(Camera)',
+            nextStep: '이제 멋진 주인공이 완성되었습니다! 캐릭터, 행동, 소품까지 모두 정해졌네요.\n\n그렇다면... 이 주인공은 \'어디에\' 서 있는 걸까요? 숲속? 도시? 아니면 텅 빈 방?\n\n다음 챕터, \'블록 4: 배경(Setting)\' 퀘스트에서 이 모든 것을 결정합니다! 계속 진행할까요?'
+        },
+        usage: [],
+        images: []
+    },
+
+    'tutorial-block4': {
+        title: '[튜토리얼 4] 🤖 ai툴비 프롬프트 빌더 퀘스트: 챕터 4',
+        koreanTitle: '블록 4: 배경(Setting)',
+        prompt: '[블록 4: 배경(Setting)] 블록 장착하기',
+        description: '안녕하세요! ai툴비입니다. 🐝\n\n우리는 드디어 주인공(캐릭터, 행동, 소품)을 완벽하게 만들었습니다! (현재 프롬프트: a young Korean girl... walking, holding a transparent umbrella)\n\n그런데... 이 멋진 주인공이 지금 \'어디에\' 있나요? 텅 빈 흰색 공간에 떠 있다면 너무 어색하겠죠?\n\n네 번째 퀘스트, [배경(Setting)] 블록은 우리 주인공을 멋진 무대 위에 세워주는, 이미지의 \'공간\'을 창조하는 퀘스트입니다.',
+        type: 'tutorial',
+        parts: [
+            {
+                title: '1. 🏙️ 야외 / 도시 (Outdoor / City)',
+                description: '가장 보편적인 배경입니다. 도시의 거리, 공원, 혹은 판타지 속 장소를 설정할 수 있습니다.',
+                keywords: [
+                    'in a futuristic city (미래형 도시에서)',
+                    'in a rainy street (비 오는 거리에서)',
+                    'in a crowded market (붐비는 시장에서)',
+                    'on a neon-lit street (네온 불빛이 빛나는 거리에서)'
+                ],
+                example: ''
+            },
+            {
+                title: '2. 🌲 야외 / 자연 (Outdoor / Nature)',
+                description: '숲, 바다, 산 등 광활한 자연을 무대로 설정합니다.',
+                keywords: [
+                    'in an enchanted forest (마법에 걸린 숲에서)',
+                    'on a mountain top (산 정상에서)',
+                    'on a beach at sunset (해질녘 해변에서)',
+                    'in a dark, foggy forest (어둡고 안개 낀 숲에서)'
+                ],
+                example: ''
+            },
+            {
+                title: '3. 🏠 실내 (Indoor)',
+                description: '도서관, 방, 카페 등 특정 건물 내부를 배경으로 합니다.',
+                keywords: [
+                    'in a cozy library (아늑한 도서관에서)',
+                    'in a high-tech lab (첨단 연구실에서)',
+                    'inside a spaceship cockpit (우주선 조종석에서)',
+                    'in a minimalist room (미니멀한 방 안에서)'
+                ],
+                example: ''
+            }
+        ],
+        tip: {
+            title: '🐝 ai툴비의 꿀팁 (Tip!)',
+            content: '"in", "on", "at" 같은 전치사를 사용하세요!\n\n[배경] 블록을 자연스럽게 연결하는 가장 좋은 \'접착제\'는 in (안에), on (위에), at (에서) 같은 \'전치사\'입니다.\n\n(나쁜 예) a warrior a castle\n(AI가 \'전사와 성\'을 따로 그릴 수 있습니다.)\n\n(좋은 예)\na warrior in a castle (성 \'안에\' 있는 전사)\na warrior on a castle wall (성벽 \'위에\' 있는 전사)\n\n전치사 하나로 캐릭터와 배경의 관계가 명확해집니다!'
+        },
+        completion: {
+            title: '🏆 퀘스트 4 완료!',
+            message: '이제 네 번째 [배경] 블록을 장착할 차례입니다.',
+            choice: '[🐝 ai툴비의 선택] "제 캐릭터는 \'노란 우비\'를 입고 \'투명 우산\'을 들고 있으니, **in a rainy city street at night (밤에 비 오는 도시 거리에서)**를 선택할게요. 비 오는 밤거리와 노란 우비, 색감 대비가 멋질 것 같아요!"',
+            result: 'a young Korean girl with short black hair, wearing a yellow raincoat, walking, holding a transparent umbrella, in a rainy city street at night',
+            image: 'https://cdn.midjourney.com/f75c5550-d39b-441f-8c1e-de6d5b9516de/0_3.png',
+            status: '캐릭터(Character) → 행동(Action) → 소품(Props) → <strong style="color: #ff6b6b;">배경(Setting)\'</strong> → 스타일(Style) → 조명&시간(Lighting&Time) → 카메라(Camera)',
+            nextStep: '자, 4개의 블록이 모두 조립되었습니다! 완성된 프롬프트를 볼까요?\n\n이제 거의 다 왔습니다! 주인공이 어디서 무엇을 하는지 모두 정해졌네요.\n\n그런데 이 멋진 장면을 **\'어떤 화풍\'**으로 그릴까요? 실사처럼? 애니메이션처럼? 아니면 유화처럼?\n\n다음 챕터, \'블록 5: 스타일(Style)\' 퀘스트에서 이미지의 \'느낌\'을 결정합니다! 계속 진행할까요?'
+        },
+        usage: [],
+        images: []
+    },
+
+    'tutorial-block5': {
+        title: '[튜토리얼 5] 🤖 ai툴비 프롬프트 빌더 퀘스트: 챕터 5',
+        koreanTitle: '블록 5: 스타일(Style)',
+        prompt: '[블록 5: 스타일(Style)] 블록 장착하기',
+        description: '안녕하세요! ai툴비입니다. 🐝\n\n지금까지 4개의 퀘스트를 완료하면서, 우리는 \'누가, 어디서, 무엇을 하는지\'에 대한 완벽한 \'설계도\'를 만들었습니다.\n\n(현재까지 조립된 풀 프롬프트 예시)\na young Korean girl with short black hair, wearing a yellow raincoat, walking, holding a transparent umbrella, in a rainy city street at night\n\n이제 5번째 퀘스트입니다. 이 설계도를 가지고 **\'어떤 화풍\'**으로 이미지를 \'건축\'할지 결정할 차례입니다.\n\n[스타일(Style)] 블록은 이미지의 전체적인 \'느낌(Vibe)\'과 \'질감(Medium)\'을 결정하는, 가장 강력한 마법 블록입니다. 이 블록 하나만 바꿔도 실사 사진이 애니메이션이 되거나 유화가 될 수 있거든요!',
+        type: 'tutorial',
+        parts: [
+            {
+                title: 'A. 📸 실사 계열 (Realism)',
+                description: '사진처럼 극도로 사실적인 느낌을 줍니다.',
+                keywords: [
+                    'photorealistic (실사 사진처럼)',
+                    'hyperrealistic (극사실주의)',
+                    '3D render (3D 렌더)',
+                    'Octane render (옥테인 렌더, 극사실적 3D)',
+                    'Unreal Engine 5 (언리얼 엔진, 고품질 게임 그래픽)'
+                ],
+                example: ''
+            },
+            {
+                title: 'B. 🎬 애니메이션 계열 (Animation)',
+                description: '만화 영화처럼 표현합니다. 친숙하고 매력적인 스타일이죠.',
+                keywords: [
+                    'anime style (일본 애니메이션 스타일)',
+                    'Studio Ghibli style (스튜디오 지브리 스타일)',
+                    'Pixar style (픽사 3D 애니 스타일)',
+                    'cartoon style (미국 카툰 스타일)',
+                    'Claymation (클레이 애니메이션)'
+                ],
+                example: ''
+            },
+            {
+                title: 'C. 🎨 회화 / 일러스트 계열 (Painting / Illustration)',
+                description: '아티스트의 손길이 느껴지는 그림 스타일입니다.',
+                keywords: [
+                    'digital painting (디지털 페인팅)',
+                    'concept art (콘셉트 아트)',
+                    'illustration (일러스트레이션)',
+                    'oil painting (유화)',
+                    'watercolor (수채화)',
+                    'pencil sketch (연필 스케치)'
+                ],
+                example: ''
+            },
+            {
+                title: 'D. 🕶️ 특정 분위기 계열 (Aesthetic / Vibe)',
+                description: '특정 세계관이나 감성을 이미지 전체에 덧씌웁니다.',
+                keywords: [
+                    'cyberpunk (사이버펑크)',
+                    'steampunk (스팀펑크)',
+                    'fantasy art (판타지 아트)',
+                    'minimalist (미니멀리스트)',
+                    'lo-fi aesthetic (로파이 감성)',
+                    'gothic (고딕)'
+                ],
+                example: ''
+            }
+        ],
+        tip: {
+            title: '🐝 ai툴비의 꿀팁 (Tip!)',
+            content: '"스타일 블록은 \'조합\'할 수 있어요! (Vibe + Medium)"\n\n[스타일] 블록의 진정한 힘은 \'조합\'에 있습니다. [D. 분위기 계열] 키워드와 [A, B, C 계열] 키워드를 함께 사용해 보세요!\n\n(조합 예시 1)\nfantasy art (판타지 분위기) + digital painting (디지털 페인팅)\n\n(조합 예시 2)\ncyberpunk (사이버펑크 분위기) + anime style (애니 스타일)\n\n(조합 예시 3)\nlo-fi aesthetic (로파이 감성) + illustration (일러스트)\n\n이렇게 하면 \'사이버펑크풍의 애니메이션\'처럼 훨씬 더 구체적이고 독창적인 스타일을 만들 수 있습니다.'
+        },
+        completion: {
+            title: '🏆 퀘스트 5 완료!',
+            message: '이제 다섯 번째 [스타일] 블록을 장착해 봅시다.',
+            choice: '[🐝 ai툴비의 선택] "저는 \'비 오는 밤거리\'와 \'소녀\'의 감성을 잘 살릴 수 있도록, 꿀팁에서 배운 \'조합\'을 사용해 볼게요!"\n\nanime style (애니 스타일) + lo-fi aesthetic (로파이 감성)\n\n"비 오는 날의 차분하고 편안한 애니메이션 느낌, 정말 기대되지 않나요?"',
+            result: 'a young Korean girl with short black hair, wearing a yellow raincoat, walking, holding a transparent umbrella, in a rainy city street at night, anime style, lo-fi aesthetic',
+            image: 'https://cdn.midjourney.com/2a723ff8-e50d-481e-831f-2752716dc168/0_3.png',
+            status: '캐릭터(Character) → 행동(Action) → 소품(Props) → 배경(Setting) → <strong style="color: #ff6b6b;">\'스타일(Style)\'</strong> → 조명&시간(Lighting&Time) → 카메라(Camera)',
+            nextStep: '5개의 블록이 모두 조립되었습니다! 완성된 프롬프트를 확인해 보세요.\n\n와! 이제 정말 멋진 장면이 머릿속에 그려집니다.\n\n그런데... \'비 오는 밤거리\'의 \'빛\'을 조금 더 극적으로 만들고 싶지 않으신가요? 예를 들어, \'네온사인\' 불빛이 비에 젖은 바닥에 반사되는 것처럼요!\n\n다음 챕터, \'블록 6: 조명 & 시간(Lighting & Time)\' 퀘스트에서 이 \'빛\'을 디자인해 보겠습니다! 계속할까요?'
+        },
+        usage: [],
+        images: []
+    },
+
+    'tutorial-block6': {
+        title: '[튜토리얼 6] 🤖 ai툴비 프롬프트 빌더 퀘스트: 챕터 6',
+        koreanTitle: '블록 6: 조명 & 시간(Lighting & Time)',
+        prompt: '[블록 6: 조명 & 시간(Lighting & Time)] 블록 장착하기',
+        description: '안녕하세요! ai툴비입니다. 🐝\n\n우리는 5개의 블록을 조립해 \'어떤 장면\'을 \'어떤 스타일\'로 그릴지 완벽하게 기획했습니다.\n\n(현재까지 조립된 풀 프롬프트 예시)\na young Korean girl with short black hair, wearing a yellow raincoat, walking, holding a transparent umbrella, in a rainy city street at night, anime style, lo-fi aesthetic\n\n자, 6번째 퀘스트입니다! 우리는 [배경] 블록에서 이미 at night (밤)이라고 \'시간\'을 지정했습니다.\n\n하지만 [조명 & 시간] 블록은 여기서 한 걸음 더 나아가, 그 \'밤\'의 \'빛\'을 **"어떻게 디자인할 것인가?"**를 결정하는 퀘스트입니다. 그냥 \'어두운 밤\'이 아니라, \'감성적인 밤\'을 만들어야죠!',
+        type: 'tutorial',
+        parts: [
+            {
+                title: '1. 🕰️ \'시간\' 블록 (Time - 감성 숏컷)',
+                description: '이 키워드들은 그 자체로 강력한 \'조명\'과 \'분위기\'를 포함하고 있습니다.',
+                keywords: [
+                    'golden hour (골든 아워 - 따뜻하고 부드러운 빛)',
+                    'blue hour (블루 아워 - 해질녘의 차갑고 푸른 빛)',
+                    'sunset / sunrise (일몰 / 일출)',
+                    'midnight (자정 - 더 깊은 밤)',
+                    '1980s / Victorian era (특정 시대의 색감과 분위기)'
+                ],
+                example: ''
+            },
+            {
+                title: '2. 💡 \'조명\' 블록 - 자연광/분위기광',
+                description: '\'시간\'을 정했더라도, \'어떤 광원\'이 비추는지 구체적으로 지정하면 퀄리티가 훨씬 올라갑니다.',
+                keywords: [
+                    'moonlight (달빛)',
+                    'candlelight (촛불)',
+                    'firelight (모닥불)',
+                    'glowing streetlights (빛나는 가로등)',
+                    'car headlights (자동차 헤드라이트)',
+                    'warm light from shop windows (가게 창문에서 새어 나오는 따뜻한 불빛)',
+                    'bioluminescent (생물 발광, 판타지 숲 등)'
+                ],
+                example: ''
+            },
+            {
+                title: '3. 🎬 극적 조명 (Dramatic Lighting)',
+                description: '영화처럼 극적인 빛의 효과를 만들어냅니다.',
+                keywords: [
+                    'cinematic lighting (영화적 조명, 강한 대비)',
+                    'volumetric lighting (부피감이 느껴지는 빛, 안개 속 빛줄기)',
+                    'rim lighting (림 라이팅, 캐릭터의 외곽선을 비추는 역광)',
+                    'dramatic shadows (극적인 그림자)'
+                ],
+                example: ''
+            }
+        ],
+        tip: {
+            title: '🐝 ai툴비의 꿀팁 (Tip!)',
+            content: '"\'시간\'과 \'조명\'은 항상 둘 다 필요한가요?"\n\n아닙니다! \'시간\' 블록은 그 자체로 조명 값을 포함합니다. golden hour라고 쓰면 굳이 warm light를 또 쓸 필요가 없죠.\n\n[시간] 블록은 \'전체적인 분위기\'를 잡을 때 쓰세요.\n[조명] 블록은 \'특정 광원\'을 눈에 보이게 그리고 싶을 때 쓰세요. (예: glowing streetlights)\n\n[배경]에서 at night를 썼다면, [조명] 블록에서 glowing streetlights를 추가해 \'어떤 밤인지\'를 구체화하는 것이 좋습니다!'
+        },
+        completion: {
+            title: '🏆 퀘스트 6 완료!',
+            message: '이제 여섯 번째 [조명 & 시간] 블록을 장착해 봅시다.',
+            choice: '[🐝 ai툴비의 선택] "\'네온사인\' 대신, \'로파이(lo-fi)\' 감성에 어울리는 따뜻한 불빛을 선택할게요."\n\n"비 오는 밤거리에 glowing streetlights (빛나는 가로등) 불빛과 **warm light from shop windows (가게 창문에서 새어 나오는 따뜻한 불빛)**이 젖은 바닥에 반사되는 모습을 상상했어요!"',
+            result: 'a young Korean girl with short black hair, wearing a yellow raincoat, walking, holding a transparent umbrella, in a rainy city street at night, anime style, lo-fi aesthetic, glowing streetlights and warm light from shop windows',
+            image: 'https://cdn.midjourney.com/83add2b7-38a2-40a5-8685-fa7840b0909b/0_3.png',
+            status: '캐릭터(Character) → 행동(Action) → 소품(Props) → 배경(Setting) → 스타일(Style) → <strong style="color: #ff6b6b;">\'조명&시간(Lighting&Time)\'</strong> → 카메라(Camera)',
+            nextStep: '6개의 블록이 모두 조립되었습니다! 프롬프트가 훨씬 더 풍부해졌네요!\n\n드디어 마지막 퀘스트입니다! 우리는 이제 \'어떤 장면\'을 그릴지 완벽하게 기획했습니다.\n\n이제 이 장면을 \'어떤 카메라로\', \'어떤 각도에서\' 찍을지만 결정하면 됩니다!\n\n마지막 퀘스트, \'블록 7: 카메라(Camera)\' 퀘스트에서 이 모든 것을 마무리합니다! 계속 진행할까요?'
+        },
+        usage: [],
+        images: []
+    },
+
+    'tutorial-block7': {
+        title: '[튜토리얼 7] 🤖 ai툴비 프롬프트 빌더 퀘스트: 챕터 7 (최종)',
+        koreanTitle: '블록 7: 카메라(Camera)',
+        prompt: '[블록 7: 카메라(Camera)] 블록 장착하기',
+        description: '안녕하세요! 여러분의 AI 가이드, ai툴비입니다. 🐝\n\n우리는 6개의 퀘스트를 통해 \'어떤 장면\'을 \'어떤 스타일\'과 \'어떤 빛\'으로 그릴지 완벽하게 기획했습니다.\n\n(현재까지 조립된 풀 프롬프트 예시)\na young Korean girl with short black hair, wearing a yellow raincoat, walking, holding a transparent umbrella, in a rainy city street at night, anime style, lo-fi aesthetic, glowing streetlights and warm light from shop windows\n\n이제 정말 마지막 퀘스트입니다. 이 멋진 장면을 "어떻게, 어떤 각도에서 찍을 것인지" 결정할 차례입니다.\n\n[카메라(Camera)] 블록은 우리가 \'관찰자\'가 되어 이미지의 \'시점\'과 \'구도\'를 정하는, 감독의 큐사인과도 같은 블록입니다!',
+        type: 'tutorial',
+        parts: [
+            {
+                title: '1. 샷 크기 (Shot Size)',
+                description: '얼마나 가깝게 찍을지를 결정합니다. 인물 중심인지, 배경 중심인지 정하는 핵심이죠.',
+                keywords: [
+                    'close-up shot (클로즈업: 인물의 얼굴과 감정에 집중)',
+                    'medium shot (미디엄 샷: 인물의 상반신과 약간의 배경)',
+                    'full shot (풀 샷: 인물의 전신을 보여줌)',
+                    'wide shot (와이드 샷: 인물보다 배경을 더 넓게 보여줌)',
+                    'extreme wide shot (익스트림 와이드 샷: 웅장한 풍경 속 인물)'
+                ],
+                example: ''
+            },
+            {
+                title: '2. 카메라 앵글 (Camera Angle)',
+                description: '어떤 높이에서 찍을지를 결정합니다. 앵글에 따라 인물의 느낌이 완전히 달라집니다.',
+                keywords: [
+                    'eye level shot (아이 레벨: 가장 표준적인 눈높이)',
+                    'low angle shot (로우 앵글: 아래에서 위로, 인물이 웅장해 보임)',
+                    'high angle shot (하이 앵글: 위에서 아래로, 인물이 아담해 보임)',
+                    'bird\'s eye view (버즈 아이 뷰: 하늘에서 수직으로 내려다봄)',
+                    'worm\'s eye view (웜즈 아이 뷰: 바닥에 붙어 위를 봄)'
+                ],
+                example: ''
+            },
+            {
+                title: '3. 렌즈 효과 / 구도 (Lens / Composition)',
+                description: '전문적인 촬영 효과를 추가합니다.',
+                keywords: [
+                    'bokeh (보케: 배경의 불빛을 동그랗게 뭉개는 효과)',
+                    'shallow depth of field (얕은 심도: 아웃포커싱, 배경 흐림)',
+                    'deep focus (깊은 심도: 배경까지 모두 선명함)',
+                    'rule of thirds (삼등분 법칙: 안정적인 구도)'
+                ],
+                example: ''
+            }
+        ],
+        tip: {
+            title: '🐝 ai툴비의 꿀팁 (Tip!)',
+            content: '"\'카메라\' 블록은 프롬프트의 \'맨 앞\'에 두세요!"\n\n[카메라] 블록의 키워드(예: medium shot)는 다른 블록들과 달리, 프롬프트의 맨 앞에 두는 것이 효과적일 때가 많습니다.\n\na girl... (중략)... medium shot (X - 덜 효과적)\nmedium shot of a girl... (중략) (O - 강력함!)\n\nAI에게 "이봐! 지금부터 내가 말하는 장면을 \'미디엄 샷\'으로 찍어줘!"라고 가장 먼저 지시하는 \'감독의 명령\' 역할을 하기 때문입니다!'
+        },
+        completion: {
+            title: '🏆✨ 퀘스트 대성공! "궁극의 프롬프트" 완성! ✨🏆',
+            message: '축하합니다! 여러분은 7개의 모든 퀘스트를 완료하고, 흩어져 있던 블록들을 모아 \'여러분만의 궁극의 프롬프트\' 조립에 성공했습니다!',
+            choice: '[🐝 ai툴비의 선택] "저는 1~6챕터까지 만든 제 캐릭터(우비 소녀)의 감성적인 표정에 집중하고 싶어요. 그래서 **medium shot (미디엄 샷)**을 선택할게요.\n\n그리고 꿀팁을 활용해서, \'비 오는 밤\'과 \'로파이 감성\'을 극대화하기 위해 bokeh (보케) 효과를 추가해서 뒷배경의 가로등 불빛이 예쁘게 뭉개지도록 할 거예요!"',
+            result: 'medium shot of a young Korean girl with short black hair, wearing a yellow raincoat, walking, holding a transparent umbrella, in a rainy city street at night, anime style, lo-fi aesthetic, glowing streetlights and warm light from shop windows, bokeh',
+            image: 'https://cdn.midjourney.com/edf03fe5-97e0-4349-9363-101c8c8f4809/0_2.png',
+            status: '캐릭터(Character) → 행동(Action) → 소품(Props) → 배경(Setting) → 스타일(Style) → 조명&시간(Lighting&Time) → <strong style="color: #ff6b6b;">\'카메라(Camera)\'</strong>',
+            nextStep: '이제 이 완성된 프롬프트를 미드저니, DALL-E, 스테이블 디퓨전 등 어떤 AI 툴에 넣어도, 여러분이 상상했던 \'비 오는 밤거리의 노란 우비 소녀\' 이미지를 정확하게 얻을 수 있을 것입니다.\n\n이 7-블록 조립 방식만 기억한다면, 여러분은 앞으로 어떤 이미지든 자유자재로 창조할 수 있는 \'AI 프롬프트 마스터\'가 될 수 있습니다!\n\n지금까지 튜토리얼을 따라오시느라 정말 고생 많으셨습니다! 🐝'
+        },
+        usage: [],
+        images: []
     }
 };

@@ -257,6 +257,12 @@ function displayContent() {
         return;
     }
 
+    // Check if it's a tutorial type
+    if (currentData.type === 'tutorial' && currentData.parts) {
+        displayTutorialContent();
+        return;
+    }
+
     // Special layout for hairstyles
     if (contentKey === 'hairstyles' && (currentData.womanHairstyles || currentData.manHairstyles)) {
         const currentTab = currentData.currentTab || 'woman';
@@ -562,11 +568,11 @@ function displayContent() {
 
             <div class="content-sections-wrapper">
                 <!-- 설명 및 프롬프트 섹션 -->
-                <div class="content-section-box">
+                <div class="content-section-box" style="grid-column: 1 / -1;">
                     <h3 class="section-title">설명 및 프롬프트</h3>
                     ${currentData.description ? `
                         <div class="description-area">
-                            <p class="section-text">${currentData.description}</p>
+                            <p class="section-text">${currentData.description.replace(/\n/g, '<br>')}</p>
                         </div>
                     ` : ''}
                     ${currentData.prompt ? `
@@ -577,6 +583,29 @@ function displayContent() {
                                 <button class="copy-btn" onclick="copyToClipboard('${currentData.prompt.replace(/'/g, "\\'")}')">
                                     복사
                                 </button>
+                            </div>
+                        </div>
+                    ` : ''}
+                    ${currentData.usage && currentData.usage.length > 0 ? `
+                        <div class="usage-area" style="margin-top: 20px;">
+                            <div class="usage-content">
+                                ${currentData.usage.map(item => {
+                                    if (item === '') {
+                                        return '<br>';
+                                    } else if (item.startsWith('📜') || item.startsWith('🏆')) {
+                                        return `<h4 style="color: #ff6b6b; margin-top: 20px; margin-bottom: 10px; font-size: 18px;">${item}</h4>`;
+                                    } else if (item.startsWith('▶')) {
+                                        return `<h5 style="color: #4CAF50; margin-top: 15px; margin-bottom: 10px; font-size: 16px;">${item}</h5>`;
+                                    } else if (item.startsWith('•')) {
+                                        return `<p style="margin-left: 20px; color: #ccc; line-height: 1.8;">${item}</p>`;
+                                    } else if (item.startsWith('[🐝')) {
+                                        return `<div style="background: rgba(255, 107, 107, 0.1); padding: 15px; border-left: 3px solid #ff6b6b; margin: 10px 0; border-radius: 5px;"><p style="color: #fff; line-height: 1.8;">${item}</p></div>`;
+                                    } else if (item.startsWith('(')) {
+                                        return `<div style="background: rgba(76, 175, 80, 0.1); padding: 15px; border-left: 3px solid #4CAF50; margin: 10px 0; border-radius: 5px;"><p style="color: #4CAF50; font-weight: 600; line-height: 1.8;">${item}</p></div>`;
+                                    } else {
+                                        return `<p style="color: #e0e0e0; line-height: 1.8; margin: 8px 0;">${item}</p>`;
+                                    }
+                                }).join('')}
                             </div>
                         </div>
                     ` : ''}
@@ -628,6 +657,111 @@ function displayContent() {
     html += `</div>`;
 
     contentArea.innerHTML = html;
+
+    // Re-initialize icons
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
+}
+
+// Display Tutorial Content
+function displayTutorialContent() {
+    if (!currentData) return;
+
+    const contentArea = document.getElementById('content-area');
+    const pagination = document.getElementById('pagination');
+
+    if (!contentArea) return;
+
+    let html = `
+        <div class="content-container">
+            <div class="content-header">
+                <h2 class="content-title">${currentData.title || ''}</h2>
+                ${currentData.koreanTitle ? `<span class="content-subtitle">${currentData.koreanTitle}</span>` : ''}
+            </div>
+
+            ${currentData.description ? `
+                <div class="tutorial-intro" style="background: rgba(255, 107, 107, 0.05); padding: 25px; border-radius: 10px; margin: 30px 0;">
+                    <p style="color: #e0e0e0; line-height: 1.8; font-size: 16px;">${currentData.description.replace(/\n/g, '<br>')}</p>
+                </div>
+            ` : ''}
+
+            <h3 style="color: #ff6b6b; font-size: 24px; margin: 40px 0 20px 0;">📜 퀘스트 1: '캐릭터' 블록 조립하기</h3>
+
+            <div class="tutorial-parts-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin: 30px 0;">
+                ${currentData.parts.map((part, index) => `
+                    <div class="tutorial-part-card" style="background: #1a1a1a; border: 1px solid #333; border-radius: 12px; padding: 25px; transition: all 0.3s;">
+                        <h4 style="color: #4CAF50; font-size: 18px; margin-bottom: 15px;">${part.title}</h4>
+                        <p style="color: #ccc; line-height: 1.6; margin-bottom: 20px;">${part.description}</p>
+                        
+                        <div style="margin: 20px 0;">
+                            <p style="color: #999; font-size: 14px; margin-bottom: 10px;">키워드 예시 (Keywords):</p>
+                            <ul style="list-style: none; padding: 0;">
+                                ${part.keywords.map(keyword => `
+                                    <li style="color: #aaa; padding: 6px 0; padding-left: 15px; position: relative;">
+                                        <span style="position: absolute; left: 0; color: #ff6b6b;">•</span>
+                                        ${keyword}
+                                    </li>
+                                `).join('')}
+                            </ul>
+                        </div>
+
+                        <div style="background: rgba(255, 107, 107, 0.1); padding: 15px; border-radius: 5px; margin-top: 20px;">
+                            <p style="color: #fff; line-height: 1.6; font-size: 14px;">${part.example}</p>
+                        </div>
+                    </div>
+                `).join('')}
+            </div>
+
+            ${currentData.tip ? `
+                <div class="tutorial-tip" style="background: rgba(255, 193, 7, 0.1); padding: 25px; border-radius: 10px; margin: 40px 0;">
+                    <h4 style="color: #FFC107; font-size: 20px; margin-bottom: 15px;">${currentData.tip.title}</h4>
+                    <p style="color: #e0e0e0; line-height: 1.8; font-size: 15px; white-space: pre-line;">${currentData.tip.content}</p>
+                </div>
+            ` : ''}
+
+            ${currentData.completion ? `
+                <div class="tutorial-completion" style="margin: 50px 0;">
+                    <h3 style="color: #ff6b6b; font-size: 24px; margin-bottom: 20px;">${currentData.completion.title}</h3>
+                    <p style="color: #e0e0e0; line-height: 1.8; font-size: 16px; margin-bottom: 20px;">${currentData.completion.message}</p>
+                    
+                    ${currentData.completion.choice ? `
+                        <div style="background: rgba(255, 107, 107, 0.1); padding: 20px; border-radius: 8px; margin: 20px 0;">
+                            <p style="color: #fff; line-height: 1.8; font-size: 15px;">${currentData.completion.choice}</p>
+                        </div>
+                    ` : ''}
+
+                    <p style="color: #4CAF50; font-weight: 600; margin-bottom: 10px; font-size: 16px; margin-top: 30px;">(조립된 [${currentData.koreanTitle}] 블록)</p>
+                    <div style="display: flex; gap: 25px; align-items: stretch;">
+                        <div style="background: rgba(76, 175, 80, 0.1); padding: 20px; border-radius: 8px; flex: 1; display: flex; align-items: center; justify-content: space-between; min-height: 300px;">
+                            <p style="color: #fff; font-size: 18px; font-family: monospace; margin: 0; line-height: 1.6;">${currentData.completion.result}</p>
+                            <button onclick="copyToClipboard('${currentData.completion.result.replace(/'/g, "\\'")}', this)" style="background: #4CAF50; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 14px; white-space: nowrap; margin-left: 20px; align-self: flex-start;">
+                                복사
+                            </button>
+                        </div>
+                        ${currentData.completion.image ? `
+                            <div style="width: 300px; height: 300px; border-radius: 8px; overflow: hidden; border: 3px solid #4CAF50; flex-shrink: 0; cursor: pointer; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+                                <img src="${currentData.completion.image}" alt="Result" style="width: 100%; height: 100%; object-fit: cover;" onclick="openImageModal('${currentData.completion.image}', '조립된 결과')">
+                            </div>
+                        ` : ''}
+                    </div>
+
+                    <p style="color: #4CAF50; font-weight: 600; margin-bottom: 10px; font-size: 16px; margin-top: 30px;">(현재 프롬프트 조립 상태)</p>
+                    <div style="background: rgba(76, 175, 80, 0.1); padding: 20px; border-radius: 8px; margin: 20px 0;">
+                        <p style="color: #fff; font-size: 16px; font-family: monospace;">${currentData.completion.status}</p>
+                    </div>
+
+                    <p style="color: #e0e0e0; line-height: 1.8; font-size: 16px; margin-top: 30px;">${currentData.completion.nextStep.replace(/\n/g, '<br>')}</p>
+                </div>
+            ` : ''}
+        </div>
+    `;
+
+    contentArea.innerHTML = html;
+
+    if (pagination) {
+        pagination.style.display = 'none';
+    }
 
     // Re-initialize icons
     if (typeof lucide !== 'undefined') {
