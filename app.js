@@ -205,8 +205,11 @@ function showContent(contentId) {
     // Store the content key globally for use in displayContent
     contentKey = contentId;
 
-    // Check if content exists in cameraData
-    if (typeof cameraData !== 'undefined' && cameraData[contentId]) {
+    // Check if content exists in contentData or cameraData
+    if (typeof contentData !== 'undefined' && contentData[contentId]) {
+        currentData = contentData[contentId];
+        displayContent();
+    } else if (typeof cameraData !== 'undefined' && cameraData[contentId]) {
         currentData = cameraData[contentId];
         // Special handling for banana-magic content
         if (contentId === 'banana-magic') {
@@ -260,6 +263,24 @@ function displayContent() {
     // Check if it's a tutorial type
     if (currentData.type === 'tutorial' && currentData.parts) {
         displayTutorialContent();
+        return;
+    }
+
+    // Check if it's an expert type
+    if (currentData.type === 'expert' && currentData.parts) {
+        displayExpertContent();
+        return;
+    }
+
+    // Check if it's an expert-style type (Chapter 3)
+    if (currentData.type === 'expert-style') {
+        displayExpertStyleContent();
+        return;
+    }
+
+    // Check if it's an expert-dictionary type (Chapter 13)
+    if (currentData.type === 'expert-dictionary') {
+        displayKeywordDictionary();
         return;
     }
 
@@ -767,6 +788,506 @@ function displayTutorialContent() {
     if (typeof lucide !== 'undefined') {
         lucide.createIcons();
     }
+}
+
+// Display Expert Content
+function displayExpertContent() {
+    if (!currentData) return;
+
+    const contentArea = document.getElementById('content-area');
+    const pagination = document.getElementById('pagination');
+
+    if (!contentArea) return;
+
+    let html = `
+        <div class="content-container">
+            <div class="content-header">
+                <h2 class="content-title">${currentData.title || ''}</h2>
+                ${currentData.koreanTitle ? `<span class="content-subtitle">${currentData.koreanTitle}</span>` : ''}
+            </div>
+
+            ${currentData.description ? `
+                <div class="expert-intro" style="background: rgba(255, 193, 7, 0.05); padding: 25px; border-radius: 10px; margin: 30px 0;">
+                    <p style="color: #e0e0e0; line-height: 1.8; font-size: 16px;">${currentData.description.replace(/\n/g, '<br>')}</p>
+                </div>
+            ` : ''}
+
+            <div class="expert-parts" style="margin: 40px 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px;">
+                ${currentData.parts.map((part, index) => `
+                    <div class="expert-part-section" style="background: #1a1a1a; border: 1px solid #333; border-radius: 10px; padding: 30px;">
+                        <h3 style="color: #4CAF50; font-size: 18px; margin-bottom: 20px; display: flex; align-items: center;">
+                            <span style="background: #4CAF50; color: white; width: 32px; height: 32px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 12px; font-size: 16px; font-weight: bold;">${index + 1}</span>
+                            ${part.title}
+                        </h3>
+                        <div style="color: #ccc; line-height: 1.8; font-size: 15px; white-space: pre-line;">
+                            ${part.content}
+                        </div>
+                    </div>
+                `).join('')}
+            </div>
+        </div>
+    `;
+
+    contentArea.innerHTML = html;
+
+    if (pagination) {
+        pagination.style.display = 'none';
+    }
+
+    // Re-initialize icons
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
+}
+
+// Display Expert Style Content (Chapter 3)
+function displayExpertStyleContent() {
+    if (!currentData) return;
+
+    const contentArea = document.getElementById('content-area');
+    const pagination = document.getElementById('pagination');
+
+    if (!contentArea) return;
+
+    let html = `
+        <div class="content-container">
+            <div class="content-header">
+                <h2 class="content-title">${currentData.title || ''}</h2>
+                ${currentData.koreanTitle ? `<span class="content-subtitle">${currentData.koreanTitle}</span>` : ''}
+            </div>
+
+            ${currentData.description ? `
+                <div class="expert-intro" style="background: rgba(255, 193, 7, 0.05); padding: 25px; border-radius: 10px; margin: 30px 0;">
+                    <p style="color: #e0e0e0; line-height: 1.8; font-size: 16px;">${currentData.description.replace(/\n/g, '<br>')}</p>
+                </div>
+            ` : ''}
+
+            ${currentData.intro ? `
+                <div style="background: #1a1a1a; border: 1px solid #333; border-radius: 10px; padding: 30px; margin: 30px 0;">
+                    <h3 style="color: #4CAF50; font-size: 20px; margin-bottom: 15px;">${currentData.intro.title}</h3>
+                    <p style="color: #ccc; line-height: 1.8; font-size: 15px; white-space: pre-line;">${currentData.intro.content}</p>
+                </div>
+            ` : ''}
+
+            <h3 style="color: #ff6b6b; font-size: 24px; margin: 40px 0 20px 0;">실전 예시: 스타일이 모든 것을 바꾸는 순간</h3>
+            <p style="color: #aaa; margin-bottom: 30px;">기본 주제: <span style="color: #FFC107;">a man sitting in a cafe (카페에 앉아있는 남자)</span></p>
+
+            <div class="style-examples" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 25px; margin: 30px 0;">
+                ${currentData.styleExamples.map((example, index) => `
+                    <div class="style-example-card" style="background: #1a1a1a; border: 1px solid #333; border-radius: 10px; padding: 25px;">
+                        <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                            <span style="background: #ff6b6b; color: white; width: 32px; height: 32px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 12px; font-size: 16px; font-weight: bold;">${index + 1}</span>
+                            <div>
+                                <h4 style="color: #4CAF50; font-size: 18px; margin: 0;">${example.title}</h4>
+                                <p style="color: #999; font-size: 14px; margin: 5px 0 0 0;">${example.subtitle}</p>
+                            </div>
+                        </div>
+                        
+                        <p style="color: #ccc; line-height: 1.6; margin-bottom: 20px; font-size: 14px;">${example.description}</p>
+                        
+                        <div style="background: rgba(76, 175, 80, 0.1); padding: 15px; border-radius: 8px; margin: 15px 0;">
+                            <p style="color: #4CAF50; font-size: 12px; margin-bottom: 8px; font-weight: bold;">프롬프트:</p>
+                            <div style="display: flex; align-items: center; justify-content: space-between;">
+                                <p id="prompt-text-${index}" style="color: #fff; font-family: monospace; font-size: 13px; margin: 0; flex: 1; line-height: 1.5;">${example.prompt}</p>
+                                <button onclick="copyToClipboard(document.getElementById('prompt-text-${index}').textContent, this)" style="background: #4CAF50; color: white; border: none; padding: 6px 12px; border-radius: 5px; cursor: pointer; font-size: 12px; white-space: nowrap; margin-left: 10px;">
+                                    복사
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div style="background: rgba(255, 193, 7, 0.1); padding: 15px; border-radius: 8px; margin: 15px 0;">
+                            <p style="color: #FFC107; font-size: 12px; margin-bottom: 8px; font-weight: bold;">결과물:</p>
+                            <p style="color: #e0e0e0; font-size: 13px; line-height: 1.6; margin: 0;">${example.result}</p>
+                        </div>
+                        
+                        <div style="margin-top: 15px;">
+                            <p style="color: #999; font-size: 12px; margin-bottom: 10px;">주요 키워드 (클릭하면 프롬프트에 적용):</p>
+                            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                                ${example.keywords.map(keyword => `
+                                    <span style="background: rgba(76, 175, 80, 0.2); color: #4CAF50; padding: 4px 10px; border-radius: 5px; font-size: 12px; font-family: monospace; cursor: pointer; transition: all 0.2s;" 
+                                          onclick="updatePromptWithKeyword(${index}, '${keyword.replace(/'/g, "\\'")}', '${currentData.keywordType || 'style'}', this)"
+                                          onmouseover="this.style.background='rgba(76, 175, 80, 0.4)'"
+                                          onmouseout="this.style.background='rgba(76, 175, 80, 0.2)'">
+                                        ${keyword}
+                                    </span>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>
+                `).join('')}
+            </div>
+
+            ${currentData.tip ? `
+                <div style="background: rgba(255, 193, 7, 0.1); padding: 25px; border-radius: 10px; margin: 40px 0;">
+                    <h4 style="color: #FFC107; font-size: 20px; margin-bottom: 15px;">${currentData.tip.title}</h4>
+                    <p style="color: #e0e0e0; line-height: 1.8; font-size: 15px; white-space: pre-line;">${currentData.tip.content}</p>
+                </div>
+            ` : ''}
+
+            ${currentData.conclusion ? `
+                <div style="background: #1a1a1a; border: 1px solid #333; border-radius: 10px; padding: 30px; margin: 30px 0;">
+                    <h3 style="color: #4CAF50; font-size: 20px; margin-bottom: 15px;">${currentData.conclusion.title}</h3>
+                    <p style="color: #ccc; line-height: 1.8; font-size: 15px; white-space: pre-line;">${currentData.conclusion.content}</p>
+                </div>
+            ` : ''}
+        </div>
+    `;
+
+    contentArea.innerHTML = html;
+
+    if (pagination) {
+        pagination.style.display = 'none';
+    }
+
+    // Re-initialize icons
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
+}
+
+// Update prompt with selected keyword
+function updatePromptWithKeyword(exampleIndex, keyword, keywordType, element) {
+    const promptElement = document.getElementById(`prompt-text-${exampleIndex}`);
+    if (!promptElement) return;
+    
+    let currentPrompt = promptElement.textContent;
+    let newPrompt;
+    
+    // Split prompt into parts: style, subject, details, parameters
+    const parts = currentPrompt.split(',').map(p => p.trim());
+    
+    switch(keywordType) {
+        case 'style':
+            // Replace first part (style)
+            parts[0] = keyword;
+            newPrompt = parts.join(', ');
+            break;
+            
+        case 'parameter':
+            // Replace --ar parameter at the end
+            const arRegex = /--ar\s+[\d:]+/g;
+            if (arRegex.test(currentPrompt)) {
+                newPrompt = currentPrompt.replace(arRegex, keyword);
+            } else {
+                newPrompt = currentPrompt + ' ' + keyword;
+            }
+            break;
+            
+        case 'subject':
+            // Replace second part (subject - after style, before action)
+            // Format: "style, subject, action/details... --ar"
+            if (parts.length >= 2) {
+                parts[1] = keyword;
+                newPrompt = parts.join(', ');
+            } else {
+                // If only style exists, add subject
+                newPrompt = parts[0] + ', ' + keyword;
+            }
+            break;
+            
+        case 'action':
+            // Replace third part (action)
+            if (parts.length >= 3) {
+                parts[2] = keyword;
+                newPrompt = parts.join(', ');
+            } else {
+                newPrompt = currentPrompt + ', ' + keyword;
+            }
+            break;
+            
+        case 'environment':
+            // Replace environment part (usually after action)
+            if (parts.length >= 4) {
+                parts[3] = keyword;
+                newPrompt = parts.join(', ');
+            } else {
+                newPrompt = currentPrompt + ', ' + keyword;
+            }
+            break;
+            
+        default:
+            // Default: replace first part
+            parts[0] = keyword;
+            newPrompt = parts.join(', ');
+    }
+    
+    // Update the prompt text
+    promptElement.textContent = newPrompt;
+    
+    // Visual feedback
+    promptElement.style.transition = 'all 0.3s';
+    promptElement.style.background = 'rgba(76, 175, 80, 0.2)';
+    setTimeout(() => {
+        promptElement.style.background = 'transparent';
+    }, 500);
+    
+    // Highlight the clicked keyword
+    const allKeywords = element.parentElement.querySelectorAll('span');
+    allKeywords.forEach(k => {
+        k.style.background = 'rgba(76, 175, 80, 0.2)';
+        k.style.fontWeight = 'normal';
+    });
+    element.style.background = 'rgba(76, 175, 80, 0.5)';
+    element.style.fontWeight = 'bold';
+}
+
+// Display Keyword Dictionary (Chapter 13)
+function displayKeywordDictionary() {
+    if (!currentData) return;
+
+    const contentArea = document.getElementById('content-area');
+    const pagination = document.getElementById('pagination');
+
+    if (!contentArea) return;
+
+    let html = `
+        <div class="content-container">
+            <div class="content-header">
+                <h2 class="content-title">${currentData.title || ''}</h2>
+                ${currentData.koreanTitle ? `<span class="content-subtitle">${currentData.koreanTitle}</span>` : ''}
+            </div>
+
+            ${currentData.description ? `
+                <div class="expert-intro" style="background: rgba(255, 193, 7, 0.05); padding: 25px; border-radius: 10px; margin: 30px 0;">
+                    <p style="color: #e0e0e0; line-height: 1.8; font-size: 16px;">${currentData.description.replace(/\n/g, '<br>')}</p>
+                </div>
+            ` : ''}
+
+            <!-- 프롬프트 결과 창 -->
+            <div style="background: #1a1a1a; border: 2px solid #4CAF50; border-radius: 10px; padding: 25px; margin: 30px 0;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                    <h3 style="color: #4CAF50; margin: 0;">생성된 프롬프트</h3>
+                    <div>
+                        <button onclick="copyDictionaryPrompt()" style="background: #4CAF50; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin-right: 10px;">
+                            복사
+                        </button>
+                        <button onclick="clearDictionaryPrompt()" style="background: #ff6b6b; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">
+                            초기화
+                        </button>
+                    </div>
+                </div>
+                <div 
+                    id="dictionary-prompt" 
+                    contenteditable="true"
+                    style="background: #0a0a0a; padding: 20px; border-radius: 5px; min-height: 100px; color: #fff; font-family: monospace; font-size: 14px; line-height: 1.8; white-space: pre-wrap; outline: none; cursor: text;"
+                    onfocus="if(this.textContent.includes('여기에 선택한 키워드가 표시됩니다')) { this.textContent = ''; this.style.color = '#fff'; }"
+                    onblur="if(this.textContent.trim() === '') { this.textContent = '여기에 선택한 키워드가 표시됩니다...'; this.style.color = '#666'; }">여기에 선택한 키워드가 표시됩니다...
+                </div>
+            </div>
+
+            <!-- 키워드 카테고리 (드롭다운) -->
+            <div class="keyword-categories" style="margin: 40px 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
+                ${currentData.keywordCategories.map((category, catIndex) => `
+                    <div class="keyword-category" style="background: #1a1a1a; border: 1px solid #333; border-radius: 10px; overflow: hidden;">
+                        <!-- 드롭다운 헤더 -->
+                        <button 
+                            onclick="toggleKeywordCategory('keyword-cat-${catIndex}')"
+                            style="width: 100%; background: transparent; border: none; padding: 20px 25px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; transition: all 0.3s;"
+                            onmouseover="this.style.background='rgba(255, 107, 107, 0.1)'"
+                            onmouseout="this.style.background='transparent'">
+                            <h3 style="color: #ff6b6b; font-size: 20px; margin: 0;">${category.title}</h3>
+                            <i data-lucide="chevron-down" style="width: 24px; height: 24px; color: #ff6b6b; transition: transform 0.3s;" id="keyword-cat-${catIndex}-icon"></i>
+                        </button>
+                        
+                        <!-- 드롭다운 컨텐츠 -->
+                        <div id="keyword-cat-${catIndex}" style="display: none; padding: 0 25px 25px 25px;">
+                            ${category.categories.map((subcat, subcatIndex) => `
+                                <div style="margin-bottom: 15px; background: rgba(0,0,0,0.3); border-radius: 8px; overflow: hidden;">
+                                    <!-- 서브카테고리 헤더 -->
+                                    <button 
+                                        onclick="toggleKeywordSubcategory('keyword-subcat-${catIndex}-${subcatIndex}')"
+                                        style="width: 100%; background: transparent; border: none; padding: 12px 15px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; transition: all 0.3s;"
+                                        onmouseover="this.style.background='rgba(76, 175, 80, 0.1)'"
+                                        onmouseout="this.style.background='transparent'">
+                                        <h4 style="color: #4CAF50; font-size: 16px; margin: 0;">${subcat.name}</h4>
+                                        <i data-lucide="chevron-down" style="width: 20px; height: 20px; color: #4CAF50; transition: transform 0.3s;" id="keyword-subcat-${catIndex}-${subcatIndex}-icon"></i>
+                                    </button>
+                                    
+                                    <!-- 서브카테고리 키워드 -->
+                                    <div id="keyword-subcat-${catIndex}-${subcatIndex}" style="display: none; padding: 15px;">
+                                        <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                                            ${subcat.keywords.map((keyword, kwIndex) => `
+                                                <button 
+                                                    onclick="addKeywordToPrompt('${keyword.en.replace(/'/g, "\\'")}', this)"
+                                                    style="background: rgba(76, 175, 80, 0.2); color: #4CAF50; border: 1px solid #4CAF50; padding: 8px 15px; border-radius: 5px; cursor: pointer; font-size: 13px; transition: all 0.2s;"
+                                                    onmouseover="this.style.background='rgba(76, 175, 80, 0.4)'"
+                                                    onmouseout="this.style.background='rgba(76, 175, 80, 0.2)'"
+                                                    title="${keyword.en}">
+                                                    ${keyword.en} <span style="color: #aaa; font-size: 11px;">(${keyword.ko})</span>
+                                                </button>
+                                            `).join('')}
+                                        </div>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `).join('')}
+            </div>
+        </div>
+    `;
+
+    contentArea.innerHTML = html;
+
+    if (pagination) {
+        pagination.style.display = 'none';
+    }
+
+    // Re-initialize icons
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
+}
+
+// Add keyword to dictionary prompt
+function addKeywordToPrompt(keyword, element) {
+    const promptDiv = document.getElementById('dictionary-prompt');
+    if (!promptDiv) return;
+
+    let currentPrompt = promptDiv.textContent;
+    
+    // 초기 메시지 제거
+    if (currentPrompt.includes('여기에 선택한 키워드가 표시됩니다')) {
+        currentPrompt = '';
+    }
+
+    // 파라미터(--로 시작)와 일반 키워드 분리
+    const isParameter = keyword.startsWith('--');
+    
+    if (currentPrompt.trim() === '') {
+        // 빈 프롬프트인 경우
+        promptDiv.textContent = keyword;
+    } else {
+        // 기존 프롬프트를 일반 키워드와 파라미터로 분리
+        // 먼저 쉼표로 분리된 부분과 공백으로 분리된 부분을 나눔
+        let mainPart = currentPrompt;
+        let paramPart = '';
+        
+        // --로 시작하는 파라미터들을 찾아서 분리
+        const paramMatch = currentPrompt.match(/(.*?)\s+(--\S+.*)/);
+        if (paramMatch) {
+            mainPart = paramMatch[1].trim();
+            paramPart = paramMatch[2].trim();
+        }
+        
+        if (isParameter) {
+            // 파라미터는 맨 뒤에 추가
+            if (paramPart) {
+                promptDiv.textContent = mainPart + ' ' + paramPart + ' ' + keyword;
+            } else {
+                promptDiv.textContent = mainPart + ' ' + keyword;
+            }
+        } else {
+            // 일반 키워드는 파라미터 앞에 추가 (쉼표로 구분)
+            if (mainPart) {
+                promptDiv.textContent = mainPart + ', ' + keyword + (paramPart ? ' ' + paramPart : '');
+            } else {
+                promptDiv.textContent = keyword + (paramPart ? ' ' + paramPart : '');
+            }
+        }
+    }
+
+    // Visual feedback
+    promptDiv.style.transition = 'all 0.3s';
+    promptDiv.style.borderLeft = '4px solid #4CAF50';
+    setTimeout(() => {
+        promptDiv.style.borderLeft = 'none';
+    }, 500);
+
+    // Button feedback
+    element.style.background = 'rgba(76, 175, 80, 0.6)';
+    element.style.transform = 'scale(0.95)';
+    setTimeout(() => {
+        element.style.background = 'rgba(76, 175, 80, 0.2)';
+        element.style.transform = 'scale(1)';
+    }, 200);
+}
+
+// Toggle keyword category dropdown
+function toggleKeywordCategory(categoryId) {
+    const content = document.getElementById(categoryId);
+    const icon = document.getElementById(categoryId + '-icon');
+    
+    if (!content) return;
+    
+    if (content.style.display === 'none' || content.style.display === '') {
+        content.style.display = 'block';
+        if (icon) {
+            icon.style.transform = 'rotate(180deg)';
+        }
+    } else {
+        content.style.display = 'none';
+        if (icon) {
+            icon.style.transform = 'rotate(0deg)';
+        }
+    }
+    
+    // Re-initialize icons after DOM update
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
+}
+
+// Toggle keyword subcategory dropdown
+function toggleKeywordSubcategory(subcategoryId) {
+    const content = document.getElementById(subcategoryId);
+    const icon = document.getElementById(subcategoryId + '-icon');
+    
+    if (!content) return;
+    
+    if (content.style.display === 'none' || content.style.display === '') {
+        content.style.display = 'block';
+        if (icon) {
+            icon.style.transform = 'rotate(180deg)';
+        }
+    } else {
+        content.style.display = 'none';
+        if (icon) {
+            icon.style.transform = 'rotate(0deg)';
+        }
+    }
+    
+    // Re-initialize icons after DOM update
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
+}
+
+// Copy dictionary prompt
+function copyDictionaryPrompt() {
+    const promptDiv = document.getElementById('dictionary-prompt');
+    if (!promptDiv) return;
+
+    const text = promptDiv.textContent;
+    
+    if (text.includes('여기에 선택한 키워드가 표시됩니다')) {
+        alert('먼저 키워드를 선택해주세요!');
+        return;
+    }
+
+    navigator.clipboard.writeText(text).then(() => {
+        // Show success message
+        const originalText = promptDiv.textContent;
+        promptDiv.style.background = 'rgba(76, 175, 80, 0.2)';
+        setTimeout(() => {
+            promptDiv.style.background = '#0a0a0a';
+        }, 500);
+        
+        alert('프롬프트가 복사되었습니다!');
+    });
+}
+
+// Clear dictionary prompt
+function clearDictionaryPrompt() {
+    const promptDiv = document.getElementById('dictionary-prompt');
+    if (!promptDiv) return;
+
+    promptDiv.textContent = '여기에 선택한 키워드가 표시됩니다...';
+    promptDiv.style.color = '#666';
+    
+    setTimeout(() => {
+        promptDiv.style.color = '#fff';
+    }, 100);
 }
 
 // Pagination functions (deprecated - kept for compatibility)

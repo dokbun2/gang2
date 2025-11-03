@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Test Expert Data</title>
+</head>
+<body>
+    <h1>Testing Expert Data</h1>
+    <div id="result"></div>
+
+    <script src="data.js"></script>
+    <script>
+        const result = document.getElementById('result');
+        
+        if (typeof contentData !== 'undefined') {
+            result.innerHTML += '<p>✓ contentData loaded</p>';
+            
+            if (contentData['expert-ch1']) {
+                result.innerHTML += '<p>✓ expert-ch1 exists</p>';
+                result.innerHTML += '<p>Type: ' + contentData['expert-ch1'].type + '</p>';
+                result.innerHTML += '<p>Parts: ' + (contentData['expert-ch1'].parts ? contentData['expert-ch1'].parts.length : 0) + '</p>';
+                result.innerHTML += '<p>Title: ' + contentData['expert-ch1'].title + '</p>';
+            } else {
+                result.innerHTML += '<p>✗ expert-ch1 NOT found</p>';
+            }
+            
+            if (contentData['expert-ch2']) {
+                result.innerHTML += '<p>✓ expert-ch2 exists</p>';
+            } else {
+                result.innerHTML += '<p>✗ expert-ch2 NOT found</p>';
+            }
+        } else {
+            result.innerHTML += '<p>✗ contentData NOT loaded</p>';
+        }
+    </script>
+</body>
+</html>

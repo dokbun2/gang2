@@ -98,6 +98,117 @@
                     </div>
                 </div>
 
+                <!-- 전문가 과정 섹션 -->
+                <div class="major-category">
+                    <button class="major-category-header" onclick="toggleMajorCategory('expert-category')">
+                        <i data-lucide="graduation-cap" class="category-icon"></i>
+                        <span>전문가 과정 (AI아트디렉터)</span>
+                        <i data-lucide="chevron-down" class="chevron-icon" id="expert-category-icon"></i>
+                    </button>
+                    <div class="major-category-content" id="expert-category">
+                        <div class="menu-section">
+                            <!-- Part 1 -->
+                            <button class="menu-header" onclick="toggleSection('expert-part1')">
+                                <i data-lucide="alert-circle" class="menu-icon"></i>
+                                <span>Part 1: 왜 작동하지 않는가?</span>
+                                <i data-lucide="chevron-down" class="chevron-icon" id="expert-part1-chevron"></i>
+                            </button>
+                            <div class="menu-items" id="expert-part1-items">
+                                <a href="#" class="menu-item" onclick="showContent('expert-ch1')">
+                                    <i data-lucide="target" style="width: 16px; height: 16px; margin-right: 8px;"></i>
+                                    Ch1. 시작하며
+                                </a>
+                                <a href="#" class="menu-item" onclick="showContent('expert-ch2')">
+                                    <i data-lucide="workflow" style="width: 16px; height: 16px; margin-right: 8px;"></i>
+                                    Ch2. 워크플로우
+                                </a>
+                            </div>
+
+                            <!-- Part 2 -->
+                            <button class="menu-header" onclick="toggleSection('expert-part2')">
+                                <i data-lucide="eye" class="menu-icon"></i>
+                                <span>Part 2: 이미지의 첫인상</span>
+                                <i data-lucide="chevron-down" class="chevron-icon" id="expert-part2-chevron"></i>
+                            </button>
+                            <div class="menu-items" id="expert-part2-items">
+                                <a href="#" class="menu-item" onclick="showContent('expert-ch3')">
+                                    <i data-lucide="palette" style="width: 16px; height: 16px; margin-right: 8px;"></i>
+                                    Ch3. 1.스타일 (Style)
+                                </a>
+                                <a href="#" class="menu-item" onclick="showContent('expert-ch4')">
+                                    <i data-lucide="sliders" style="width: 16px; height: 16px; margin-right: 8px;"></i>
+                                    Ch4. 2.파라미터 (Parameters)
+                                </a>
+                            </div>
+
+                            <!-- Part 3 -->
+                            <button class="menu-header" onclick="toggleSection('expert-part3')">
+                                <i data-lucide="layers" class="menu-icon"></i>
+                                <span>Part 3: 장면 설계하기</span>
+                                <i data-lucide="chevron-down" class="chevron-icon" id="expert-part3-chevron"></i>
+                            </button>
+                            <div class="menu-items" id="expert-part3-items">
+                                <a href="#" class="menu-item" onclick="showContent('expert-ch5')">
+                                    <i data-lucide="user" style="width: 16px; height: 16px; margin-right: 8px;"></i>
+                                    Ch5. 3.주제/피사체 (Subject)
+                                </a>
+                                <a href="#" class="menu-item" onclick="showContent('expert-ch6')">
+                                    <i data-lucide="activity" style="width: 16px; height: 16px; margin-right: 8px;"></i>
+                                    Ch6. 4.액션/포즈 (Action)
+                                </a>
+                                <a href="#" class="menu-item" onclick="showContent('expert-ch7')">
+                                    <i data-lucide="map" style="width: 16px; height: 16px; margin-right: 8px;"></i>
+                                    Ch7. 5.환경/배경 (Environment)
+                                </a>
+                                <a href="#" class="menu-item" onclick="showContent('expert-ch8')">
+                                    <i data-lucide="sun" style="width: 16px; height: 16px; margin-right: 8px;"></i>
+                                    Ch8. 6.조명 (Lighting)
+                                </a>
+                                <a href="#" class="menu-item" onclick="showContent('expert-ch9')">
+                                    <i data-lucide="camera" style="width: 16px; height: 16px; margin-right: 8px;"></i>
+                                    Ch9. 7.카메라 앵글 (Camera)
+                                </a>
+                            </div>
+
+                            <!-- Part 4 -->
+                            <button class="menu-header" onclick="toggleSection('expert-part4')">
+                                <i data-lucide="sparkles" class="menu-icon"></i>
+                                <span>Part 4: 퀄리티와 마무리</span>
+                                <i data-lucide="chevron-down" class="chevron-icon" id="expert-part4-chevron"></i>
+                            </button>
+                            <div class="menu-items" id="expert-part4-items">
+                                <a href="#" class="menu-item" onclick="showContent('expert-ch10')">
+                                    <i data-lucide="droplet" style="width: 16px; height: 16px; margin-right: 8px;"></i>
+                                    Ch10. 8.색감/품질 (Color/Quality)
+                                </a>
+                                <a href="#" class="menu-item" onclick="showContent('expert-ch11')">
+                                    <i data-lucide="check-circle"
+                                        style="width: 16px; height: 16px; margin-right: 8px;"></i>
+                                    Ch11. 최종 조합
+                                </a>
+                            </div>
+
+                            <!-- Part 5 -->
+                            <button class="menu-header" onclick="toggleSection('expert-part5')">
+                                <i data-lucide="book-open" class="menu-icon"></i>
+                                <span>Part 5: 실전 워크샵 & 사전</span>
+                                <i data-lucide="chevron-down" class="chevron-icon" id="expert-part5-chevron"></i>
+                            </button>
+                            <div class="menu-items" id="expert-part5-items">
+                                <a href="#" class="menu-item" onclick="showContent('expert-ch12')">
+                                    <i data-lucide="lightbulb"
+                                        style="width: 16px; height: 16px; margin-right: 8px;"></i>
+                                    Ch12. 실전 워크샵
+                                </a>
+                                <a href="#" class="menu-item" onclick="showContent('expert-ch13')">
+                                    <i data-lucide="book" style="width: 16px; height: 16px; margin-right: 8px;"></i>
+                                    Ch13. 키워드 사전
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- 프레임워크 시작 버튼 - 임시 비활성화 -->
                 <!-- <div class="menu-section" style="margin-top: 15px;">
                     <button class="menu-header" onclick="showContent('framework-stages')" style="background: linear-gradient(135deg, #4caf50, #45a049); border: 1px solid #388e3c;">

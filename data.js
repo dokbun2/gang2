@@ -1,6 +1,6 @@
 // Extended Camera & Visual Guide Data
 const cameraData = {
-    // ============= AIFI FRAMEWORK INFO =============
+    // ============= FRAMEWORK INFO =============
     // 강사 소개
     'instructor-intro': {
         title: '강사 소개',
@@ -2698,7 +2698,7 @@ roar that echoes through the hangar.",
         title: '[튜토리얼 1] 🤖 ai툴비 프롬프트 빌더 퀘스트: 챕터 1',
         koreanTitle: '블록 1: 캐릭터(Character)',
         prompt: '[블록 1: 캐릭터(Character)] 블록 조립하기',
-        description: '안녕하세요! 여러분의 AI 창작 가이드, ai툴비입니다. 🐝\n\n여러분이 상상하는 이미지를 완벽하게 만들어내기 위한 "궁극의 프롬프트 조립" 퀘스트를 시작하겠습니다.\n\n그 첫 번째 퀘스트는 이미지의 심장, [캐릭터(Character)] 블록입니다!\n\n\'캐릭터\'는 이미지의 \'주인공\'입니다. 하지만 그냥 a girl (소녀)이라고만 하면, AI는 \'어떤 소녀?\'인지 몰라 무작위로 이미지를 생성합니다.\n\n이번 퀘스트에서는 우리가 원하는 주인공을 AI가 정확히 그려낼 수 있도록, 3개의 작은 부품을 조립하여 [캐릭터] 블록을 완성해 보겠습니다.',
+        description: '안녕하세요! 여러분의 AI 창작 가이드, ai툴비입니다. 🐝\n\n여러분이 상상하는 이미지를 완벽하게 만들어내기 위한 <strong style="color: #ff8e53;">\'궁극의 프롬프트 조립\'</strong> 퀘스트를 시작하겠습니다.\n\n그 첫 번째 퀘스트는 이미지의 심장, <strong style="color: #4caf50 ;">\'[캐릭터(Character)]\'</strong> 블록입니다!\n\n\'캐릭터\'는 이미지의 \'주인공\'입니다. 하지만 그냥 a girl (소녀)이라고만 하면, AI는 \'어떤 소녀?\'인지 몰라 무작위로 이미지를 생성합니다.\n\n이번 퀘스트에서는 우리가 원하는 주인공을 AI가 정확히 그려낼 수 있도록, 3개의 작은 부품을 조립하여 [캐릭터] 블록을 완성해 보겠습니다.',
         type: 'tutorial',
         parts: [
             {
@@ -3181,5 +3181,771 @@ roar that echoes through the hangar.",
         },
         usage: [],
         images: []
+    },
+
+
+    // ============= 전문가 과정 =============
+    'expert-ch1': {
+        title: 'Chapter 1. AI 아트 디렉터처럼 생각하기',
+        koreanTitle: '시작하며',
+        prompt: '',
+        description: '',
+        type: 'expert',
+        parts: [
+            {
+                title: 'AI 이미지 생성의 현실',
+                content: 'AI 이미지 생성 툴이 쏟아지는 시대입니다. 누구나 몇 초 만에 이미지를 만들 수 있습니다.\n\n하지만 아무나 정확히 원하는 이미지를 만들지는 못합니다.'
+            },
+            {
+                title: '프롬프트 룰렛 (Prompt Roulette)',
+                content: '아마 당신도 이런 경험이 있을 것입니다.\n\n(Before) 당신의 프롬프트:\n"밤에 혼자 사무실에서 일하는 남자"\n\n(AI의 결과물):\n- 어딘가 어색한 구도...\n- 내가 원한 고독한 느낌이 아니라 그냥 밝은 사무실...\n- 전혀 감성적이지 않은 평범한 스톡 이미지...\n\n원하는 이미지가 나올 때까지 단어 몇 개를 바꿔가며 시도합니다.\n\n우리는 이것을 프롬프트 룰렛(Prompt Roulette)이라 부릅니다. 원하는 숫자가 나올 때까지 레버를 당기는 것과 같습니다.'
+            },
+            {
+                title: '왜 이런 일이 발생할까요?',
+                content: '대부분의 사용자가 AI에게 단순한 키워드 나열을 하고 있기 때문입니다.\n\n이는 마치 영화감독이 배우에게 "자, 알아서 연기해 봐!"라고 말하는 것과 같습니다.\n\n훌륭한 결과물은 명령이 아닌 설계에서 나옵니다.'
+            },
+            {
+                title: '이 책은 무엇인가?',
+                content: '이 책은 마법의 프롬프트 키워드를 나열한 주문서가 아닙니다.\n\n이 책은 당신의 사고방식을 AI 아트 디렉터(Art Director)로 바꾸는 훈련 가이드입니다.\n\nAI 아트 디렉터는 룰렛을 돌리지 않습니다. 그들은 청사진(Blueprint)을 그립니다.'
+            },
+            {
+                title: 'AI 아트 디렉터의 프롬프트',
+                content: '(After) 아트 디렉터의 프롬프트:\n\n"[Cinematic] 스타일로, [Low Angle Shot]으로 잡은, 텅 빈 사무실 [네온 조명]이 비치는 책상에 앉아 [고뇌하는 표정]으로 모니터를 응시하는 30대 남자, [어둡고 차가운 톤], [--ar 16:9]"\n\n(AI의 결과물):\n- 정확히 의도한 구도와 분위기\n- 스토리텔링이 담긴 한 편의 영화 스틸 컷\n\n차이가 느껴지시나요?'
+            },
+            {
+                title: '이 책의 목표',
+                content: '이 책의 목표는 명확합니다.\n\n당신이 룰렛을 멈추고 청사진을 그리도록 돕는 것입니다.\n\n우리는 이 청사진을 8요소 프레임워크(8-Element Framework)라고 부릅니다.'
+            },
+            {
+                title: '8요소 프레임워크',
+                content: '이 프레임워크는 미드저니(Midjourney) V7을 비롯한 최신 생성 AI에 최적화되어 있으며, 당신의 추상적인 아이디어를 전문가 수준의 구체적인 이미지로 변환하는 가장 확실한 공식이 될 것입니다.\n\n8가지 핵심 요소:\n1. 스타일 (Style/Mood)\n2. 파라미터 (Parameters)\n3. 주제/피사체 (Subject)\n4. 액션/포즈 (Action/Pose)\n5. 환경/배경 (Environment)\n6. 조명 (Lighting)\n7. 카메라 앵글/구도 (Angle/Composition)\n8. 색감 및 품질/효과 (Color & Quality/Effects)'
+            }
+        ],
+        usage: [],
+        images: []
+    },
+
+    'expert-ch2': {
+        title: 'Chapter 2. 완벽한 프롬프트의 핵심 워크플로우',
+        koreanTitle: '3단계로 청사진 그리기',
+        prompt: '',
+        description: '',
+        type: 'expert',
+        parts: [
+            {
+                title: '8요소 프레임워크는 체크리스트가 아닙니다',
+                content: '8요소 프레임워크는 단순히 8개의 요소를 나열한 체크리스트가 아닙니다.\n\n이는 AI가 가장 잘 알아들을 수 있도록 설계된 단계별 사고 과정(Workflow)입니다.\n\n복잡한 프롬프트를 한 번에 떠올리려 하지 마세요. 단순한 질문에서 시작해 한 단계씩 살을 붙여나가는 것이 핵심입니다.'
+            },
+            {
+                title: 'AI 아트 디렉터의 3단계 워크플로우',
+                content: 'AI 아트 디렉터는 이 3단계 워크플로우로 작업합니다:\n\n1단계: [스타일]과 [비율] 먼저 정하기 (캔버스 결정)\n2단계: 5W1H로 [상세 요소] 질문하기 (디테일 설계)\n3단계: 조합 및 [최종 프롬프트] 생성하기 (청사진 완성)'
+            },
+            {
+                title: '1단계: 스타일과 비율 먼저 정하기',
+                content: '가장 먼저 할 일은 무엇을 그릴지 정하는 것이 아닙니다. 어떻게 보일지, 즉 전체적인 캔버스와 톤을 결정하는 것입니다.\n\n영화감독이 시나리오를 쓰기 전에:\n- "이건 누아르 영화야" (스타일)\n- "그리고 와이드 스크린 비율로 찍을 거야" (비율)\n\n라고 정하는 것과 같습니다.\n\n--ar 16:9의 시네마틱 샷과 --ar 1:1의 인물 샷은 완전히 다른 접근이 필요합니다.'
+            },
+            {
+                title: '2단계: 5W1H로 상세 요소 질문하기',
+                content: '캔버스가 정해졌다면, 이제 그 안을 채울 차례입니다.\n\n한 번에 하나씩, 5W1H 원칙에 따라 스스로에게 질문을 던집니다:\n\nWHO? (주제/피사체): 주인공은 누구인가?\nWHAT? (액션/포즈): 그는 무엇을 하고 있는가?\nWHERE? (환경/배경): 여긴 어디인가?\nWHEN/HOW? (조명): 지금은 몇 시이며, 빛은 어디에서 오는가?\nHOW? (카메라 앵글): 이 장면을 어떤 각도에서 보여줄 것인가?\n\n이 질문들에 답하는 과정에서 프롬프트의 뼈대가 완성됩니다.'
+            },
+            {
+                title: '3단계: 최종 프롬프트 조합하기',
+                content: '마지막으로, 1, 2단계에서 수집한 모든 설계 요소들을 AI가 이해할 수 있는 언어(주로 영어 키워드)로 조립합니다.\n\n조합 공식:\n(스타일) + (비율) + (주제) + (액션) + (배경) + (조명) + (앵글) + (품질) = 완벽한 프롬프트\n\n이 워크플로우를 따르는 순간, 당신은 더 이상 AI에게 부탁하는 사람이 아니라, AI라는 유능한 어시스턴트에게 명확한 지시를 내리는 아트 디렉터가 됩니다.'
+            },
+            {
+                title: '다음 단계',
+                content: '다음 장(Part 2)부터 이 8가지 요소를 하나씩 해부하며 청사진을 그리는 실전 훈련을 시작하겠습니다.\n\n준비되셨나요? 이제 본격적으로 AI 아트 디렉터의 세계로 들어가 봅시다!'
+            }
+        ],
+        usage: [],
+        images: []
+    },
+
+    'expert-ch3': {
+        title: 'Chapter 3. 요소 1: 스타일 (Style/Mood)',
+        koreanTitle: '이미지의 첫인상을 결정하는 가장 강력한 요소',
+        prompt: '',
+        description: 'Part 1에서 우리는 아트 디렉터의 3단계 워크플로우를 배웠습니다. 가장 첫 번째 단계는 "무엇을" 그릴지가 아니라 "어떻게" 보일지를 정하는 것이라고 했습니다.\n\nPart 2에서는 이 첫인상을 결정하는 가장 강력한 두 가지 요소, 스타일과 파라미터에 대해 알아봅니다.',
+        type: 'expert-style',
+        keywordType: 'style',
+        intro: {
+            title: '스타일은 모든 것입니다',
+            content: '프롬프트 엔지니어링에서 스타일은 모든 것입니다. 스타일 키워드는 AI에게 "이 이미지는 어떤 렌즈를 통해 세상을 바라봐야 하는가?"를 알려주는 핵심 지침입니다.\n\n같은 카페에 앉아있는 남자라는 주제도, 어떤 스타일을 선택하느냐에 따라 180도 다른 결과물을 내놓습니다.'
+        },
+        styleExamples: [
+            {
+                title: 'Photorealistic',
+                subtitle: '사진처럼 사실적인',
+                description: 'Photorealistic을 선택하면, AI는 현실의 조명, 질감, 렌즈의 특성을 계산합니다.',
+                prompt: 'Photorealistic, a man sitting in a cafe, natural afternoon light',
+                result: '실제 카메라로 찍은 듯한 스냅샷. 피부의 질감, 창문으로 들어오는 자연광, 커피잔의 반사광이 현실적으로 표현됨',
+                keywords: ['photorealistic', 'hyperrealistic', 'professional photography', 'natural lighting', 'realistic textures']
+            },
+            {
+                title: 'Anime Style',
+                subtitle: '애니메이션 스타일',
+                description: 'Anime Style을 선택하면, AI는 현실의 물리 법칙 대신 셀 채색, 과장된 표정, 만화적 구도를 계산합니다.',
+                prompt: 'Anime Style, Studio Ghibli style, a man sitting in a cafe, warm and cozy colors',
+                result: '따뜻한 색감의 지브리 스튜디오 풍 작화. 부드러운 파스텔톤, 손으로 그린 듯한 배경, 감성적인 캐릭터 표현',
+                keywords: ['anime style', 'Studio Ghibli', 'manga style', 'cel shading', 'kawaii']
+            },
+            {
+                title: 'Cinematic',
+                subtitle: '영화처럼',
+                description: 'Cinematic을 선택하면, AI는 극적인 조명 대비, 영화적인 색 보정, 와이드한 구도를 우선적으로 고려합니다.',
+                prompt: 'Cinematic, Noir Style, a man sitting in a cafe, dramatic side lighting, shadows, smoking',
+                result: '1940년대 흑백 영화의 한 장면. 창문 틈으로 들어오는 한 줄기 빛(Rim light), 얼굴의 절반이 그림자에 잠겨 있으며, 고독하고 무거운 분위기',
+                keywords: ['cinematic', 'film noir', 'dramatic lighting', 'chiaroscuro', 'color grading']
+            }
+        ],
+        tip: {
+            title: 'Art Director\'s Tip',
+            content: '스타일 키워드를 정할 때는 부록으로 제공하는 키워드 사전을 참고하세요.\n\n미술 사조: Impressionism, Surrealism, Cubism\n아티스트: by Van Gogh, by Hayao Miyazaki\n매체: Oil Painting, Watercolor, 3D Render, Pixel Art\n장르: Cyberpunk, Steampunk, Fantasy'
+        },
+        conclusion: {
+            title: '스타일이 AI의 해석 방식을 결정합니다',
+            content: '보시다시피, 스타일은 단순히 이미지를 꾸미는 요소가 아닙니다. 스타일은 AI가 이미지를 해석하는 방식 그 자체를 결정합니다.\n\n당신이 원하는 분위기가 따뜻함인지, 사실적임인지, 극적임인지를 가장 먼저 정해야 하는 이유입니다.'
+        },
+        usage: [],
+        images: []
+    },
+
+    'expert-ch4': {
+        title: 'Chapter 4. 요소 2: 파라미터 (Parameters)',
+        koreanTitle: '화면 비율이 구도를 결정한다',
+        prompt: '',
+        description: '스타일(톤 앤 매너)을 정했다면, 다음은 이미지가 담길 틀, 즉 캔버스의 형태를 정할 차례입니다.',
+        type: 'expert-style',
+        keywordType: 'parameter',
+        intro: {
+            title: '화면 비율의 중요성',
+            content: '미드저니에서는 --ar (Aspect Ratio, 화면 비율) 파라미터로 캔버스 형태를 제어합니다.\n\n많은 초보자가 이 파라미터를 생략합니다. (기본값은 1:1 정사각형) 하지만 아트 디렉터는 화면 비율이 구도와 스토리에 얼마나 큰 영향을 미치는지 잘 알고 있습니다.'
+        },
+        styleExamples: [
+            {
+                title: '--ar 16:9',
+                subtitle: '가로형 (시네마틱)',
+                description: '영화, 풍경, 여러 인물이 등장하는 장면에 최적화되어 있습니다. 안정감과 광활함을 줍니다.',
+                prompt: 'cinematic, a knight standing on a mountain peak, vast landscape --ar 16:9',
+                result: '기사는 다소 작게 표현되더라도, 좌우로 펼쳐진 광활한 하늘과 산맥이 강조됨. 영화 반지의 제왕의 한 장면처럼 보임',
+                keywords: ['--ar 16:9', '--ar 21:9', '--ar 2:1', 'cinematic wide', 'landscape']
+            },
+            {
+                title: '--ar 1:1',
+                subtitle: '정사각형 (SNS)',
+                description: '인스타그램 등 SNS에 적합합니다. 시선을 중앙으로 집중시켜 인물 사진이나 오브젝트에 좋습니다.',
+                prompt: 'cinematic, a knight standing on a mountain peak, vast landscape --ar 1:1',
+                result: '배경과 인물이 균형 있게 배치됨. 기사의 모습에 시선이 집중되지만, 16:9만큼의 광활함은 덜함',
+                keywords: ['--ar 1:1', '--ar 4:5', 'square format', 'instagram', 'centered']
+            },
+            {
+                title: '--ar 9:16',
+                subtitle: '세로형 (모바일)',
+                description: '스마트폰 배경화면, 틱톡/릴스 콘텐츠에 사용됩니다. 인물의 전신을 담거나 수직적인 느낌을 강조할 때 강력합니다.',
+                prompt: 'cinematic, a knight standing on a mountain peak, vast landscape --ar 9:16',
+                result: '산봉우리의 높이와 기사의 웅장한 전신이 강조됨. 하늘이나 좌우 풍경보다 수직적인 위압감이 살아남',
+                keywords: ['--ar 9:16', '--ar 2:3', 'vertical', 'mobile', 'portrait']
+            }
+        ],
+        tip: {
+            title: '기타 유용한 파라미터',
+            content: '--v 6: 미드저니 최신 버전 사용\n--s 750: 스타일 강도 조절 (0-1000, 기본값 100)\n--style raw: 더 자연스럽고 덜 양식화된 결과물\n--chaos 50: 변화도 조절 (0-100, 높을수록 다양한 결과)'
+        },
+        conclusion: {
+            title: '습관을 들이세요',
+            content: '프롬프트를 시작할 때, [스타일]과 [--ar 비율]을 먼저 입력하는 습관을 들이세요.\n\n이 두 가지만으로도 당신의 결과물은 80% 이상 예측 가능하고 통제 가능한 범위로 들어옵니다.\n\n이제 첫인상을 결정했으니, 다음 파트(Part 3)부터는 이 캔버스 안을 채워 넣을 5W1H 요소들을 하나씩 설계해 보겠습니다.'
+        },
+        usage: [],
+        images: []
+    },
+
+    'expert-ch5': {
+        title: 'Chapter 5. 요소 3: 주제/피사체 (Subject)',
+        koreanTitle: 'WHO - 누가 주인공인가?',
+        prompt: '',
+        description: 'Part 2에서 우리는 스타일과 비율이라는 캔버스를 설정했습니다. 이제 아트 디렉터로서 캔버스 위에 무엇을 그릴지 구체적으로 설계할 차례입니다.\n\nPart 3에서는 5W1H 원칙을 따라 장면의 핵심 요소를 하나씩 쌓아 올립니다. 이 단계의 핵심은 한 번에 하나씩 요소를 더해가는 것입니다.',
+        type: 'expert-style',
+        keywordType: 'subject',
+        intro: {
+            title: '주인공을 캐스팅하세요',
+            content: '모든 훌륭한 이미지에는 주인공이 있습니다. 5W1H의 첫 번째 질문인 WHO? (누가?)는 이미지의 시선이 머무를 단 하나의 닻(Anchor)을 설정하는 과정입니다.\n\nAI에게 "사람"이나 "개"라고 말하는 것은, 배우에게 "그냥 사람처럼 연기해"라고 말하는 것과 같습니다. AI는 누구를 캐스팅해야 할지 몰라 가장 평균적인(generic) 이미지를 가져올 것입니다.\n\n아트 디렉터는 캐스팅 디렉터가 되어야 합니다. 어떤 사람인지, 어떤 동물인지, 어떤 사물인지 구체적으로 명시해야 합니다.'
+        },
+        styleExamples: [
+            {
+                title: '모호한 캐스팅',
+                subtitle: 'Bad Prompt',
+                description: '특징 없는 평균적인 이미지가 생성됩니다.',
+                prompt: 'cinematic, a man standing --ar 16:9',
+                result: '특징 없는 평균적인 남자가 밋밋하게 서 있음. 나이, 직업, 스타일을 알 수 없는 스톡 이미지',
+                keywords: ['a man', 'a woman', 'a person', 'generic', 'average']
+            },
+            {
+                title: '구체적인 인물 캐스팅',
+                subtitle: 'Good Prompt',
+                description: '나이, 특징, 의상까지 구체적으로 명시하면 캐릭터의 역사가 느껴집니다.',
+                prompt: 'cinematic, a 60-year-old grizzled warrior, deep scar over one eye, wearing heavy iron armor, fantasy style --ar 16:9',
+                result: '얼굴의 주름, 흉터의 질감, 갑옷의 반사광까지 캐릭터의 역사가 느껴지는 구체적인 인물이 생성됨',
+                keywords: ['60-year-old warrior', 'young woman', 'elderly man', 'teenage girl', 'grizzled veteran']
+            },
+            {
+                title: '사물 캐스팅',
+                subtitle: 'Good Prompt',
+                description: '사물도 주인공이 될 수 있습니다. 구체적인 특징을 부여하세요.',
+                prompt: 'cinematic, an ancient magical book, glowing runes on the leather cover, sitting on a stone pedestal --ar 1:1',
+                result: '책의 가죽 질감, 룬 문자의 빛 효과, 받침대의 거친 표면 등 주인공으로서의 존재감이 명확한 사물이 생성됨',
+                keywords: ['ancient book', 'vintage camera', 'magical sword', 'glowing crystal', 'rusty robot']
+            }
+        ],
+        tip: {
+            title: 'Art Director\'s Tip',
+            content: '주제/피사체를 설계할 때는 다음 요소들을 조합해 보세요. (전부 다 쓸 필요는 없지만, 구체적일수록 좋습니다.)\n\n핵심 정체성: man, woman, dragon, robot, tree\n수식어 (외형): young, old, tall, glowing, rusty\n패션/의상: wearing a 1980s retro jacket, in a victorian dress\n얼굴/특징: with a sharp jawline, blue eyes, long beard\n액세서리: holding a vintage camera, with cyberpunk goggles\n\n부록의 주제/피사체 키워드 사전을 참고하여 당신의 주인공을 구체화해 보세요.'
+        },
+        conclusion: {
+            title: '다음 단계',
+            content: '자, 이제 주인공 캐스팅이 끝났습니다. 그렇다면 이 주인공이 캔버스 위에서 "무엇을 하고 있나요? (WHAT?)"\n\n다음 챕터에서는 장면에 생동감을 불어넣는 [액션/포즈]에 대해 알아보겠습니다.'
+        },
+        usage: [],
+        images: []
+    },
+
+    'expert-ch6': {
+        title: 'Chapter 6. 요소 4: 액션/포즈 (Action/Pose)',
+        koreanTitle: 'WHAT - 무엇을 하고 있는가?',
+        prompt: '',
+        description: 'Chapter 5에서 우리는 누가(WHO) 주인공인지 명확하게 캐스팅했습니다. 하지만 훌륭하게 캐스팅된 주인공이라도 캔버스 위에 그냥 서 있기만 한다면, 그건 살아있는 캐릭터가 아니라 마네킹이나 다름없습니다.\n\n장면에 생명력을 불어넣는 두 번째 질문은 WHAT? (무엇을 하고 있는가?)입니다.',
+        type: 'expert-style',
+        keywordType: 'action',
+        intro: {
+            title: '스토리를 만드는 액션과 포즈',
+            content: '[액션/포즈]는 당신의 주인공이 어떤 상태에 있는지, 어떤 이야기의 한가운데에 있는지를 AI에게 알려주는 핵심 연기 디렉션입니다.\n\n서 있는 전사는 단순한 설명입니다. 검을 높이 들고 함성을 지르며 달려가는 전사는 스토리입니다.\n\n액션이 꼭 달리기나 점프처럼 커다란 움직임일 필요는 없습니다. 포즈, 표정, 시선의 미묘한 조합이 때로는 더 많은 이야기를 전달합니다.'
+        },
+        styleExamples: [
+            {
+                title: '액션이 없는 캐스팅',
+                subtitle: 'Bad Prompt',
+                description: '어떤 상황인지 알 수 없는 증명사진처럼 보입니다.',
+                prompt: 'cinematic, a detective in a trench coat --ar 16:9',
+                result: '탐정이 밋밋하게 서 있거나 정면을 보고 있음. 어떤 상황인지 알 수 없는 증명사진이나 카탈로그 샷처럼 보임',
+                keywords: ['standing', 'sitting', 'looking at camera', 'neutral pose', 'static']
+            },
+            {
+                title: '동적인 액션',
+                subtitle: 'Good Prompt - Dynamic',
+                description: '역동적인 움직임으로 추격전이라는 스토리가 명확해집니다.',
+                prompt: 'cinematic, a detective in a trench coat, running down a dark alleyway, holding a revolver, determined expression --ar 16:9',
+                result: '역동적인 달리기 자세, 흔들리는 코트 자락, 긴박한 표정 등 추격전이라는 스토리가 명확하게 담긴 장면이 생성됨',
+                keywords: ['running', 'jumping', 'fighting', 'chasing', 'flying through air']
+            },
+            {
+                title: '정적인 포즈와 감정',
+                subtitle: 'Good Prompt - Static',
+                description: '큰 움직임 없이도 고뇌와 잠복이라는 스토리가 느껴집니다.',
+                prompt: 'cinematic, a detective in a trench coat, leaning against a brick wall, arms crossed, looking away pensively, face half in shadow --ar 16:9',
+                result: '큰 움직임은 없지만 고뇌와 잠복이라는 스토리가 느껴짐. 팔짱 낀 자세, 시선 처리, 그림자를 통해 캐릭터의 복잡한 심리가 드러남',
+                keywords: ['leaning against wall', 'arms crossed', 'looking away', 'sitting pensively', 'eyes closed']
+            }
+        ],
+        tip: {
+            title: 'Art Director\'s Tip',
+            content: '액션/포즈를 지시할 때는 다음 요소들을 조합해 보세요. AI는 이 디테일한 연기 지시를 기가 막히게 알아듣습니다.\n\n동작 (Action): running, jumping, fighting, walking, dancing\n자세 (Pose): standing confidently, sitting cross-legged, leaning against\n감정/표정 (Emotion): laughing, crying, frowning, surprised expression\n시선 (Gaze): looking directly at camera, looking away, eyes closed'
+        },
+        conclusion: {
+            title: '다음 단계',
+            content: '주인공(WHO)이 정해지고, 그가 무엇을 하는지(WHAT)가 정해졌습니다. 이제 아트 디렉터로서 가장 흥미로운 질문이 남았습니다.\n\n"그래서 여긴 어디인가? (WHERE?)"\n\n다음 챕터에서는 이 모든 이야기가 펼쳐질 무대, [환경/배경]을 설계해 보겠습니다.'
+        },
+        usage: [],
+        images: []
+    },
+
+    'expert-ch7': {
+        title: 'Chapter 7. 요소 5: 환경/배경 (Environment)',
+        koreanTitle: 'WHERE - 여기가 어디인가?',
+        prompt: '',
+        description: '지금까지 우리는 주인공을 캐스팅(WHO)하고, 그에게 생동감 넘치는 연기(WHAT)를 지시했습니다. 하지만 배우가 하얀 방(White Room)에서 연기한다면 어떨까요? 아무리 훌륭한 연기도 스토리가 완성되지 않습니다.\n\n세 번째 질문, WHERE? (여기가 어디인가?)는 당신의 이야기를 완성하는 무대(Stage)를 설치하는 작업입니다.',
+        type: 'expert-style',
+        keywordType: 'environment',
+        intro: {
+            title: '무대를 설치하세요',
+            content: '[환경/배경]은 단순히 뒤에 깔리는 배경화면이 아닙니다. 이것은 주인공의 맥락(Context)을 설명하고, 장면의 분위기(Mood)를 지배하며, 때로는 그 자체로 또 다른 주인공이 됩니다.\n\n폭우 속의 탐정과 맑은 날의 탐정은 완전히 다른 이야기를 품고 있습니다. 성 안의 전사와 늪지대의 전사는 처한 상황이 다릅니다.\n\n당신은 이제 아트 디렉터이자, 이 장면의 무대 디자이너(Set Designer)입니다.'
+        },
+        styleExamples: [
+            {
+                title: '무대가 없는 배우',
+                subtitle: 'Bad Prompt',
+                description: '배경이 없으면 스토리도 없습니다.',
+                prompt: 'cinematic, a wizard casting a spell --ar 16:9',
+                result: '흰색이나 단색 배경, 혹은 AI가 임의로 생성한 의미 없는 배경 앞에 마법사가 덩그러니 서 있음. 스토리가 전혀 없음',
+                keywords: ['no background', 'white background', 'simple background', 'plain', 'empty']
+            },
+            {
+                title: '신비로운 무대',
+                subtitle: 'Good Prompt - Mystery',
+                description: '고대 도서관이라는 무대가 지식과 신비로움을 전달합니다.',
+                prompt: 'cinematic, a wizard casting a spell, inside an ancient library, tall bookshelves reaching the ceiling, dust particles floating in the air, a single shaft of moonlight --ar 16:9',
+                result: '지식, 비밀, 신비로움이라는 키워드가 느껴지는 장면. 마법사는 아마도 고대의 주문을 연구 중일 것임',
+                keywords: ['in ancient library', 'in mystical cave', 'in wizard tower', 'surrounded by books', 'in secret chamber']
+            },
+            {
+                title: '긴박한 무대',
+                subtitle: 'Good Prompt - Tension',
+                description: '폭풍우 치는 산봉우리가 전투와 위험을 암시합니다.',
+                prompt: 'cinematic, a wizard casting a spell, on a stormy mountain peak, dark storm clouds swirling, rain lashing down, defensive magic shield glowing --ar 16:9',
+                result: '전투, 위험, 방어라는 키워드가 느껴지는 장면. 마법사는 무언가와 싸우고 있거나 위험한 의식을 치르는 중일 것임',
+                keywords: ['on mountain peak', 'in stormy battlefield', 'in dark forest', 'on cliff edge', 'in ruins']
+            }
+        ],
+        tip: {
+            title: 'Art Director\'s Tip',
+            content: '환경/배경을 설계할 때는 다음 요소들을 조합해 보세요. 이 요소들은 서로 강력하게 상호작용합니다.\n\n장소 (Location): in a space station, on a tropical beach, in a medieval castle hall\n장소 묘사: cluttered with gadgets, with pristine white sand, decorated with royal banners\n날씨 (Weather): sunny, rainy, foggy, snowstorm, thunder and lightning\n\n환경을 묘사할 때는 단순히 어디인지만 말하지 마세요. 그곳의 상태를 함께 묘사해야 합니다.\n\n그냥 city (X) → a neon-lit cyberpunk city, wet reflective streets (O)\n그냥 forest (X) → a dark, foggy forest, tall pine trees, spooky mood (O)'
+        },
+        conclusion: {
+            title: '다음 단계',
+            content: '자, 이제 훌륭한 무대(WHERE)가 완성되었습니다. 배우(WHO)도 그 위에서 연기(WHAT)를 하고 있습니다. 이제 이 무대에 조명 감독이 들어올 차례입니다.\n\n"지금은 몇 시이며, 빛은 어디에서 오는가? (WHEN/HOW?)"\n\n다음 챕터에서는 장면의 분위기를 완성하는 마지막 한 방, [조명]에 대해 알아보겠습니다.'
+        },
+        usage: [],
+        images: []
+    },
+
+    'expert-ch8': {
+        title: 'Chapter 8. 요소 6: 조명 (Lighting)',
+        koreanTitle: 'WHEN/HOW - 빛이 감정을 만든다',
+        prompt: '',
+        description: '우리는 배우(WHO), 연기(WHAT), 그리고 무대(WHERE)까지 완벽하게 준비했습니다. 하지만 이 모든 것이 보이게 하려면, 그리고 더 나아가 느껴지게 하려면, 이 장면의 가장 감성적인 요소인 [빛]이 필요합니다.\n\n조명은 단순히 사물을 밝히는 기능이 아닙니다. 조명은 그 자체로 분위기(Mood)이자 스토리입니다.',
+        type: 'expert-style',
+        keywordType: 'lighting',
+        intro: {
+            title: '조명 감독이 되세요',
+            content: 'WHEN (시간대)은 Golden Hour(골든 아워)의 따뜻함인지, Midday Sun(한낮)의 쨍함인지, Blue Hour(블루 아워)의 차가움인지를 결정합니다.\n\nHOW (방식/기법)는 Soft lighting(부드러운 빛)의 평온함인지, Hard lighting(강한 빛)의 긴장감인지, Rim lighting(윤곽선 빛)의 극적인 효과인지를 결정합니다.\n\n어둠 속에 숨겨진 것은 무엇인지, 빛이 강조하는 것은 무엇인지를 통해 관객의 감정을 조종합니다.'
+        },
+        styleExamples: [
+            {
+                title: '조명이 모호할 때',
+                subtitle: 'Bad Prompt',
+                description: '시간대나 감정을 알 수 없는 평범한 조명입니다.',
+                prompt: 'cinematic, a woman sitting by a window --ar 16:9',
+                result: '특징 없는 평범한 조명. 시간대나 감정을 알 수 없는, 가장 평균적인 실내 조명',
+                keywords: ['normal lighting', 'default light', 'ambient light', 'flat lighting', 'no specific lighting']
+            },
+            {
+                title: '따뜻한 자연광',
+                subtitle: 'Good Prompt - WHEN',
+                description: '골든 아워의 따뜻한 빛이 평화로운 분위기를 만듭니다.',
+                prompt: 'cinematic, a woman sitting by a window, soft golden hour light streaming in, warm tones, peaceful mood --ar 16:9',
+                result: '오후, 휴식, 따뜻함, 향수 등의 감정이 느껴짐. 부드러운 그림자와 따뜻한 색감이 장면을 지배함',
+                keywords: ['golden hour', 'soft sunlight', 'warm natural light', 'sunset glow', 'morning light']
+            },
+            {
+                title: '차가운 인공광',
+                subtitle: 'Good Prompt - HOW',
+                description: '네온사인의 차가운 빛이 도시의 고독을 표현합니다.',
+                prompt: 'cinematic, a woman sitting by a window, lit only by the blue and pink neon signs outside, dark moody shadows, reflective light on her face --ar 16:9',
+                result: '밤, 도시, 고독, 미스터리 등의 감정이 느껴짐. 차가운 색감과 강한 명암 대비가 장면을 지배함',
+                keywords: ['neon lights', 'blue hour', 'moonlight', 'candlelight', 'street lights']
+            },
+            {
+                title: '극적인 조명 기법',
+                subtitle: 'Good Prompt - Dramatic',
+                description: '림 라이트가 실루엣을 만들어 극적인 효과를 냅니다.',
+                prompt: 'cinematic, a woman sitting by a window, dramatic rim lighting from behind, silhouette, her face is hidden in shadows, only her outline is visible --ar 16:9',
+                result: '익명성, 비밀, 드라마 등의 감정이 느껴짐. 인물의 정체성보다 형태와 분위기를 강조하는 극적인 샷',
+                keywords: ['rim lighting', 'back lighting', 'hard shadows', 'chiaroscuro', 'volumetric lighting']
+            }
+        ],
+        tip: {
+            title: 'Art Director\'s Tip',
+            content: '조명을 설계할 때는 부록의 조명 키워드 사전에서 원하는 무기를 골라보세요.\n\n자연광 (WHEN): Sunrise, Midday harsh sunlight, Golden Hour, Blue Hour, Moonlight\n인공광 (HOW): Neon lights, Candlelight, Studio lights, Street lights, Volumetric lighting\n조명 기법 (HOW): Soft lighting, Hard dramatic shadows, Back lighting, Rim lighting, Chiaroscuro'
+        },
+        conclusion: {
+            title: '다음 단계',
+            content: '이제 완벽한 무대(WHERE)에, 완벽한 조명(WHEN/HOW)이 설치되었습니다. 배우(WHO)는 연기(WHAT)를 하고 있습니다.\n\n자, 이제 당신은 촬영 감독이 되어 마지막 결정을 내려야 합니다.\n\n"이 완벽한 장면을 어떤 각도에서 찍을 것인가? (HOW?)"\n\n다음 챕터에서는 장면에 의도를 담는 [카메라 앵글/구도]에 대해 알아보겠습니다.'
+        },
+        usage: [],
+        images: []
+    },
+
+    'expert-ch9': {
+        title: 'Chapter 9. 요소 7: 카메라 앵글/구도 (Camera)',
+        koreanTitle: 'HOW - 관점을 설계하다',
+        prompt: '',
+        description: '우리는 무엇을 볼지 결정했습니다. 이제 아홉 번째 질문, "시청자는 그것을 어떻게 바라보는가?"입니다.\n\n관객이 장면을 인식하는 방식을 결정하는 것, 그것이 바로 카메라 앵글과 구도입니다. 카메라는 관객의 눈입니다.',
+        type: 'expert-style',
+        keywordType: 'camera',
+        intro: {
+            title: '카메라는 감정의 언어입니다',
+            content: '카메라는 단순히 장면을 비추는 도구가 아니라, 감독이 관객에게 말을 거는 어조(Tone)입니다.\n\n카메라의 높낮이는 캐릭터와 관객 사이의 심리적 관계를 즉각적으로 설정합니다. 구도는 프레임 안에 요소들을 어떻게 배치할 것인가에 대한 계획입니다.\n\n카메라 앵글과 구도는 감독이 관객에게 "이것을 이런 관점으로 봐라"라고 지시하는 가장 강력한 시각적 언어입니다.'
+        },
+        styleExamples: [
+            {
+                title: 'Eye-Level (아이 레벨)',
+                subtitle: '중립적 시선',
+                description: '가장 중립적이고 현실적인 시선입니다. 관객은 피사체와 동등한 입장에서 감정적으로 연결됩니다.',
+                prompt: 'cinematic, eye-level medium shot of a woman talking, natural perspective --ar 16:9',
+                result: '일상적인 대화 장면처럼 편안하고 자연스러운 느낌. 관객과 캐릭터가 동등한 위치',
+                keywords: ['eye-level shot', 'medium shot', 'close-up', 'wide shot', 'full body shot']
+            },
+            {
+                title: 'Low Angle (로우 앵글)',
+                subtitle: '권력과 위압감',
+                description: '피사체를 강하고, 위압적이며, 중요하게 만듭니다. 영웅이나 악당의 힘을 시각적으로 증폭시킵니다.',
+                prompt: 'cinematic, low-angle shot of a towering superhero, looking down at camera, powerful stance --ar 16:9',
+                result: '피사체가 거대하고 강력해 보임. 관객이 올려다보는 느낌으로 경외감을 줌',
+                keywords: ['low angle', 'worm\'s eye view', 'looking up', 'heroic angle', 'dramatic low shot']
+            },
+            {
+                title: 'High Angle (하이 앵글)',
+                subtitle: '취약함과 고립',
+                description: '피사체를 약하고, 고립되었으며, 취약하게 만듭니다. 곤경에 처한 주인공의 무력감을 표현합니다.',
+                prompt: 'cinematic, high-angle shot of a lost child in a crowd, looking small and vulnerable --ar 16:9',
+                result: '피사체가 작고 약해 보임. 관객이 내려다보는 느낌으로 연민이나 우월감을 줌',
+                keywords: ['high angle', 'bird\'s eye view', 'overhead shot', 'looking down', 'top-down view']
+            },
+            {
+                title: 'Dutch Angle (더치 앵글)',
+                subtitle: '불안과 혼란',
+                description: '카메라를 의도적으로 기울여 불안, 긴장, 혼란, 광기를 유발합니다.',
+                prompt: 'cinematic, dutch angle shot of a chaotic street fight, tilted camera, disorienting perspective --ar 16:9',
+                result: '안정적인 구도를 깨뜨려 관객을 심리적으로 불편하게 만듦. 긴장감과 혼란 표현',
+                keywords: ['dutch angle', 'tilted shot', 'canted angle', 'diagonal composition', 'unstable frame']
+            }
+        ],
+        tip: {
+            title: 'Art Director\'s Tip',
+            content: '카메라 앵글과 구도 키워드:\n\n앵글: Eye-level, Low angle, High angle, Dutch angle, Bird\'s eye view\n샷 크기: Extreme close-up, Close-up, Medium shot, Full shot, Wide shot\n구도: Rule of thirds, Center composition, Leading lines, Symmetrical, Frame within frame\n\nAI에게 이미지를 생성시킬 때, 단순히 무엇을 그려달라고 하는 것과 로우 앵글로 그려달라고 하는 것은 완전히 다른 결과물을 만듭니다. 전자는 정보를 그리지만, 후자는 감정과 의도를 그립니다.'
+        },
+        conclusion: {
+            title: '다음 단계',
+            content: '이제 완벽한 카메라 앵글과 구도까지 설정했습니다. 하지만 이 모든 것이 합쳐져도 이미지가 밋밋하거나 흐릿하다면, 관객의 시선을 사로잡을 수 없습니다.\n\n다음 챕터에서는 이미지의 첫인상과 신뢰도를 결정하는 마지막 마감재, [색감 및 품질]에 대해 알아보겠습니다.'
+        },
+        usage: [],
+        images: []
+    },
+
+    'expert-ch10': {
+        title: 'Chapter 10. 요소 8: 색감 및 품질/효과 (Color & Quality)',
+        koreanTitle: 'HOW - 마지막 마감재',
+        prompt: '',
+        description: '지금까지 우리는 7가지 요소를 통해 장면의 뼈대와 형태를 완성했습니다. 하지만 이 모든 것이 합쳐져도 이미지가 밋밋하거나 흐릿하다면, 관객의 시선을 사로잡을 수 없습니다.\n\n이제 여덟 번째 마지막 요소, "이 장면을 어떤 톤으로 채색하고, 얼마나 선명하게 완성할 것인가?"입니다.',
+        type: 'expert-style',
+        keywordType: 'quality',
+        intro: {
+            title: '색감과 품질은 첫인상을 결정합니다',
+            content: '색감(Color Tones)과 품질(Quality)은 이미지의 첫인상과 신뢰도를 결정하는 강력한 마감재입니다.\n\n색상의 온도(Warm vs Cool), 채도(Vibrant vs Muted), 그리고 해상도와 디테일이 이미지를 작품과 낙서로 가르는 기준이 됩니다.\n\nAI 아트 디렉터는 이 마지막 10%의 마감을 절대 소홀히 하지 않습니다.'
+        },
+        styleExamples: [
+            {
+                title: 'Warm Tones (따뜻한 톤)',
+                subtitle: '편안함과 향수',
+                description: '노란색, 주황색, 붉은색 기운이 편안함, 행복, 에너지, 향수를 표현합니다.',
+                prompt: 'cinematic, a cozy cafe interior, warm color palette, golden tones, inviting atmosphere, 8K, highly detailed --ar 16:9',
+                result: '따뜻하고 편안한 느낌. 골든아워 조명과 잘 어울리며 빈티지하고 감성적인 분위기',
+                keywords: ['warm tones', 'golden palette', 'orange hues', 'cozy colors', 'vintage warm']
+            },
+            {
+                title: 'Cool Tones (차가운 톤)',
+                subtitle: '신비감과 미래',
+                description: '파란색, 녹색, 보라색 기운이 차분함, 신비감, 슬픔, 미래적인 느낌을 표현합니다.',
+                prompt: 'cinematic, a futuristic city at night, cool toned moody lighting, blue and purple hues, cyberpunk atmosphere, 8K, ultra detailed --ar 16:9',
+                result: '차갑고 신비로운 느낌. 야간이나 안개 낀 장면에 효과적이며 SF적인 분위기',
+                keywords: ['cool tones', 'blue palette', 'cold colors', 'moody blues', 'cyberpunk colors']
+            },
+            {
+                title: 'Vibrant Colors (선명한 색상)',
+                subtitle: '활기와 강렬함',
+                description: '색이 밝고 쨍합니다. 활기, 기쁨, 판타지, 강렬함을 전달합니다.',
+                prompt: 'cinematic, a magical fantasy forest, vibrant and colorful, saturated colors, vivid hues, dreamlike, 8K, insane details --ar 16:9',
+                result: '시선을 즉각적으로 사로잡는 강렬한 색감. 판타지와 동화 같은 분위기',
+                keywords: ['vibrant colors', 'saturated', 'vivid', 'bright colors', 'colorful']
+            },
+            {
+                title: 'High Quality (최고 품질)',
+                subtitle: '전문가급 마감',
+                description: '해상도와 디테일을 극대화하여 전문가 수준의 완성도를 만듭니다.',
+                prompt: 'cinematic, a portrait of a warrior, 8K resolution, ultra realistic, hyper detailed, sharp focus, professionally shot, award-winning photography --ar 16:9',
+                result: '피부의 질감, 옷의 재봉선, 배경의 작은 소품까지 살아나는 현실감과 완성도',
+                keywords: ['8K', 'ultra realistic', 'hyper detailed', 'sharp focus', 'professionally shot']
+            }
+        ],
+        tip: {
+            title: 'Art Director\'s Tip',
+            content: '색감과 품질 키워드:\n\n색상 온도: Warm tones, Cool tones, Neutral tones\n색상 채도: Vibrant colors, Muted colors, Desaturated, Pastel colors\n특수 색감: Monochromatic, Black and white, Sepia tone\n품질: 8K, Ultra realistic, Hyper detailed, Sharp focus, Insane details\n전문가급: Professionally shot, Award-winning photography, Cinematic quality\n\n7가지 요소로 아무리 완벽한 장면을 설계했더라도, 마무리가 부족하면 습작처럼 보입니다. 색감은 당신의 의도된 분위기를 장면에 코팅하는 작업이며, 품질 키워드는 그 코팅을 매끄럽고 선명하게 다듬는 폴리싱 작업입니다.'
+        },
+        conclusion: {
+            title: '8요소 프레임워크 완성',
+            content: '축하합니다! 이제 당신은 8요소 프레임워크의 모든 요소를 마스터했습니다.\n\n1. 스타일 (Style) - 어떤 느낌인가?\n2. 파라미터 (Parameters) - 어떤 비율인가?\n3. 주제/피사체 (Subject) - 누가 주인공인가?\n4. 액션/포즈 (Action) - 무엇을 하고 있는가?\n5. 환경/배경 (Environment) - 어디인가?\n6. 조명 (Lighting) - 언제, 어떤 빛인가?\n7. 카메라 앵글 (Camera) - 어떤 각도인가?\n8. 색감/품질 (Color/Quality) - 어떤 마감인가?\n\n다음 챕터에서는 이 모든 요소를 조합하는 방법을 배워보겠습니다.'
+        },
+        usage: [],
+        images: []
+    },
+
+    'expert-ch11': {
+        title: 'Chapter 11. 최종 조합: 프롬프트 조립하기',
+        koreanTitle: '8요소를 하나로 묶는 황금 순서',
+        prompt: '',
+        description: '지금까지 우리는 8개의 강력한 시각적 무기(요소)를 각각 배웠습니다. 하지만 이 무기들을 그저 바닥에 늘어놓는다고 해서 전투에서 승리할 수는 없습니다.\n\n이 요소들을 어떤 순서로, 어떻게 결합하느냐에 따라 AI는 당신을 명확한 지시를 내리는 감독으로 인식할 수도, 혹은 횡설수설하는 초보자로 인식할 수도 있습니다.',
+        type: 'expert',
+        parts: [
+            {
+                title: '행동 원칙 1: AI는 영어로 생각한다',
+                content: '가장 중요하고 기본적인 원칙입니다. 미드저니를 포함한 대부분의 S급 이미지 AI 모델은 방대한 영어 데이터를 기반으로 학습되었습니다.\n\n물론 한국어를 입력해도 AI가 번역해서 이해하려 노력하지만, 그 과정에서 우리가 의도한 시각적 뉘앙스가 손실됩니다.\n\nAI 아트 디렉터의 공식 언어는 영어입니다. 우리가 배운 8요소의 키워드들은 모두 영어로 조합되어야 그 힘을 100% 발휘합니다.'
+            },
+            {
+                title: '행동 원칙 2: 코드 블록으로 프롬프트를 분리하라',
+                content: '우리가 프롬프트를 작성하고 관리할 때, 프롬프트 자체를 명확하게 구분하는 습관은 매우 중요합니다.\n\n가장 좋은 방법은 프롬프트를 코드 블록으로 감싸는 것입니다. 이 간단한 습관은 프롬프트의 시작과 끝을 명확히 하여, 나중에 수정하거나 다른 사람과 공유할 때 혼란을 막아줍니다.'
+            },
+            {
+                title: '프롬프트 조립의 황금 순서',
+                content: 'AI는 당신이 가장 먼저 말한 것을 가장 중요하게 받아들입니다.\n\n따라서 우리는 가장 중요한 것부터 순서대로 배치하는 전략을 사용합니다:\n\n[1단계: 무대 설정]\n[스타일 + 파라미터]: 전체 톤 앤 매너와 화면 비율을 가장 먼저 선언\n\n[2단계: 주인공 배치]\n[주제 + 액션/포즈]: 무대 위에 누가 무엇을 하는지 명확히 올림\n\n[3단계: 연출]\n[환경 + 조명 + 앵글]: 주인공을 둘러싼 배경과 빛, 그리고 시점을 지시\n\n[4단계: 후반 작업]\n[색감 + 품질]: 마지막으로 색감과 품질 키워드로 이미지를 다듬음'
+            },
+            {
+                title: 'Before vs After: 조립의 힘',
+                content: 'Before (나쁜 예: 단순 나열):\nman, cigarette, rain, street, 8K, neon, detective, 16:9, cinematic, low-angle\n\nAI는 무엇을 메인으로 잡아야 할지 혼란스러워하며, 비나 네온이 주제가 된 엉뚱한 이미지를 생성할 수 있습니다.\n\nAfter (좋은 예: 아트 디렉터의 프롬프트):\nCinematic, photorealistic, a grizzled detective lighting a cigarette, on a rain-slicked neon-lit street, dramatic rim lighting from a streetlamp, low-angle shot, cool tones, ultra-detailed, 8K --ar 16:9 --v 7\n\nAI는 이 프롬프트를 시네마틱한 사진으로, 탐정을 주인공으로 하여, 비 오는 네온 거리를 배경으로, 로우 앵글로 찍으라는 명확한 작업 지시서로 이해합니다.'
+            }
+        ],
+        usage: [],
+        images: []
+    },
+
+    'expert-ch12': {
+        title: 'Chapter 12. 실전 워크샵: Case Study',
+        koreanTitle: '시나리오로 프롬프트 만들기',
+        prompt: '',
+        description: '지금까지 우리는 8가지 요소를 이론적으로 배우고, 그것을 조립하는 방법까지 익혔습니다. 이론은 완벽합니다.\n\n이제 AI 아트 디렉터의 사고방식으로, 머릿속에만 있던 모호한 아이디어를 전문가급 이미지로 변환하는 실제 과정을 낱낱이 보여드리겠습니다.',
+        type: 'expert',
+        parts: [
+            {
+                title: '사례 1: 비 오는 밤, 네온사인 골목의 탐정',
+                content: 'Before (나쁜 예):\na detective in a neon alley on a rainy night\n\n예상 문제: 키워드 수프 상태입니다. AI는 탐정, 골목, 비, 네온사인 중 무엇이 중요한지 모릅니다. 탐정이 작게 나오거나, 엉뚱한 스타일이 나올 수 있습니다. 감정이나 의도가 없습니다.'
+            },
+            {
+                title: '8요소 프레임워크 적용 과정',
+                content: '1단계: 스타일과 파라미터\n- 필름 느와르와 사이버펑크의 느낌\n- Cinematic, Photorealistic, Noir style, Moody\n- --ar 16:9\n\n2단계: 주제와 액션\n- a grizzled detective, wearing a classic trench coat and fedora\n- thoughtfully smoking a cigarette, smoke curling in the air\n\n3단계: 환경과 조명과 앵글\n- in a narrow, dark alley, rain-slicked pavement\n- reflections of bright neon signs (red and blue)\n- Dramatic rim lighting, high contrast, deep shadows\n- Slightly low-angle shot, Medium shot\n\n4단계: 색감과 품질\n- Cool tones, Ultra detailed, 8K, sharp focus on the detective\'s face'
+            },
+            {
+                title: '최종 완성 프롬프트',
+                content: 'After (좋은 예):\n\nCinematic, photorealistic, Noir style, a grizzled detective in a trench coat and fedora, thoughtfully smoking a cigarette, in a narrow dark alley, rain-slicked pavement with reflections of bright red and blue neon signs, dramatic rim lighting, high contrast, slightly low-angle medium shot, cool tones, ultra detailed, 8K --ar 16:9 --v 7\n\n결과: Before 프롬프트는 AI에게 묘사를 던졌습니다. After 프롬프트는 AI에게 감독의 지시서를 전달했습니다.'
+            },
+            {
+                title: '사례 2: 마법 도서관의 현자',
+                content: 'Before (나쁜 예):\na wise sage in a magic library\n\n예상 문제: 너무 일반적입니다. AI는 간달프나 덤블도어의 아류작을, 배경은 호그와트의 아류작을 생성할 확률이 99%입니다. 독창성이 없습니다.'
+            },
+            {
+                title: '8요소 프레임워크 적용 과정 2',
+                content: '1단계: 스타일과 파라미터\n- Digital painting, Fantasy art, Epic, Mystical mood\n- --ar 1:1\n\n2단계: 주제와 액션\n- an ancient wise sage, long white beard\n- wearing intricate blue and gold robes\n- reading a giant, ancient glowing book\n- one hand raised, casting a small magic orb of light\n\n3단계: 환경과 조명과 앵글\n- a vast, grand library, floor-to-ceiling bookshelves\n- floating books, a large stained-glass window in the background\n- Magical glow from the book illuminating his face\n- Close-up shot, eye-level\n\n4단계: 색감과 품질\n- Deep blues and rich golds, Warm tones\n- Highly detailed, intricate details'
+            },
+            {
+                title: '최종 완성 프롬프트 2',
+                content: 'After (좋은 예):\n\nDigital painting, fantasy art, mystical mood, a close-up shot of an ancient wise sage with a long white beard, wearing intricate blue and gold robes, reading a giant ancient glowing book, one hand casting a small magic orb of light, in a vast library with floating books, magical glow from the book illuminating his face, warm tones, highly detailed --ar 1:1 --v 7\n\n결과: Before는 아이디어를 검색했습니다. After는 이야기를 주문했습니다. 빛이 어디서 오는지, 현자가 무엇을 하는지 등을 명확히 지시함으로써, AI는 훨씬 더 역동적이고 독창적인 작품을 만들어냅니다.'
+            }
+        ],
+        usage: [],
+        images: []
+    },
+
+    'expert-ch13': {
+        title: 'Chapter 13. AI 아트 디렉터의 키워드 사전',
+        koreanTitle: 'Ver 2.0 - 실전 키워드 무기고',
+        prompt: '',
+        description: '지금까지 8가지 요소를 열심히 배웠으니, 이제 실전에서 바로 써먹을 수 있는 키워드 무기고를 장착할 시간입니다!\n\n이 챕터는 여러분이 프롬프트를 만들 때 바로바로 찾아볼 수 있는 AI 아트 디렉터의 비밀노트입니다.\n\n아래에서 원하는 키워드를 선택하면 자동으로 프롬프트가 조합됩니다.',
+        type: 'expert-dictionary',
+        keywordCategories: [
+            {
+                title: '요소 1: 스타일',
+                categories: [
+                    {
+                        name: '사진 기반',
+                        keywords: [
+                            { en: 'Photorealistic', ko: '사진처럼 사실적인' },
+                            { en: 'Cinematic', ko: '영화 같은' },
+                            { en: 'Documentary', ko: '다큐멘터리' },
+                            { en: 'Portrait', ko: '인물 사진' },
+                            { en: 'Landscape', ko: '풍경 사진' },
+                            { en: 'Vintage', ko: '빈티지' },
+                            { en: 'Lo-Fi', ko: '로파이' },
+                            { en: 'Noir', ko: '느와르' }
+                        ]
+                    },
+                    {
+                        name: '일러스트 & 아트',
+                        keywords: [
+                            { en: 'Digital Painting', ko: '디지털 페인팅' },
+                            { en: 'Concept Art', ko: '컨셉 아트' },
+                            { en: 'Anime', ko: '애니메이션' },
+                            { en: 'Manga', ko: '만화' },
+                            { en: 'Cartoon', ko: '카툰' },
+                            { en: 'Fantasy Illustration', ko: '판타지 일러스트' }
+                        ]
+                    },
+                    {
+                        name: '분위기',
+                        keywords: [
+                            { en: 'Moody', ko: '분위기 있는' },
+                            { en: 'Mystical', ko: '신비로운' },
+                            { en: 'Dreamy', ko: '꿈꾸는 듯한' },
+                            { en: 'Epic', ko: '웅장한' },
+                            { en: 'Cozy', ko: '아늑한' }
+                        ]
+                    }
+                ]
+            },
+            {
+                title: '요소 2: 파라미터',
+                categories: [
+                    {
+                        name: '화면 비율',
+                        keywords: [
+                            { en: '--ar 1:1', ko: '정사각형' },
+                            { en: '--ar 16:9', ko: '가로 와이드' },
+                            { en: '--ar 9:16', ko: '세로' },
+                            { en: '--ar 4:3', ko: '표준' },
+                            { en: '--ar 21:9', ko: '시네마스코프' }
+                        ]
+                    },
+                    {
+                        name: '기타 파라미터',
+                        keywords: [
+                            { en: '--v 6', ko: '버전 6' },
+                            { en: '--style raw', ko: '자연스러운 스타일' },
+                            { en: '--s 750', ko: '스타일 강도' }
+                        ]
+                    }
+                ]
+            },
+            {
+                title: '요소 3: 주제/피사체',
+                categories: [
+                    {
+                        name: '인물',
+                        keywords: [
+                            { en: 'a man', ko: '남자' },
+                            { en: 'a woman', ko: '여자' },
+                            { en: 'a child', ko: '아이' },
+                            { en: 'a detective', ko: '탐정' },
+                            { en: 'a knight', ko: '기사' },
+                            { en: 'a wizard', ko: '마법사' }
+                        ]
+                    },
+                    {
+                        name: '동물',
+                        keywords: [
+                            { en: 'a cat', ko: '고양이' },
+                            { en: 'a dog', ko: '개' },
+                            { en: 'a dragon', ko: '용' },
+                            { en: 'a butterfly', ko: '나비' }
+                        ]
+                    }
+                ]
+            },
+            {
+                title: '요소 4: 액션/포즈',
+                categories: [
+                    {
+                        name: '동작',
+                        keywords: [
+                            { en: 'standing', ko: '서 있는' },
+                            { en: 'sitting', ko: '앉아 있는' },
+                            { en: 'running', ko: '달리는' },
+                            { en: 'jumping', ko: '점프하는' },
+                            { en: 'dancing', ko: '춤추는' },
+                            { en: 'fighting', ko: '싸우는' }
+                        ]
+                    }
+                ]
+            },
+            {
+                title: '요소 5: 환경/배경',
+                categories: [
+                    {
+                        name: '장소',
+                        keywords: [
+                            { en: 'in a forest', ko: '숲 속에서' },
+                            { en: 'in a city', ko: '도시에서' },
+                            { en: 'on a beach', ko: '해변에서' },
+                            { en: 'in a library', ko: '도서관에서' },
+                            { en: 'in outer space', ko: '우주에서' }
+                        ]
+                    },
+                    {
+                        name: '날씨',
+                        keywords: [
+                            { en: 'sunny', ko: '맑은' },
+                            { en: 'rainy', ko: '비 오는' },
+                            { en: 'foggy', ko: '안개 낀' },
+                            { en: 'snowy', ko: '눈 오는' }
+                        ]
+                    }
+                ]
+            },
+            {
+                title: '요소 6: 조명',
+                categories: [
+                    {
+                        name: '시간대',
+                        keywords: [
+                            { en: 'golden hour', ko: '골든 아워' },
+                            { en: 'blue hour', ko: '블루 아워' },
+                            { en: 'midday sun', ko: '한낮' },
+                            { en: 'night', ko: '밤' }
+                        ]
+                    },
+                    {
+                        name: '조명 스타일',
+                        keywords: [
+                            { en: 'dramatic lighting', ko: '극적인 조명' },
+                            { en: 'soft lighting', ko: '부드러운 조명' },
+                            { en: 'rim lighting', ko: '윤곽광' },
+                            { en: 'neon lights', ko: '네온 조명' }
+                        ]
+                    }
+                ]
+            },
+            {
+                title: '요소 7: 카메라 앵글',
+                categories: [
+                    {
+                        name: '앵글',
+                        keywords: [
+                            { en: 'eye-level shot', ko: '눈높이' },
+                            { en: 'low-angle shot', ko: '로우 앵글' },
+                            { en: 'high-angle shot', ko: '하이 앵글' },
+                            { en: 'bird\'s-eye view', ko: '조감도' }
+                        ]
+                    },
+                    {
+                        name: '샷 크기',
+                        keywords: [
+                            { en: 'close-up', ko: '클로즈업' },
+                            { en: 'medium shot', ko: '미디엄 샷' },
+                            { en: 'wide shot', ko: '와이드 샷' }
+                        ]
+                    }
+                ]
+            },
+            {
+                title: '요소 8: 색감 및 품질',
+                categories: [
+                    {
+                        name: '색감',
+                        keywords: [
+                            { en: 'warm tones', ko: '따뜻한 톤' },
+                            { en: 'cool tones', ko: '차가운 톤' },
+                            { en: 'vibrant colors', ko: '선명한 색상' },
+                            { en: 'black and white', ko: '흑백' }
+                        ]
+                    },
+                    {
+                        name: '품질',
+                        keywords: [
+                            { en: '8K', ko: '8K 해상도' },
+                            { en: 'ultra detailed', ko: '초고해상도' },
+                            { en: 'sharp focus', ko: '선명한 초점' },
+                            { en: 'bokeh', ko: '보케 효과' }
+                        ]
+                    }
+                ]
+            }
+        ],
+        usage: [],
+        images: []
     }
+
 };
