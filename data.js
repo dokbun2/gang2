@@ -10,7 +10,6 @@ const cameraData = {
             position: 'AI TOOLBEE',
             company: [
                 '(주)알앤픽 대표이사',
-                '(주)제이콥 소프트 전략영업대표'
             ],
             email: 'ggamsire@gmail.com',
             image: 'images/instructor.jpg'
