@@ -1380,7 +1380,7 @@ const cameraData = {
         ],
         videos: [
             { src: 'https://cdn.midjourney.com/video/32f518ca-b8d7-43bf-9bad-affa753b4eff/0.mp4', caption: 'Dolly shot example 1' },
-            { src: 'https://cdn.midjourney.com/video/42e456a4-d573-4561-a9f5-925999d559ab/0.mp4', caption: 'Dolly shot example 2' }
+            { src: 'https://cdn.midjourney.com/video/10f6b313-e47b-4335-a36d-6200229ea8d8/0.mp4', caption: 'Dolly shot example 2' }
         ]
     },
 
