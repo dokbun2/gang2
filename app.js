@@ -702,7 +702,7 @@ function displayTutorialContent() {
                     ${currentData.koreanTitle ? `<span class="content-subtitle">${currentData.koreanTitle}</span>` : ''}
                 </div>
                 ${currentData.audioFile ? `
-                    <button onclick="playTutorialAudio('${currentData.audioFile}')" class="voice-button" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 8px; transition: all 0.3s; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(102, 126, 234, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(102, 126, 234, 0.3)'">
+                    <button onclick="playTutorialAudio('${currentData.audioFile}', event)" class="voice-button" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 8px; transition: all 0.3s; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(102, 126, 234, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(102, 126, 234, 0.3)'">
                         <i data-lucide="volume-2" style="width: 18px; height: 18px;"></i>
                         Voice
                     </button>
@@ -1358,25 +1358,85 @@ function copyToClipboard(text) {
 
 // Play tutorial audio
 let currentAudio = null;
+let currentAudioFile = null;
+let isAudioPlaying = false;
 
-function playTutorialAudio(audioFile) {
-    // Stop current audio if playing
+function playTutorialAudio(audioFile, evt) {
+    const voiceButton = evt ? evt.currentTarget : document.querySelector('.voice-button');
+    if (!voiceButton) {
+        console.error('Voice button not found');
+        return;
+    }
+    
+    // If same audio is playing, toggle pause/play
+    if (currentAudio && currentAudioFile === audioFile) {
+        if (isAudioPlaying) {
+            // Pause
+            currentAudio.pause();
+            isAudioPlaying = false;
+            voiceButton.classList.remove('playing');
+            voiceButton.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+            voiceButton.innerHTML = '<i data-lucide="play" style="width: 18px; height: 18px;"></i> Play';
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+        } else {
+            // Resume
+            currentAudio.play().catch(err => {
+                console.error('오디오 재생 실패:', err);
+                alert('오디오 파일을 재생할 수 없습니다.');
+            });
+            isAudioPlaying = true;
+            voiceButton.classList.add('playing');
+            voiceButton.style.background = 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)';
+            voiceButton.innerHTML = '<i data-lucide="pause" style="width: 18px; height: 18px;"></i> Pause';
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+        }
+        return;
+    }
+
+    // Stop current audio if playing different file
     if (currentAudio) {
         currentAudio.pause();
         currentAudio.currentTime = 0;
+        // Reset previous button
+        const prevButtons = document.querySelectorAll('.voice-button');
+        prevButtons.forEach(btn => {
+            btn.classList.remove('playing');
+            btn.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+            btn.innerHTML = '<i data-lucide="volume-2" style="width: 18px; height: 18px;"></i> Voice';
+        });
+        if (typeof lucide !== 'undefined') lucide.createIcons();
     }
 
     // Create and play new audio
     currentAudio = new Audio(`audio/${audioFile}`);
+    currentAudioFile = audioFile;
+    isAudioPlaying = true;
+    
+    // Update button to playing state
+    voiceButton.classList.add('playing');
+    voiceButton.style.background = 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)';
+    voiceButton.innerHTML = '<i data-lucide="pause" style="width: 18px; height: 18px;"></i> Pause';
+    if (typeof lucide !== 'undefined') lucide.createIcons();
     
     currentAudio.play().catch(err => {
         console.error('오디오 재생 실패:', err);
         alert('오디오 파일을 재생할 수 없습니다.');
+        isAudioPlaying = false;
+        voiceButton.classList.remove('playing');
+        voiceButton.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+        voiceButton.innerHTML = '<i data-lucide="volume-2" style="width: 18px; height: 18px;"></i> Voice';
+        if (typeof lucide !== 'undefined') lucide.createIcons();
     });
 
     // Clean up when audio ends
     currentAudio.addEventListener('ended', () => {
         currentAudio = null;
+        currentAudioFile = null;
+        isAudioPlaying = false;
+        voiceButton.classList.remove('playing');
+        voiceButton.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+        voiceButton.innerHTML = '<i data-lucide="volume-2" style="width: 18px; height: 18px;"></i> Voice';
+        if (typeof lucide !== 'undefined') lucide.createIcons();
     });
 }
 

@@ -1601,6 +1601,43 @@ h1, h2, h3, h4, h5, h6 {
     100% { opacity: 1; }
 }
 
+/* Voice Button Animations */
+@keyframes voicePulse {
+    0% { 
+        box-shadow: 0 4px 15px rgba(240, 147, 251, 0.4);
+        transform: scale(1);
+    }
+    50% { 
+        box-shadow: 0 6px 25px rgba(240, 147, 251, 0.6);
+        transform: scale(1.02);
+    }
+    100% { 
+        box-shadow: 0 4px 15px rgba(240, 147, 251, 0.4);
+        transform: scale(1);
+    }
+}
+
+@keyframes iconBounce {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.voice-button {
+    transition: all 0.3s ease;
+}
+
+.voice-button.playing {
+    animation: voicePulse 1.5s ease-in-out infinite;
+}
+
+.voice-button.playing i {
+    animation: iconBounce 0.6s ease-in-out infinite;
+}
+
+.voice-button:active {
+    transform: scale(0.95) !important;
+}
+
 .spinner-small {
     width: 16px;
     height: 16px;

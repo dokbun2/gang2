@@ -2697,7 +2697,7 @@ roar that echoes through the hangar.",
         title: '[튜토리얼 1] 🤖 ai툴비 프롬프트 빌더 퀘스트: 챕터 1',
         koreanTitle: '블록 1: 캐릭터(Character)',
         prompt: '[블록 1: 캐릭터(Character)] 블록 조립하기',
-        description: '안녕하세요! 여러분의 AI 창작 가이더, ai툴비입니다. 🐝\n\n여러분이 상상하는 이미지를 완벽하게 만들어내기 위한 <strong style="color: #ff8e53;">\'궁극의 프롬프트 조립\'</strong> 퀘스트를 시작하겠습니다.\n\n그 첫 번째 퀘스트는 이미지의 심장, <strong style="color: #4caf50 ;">\'[캐릭터(Character)]\'</strong> 블록입니다!\n\n\'캐릭터\'는 이미지의 \'주인공\'입니다. 하지만 그냥 a girl (소녀)이라고만 하면, AI는 \'어떤 소녀?\'인지 몰라 무작위로 이미지를 생성합니다.\n\n이번 퀘스트에서는 우리가 원하는 주인공을 AI가 정확히 그려낼 수 있도록, 3개의 작은 부품을 조립하여 [캐릭터] 블록을 완성해 보겠습니다.',
+        description: '안녕하세요! ai툴비입니다. 🐝\n\n여러분이 상상하는 이미지를 완벽하게 만들어내기 위한 <strong style="color: #ff8e53;">\'궁극의 프롬프트 조립\'</strong> 퀘스트를 시작하겠습니다.\n\n그 첫 번째 퀘스트는 이미지의 심장, <strong style="color: #4caf50 ;">\'[캐릭터(Character)]\'</strong> 블록입니다!\n\n\'캐릭터\'는 이미지의 \'주인공\'입니다. 하지만 그냥 a girl (소녀)이라고만 하면, AI는 \'어떤 소녀?\'인지 몰라 무작위로 이미지를 생성합니다.\n\n이번 퀘스트에서는 우리가 원하는 주인공을 AI가 정확히 그려낼 수 있도록, 3개의 작은 부품을 조립하여 [캐릭터] 블록을 완성해 보겠습니다.',
         type: 'tutorial',
         audioFile: 'character.wav',
         parts: [
@@ -2810,6 +2810,7 @@ roar that echoes through the hangar.",
         prompt: '[블록 2: 행동(Action)] 블록 장착하기',
         description: '안녕하세요! ai툴비입니다. 🐝\n\n지난 챕터에서 우리는 3개의 부품을 조립해 멋진 [캐릭터] 블록을 완성했습니다. (예: a young Korean girl with short black hair, wearing a yellow raincoat)\n\n하지만 이 캐릭터는 아직 \'무엇을 할지\' 정해지지 않은 상태입니다. 캐릭터가 그냥 멍하니 서 있기만 한다면 조금 심심하겠죠?\n\n두 번째 퀘스트, [행동(Action)] 블록은 우리 주인공에게 \'생명\'을 불어넣는 퀘스트입니다. 서 있는 전사와 달리고 있는 전사는 완전히 다른 이야기를 만드니까요!',
         type: 'tutorial',
+        audioFile: 'action.wav',
         parts: [
             {
                 title: '1. 정적인 행동 (Static Actions)',
@@ -2822,7 +2823,7 @@ roar that echoes through the hangar.",
                     'leaning against a wall : 벽에 기대어 있는',
                     'smiling : 미소짓는'
                 ],
-                example: ''
+                example: '예시: **standing and looking at the camera** (서서 카메라를 응시하는)'
             },
             {
                 title: '2. 동적인 행동 (Dynamic Actions)',
@@ -2835,7 +2836,7 @@ roar that echoes through the hangar.",
                     'fighting : 싸우는',
                     'flying : 날아다니는'
                 ],
-                example: ''
+                example: '예시: **walking** (걷고 있는) - 비옷을 입은 소녀에게 어울리는 자연스러운 동작'
             },
             {
                 title: '3. 구체적인 행동 (Specific Actions)',
@@ -2848,7 +2849,7 @@ roar that echoes through the hangar.",
                     'opening a door : 문을 여는',
                     'holding a cup : 컵을 들고 있는'
                 ],
-                example: ''
+                example: '예시: **reading a book** (책을 읽는) - 캐릭터의 지적인 면모를 강조'
             }
         ],
         tip: {
@@ -2874,6 +2875,7 @@ roar that echoes through the hangar.",
         prompt: '[블록 3: 소품(Props)] 블록 장착하기',
         description: '안녕하세요! 여러분의 AI 가이드, ai툴비입니다. 🐝\n\n우리는 지난 퀘스트까지 \'누가\'(캐릭터) \'무엇을 하는지\'(행동) 정했습니다. (예: a young Korean girl... wearing a yellow raincoat + walking)\n\n이제 세 번째 퀘스트입니다. 혹시 여러분의 캐릭터가 손에 무언가를 들고 있진 않나요? 아니면 어깨에 가방을 메고 있거나, 허리에 칼을 차고 있을 수도 있죠.\n\n[소품(Props)] 블록은 캐릭터의 \'이야기\'를 더 풍부하게 만들어주는 아이템을 추가하는 퀘스트입니다. 전사가 빛나는 마법 검을 들고 있다면 그 스토리가 완전히 달라지겠죠?',
         type: 'tutorial',
+        audioFile: 'props.wav',
         parts: [
             {
                 title: '1. 손에 든 소품 (Hand-held Props)',
@@ -2885,7 +2887,7 @@ roar that echoes through the hangar.",
                     'holding a cup of coffee (커피잔을 들고 있는)',
                     'holding a smartphone (스마트폰을 들고 있는)'
                 ],
-                example: ''
+                example: '예시: **holding a transparent umbrella** (투명한 우산을 들고 있는) - 비옷과 완벽한 조합!'
             },
             {
                 title: '2. 착용/소지한 소품 (Worn / Carried Props)',
@@ -2897,7 +2899,7 @@ roar that echoes through the hangar.",
                     'with a camera around their neck (목에 카메라를 건)',
                     'with a gas mask (방독면을 쓴)'
                 ],
-                example: ''
+                example: '예시: **with a backpack** (백팩을 메고 있는) - 여행자나 학생 캐릭터에 적합'
             },
             {
                 title: '3. 주변 소품 (Environmental Props)',
@@ -2908,7 +2910,7 @@ roar that echoes through the hangar.",
                     'a campfire in front of them (앞에 캠프파이어가 있는)',
                     'a motorcycle next to them (옆에 오토바이가 있는)'
                 ],
-                example: ''
+                example: '예시: **a cat sitting on their lap** (무릎에 고양이가 앉아 있는) - 따뜻한 분위기 연출'
             }
         ],
         tip: {
@@ -2934,6 +2936,7 @@ roar that echoes through the hangar.",
         prompt: '[블록 4: 배경(Setting)] 블록 장착하기',
         description: '안녕하세요! ai툴비입니다. 🐝\n\n우리는 드디어 주인공(캐릭터, 행동, 소품)을 완벽하게 만들었습니다! (현재 프롬프트: a young Korean girl... walking, holding a transparent umbrella)\n\n그런데... 이 멋진 주인공이 지금 \'어디에\' 있나요? 텅 빈 흰색 공간에 떠 있다면 너무 어색하겠죠?\n\n네 번째 퀘스트, [배경(Setting)] 블록은 우리 주인공을 멋진 무대 위에 세워주는, 이미지의 \'공간\'을 창조하는 퀘스트입니다.',
         type: 'tutorial',
+        audioFile: 'setting.wav',
         parts: [
             {
                 title: '1. 🏙️ 야외 / 도시 (Outdoor / City)',
@@ -2944,7 +2947,7 @@ roar that echoes through the hangar.",
                     'in a crowded market (붐비는 시장에서)',
                     'on a neon-lit street (네온 불빛이 빛나는 거리에서)'
                 ],
-                example: ''
+                example: '예시: **in a rainy city street at night** (밤에 비 오는 도시 거리에서) - 감성적인 도시 분위기'
             },
             {
                 title: '2. 🌲 야외 / 자연 (Outdoor / Nature)',
@@ -2955,7 +2958,7 @@ roar that echoes through the hangar.",
                     'on a beach at sunset (해질녘 해변에서)',
                     'in a dark, foggy forest (어둡고 안개 낀 숲에서)'
                 ],
-                example: ''
+                example: '예시: **in an enchanted forest** (마법에 걸린 숲에서) - 판타지 분위기 연출'
             },
             {
                 title: '3. 🏠 실내 (Indoor)',
@@ -2966,7 +2969,7 @@ roar that echoes through the hangar.",
                     'inside a spaceship cockpit (우주선 조종석에서)',
                     'in a minimalist room (미니멀한 방 안에서)'
                 ],
-                example: ''
+                example: '예시: **in a cozy library** (아늑한 도서관에서) - 따뜻하고 지적인 분위기'
             }
         ],
         tip: {
@@ -2992,6 +2995,7 @@ roar that echoes through the hangar.",
         prompt: '[블록 5: 스타일(Style)] 블록 장착하기',
         description: '안녕하세요! ai툴비입니다. 🐝\n\n지금까지 4개의 퀘스트를 완료하면서, 우리는 \'누가, 어디서, 무엇을 하는지\'에 대한 완벽한 \'설계도\'를 만들었습니다.\n\n(현재까지 조립된 풀 프롬프트 예시)\na young Korean girl with short black hair, wearing a yellow raincoat, walking, holding a transparent umbrella, in a rainy city street at night\n\n이제 5번째 퀘스트입니다. 이 설계도를 가지고 **\'어떤 화풍\'**으로 이미지를 \'건축\'할지 결정할 차례입니다.\n\n[스타일(Style)] 블록은 이미지의 전체적인 \'느낌(Vibe)\'과 \'질감(Medium)\'을 결정하는, 가장 강력한 마법 블록입니다. 이 블록 하나만 바꿔도 실사 사진이 애니메이션이 되거나 유화가 될 수 있거든요!',
         type: 'tutorial',
+        audioFile: 'style.wav',
         parts: [
             {
                 title: 'A. 📸 실사 계열 (Realism)',
@@ -3003,7 +3007,7 @@ roar that echoes through the hangar.",
                     'Octane render (옥테인 렌더, 극사실적 3D)',
                     'Unreal Engine 5 (언리얼 엔진, 고품질 게임 그래픽)'
                 ],
-                example: ''
+                example: '예시: **photorealistic** (실사 사진처럼) - 현실감 있는 이미지 제작'
             },
             {
                 title: 'B. 🎬 애니메이션 계열 (Animation)',
@@ -3015,7 +3019,7 @@ roar that echoes through the hangar.",
                     'cartoon style (미국 카툰 스타일)',
                     'Claymation (클레이 애니메이션)'
                 ],
-                example: ''
+                example: '예시: **anime style** (애니메이션 스타일) - 감성적이고 친근한 느낌'
             },
             {
                 title: 'C. 🎨 회화 / 일러스트 계열 (Painting / Illustration)',
@@ -3028,7 +3032,7 @@ roar that echoes through the hangar.",
                     'watercolor (수채화)',
                     'pencil sketch (연필 스케치)'
                 ],
-                example: ''
+                example: '예시: **digital painting** (디지털 페인팅) - 예술적이고 세련된 느낌'
             },
             {
                 title: 'D. 🕶️ 특정 분위기 계열 (Aesthetic / Vibe)',
@@ -3041,7 +3045,7 @@ roar that echoes through the hangar.",
                     'lo-fi aesthetic (로파이 감성)',
                     'gothic (고딕)'
                 ],
-                example: ''
+                example: '예시: **lo-fi aesthetic** (로파이 감성) - 차분하고 편안한 분위기'
             }
         ],
         tip: {
@@ -3067,6 +3071,7 @@ roar that echoes through the hangar.",
         prompt: '[블록 6: 조명 & 시간(Lighting & Time)] 블록 장착하기',
         description: '안녕하세요! ai툴비입니다. 🐝\n\n우리는 5개의 블록을 조립해 \'어떤 장면\'을 \'어떤 스타일\'로 그릴지 완벽하게 기획했습니다.\n\n(현재까지 조립된 풀 프롬프트 예시)\na young Korean girl with short black hair, wearing a yellow raincoat, walking, holding a transparent umbrella, in a rainy city street at night, anime style, lo-fi aesthetic\n\n자, 6번째 퀘스트입니다! 우리는 [배경] 블록에서 이미 at night (밤)이라고 \'시간\'을 지정했습니다.\n\n하지만 [조명 & 시간] 블록은 여기서 한 걸음 더 나아가, 그 \'밤\'의 \'빛\'을 **"어떻게 디자인할 것인가?"**를 결정하는 퀘스트입니다. 그냥 \'어두운 밤\'이 아니라, \'감성적인 밤\'을 만들어야죠!',
         type: 'tutorial',
+        audioFile: 'lighting.wav',
         parts: [
             {
                 title: '1. 🕰️ \'시간\' 블록 (Time - 감성 숏컷)',
@@ -3078,7 +3083,7 @@ roar that echoes through the hangar.",
                     'midnight (자정 - 더 깊은 밤)',
                     '1980s / Victorian era (특정 시대의 색감과 분위기)'
                 ],
-                example: ''
+                example: '예시: **golden hour** (골든 아워) - 따뜻하고 감성적인 빛'
             },
             {
                 title: '2. 💡 \'조명\' 블록 - 자연광/분위기광',
@@ -3092,7 +3097,7 @@ roar that echoes through the hangar.",
                     'warm light from shop windows (가게 창문에서 새어 나오는 따뜻한 불빛)',
                     'bioluminescent (생물 발광, 판타지 숲 등)'
                 ],
-                example: ''
+                example: '예시: **glowing streetlights and warm light from shop windows** - 도시의 따뜻한 야경'
             },
             {
                 title: '3. 🎬 극적 조명 (Dramatic Lighting)',
@@ -3103,7 +3108,7 @@ roar that echoes through the hangar.",
                     'rim lighting (림 라이팅, 캐릭터의 외곽선을 비추는 역광)',
                     'dramatic shadows (극적인 그림자)'
                 ],
-                example: ''
+                example: '예시: **cinematic lighting** (영화적 조명) - 드라마틱한 분위기 연출'
             }
         ],
         tip: {
@@ -3129,6 +3134,7 @@ roar that echoes through the hangar.",
         prompt: '[블록 7: 카메라(Camera)] 블록 장착하기',
         description: '안녕하세요! 여러분의 AI 가이드, ai툴비입니다. 🐝\n\n우리는 6개의 퀘스트를 통해 \'어떤 장면\'을 \'어떤 스타일\'과 \'어떤 빛\'으로 그릴지 완벽하게 기획했습니다.\n\n(현재까지 조립된 풀 프롬프트 예시)\na young Korean girl with short black hair, wearing a yellow raincoat, walking, holding a transparent umbrella, in a rainy city street at night, anime style, lo-fi aesthetic, glowing streetlights and warm light from shop windows\n\n이제 정말 마지막 퀘스트입니다. 이 멋진 장면을 "어떻게, 어떤 각도에서 찍을 것인지" 결정할 차례입니다.\n\n[카메라(Camera)] 블록은 우리가 \'관찰자\'가 되어 이미지의 \'시점\'과 \'구도\'를 정하는, 감독의 큐사인과도 같은 블록입니다!',
         type: 'tutorial',
+        audioFile: 'camera.wav',
         parts: [
             {
                 title: '1. 샷 크기 (Shot Size)',
@@ -3140,7 +3146,7 @@ roar that echoes through the hangar.",
                     'wide shot (와이드 샷: 인물보다 배경을 더 넓게 보여줌)',
                     'extreme wide shot (익스트림 와이드 샷: 웅장한 풍경 속 인물)'
                 ],
-                example: ''
+                example: '예시: **wide shot** (와이드 샷) - 인물과 배경을 균형있게 보여줌'
             },
             {
                 title: '2. 카메라 앵글 (Camera Angle)',
@@ -3152,7 +3158,7 @@ roar that echoes through the hangar.",
                     'bird\'s eye view (버즈 아이 뷰: 하늘에서 수직으로 내려다봄)',
                     'worm\'s eye view (웜즈 아이 뷰: 바닥에 붙어 위를 봄)'
                 ],
-                example: ''
+                example: '예시: **eye level shot** (아이 레벨) - 자연스럽고 편안한 시점'
             },
             {
                 title: '3. 렌즈 효과 / 구도 (Lens / Composition)',
@@ -3163,7 +3169,7 @@ roar that echoes through the hangar.",
                     'deep focus (깊은 심도: 배경까지 모두 선명함)',
                     'rule of thirds (삼등분 법칙: 안정적인 구도)'
                 ],
-                example: ''
+                example: '예시: **bokeh** (보케) - 배경의 불빛을 감성적으로 표현'
             }
         ],
         tip: {
@@ -3177,7 +3183,7 @@ roar that echoes through the hangar.",
             result: 'medium shot of a young Korean girl with short black hair, wearing a yellow raincoat, walking, holding a transparent umbrella, in a rainy city street at night, anime style, lo-fi aesthetic, glowing streetlights and warm light from shop windows, bokeh',
             image: 'https://cdn.midjourney.com/edf03fe5-97e0-4349-9363-101c8c8f4809/0_2.png',
             status: '캐릭터(Character) → 행동(Action) → 소품(Props) → 배경(Setting) → 스타일(Style) → 조명&시간(Lighting&Time) → <strong style="color: #ff6b6b;">\'카메라(Camera)\'</strong>',
-            nextStep: '이제 이 완성된 프롬프트를 미드저니, DALL-E, 스테이블 디퓨전 등 어떤 AI 툴에 넣어도, 여러분이 상상했던 \'비 오는 밤거리의 노란 우비 소녀\' 이미지를 정확하게 얻을 수 있을 것입니다.\n\n이 7-블록 조립 방식만 기억한다면, 여러분은 앞으로 어떤 이미지든 자유자재로 창조할 수 있는 \'AI 프롬프트 마스터\'가 될 수 있습니다!\n\n지금까지 튜토리얼을 따라오시느라 정말 고생 많으셨습니다! 🐝'
+            nextStep: '이제 이 완성된 프롬프트를 미드저니, 이미지FX, 픽루멘, 위스크 등 어떤 AI 툴에 넣어도, 여러분이 상상했던 \'비 오는 밤거리의 노란 우비 소녀\' 이미지를 정확하게 얻을 수 있을 것입니다.\n\n이 7-블록 조립 방식만 기억한다면, 여러분은 앞으로 어떤 이미지든 자유자재로 창조할 수 있는 \'AI 프롬프트 마스터\'가 될 수 있습니다!\n\n지금까지 튜토리얼을 따라오시느라 정말 고생 많으셨습니다! 🐝'
         },
         usage: [],
         images: []
