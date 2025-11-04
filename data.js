@@ -2736,7 +2736,7 @@ roar that echoes through the hangar.",
                     'wearing a yellow raincoat (노란색 비옷을 입은)',
                     'in a white scientist gown (흰색 과학자 가운을 입은)'
                 ],
-                example: '"제 캐릭터에 어울리게 **wearing a yellow raincoat (노란색 비옷을 입은)**를 선택할게요."'
+                example: 'wearing a yellow raincoat'
             }
         ],
         completion: {
@@ -2785,7 +2785,7 @@ roar that echoes through the hangar.",
             '• wearing a yellow raincoat (노란색 비옷을 입은)',
             '• in a white scientist gown (흰색 과학자 가운을 입은)',
             '',
-            '"제 캐릭터에 어울리게 **wearing a yellow raincoat (노란색 비옷을 입은)**를 선택할게요."',
+            'wearing a yellow raincoat',
             '',
             '🏆 퀘스트 1 완료!',
             '축하합니다! 3개의 부품을 모두 모아 드디어 첫 번째 [캐릭터] 블록 조립을 완료했습니다!',
@@ -2823,7 +2823,7 @@ roar that echoes through the hangar.",
                     'leaning against a wall : 벽에 기대어 있는',
                     'smiling : 미소짓는'
                 ],
-                example: '예시: **standing and looking at the camera** (서서 카메라를 응시하는)'
+                example: 'standing and looking at the camera'
             },
             {
                 title: '2. 동적인 행동 (Dynamic Actions)',
@@ -2836,7 +2836,7 @@ roar that echoes through the hangar.",
                     'fighting : 싸우는',
                     'flying : 날아다니는'
                 ],
-                example: '예시: **walking** (걷고 있는) - 비옷을 입은 소녀에게 어울리는 자연스러운 동작'
+                example: 'walking'
             },
             {
                 title: '3. 구체적인 행동 (Specific Actions)',
@@ -2849,7 +2849,7 @@ roar that echoes through the hangar.",
                     'opening a door : 문을 여는',
                     'holding a cup : 컵을 들고 있는'
                 ],
-                example: '예시: **reading a book** (책을 읽는) - 캐릭터의 지적인 면모를 강조'
+                example: 'reading a book'
             }
         ],
         tip: {
@@ -2887,7 +2887,7 @@ roar that echoes through the hangar.",
                     'holding a cup of coffee (커피잔을 들고 있는)',
                     'holding a smartphone (스마트폰을 들고 있는)'
                 ],
-                example: '예시: **holding a transparent umbrella** (투명한 우산을 들고 있는) - 비옷과 완벽한 조합!'
+                example: 'holding a transparent umbrella'
             },
             {
                 title: '2. 착용/소지한 소품 (Worn / Carried Props)',
@@ -2899,7 +2899,7 @@ roar that echoes through the hangar.",
                     'with a camera around their neck (목에 카메라를 건)',
                     'with a gas mask (방독면을 쓴)'
                 ],
-                example: '예시: **with a backpack** (백팩을 메고 있는) - 여행자나 학생 캐릭터에 적합'
+                example: 'with a backpack'
             },
             {
                 title: '3. 주변 소품 (Environmental Props)',
@@ -2910,7 +2910,7 @@ roar that echoes through the hangar.",
                     'a campfire in front of them (앞에 캠프파이어가 있는)',
                     'a motorcycle next to them (옆에 오토바이가 있는)'
                 ],
-                example: '예시: **a cat sitting on their lap** (무릎에 고양이가 앉아 있는) - 따뜻한 분위기 연출'
+                example: 'a cat sitting on their lap'
             }
         ],
         tip: {
@@ -2947,7 +2947,7 @@ roar that echoes through the hangar.",
                     'in a crowded market (붐비는 시장에서)',
                     'on a neon-lit street (네온 불빛이 빛나는 거리에서)'
                 ],
-                example: '예시: **in a rainy city street at night** (밤에 비 오는 도시 거리에서) - 감성적인 도시 분위기'
+                example: 'in a rainy city street at night'
             },
             {
                 title: '2. 🌲 야외 / 자연 (Outdoor / Nature)',
@@ -2958,7 +2958,7 @@ roar that echoes through the hangar.",
                     'on a beach at sunset (해질녘 해변에서)',
                     'in a dark, foggy forest (어둡고 안개 낀 숲에서)'
                 ],
-                example: '예시: **in an enchanted forest** (마법에 걸린 숲에서) - 판타지 분위기 연출'
+                example: 'in an enchanted forest'
             },
             {
                 title: '3. 🏠 실내 (Indoor)',
@@ -2969,7 +2969,7 @@ roar that echoes through the hangar.",
                     'inside a spaceship cockpit (우주선 조종석에서)',
                     'in a minimalist room (미니멀한 방 안에서)'
                 ],
-                example: '예시: **in a cozy library** (아늑한 도서관에서) - 따뜻하고 지적인 분위기'
+                example: 'in a cozy library'
             }
         ],
         tip: {
@@ -3007,7 +3007,7 @@ roar that echoes through the hangar.",
                     'Octane render (옥테인 렌더, 극사실적 3D)',
                     'Unreal Engine 5 (언리얼 엔진, 고품질 게임 그래픽)'
                 ],
-                example: '예시: **photorealistic** (실사 사진처럼) - 현실감 있는 이미지 제작'
+                example: 'photorealistic'
             },
             {
                 title: 'B. 🎬 애니메이션 계열 (Animation)',
@@ -3019,7 +3019,7 @@ roar that echoes through the hangar.",
                     'cartoon style (미국 카툰 스타일)',
                     'Claymation (클레이 애니메이션)'
                 ],
-                example: '예시: **anime style** (애니메이션 스타일) - 감성적이고 친근한 느낌'
+                example: 'anime style'
             },
             {
                 title: 'C. 🎨 회화 / 일러스트 계열 (Painting / Illustration)',
@@ -3032,7 +3032,7 @@ roar that echoes through the hangar.",
                     'watercolor (수채화)',
                     'pencil sketch (연필 스케치)'
                 ],
-                example: '예시: **digital painting** (디지털 페인팅) - 예술적이고 세련된 느낌'
+                example: 'digital painting'
             },
             {
                 title: 'D. 🕶️ 특정 분위기 계열 (Aesthetic / Vibe)',
@@ -3045,7 +3045,7 @@ roar that echoes through the hangar.",
                     'lo-fi aesthetic (로파이 감성)',
                     'gothic (고딕)'
                 ],
-                example: '예시: **lo-fi aesthetic** (로파이 감성) - 차분하고 편안한 분위기'
+                example: 'lo-fi aesthetic'
             }
         ],
         tip: {
@@ -3083,7 +3083,7 @@ roar that echoes through the hangar.",
                     'midnight (자정 - 더 깊은 밤)',
                     '1980s / Victorian era (특정 시대의 색감과 분위기)'
                 ],
-                example: '예시: **golden hour** (골든 아워) - 따뜻하고 감성적인 빛'
+                example: 'golden hour'
             },
             {
                 title: '2. 💡 \'조명\' 블록 - 자연광/분위기광',
@@ -3097,7 +3097,7 @@ roar that echoes through the hangar.",
                     'warm light from shop windows (가게 창문에서 새어 나오는 따뜻한 불빛)',
                     'bioluminescent (생물 발광, 판타지 숲 등)'
                 ],
-                example: '예시: **glowing streetlights and warm light from shop windows** - 도시의 따뜻한 야경'
+                example: 'glowing streetlights and warm light from shop windows'
             },
             {
                 title: '3. 🎬 극적 조명 (Dramatic Lighting)',
@@ -3108,7 +3108,7 @@ roar that echoes through the hangar.",
                     'rim lighting (림 라이팅, 캐릭터의 외곽선을 비추는 역광)',
                     'dramatic shadows (극적인 그림자)'
                 ],
-                example: '예시: **cinematic lighting** (영화적 조명) - 드라마틱한 분위기 연출'
+                example: 'cinematic lighting'
             }
         ],
         tip: {
@@ -3146,7 +3146,7 @@ roar that echoes through the hangar.",
                     'wide shot (와이드 샷: 인물보다 배경을 더 넓게 보여줌)',
                     'extreme wide shot (익스트림 와이드 샷: 웅장한 풍경 속 인물)'
                 ],
-                example: '예시: **wide shot** (와이드 샷) - 인물과 배경을 균형있게 보여줌'
+                example: 'wide shot'
             },
             {
                 title: '2. 카메라 앵글 (Camera Angle)',
@@ -3158,7 +3158,7 @@ roar that echoes through the hangar.",
                     'bird\'s eye view (버즈 아이 뷰: 하늘에서 수직으로 내려다봄)',
                     'worm\'s eye view (웜즈 아이 뷰: 바닥에 붙어 위를 봄)'
                 ],
-                example: '예시: **eye level shot** (아이 레벨) - 자연스럽고 편안한 시점'
+                example: 'eye level shot'
             },
             {
                 title: '3. 렌즈 효과 / 구도 (Lens / Composition)',
@@ -3169,7 +3169,7 @@ roar that echoes through the hangar.",
                     'deep focus (깊은 심도: 배경까지 모두 선명함)',
                     'rule of thirds (삼등분 법칙: 안정적인 구도)'
                 ],
-                example: '예시: **bokeh** (보케) - 배경의 불빛을 감성적으로 표현'
+                example: 'bokeh'
             }
         ],
         tip: {
@@ -3180,8 +3180,8 @@ roar that echoes through the hangar.",
             title: '🏆✨ 퀘스트 대성공! "궁극의 프롬프트" 완성! ✨🏆',
             message: '축하합니다! 여러분은 7개의 모든 퀘스트를 완료하고, 흩어져 있던 블록들을 모아 \'여러분만의 궁극의 프롬프트\' 조립에 성공했습니다!',
             choice: '[🐝 ai툴비의 선택] "저는 1~6챕터까지 만든 제 캐릭터(우비 소녀)의 감성적인 표정에 집중하고 싶어요. 그래서 **medium shot (미디엄 샷)**을 선택할게요.\n\n그리고 꿀팁을 활용해서, \'비 오는 밤\'과 \'로파이 감성\'을 극대화하기 위해 bokeh (보케) 효과를 추가해서 뒷배경의 가로등 불빛이 예쁘게 뭉개지도록 할 거예요!"',
-            result: 'medium shot of a young Korean girl with short black hair, wearing a yellow raincoat, walking, holding a transparent umbrella, in a rainy city street at night, anime style, lo-fi aesthetic, glowing streetlights and warm light from shop windows, bokeh',
-            image: 'https://cdn.midjourney.com/edf03fe5-97e0-4349-9363-101c8c8f4809/0_2.png',
+            result: 'high angle full shot of a young Korean girl with short black hair, wearing a yellow raincoat, walking, holding a transparent umbrella, in a rainy city street at night, anime style, lo-fi aesthetic, glowing streetlights and warm light from shop windows --ar 16:9 --v 7',
+            image: 'https://cdn.midjourney.com/27ec2d07-cc25-49c5-b16e-82e2f6219b4d/0_2.png',
             status: '캐릭터(Character) → 행동(Action) → 소품(Props) → 배경(Setting) → 스타일(Style) → 조명&시간(Lighting&Time) → <strong style="color: #ff6b6b;">\'카메라(Camera)\'</strong>',
             nextStep: '이제 이 완성된 프롬프트를 미드저니, 이미지FX, 픽루멘, 위스크 등 어떤 AI 툴에 넣어도, 여러분이 상상했던 \'비 오는 밤거리의 노란 우비 소녀\' 이미지를 정확하게 얻을 수 있을 것입니다.\n\n이 7-블록 조립 방식만 기억한다면, 여러분은 앞으로 어떤 이미지든 자유자재로 창조할 수 있는 \'AI 프롬프트 마스터\'가 될 수 있습니다!\n\n지금까지 튜토리얼을 따라오시느라 정말 고생 많으셨습니다! 🐝'
         },
