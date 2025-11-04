@@ -2697,8 +2697,9 @@ roar that echoes through the hangar.",
         title: '[튜토리얼 1] 🤖 ai툴비 프롬프트 빌더 퀘스트: 챕터 1',
         koreanTitle: '블록 1: 캐릭터(Character)',
         prompt: '[블록 1: 캐릭터(Character)] 블록 조립하기',
-        description: '안녕하세요! 여러분의 AI 창작 가이드, ai툴비입니다. 🐝\n\n여러분이 상상하는 이미지를 완벽하게 만들어내기 위한 <strong style="color: #ff8e53;">\'궁극의 프롬프트 조립\'</strong> 퀘스트를 시작하겠습니다.\n\n그 첫 번째 퀘스트는 이미지의 심장, <strong style="color: #4caf50 ;">\'[캐릭터(Character)]\'</strong> 블록입니다!\n\n\'캐릭터\'는 이미지의 \'주인공\'입니다. 하지만 그냥 a girl (소녀)이라고만 하면, AI는 \'어떤 소녀?\'인지 몰라 무작위로 이미지를 생성합니다.\n\n이번 퀘스트에서는 우리가 원하는 주인공을 AI가 정확히 그려낼 수 있도록, 3개의 작은 부품을 조립하여 [캐릭터] 블록을 완성해 보겠습니다.',
+        description: '안녕하세요! 여러분의 AI 창작 가이더, ai툴비입니다. 🐝\n\n여러분이 상상하는 이미지를 완벽하게 만들어내기 위한 <strong style="color: #ff8e53;">\'궁극의 프롬프트 조립\'</strong> 퀘스트를 시작하겠습니다.\n\n그 첫 번째 퀘스트는 이미지의 심장, <strong style="color: #4caf50 ;">\'[캐릭터(Character)]\'</strong> 블록입니다!\n\n\'캐릭터\'는 이미지의 \'주인공\'입니다. 하지만 그냥 a girl (소녀)이라고만 하면, AI는 \'어떤 소녀?\'인지 몰라 무작위로 이미지를 생성합니다.\n\n이번 퀘스트에서는 우리가 원하는 주인공을 AI가 정확히 그려낼 수 있도록, 3개의 작은 부품을 조립하여 [캐릭터] 블록을 완성해 보겠습니다.',
         type: 'tutorial',
+        audioFile: 'character.wav',
         parts: [
             {
                 title: '▶ 부품 1-1: 핵심 정체성 (Core Identity)',

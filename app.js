@@ -696,9 +696,17 @@ function displayTutorialContent() {
 
     let html = `
         <div class="content-container">
-            <div class="content-header">
-                <h2 class="content-title">${currentData.title || ''}</h2>
-                ${currentData.koreanTitle ? `<span class="content-subtitle">${currentData.koreanTitle}</span>` : ''}
+            <div class="content-header" style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <h2 class="content-title">${currentData.title || ''}</h2>
+                    ${currentData.koreanTitle ? `<span class="content-subtitle">${currentData.koreanTitle}</span>` : ''}
+                </div>
+                ${currentData.audioFile ? `
+                    <button onclick="playTutorialAudio('${currentData.audioFile}')" class="voice-button" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 8px; transition: all 0.3s; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(102, 126, 234, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(102, 126, 234, 0.3)'">
+                        <i data-lucide="volume-2" style="width: 18px; height: 18px;"></i>
+                        Voice
+                    </button>
+                ` : ''}
             </div>
 
             ${currentData.description ? `
@@ -1346,6 +1354,30 @@ function copyToClipboard(text) {
     }
 
     document.body.removeChild(textarea);
+}
+
+// Play tutorial audio
+let currentAudio = null;
+
+function playTutorialAudio(audioFile) {
+    // Stop current audio if playing
+    if (currentAudio) {
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+    }
+
+    // Create and play new audio
+    currentAudio = new Audio(`audio/${audioFile}`);
+    
+    currentAudio.play().catch(err => {
+        console.error('오디오 재생 실패:', err);
+        alert('오디오 파일을 재생할 수 없습니다.');
+    });
+
+    // Clean up when audio ends
+    currentAudio.addEventListener('ended', () => {
+        currentAudio = null;
+    });
 }
 
 // AIFI Tool Variables
