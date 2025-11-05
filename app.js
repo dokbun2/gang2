@@ -421,7 +421,7 @@ function displayContent() {
 
                 <div class="team-tabs">
                     <div class="tab-buttons">
-                        ${Object.keys(currentData.teams).map((teamKey, index) => `
+                        ${Object.keys(currentData.teams).filter(key => key !== 'team3').map((teamKey, index) => `
                             <button class="tab-button ${index === 0 ? 'active' : ''}"
                                     onclick="switchTeamTab('${teamKey}')"
                                     data-team="${teamKey}">
@@ -430,7 +430,7 @@ function displayContent() {
                         `).join('')}
                     </div>
 
-                    ${Object.keys(currentData.teams).map((teamKey, index) => `
+                    ${Object.keys(currentData.teams).filter(key => key !== 'team3').map((teamKey, index) => `
                         <div class="team-content ${index === 0 ? 'active' : ''}" id="team-${teamKey}" data-team="${teamKey}">
                             <div class="videos-grid">
                                 ${currentData.teams[teamKey].videos.map((video, videoIndex) => `

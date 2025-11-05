@@ -2652,12 +2652,6 @@ roar that echoes through the hangar.",
                         thumbnail: 'https://via.placeholder.com/320x180/1a1a1a/666666?text=Video+3',
                         description: '팀 2의 세 번째 작품'
                     },
-                    {
-                        title: '영상 제목 4',
-                        url: '',
-                        thumbnail: 'https://via.placeholder.com/320x180/1a1a1a/666666?text=Video+4',
-                        description: '팀 2의 네 번째 작품'
-                    }
                 ]
             },
             team3: {
