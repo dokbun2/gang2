@@ -23,6 +23,14 @@ const cameraData = {
         ]
     },
 
+    'instructor-reviews': {
+        title: '강의 후기',
+        koreanTitle: 'Course Reviews',
+        type: 'reviews',
+        image: 'images/gang1.jpg',
+        description: 'AI TOOLBEE 강의를 수강하신 분들의 생생한 후기입니다.'
+    },
+
     // AI툴박스툴
     'aifi-tool': {
         title: 'AI툴박스툴',

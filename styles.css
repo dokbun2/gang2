@@ -417,7 +417,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Main Container */
 .main-container {
     display: flex;
-    margin-top: 70px;
+    margin-top: 50px;
     min-height: calc(100vh - 70px);
     height: auto;
 }
@@ -430,7 +430,7 @@ h1, h2, h3, h4, h5, h6 {
     overflow-y: auto;
     height: 100vh;
     position: sticky;
-    top: 70px;
+    top: 50px;
     max-height: calc(100vh - 70px);
 }
 

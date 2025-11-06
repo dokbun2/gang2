@@ -254,6 +254,12 @@ function displayContent() {
         return;
     }
 
+    // Check if it's a reviews type (강의후기)
+    if (currentData.type === 'reviews') {
+        displayReviewsContent();
+        return;
+    }
+
     // Check if it's a practice type (실습과제)
     if (currentData.type === 'practice') {
         displayPracticeContent();
@@ -678,6 +684,48 @@ function displayContent() {
     html += `</div>`;
 
     contentArea.innerHTML = html;
+
+    // Re-initialize icons
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
+}
+
+// Display Reviews Content
+function displayReviewsContent() {
+    if (!currentData) return;
+
+    const contentArea = document.getElementById('content-area');
+    const pagination = document.getElementById('pagination');
+
+    if (!contentArea) return;
+
+    let html = `
+        <div class="content-container">
+            <div class="content-header">
+                <h2 class="content-title">${currentData.title || ''}</h2>
+                ${currentData.koreanTitle ? `<span class="content-subtitle">${currentData.koreanTitle}</span>` : ''}
+            </div>
+
+            ${currentData.description ? `
+                <div style="background: rgba(76, 175, 80, 0.05); padding: 20px; border-radius: 10px; margin: 20px 0;">
+                    <p style="color: #e0e0e0; line-height: 1.8; font-size: 16px;">${currentData.description}</p>
+                </div>
+            ` : ''}
+
+            ${currentData.image ? `
+                <div style="margin: 30px 0;">
+                    <img src="${currentData.image}" alt="강의 후기" style="width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); cursor: pointer;" onclick="openImageModal('${currentData.image}', '강의 후기')">
+                </div>
+            ` : ''}
+        </div>
+    `;
+
+    contentArea.innerHTML = html;
+
+    if (pagination) {
+        pagination.style.display = 'none';
+    }
 
     // Re-initialize icons
     if (typeof lucide !== 'undefined') {
