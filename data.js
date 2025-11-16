@@ -19,7 +19,7 @@ const cameraData = {
             'AI TOOLBEE 웹페이지 개발',
             'AI관련 코딩개발 경력보유',
             'AI 이미지/영상 생성 전문가',
-            '다수의 기업 AI 도입 컨설팅 경험',
+            'EBS 디지털영상제작 강의, 기업특강, 팀단위 특강',
         ]
     },
 
@@ -27,7 +27,10 @@ const cameraData = {
         title: '강의 후기',
         koreanTitle: 'Course Reviews',
         type: 'reviews',
-        image: 'images/gang1.jpg',
+        images: [
+            { src: 'images/gang1.jpg', caption: 'EBS 특별강의' },
+            { src: 'images/gang2.jpg', caption: '기업특강' }
+        ],
         description: 'AI TOOLBEE 강의를 수강하신 분들의 생생한 후기입니다.'
     },
 

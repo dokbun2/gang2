@@ -3,6 +3,8 @@
 // Global variables
 let currentData = null;
 let contentKey = null;
+let expertCourseUnlocked = false; // 전문가 과정 접근 권한
+const EXPERT_PASSWORD = '1004'; // 전문가 과정 비밀번호
 
 // Toggle Mobile Menu
 function toggleMobileMenu() {
@@ -146,6 +148,13 @@ function closeAllDropdowns() {
 function toggleMajorCategory(categoryId, event) {
     if (event) event.stopPropagation();
     console.log('Toggling major category:', categoryId);
+
+    // Check if this is expert category and needs password
+    if (categoryId === 'expert-category' && !expertCourseUnlocked) {
+        showExpertPasswordModal();
+        return;
+    }
+
     const category = document.getElementById(categoryId);
     const icon = document.getElementById(categoryId + '-icon');
 
@@ -538,7 +547,7 @@ function displayContent() {
 
                 <div class="instructor-layout">
                     <div class="instructor-photo">
-                        <img src="${currentData.instructorInfo.image}" alt="${currentData.instructorInfo.name}">
+                        <img src="${currentData.instructorInfo.image}" alt="${currentData.instructorInfo.name}" style="max-width: 250px; width: 100%; height: auto;">
                     </div>
                     <div class="instructor-details">
                         <div class="instructor-info-item">
@@ -557,10 +566,6 @@ function displayContent() {
                         <div class="instructor-info-item" style="margin-top: 15px;">
                             <span class="info-label">Email:</span>
                             <span class="info-value">${currentData.instructorInfo.email}</span>
-                        </div>
-
-                        <div class="instructor-description">
-                            <p>${currentData.description}</p>
                         </div>
 
                         <div class="instructor-experience">
@@ -700,6 +705,23 @@ function displayReviewsContent() {
 
     if (!contentArea) return;
 
+    // Generate images grid HTML
+    let imagesHtml = '';
+    if (currentData.images && currentData.images.length > 0) {
+        imagesHtml = `
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin: 10px 0;">
+                ${currentData.images.map(img => `
+                    <div style="text-align: center;">
+                        <img src="${img.src}" alt="${img.caption}"
+                             style="width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); cursor: pointer;"
+                             onclick="openImageModal('${img.src}', '${img.caption}')">
+                        <p style="color: #e0e0e0; margin-top: 12px; font-size: 15px; font-weight: 500;">${img.caption}</p>
+                    </div>
+                `).join('')}
+            </div>
+        `;
+    }
+
     let html = `
         <div class="content-container">
             <div class="content-header">
@@ -713,11 +735,7 @@ function displayReviewsContent() {
                 </div>
             ` : ''}
 
-            ${currentData.image ? `
-                <div style="margin: 30px 0;">
-                    <img src="${currentData.image}" alt="강의 후기" style="width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); cursor: pointer;" onclick="openImageModal('${currentData.image}', '강의 후기')">
-                </div>
-            ` : ''}
+            ${imagesHtml}
         </div>
     `;
 
@@ -3018,4 +3036,71 @@ function copyFullPrompt(promptIndex) {
     copyVeoPrompt(parseInt(promptIndex));
     // Close modal after copying
     document.querySelector('.prompt-modal')?.remove();
+}
+
+// ============= Expert Course Password Functions =============
+
+// Show expert password modal
+function showExpertPasswordModal() {
+    const modal = document.getElementById('expert-password-modal');
+    const input = document.getElementById('expert-password-input');
+    const error = document.getElementById('password-error');
+
+    if (modal) {
+        modal.style.display = 'flex';
+        if (input) {
+            input.value = '';
+            input.focus();
+        }
+        if (error) {
+            error.style.display = 'none';
+        }
+    }
+}
+
+// Close expert password modal
+function closeExpertPasswordModal() {
+    const modal = document.getElementById('expert-password-modal');
+    if (modal) {
+        modal.style.display = 'none';
+    }
+}
+
+// Verify expert password
+function verifyExpertPassword() {
+    const input = document.getElementById('expert-password-input');
+    const error = document.getElementById('password-error');
+
+    if (!input) return;
+
+    const password = input.value.trim();
+
+    if (password === EXPERT_PASSWORD) {
+        // Password correct
+        expertCourseUnlocked = true;
+        closeExpertPasswordModal();
+
+        // Open expert category
+        const category = document.getElementById('expert-category');
+        const icon = document.getElementById('expert-category-icon');
+
+        if (category) {
+            category.style.display = 'block';
+            if (icon) icon.style.transform = 'rotate(180deg)';
+        }
+    } else {
+        // Password incorrect
+        if (error) {
+            error.style.display = 'block';
+        }
+        input.value = '';
+        input.focus();
+    }
+}
+
+// Handle Enter key press in password input
+function handleExpertPasswordKeyPress(event) {
+    if (event.key === 'Enter') {
+        verifyExpertPassword();
+    }
 }

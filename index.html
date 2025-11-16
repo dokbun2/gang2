@@ -735,6 +735,34 @@
         </div>
     </div>
 
+    <!-- Expert Course Password Modal -->
+    <div id="expert-password-modal" class="aifi-modal" style="display: none;">
+        <div class="aifi-modal-content" style="max-width: 400px;">
+            <div class="aifi-modal-header">
+                <h3>🔒 전문가 과정 접근</h3>
+                <button class="aifi-modal-close" onclick="closeExpertPasswordModal()">&times;</button>
+            </div>
+            <div class="aifi-modal-body">
+                <div class="form-group">
+                    <label for="expert-password-input">비밀번호를 입력하세요</label>
+                    <input type="password" id="expert-password-input" class="aifi-input" placeholder="비밀번호" onkeypress="handleExpertPasswordKeyPress(event)">
+                    <small class="aifi-help-text" style="color: #999; font-size: 12px;">
+                        전문가 과정은 비밀번호가 필요합니다.
+                    </small>
+                </div>
+                <div id="password-error" style="color: #f44336; font-size: 14px; margin-top: 10px; display: none;">
+                    비밀번호가 올바르지 않습니다.
+                </div>
+            </div>
+            <div class="aifi-modal-footer">
+                <button class="button aifi-button" onclick="verifyExpertPassword()">
+                    <i data-lucide="unlock" style="width: 16px; height: 16px;"></i>
+                    확인
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- Custom Scripts -->
     <script src="data.js"></script>
     <script src="app.js"></script>
