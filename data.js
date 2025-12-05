@@ -9,15 +9,16 @@ const cameraData = {
             name: '김진욱 (툴비)',
             position: 'AI TOOLBEE',
             company: [
-                '(주)알앤픽 대표이사',
+                '아이크루 대표, (주)알앤픽 대표이사, (주)제이콥소프트 영업대표',
             ],
-            email: 'ggamsire@gmail.com',
+            email: 'aitoolbee79@gmail.com',
             image: 'images/instructor.png'
         },
         description: 'AI 기술과 창의적 콘텐츠 제작 분야의 전문가로, 다년간의 경험을 바탕으로 AI툴비를 만들게 되었습니다.',
         usage: [
             'AI TOOLBEE 웹페이지 개발',
-            'AI관련 코딩개발 경력보유',
+            'AIFI 프레임워크 개발',
+            'AI관련 바이브코딩, 자동화개발 경력보유',
             'AI 이미지/영상 생성 전문가',
             'EBS 디지털영상제작 강의, 기업특강, 팀단위 특강',
         ]
